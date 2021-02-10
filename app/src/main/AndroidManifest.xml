@@ -10,9 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.InvisibleDisabilities">
         <activity
-            android:name=".HiddenDisabilitiesActivity"
+            android:name=".HiddenDisabilityActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.InvisibleDisabilities.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

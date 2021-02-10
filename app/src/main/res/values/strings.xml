@@ -1,15 +1,33 @@
 <resources>
-    <string name="app_name">InvisibleDisabilities</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Resources that do not require translation -->
+    <string name="app_name" translatable="false">InvisibleDisabilities</string>
+    <string name="navigation_drawer_header_title" translatable="false">InvisibleDisabilities</string>
+
+    <!-- Translatable resources -->
+    <string name="menu_filter_by_criteria_type" translation_description="The label for the menu item to filter the displayed disabilities by criteria type.">Filter by criteria</string>
+    <string name="disability_detail_image_content_description" translation_description="Content description for the header / hero image that is show at the top of the disability detail screen.">Image of disability</string>
+    <string name="hidden_disability_title" translation_description="Title for the 'hidden_disabilities' screen where the user can see the list of disabilities that have been added to their hidden_disability.">Hidden_disability</string>
+    <string name="disability_list_title" translation_description="Title for the disability list screen where the user can see a list of disabilities available to add to their hidden_disabilities.">Disability list</string>
+    <string name="disability_details_title" translation_description="Title for the disability details screen where the user can see the details for a specific disability.">Disability details</string>
+    <string name="extension_to_blue_badge_title" translation_description="Title for extension_to_blue_badge screen where the user can know more about the new criteria, eligibility criterias. ">Extension_to_blue_badge</string>
+    <string name="supporting_evidence_title" translation_description="Title for supporting evidence screen where the user can see evidence required for successful application">Supporting evidence</string>
+    <string name="criteria_one_title" translation_description="Title for criteria one screen where user can view if there disability falls under psychological distress whilst walking as part of a journey">Criteria one</string>
+    <string name="criteria_two_title" translation_description="Title for criteria two screen where user can view if there disability falls under risk of serious harm, when walking or pose, when walking a risk of serious harm to themselves or any other person">Criteria two</string>
+    <string name= "sub_considerations_title" translation_description="Title for sub considerations screen where user can see examples of conditions which in isolation would not qualify for Badge but in combination with another condition may possibly qualify">Sub considerations</string>
+    <string name="coping_strategy_title" translation_description="Title for coping strategy screen where user can consider whether existing strategies adopted to manage there disability are effective">Coping strategy</string>
+    <string name="practioners_title" translation_description="Title for practioners screen where user can view list of examples of health/social care practitioners involved in  diagnosis and treatment whether these appropriate for the conditions causing the behaviour">Practitioners</string>
+
+    <string name="navigation_drawer_header_content_description" translation_description="Content description for the image that is shown at the top of the navigation drawer.">Navigation drawer header logo</string>
+    <string name="added_disability_to_hidden_disabilities" translation_description="Confirmation text that is shown when a user adds a disability to their hidden_disabilities.">Added disability to hidden_disabilities</string>
+    <string name="hidden_disabilities_empty" translation_description="Text that is shown on the 'Hidden_Disability screen when no disability have been added to the user's hidden_disability">Your hidden_disability is empty</string>
+    <string name="added_date" translation_description="Text with placeholders that indicates when the disability was added. Example: 'Invisible_disabilities added on 26 Dec, 2020'.">%1$s added on %2$s</string>
+    <string name="menu_item_share_disability" translation_description="The label for the Share menu item">Share</string>
+    <string name="share_text_disability" translation_description="The default messaged used when sharing a disability on SNS, etc.">Check out the %s disability in the Android Invisible_Disabilities app</string>
+
+    <!-- Accessibility -->
+    <string name="a11y_disability_item_image" translation_description="Accessibility text for each of the disability images shown in the 'hidden_disabilities' and 'Disability list' screens.">Picture of disability</string>
+    <string name="my_hidden_disability_title">my_hidden_disability_title</string>
+
+
 </resources>

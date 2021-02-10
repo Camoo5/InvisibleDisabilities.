@@ -1,4 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+
+    <item
+        android:id="@+id/criteria_one_fragment"
+        android:title="@string/criteria_one_title"/>
+
+    <item
+        android:id="@+id/criteria_two_fragment"
+        android:title="@string/criteria_two_title"/>
+
+    <item
+        android:id="@+id/coping_strategy_fragment"
+        android:title="@string/coping_strategy_title"/>
+
+    <item
+        android:id="@+id/sub_considerations_fragment"
+        android:title="@string/sub_considerations_title"/>
+
+    <item
+        android:id="@+id/supporting_evidence_fragment"
+        android:title="@string/supporting_evidence_title"/>
+
+    <item
+        android:id="@+id/practitioners_fragment"
+        android:title="@string/practioners_title"/>
+
+    <item
+        android:id="@+id/extension_to_blue_badge_fragment"
+        android:title="@string/extension_to_blue_badge_title"/>
+
+    <item
+        android:id="@+id/disability_list_fragment"
+        android:title="@string/disability_list_title"/>
+
+
+
+
+
+
 </menu>

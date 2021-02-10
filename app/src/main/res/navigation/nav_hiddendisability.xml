@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/hidden_disability_fragment">
+
+    <fragment
+        android:id="@+id/hidden_disability_fragment"
+        android:name="com.tenacity.invisibledisabilities.ui.gallery.HiddenDisabilityFragment"
+        android:label="@string/my_hidden_disability_title"
+        tools:layout="@layout/fragment_hidden_disability">
+
+        <action
+            android:id="@+id/action_hidden_disability_fragment_to_disability_detail_fragment"
+            app:destination="@id/disability_detail_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="userID"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/disability_list_fragment"
+        android:name="com.tenacity.invisibledisabilities.ui.gallery.DisabilityListFragment"
+        android:label="@string/disability_list_title"
+        tools:layout="@layout/fragment_disability_list">
+
+        <action
+            android:id="@+id/action_disability_list_fragment_to_disability_detail_fragment"
+            app:destination="@id/disability_detail_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/disability_detail_fragment"
+        android:name="com.tenacity.invisibledisabilities.ui.gallery.DisabilityDetailFragment"
+        android:label="@string/disability_details_title"
+        tools:layout="@layout/fragment_disability_detail">
+
+        <action
+            android:id="@+id/action_disability_detail_fragment_to_extension_to_blue_badge_fragment"
+            app:destination="@id/extension_to_blue_badge_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/extension_to_blue_badge_fragment"
+        android:name="com.tenacity.invisibledisabilities.ui.gallery.ExtensionToBlueBadgeFragment"
+        android:label="@string/extension_to_blue_badge_title"
+        tools:layout="@layout/fragment_extension_to_blue_badge">
+
+        <action
+            android:id="@+id/extension_to_blue_badge_fragment_to_extension_to_criteria_one_fragment"
+            app:destination="@id/criteria_one_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/criteria_one_fragment"
+        android:name="com.tenacity.invisibledisabilities.ui.gallery.CriteriaOneFragment"
+        android:label="@string/criteria_one_title"
+        tools:layout="@layout/fragment_criteria_one">
+
+        <action
+            android:id="@+id/criteria_one_fragment_to_criteria_two_fragment"
+            app:destination="@id/criteria_two_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/criteria_two_fragment"
+        android:name="com.tenacity.invisibledisabilities.ui.gallery.CriteriaTwoFragment"
+        android:label="@string/criteria_two_title"
+        tools:layout="@layout/fragment_criteria_two">
+
+        <action
+            android:id="@+id/criteria_two_fragment_to_sub_considerations_fragment"
+            app:destination="@id/sub_considerations_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/sub_considerations_fragment"
+        android:name="com.tenacity.invisibledisabilities.ui.gallery.SubConsiderationsFragment"
+        android:label="@string/sub_considerations_title"
+        tools:layout="@layout/fragment_sub_considerations">
+
+        <action
+            android:id="@+id/sub_considerations_fragment_to_supporting_evidence_fragment"
+            app:destination="@id/supporting_evidence_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/supporting_evidence_fragment"
+        android:name="com.tenacity.invisibledisabilities.ui.gallery.SupportingEvidenceFragment"
+        android:label="@string/supporting_evidence_title"
+        tools:layout="@layout/fragment_supporting_evidence">
+
+        <action
+            android:id="@+id/supporting_evidence_fragment_to_coping_strategy_fragment"
+            app:destination="@id/coping_strategy_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/coping_strategy_fragment"
+        android:name="com.tenacity.invisibledisabilities.ui.gallery.CopingStrategyFragment"
+        android:label="@string/coping_strategy_title"
+        tools:layout="@layout/fragment_coping_strategy">
+
+
+        <action
+            android:id="@+id/coping_strategy_fragment_to_practitioners_fragment"
+            app:destination="@id/practitioners_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/practitioners_fragment"
+        android:name="com.tenacity.invisibledisabilities.ui.gallery.PractitionersFragment"
+        android:label="@string/practioners_title"
+        tools:layout="@layout/fragment_practitioners_list">
+        <argument
+            android:name="practitionerId"
+            app:argType="string" />
+    </fragment>
+
+
+
+
+</navigation>
