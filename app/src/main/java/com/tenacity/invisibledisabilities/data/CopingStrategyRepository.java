@@ -8,13 +8,13 @@ import androidx.lifecycle.LiveData;
  */
 public class CopingStrategyRepository {
     private static CopingStrategyRepository instance;
-    private final com.tenacity.invisibledisabilities.data.CopingStrategyDao copingStrategyDao;
+    private CopingStrategyDao copingStrategyDao;
 
-    private CopingStrategyRepository(com.tenacity.invisibledisabilities.data.CopingStrategyDao copingStrategyDao) {
+    private CopingStrategyRepository(CopingStrategyDao copingStrategyDao) {
         this.copingStrategyDao = copingStrategyDao;
     }
 
-    public static CopingStrategyRepository getInstance(com.tenacity.invisibledisabilities.data.CopingStrategyDao copingStrategyDao) {
+    public static CopingStrategyRepository getInstance(CopingStrategyDao copingStrategyDao) {
         if (instance == null) {
             synchronized (CopingStrategyRepository.class) {
                 if (instance == null) {

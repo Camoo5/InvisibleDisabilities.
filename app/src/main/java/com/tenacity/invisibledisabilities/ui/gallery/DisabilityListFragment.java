@@ -58,9 +58,7 @@ public class DisabilityListFragment extends Fragment {
     }
 
     private void subscribeUi(ListAdapter adapter) {
-        this.viewModel.disabilities
-
-                .observe(getViewLifecycleOwner(), disabilities -> {
+        this.viewModel.disabilities.observe(getViewLifecycleOwner(), disabilities -> {
             if (disabilities != null) {
                 adapter.submitList(disabilities);
             }

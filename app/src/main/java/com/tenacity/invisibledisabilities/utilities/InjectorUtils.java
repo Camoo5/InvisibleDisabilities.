@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.tenacity.invisibledisabilities.data.AppDatabase;
 import com.tenacity.invisibledisabilities.data.CopingStrategyRepository;
+import com.tenacity.invisibledisabilities.data.CriteriaOneRepository;
 import com.tenacity.invisibledisabilities.data.DisabilityRepository;
 import com.tenacity.invisibledisabilities.data.HiddenDisabilityRepository;
 import com.tenacity.invisibledisabilities.ui.viewmodels.CopingStrategyViewModelFactory;
@@ -31,6 +32,12 @@ public class InjectorUtils {
     private static CopingStrategyRepository getCopingStrategyRepository(Context context){
       return CopingStrategyRepository.getInstance(
               AppDatabase.getInstance(context.getApplicationContext()).getCopingStrategyDao());
+
+    }
+
+    private static CriteriaOneRepository getCriteriaOneRepository(Context context){
+        return CriteriaOneRepository.getInstance(
+                AppDatabase.getInstance(context.getApplicationContext()).getCopingStrategyDao());
 
     }
 

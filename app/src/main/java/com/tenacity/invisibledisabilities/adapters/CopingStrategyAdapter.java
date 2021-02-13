@@ -16,8 +16,6 @@ import com.tenacity.invisibledisabilities.databinding.FragmentCopingStrategyBind
 import com.tenacity.invisibledisabilities.ui.gallery.CopingStrategyFragmentDirections;
 
 
-
-
 public class CopingStrategyAdapter extends ListAdapter <CopingStrategy, CopingStrategyAdapter.ViewHolder> {
 
     public CopingStrategyAdapter() {
@@ -34,35 +32,35 @@ public class CopingStrategyAdapter extends ListAdapter <CopingStrategy, CopingSt
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CopingStrategy copingStrategy = getItem(position);
-        holder.bind(createOnClickListener(copingStrategy.getCopingStrategy()), copingStrategy);
+        holder.bind(createOnClickListener(copingStrategy.getCopingstrategyId ()), copingStrategy);
         holder.itemView.setTag(copingStrategy);
     }
 
-    private View.OnClickListener createOnClickListener(String disabilityId) {
+    private View.OnClickListener createOnClickListener(String copingstrategyId) {
         return v -> Navigation.findNavController(v).navigate(
-                CopingStrategyFragmentDirections.copingStrategyFragmentToPractitionersFragment (disabilityId));
+                CopingStrategyFragmentDirections.copingStrategyFragmentToPractitionersFragment (copingstrategyId));
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         private final FragmentCopingStrategyBinding binding;
 
-        ViewHolder(@NonNull @NonNull FragmentCopingStrategyBinding binding) {
+        ViewHolder(@NonNull FragmentCopingStrategyBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
 
         void bind(View.OnClickListener listener, CopingStrategy item) {
-            binding.setClickListener(listener);
-            binding.setCopingStragtegy(item);
-            binding.executePendingBindings();
+            binding.setClickListener ( listener );
+            binding.setCopingstrategy ( item );
+            binding.executePendingBindings ();
         }
     }
 
-    static class CopingStrategyDiffCallback extends DiffUtil.ItemCallback<CopingStrategy> {
+    static class CopingStrategyDiffCallback extends DiffUtil.ItemCallback <CopingStrategy> {
 
         @Override
         public boolean areItemsTheSame(@NonNull CopingStrategy oldItem, @NonNull CopingStrategy newItem) {
-            return oldItem.getCopingStrategyId().equals(newItem.getCopingStrategyId());
+            return oldItem.getCopingstrategyId ().equals ( newItem.getCopingstrategyId () );
         }
 
         @SuppressLint("DiffUtilEquals")
