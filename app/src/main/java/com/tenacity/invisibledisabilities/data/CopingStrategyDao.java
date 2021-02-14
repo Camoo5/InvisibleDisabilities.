@@ -11,7 +11,7 @@ import androidx.room.Query;
 public interface CopingStrategyDao {
 
 
-    @Query("SELECT * FROM CopingStrategies WHERE id = :copingstrategyId")
+    @Query("SELECT * FROM copingStrategies WHERE id = :copingstrategyId")
     LiveData<CopingStrategy> getCopingStrategy (String copingstrategyId);
 
 

@@ -31,7 +31,7 @@ public class DisabilityAndHiddenDisabilities {
         return hiddenDisabilities;
     }
 
-    public void setGardenPlantings(List<com.tenacity.invisibledisabilities.data.HiddenDisability> hiddenDisabilities) {
+    public void setHiddenDisabilities(List<com.tenacity.invisibledisabilities.data.HiddenDisability> hiddenDisabilities) {
         this.hiddenDisabilities = hiddenDisabilities;
     }
 }
