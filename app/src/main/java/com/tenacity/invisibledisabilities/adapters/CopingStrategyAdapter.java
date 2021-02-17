@@ -1,4 +1,5 @@
-package com.tenacity.invisibledisabilities.adapters;
+
+        package com.tenacity.invisibledisabilities.adapters;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;

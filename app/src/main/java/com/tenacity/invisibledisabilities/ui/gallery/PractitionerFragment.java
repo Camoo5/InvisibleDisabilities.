@@ -15,28 +15,28 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ListAdapter;
 
 import com.tenacity.invisibledisabilities.R;
-import com.tenacity.invisibledisabilities.adapters.CriteriaOneAdapter;
-import com.tenacity.invisibledisabilities.databinding.FragmentCopingStrategyBinding;
-import com.tenacity.invisibledisabilities.databinding.FragmentSubConsiderationsBinding;
-import com.tenacity.invisibledisabilities.ui.viewmodels.CriteriaOneViewModel;
-import com.tenacity.invisibledisabilities.ui.viewmodels.SubConsiderationsViewModel;
-import com.tenacity.invisibledisabilities.ui.viewmodels.SubConsiderationsViewModelFactory;
+import com.tenacity.invisibledisabilities.adapters.PractitionerAdapter;
+import com.tenacity.invisibledisabilities.databinding.FragmentPractitionerBinding;
+import com.tenacity.invisibledisabilities.ui.viewmodels.CriteriaTwoViewModel;
+import com.tenacity.invisibledisabilities.ui.viewmodels.PractitionerViewModel;
+import com.tenacity.invisibledisabilities.ui.viewmodels.PractitionerViewModelFactory;
 import com.tenacity.invisibledisabilities.utilities.InjectorUtils;
 
 
-public class SubConsiderationsFragment extends Fragment {
+public class PractitionerFragment extends Fragment {
 
-    private SubConsiderationsViewModel viewModel;
+    private PractitionerViewModel viewModel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        FragmentSubConsiderationsBinding binding = FragmentSubConsiderationsBinding.inflate(inflater, container, false);
-        SubConsiderationsViewModelFactory factory = InjectorUtils.provideViewModelFactory(getContext());
-        ListAdapter adapter = new CriteriaOneAdapter  ();
-        binding.copingStrategy.setAdapter(adapter);
-        this.viewModel = new ViewModelProvider (this, factory).get(CriteriaOneViewModel.class);
+        FragmentPractitionerBinding binding = FragmentPractitionerBinding .inflate(inflater, container, false);
+        PractitionerViewModelFactory factory = InjectorUtils.provideViewModelFactory(getContext());
+        ListAdapter adapter = new PractitionerAdapter ();
+        binding.practitionerFragment.setAdapter(adapter);
+        this.viewModel = new ViewModelProvider (this, factory).get(CriteriaTwoViewModel.class);
         subscribeUi(adapter);
+
 
         setHasOptionsMenu(true);
         return binding.getRoot();

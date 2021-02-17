@@ -1,5 +1,5 @@
 
-package com.google.samples.apps.sunflower;
+package com.tenacity.invisibledisabilities.ui.gallery;
 
 import android.content.Intent;
 import android.os.Build;
@@ -19,37 +19,38 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.common.base.Preconditions;
-import com.google.samples.apps.sunflower.databinding.FragmentPlantDetailBinding;
 import com.google.samples.apps.sunflower.utilities.InjectorUtils;
 import com.google.samples.apps.sunflower.viewmodels.PlantDetailViewModel;
-import com.google.samples.apps.sunflower.viewmodels.PlantDetailViewModelFactory;
 import com.tenacity.invisibledisabilities.R;
+import com.tenacity.invisibledisabilities.databinding.FragmentDisabilityDetailBinding;
+import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityDetailViewModel;
+import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityDetailViewModelFactory;
 
 /**
- * A fragment representing a single Plant detail screen.
+ * A fragment representing a single Disability detail screen.
  */
-public class PlantDetailFragment extends Fragment {
+public class DisabilityDetailFragment extends Fragment {
 
     private String shareText;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        FragmentPlantDetailBinding binding = FragmentPlantDetailBinding.inflate(inflater, container, false);
-        PlantDetailFragmentArgs args = PlantDetailFragmentArgs.fromBundle(Preconditions.checkNotNull(getArguments()));
-        PlantDetailViewModelFactory factory = InjectorUtils.providerPlantDetailViewModelFactory(
-                requireContext(), args.getPlantId());
-        PlantDetailViewModel viewModel = ViewModelProviders.of(this, factory).get(PlantDetailViewModel.class);
+        FragmentDisabilityDetailBinding binding = FragmentDisabilityDetailBinding.inflate(inflater, container, false);
+        DisabilityDetailFragmentArgs args = DisabilityDetailFragmentArgs.fromBundle(Preconditions.checkNotNull(getArguments()));
+        DisabilityDetailViewModelFactory factory = InjectorUtils.providerDisabilityDetailViewModelFactory(
+                requireContext(), args.getDisabilityId());
+        DisabilityDetailViewModel viewModel = ViewModelProviders.of(this, factory).get(DisabilityDetailViewModel.class);
         binding.setLifecycleOwner(this);
 
         binding.setViewModel(viewModel);
         binding.fab.setOnClickListener(v -> {
-            viewModel.addPlantToGarden();
-            Snackbar.make(v, R.string.added_plant_to_garden, Snackbar.LENGTH_LONG).show();
+            viewModel.addDisabilityToHiddenDisability ();
+            Snackbar.make(v, R.string.added_disability_to_hidden_disabilities, Snackbar.LENGTH_LONG).show();
         });
 
-        viewModel.plant.observe(this, plant ->
-                this.shareText = plant == null ? "" : getString(R.string.share_text_plant, plant.getName()));
+        viewModel.disability.observe(getViewLifecycleOwner(), disability ->
+                this.shareText = disability == null ? "" : getString(R.string.share_text_disability, disability.getName()));
 
         setHasOptionsMenu(true);
 
@@ -58,7 +59,7 @@ public class PlantDetailFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate( R.menu.menu_plant_detail, menu);
+        inflater.inflate( R.menu.menu_disability_detail, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 

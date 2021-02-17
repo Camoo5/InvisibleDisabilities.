@@ -24,7 +24,7 @@
 
     <item
         android:id="@+id/practitioners_fragment"
-        android:title="@string/practioners_title"/>
+        android:title="@string/practitioner_title"/>
 
     <item
         android:id="@+id/extension_to_blue_badge_fragment"

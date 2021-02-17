@@ -16,8 +16,6 @@ import com.tenacity.invisibledisabilities.data.ExtensionToBlueBadge;
 import com.tenacity.invisibledisabilities.databinding.FragmentExtensionToBlueBadgeBinding;
 import com.tenacity.invisibledisabilities.ui.gallery.ExtensionToBlueBadgeFragmentDirections;
 
-;
-
 
 public class ExtensionToBlueBadgeAdapter extends ListAdapter <ExtensionToBlueBadge, ExtensionToBlueBadgeAdapter.ViewHolder> {
 

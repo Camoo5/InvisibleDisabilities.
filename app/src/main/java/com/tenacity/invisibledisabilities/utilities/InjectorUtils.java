@@ -37,7 +37,7 @@ public class InjectorUtils {
 
     private static CriteriaOneRepository getCriteriaOneRepository(Context context){
         return CriteriaOneRepository.getInstance(
-                AppDatabase.getInstance(context.getApplicationContext()).getCopingStrategyDao());
+                AppDatabase.getInstance(context.getApplicationContext()).get());
 
     }
 

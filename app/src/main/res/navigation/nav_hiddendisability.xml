@@ -17,7 +17,7 @@
             app:exitAnim="@anim/slide_out_left"
             app:popExitAnim="@anim/slide_out_right" />
         <argument
-            android:name="userID"
+            android:name="disabilityId"
             app:argType="string" />
     </fragment>
 
@@ -49,6 +49,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="disabilityId"
+            app:argType="string" />
     </fragment>
 
     <fragment
@@ -132,7 +135,6 @@
         android:label="@string/coping_strategy_title"
         tools:layout="@layout/fragment_coping_strategy">
 
-
         <action
             android:id="@+id/coping_strategy_fragment_to_practitioners_fragment"
             app:destination="@id/practitioners_fragment"
@@ -144,12 +146,16 @@
 
     <fragment
         android:id="@+id/practitioners_fragment"
-        android:name="com.tenacity.invisibledisabilities.ui.gallery.PractitionersFragment"
-        android:label="@string/practioners_title"
-        tools:layout="@layout/fragment_practitioners_list">
-        <argument
-            android:name="practitionerId"
-            app:argType="string" />
+        android:name="com.tenacity.invisibledisabilities.ui.gallery.PractitionerFragment"
+        android:label="@string/practitioner_title"
+        tools:layout="@layout/fragment_practitioner">
+
+
+
+
+
+
+
     </fragment>
 
 

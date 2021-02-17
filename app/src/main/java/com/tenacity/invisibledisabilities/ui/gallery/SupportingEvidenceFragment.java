@@ -1,65 +1,72 @@
+
 package com.tenacity.invisibledisabilities.ui.gallery;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ListAdapter;
 
 import com.tenacity.invisibledisabilities.R;
+import com.tenacity.invisibledisabilities.adapters.CriteriaOneAdapter;
+import com.tenacity.invisibledisabilities.databinding.FragmentSupportingEvidenceBinding;
+import com.tenacity.invisibledisabilities.ui.viewmodels.CriteriaOneViewModel;
+import com.tenacity.invisibledisabilities.ui.viewmodels.SupportingEvidenceViewModel;
+import com.tenacity.invisibledisabilities.ui.viewmodels.SupportingEvidenceViewModelFactory;
+import com.tenacity.invisibledisabilities.utilities.InjectorUtils;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link DisabilityDetailFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class DisabilityDetailFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class SupportingEvidenceFragment extends Fragment {
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private SupportingEvidenceViewModel viewModel;
 
-    public DisabilityDetailFragment() {
-        // Required empty public constructor
-    }
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        FragmentSupportingEvidenceBinding binding = FragmentSupportingEvidenceBinding.inflate(inflater, container, false);
+        SupportingEvidenceViewModelFactory factory = InjectorUtils.provideViewModelFactory(getContext());
+        ListAdapter adapter = new CriteriaOneAdapter  ();
+        binding.copingStrategy.setAdapter(adapter);
+        this.viewModel = new ViewModelProvider (this, factory).get(CriteriaOneViewModel.class);
+        subscribeUi(adapter);
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment DisabilityDetailFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static DisabilityDetailFragment newInstance(String param1, String param2) {
-        DisabilityDetailFragment fragment = new DisabilityDetailFragment ();
-        Bundle args = new Bundle ();
-        args.putString ( ARG_PARAM1, param1 );
-        args.putString ( ARG_PARAM2, param2 );
-        fragment.setArguments ( args );
-        return fragment;
+        setHasOptionsMenu(true);
+        return binding.getRoot();
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate ( savedInstanceState );
-        if (getArguments () != null) {
-            mParam1 = getArguments ().getString ( ARG_PARAM1 );
-            mParam2 = getArguments ().getString ( ARG_PARAM2 );
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate( R.menu.menu_disability_list, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.filter_criteria:
+                updateData();
+                return true;
+
         }
+        return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate ( R.layout.fragment_disability_detail, container, false );
+    private void subscribeUi(ListAdapter adapter) {
+        this.viewModel.criteriaone
+
+                .observe(getViewLifecycleOwner(), copingstrategy -> {
+                    if (criteriaone != null) {
+                        adapter.submitList(criteriaone);
+                    }
+                });
     }
+
+
 }
