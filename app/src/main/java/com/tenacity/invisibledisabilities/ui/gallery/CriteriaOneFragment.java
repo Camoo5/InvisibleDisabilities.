@@ -15,12 +15,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ListAdapter;
 
 import com.tenacity.invisibledisabilities.R;
-import com.tenacity.invisibledisabilities.adapters.CopingStrategyAdapter;
 import com.tenacity.invisibledisabilities.adapters.CriteriaOneAdapter;
-import com.tenacity.invisibledisabilities.databinding.FragmentCopingStrategyBinding;
-import com.tenacity.invisibledisabilities.ui.viewmodels.CopingStrategyViewModel;
-import com.tenacity.invisibledisabilities.ui.viewmodels.CopingStrategyViewModelFactory;
+import com.tenacity.invisibledisabilities.databinding.FragmentCriteriaOneBinding;
 import com.tenacity.invisibledisabilities.ui.viewmodels.CriteriaOneViewModel;
+import com.tenacity.invisibledisabilities.ui.viewmodels.CriteriaOneViewModelFactory;
 import com.tenacity.invisibledisabilities.utilities.InjectorUtils;
 
 
@@ -31,10 +29,10 @@ public class CriteriaOneFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        FragmentCopingStrategyBinding binding = FragmentCopingStrategyBinding.inflate(inflater, container, false);
-        CopingStrategyViewModelFactory factory = InjectorUtils.provideViewModelFactory(getContext());
+        FragmentCriteriaOneBinding binding = FragmentCriteriaOneBinding.inflate(inflater, container, false);
+        CriteriaOneViewModelFactory factory = InjectorUtils.provideViewModelFactory(getContext());
         ListAdapter adapter = new CriteriaOneAdapter  ();
-        binding.copingStrategy.setAdapter(adapter);
+        binding.criteriaOneFragment.setAdapter(adapter);
         this.viewModel = new ViewModelProvider (this, factory).get(CriteriaOneViewModel.class);
         subscribeUi(adapter);
 

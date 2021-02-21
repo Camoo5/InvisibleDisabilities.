@@ -25,16 +25,17 @@ import com.tenacity.invisibledisabilities.utilities.InjectorUtils;
 
 public class CopingStrategyFragment extends Fragment {
 
+    private String shareText;
     private CopingStrategyViewModel viewModel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentCopingStrategyBinding binding = FragmentCopingStrategyBinding.inflate(inflater, container, false);
-        CopingStrategyViewModelFactory factory = InjectorUtils.provideViewModelFactory(getContext());
+        CopingStrategyViewModelFactory factory = InjectorUtils.provideCopingStrategyViewModelFactory(getContext());
         ListAdapter adapter = new CopingStrategyAdapter ();
-        binding.copingStrategy.setAdapter(adapter);
-        this.viewModel = new ViewModelProvider (this, factory).get(CopingStrategyViewModel.class);
+        binding.setAdapter(adapter);
+        this.viewModel = new ViewModelProvider (this, factory).get( CopingStrategyViewModel.class);
         subscribeUi(adapter);
 
         setHasOptionsMenu(true);
@@ -58,14 +59,18 @@ public class CopingStrategyFragment extends Fragment {
     }
 
     private void subscribeUi(ListAdapter adapter) {
-        this.viewModel.copingstrategy
-
-                .observe(getViewLifecycleOwner(), copingstrategy -> {
-                    if (copingstrategy != null) {
-                        adapter.submitList(copingstrategy);
-                    }
-                });
+        this.viewModel.disabilities.observe(getViewLifecycleOwner(), disabilities -> {
+            if (disabilities != null) {
+                adapter.submitList(disabilities);
+            }
+        });
     }
 
-
+    private void updateData() {
+        if (viewModel.isFiltered()) {
+            viewModel.cleanCriteriaNumber ();
+        } else {
+            viewModel.setCriteriaNumber ( 1 );
         }
+    }
+}

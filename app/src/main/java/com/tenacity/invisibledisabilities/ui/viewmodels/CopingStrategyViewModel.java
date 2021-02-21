@@ -13,14 +13,14 @@ import com.tenacity.invisibledisabilities.utilities.AppExecutors;
  * The ViewModel used in [CopingStrategyFragment].
  */
 public class CopingStrategyViewModel extends ViewModel {
-    private final CopingStrategyRepository copingStrategyRepository;
+    private CopingStrategyRepository copingStrategyRepository;
 
-    private final String copingstrategyId;
+    private String copingstrategyId;
 
-    private final LiveData<Boolean> isDisabled;
-    public LiveData<CopingStrategy> copingStrategyLiveData;
+    private  LiveData<Boolean> isDisabled;
+    public LiveData <CopingStrategy> copingStrategy;
 
-    public CopingStrategyViewModel(CopingStrategyRepository copingStrategyRepository, String copingstrategyId) {
+  CopingStrategyViewModel(CopingStrategyRepository copingStrategyRepository, String copingstrategyId) {
         super();
         this.copingStrategyRepository = copingStrategyRepository;
         this.copingstrategyId = copingstrategyId;
@@ -29,10 +29,13 @@ public class CopingStrategyViewModel extends ViewModel {
          * method can return null in two cases: when the database query is running and if no records
          * are found. In these cases isDisabled is false. If a record is found then isDisabled is
          * true. */
-        LiveData<CopingStrategy> copingStrategyLiveData= copingStrategyRepository.getCopingStrategy (copingstrategyId);
-        this.isDisabled = Transformations.map(copingStrategyLiveData, it -> it != null);
-        this.copingStrategyLiveData = copingStrategyRepository.getCopingStrategy (copingstrategyId);
+        LiveData <CopingStrategy> copingStrategy = copingStrategyRepository.getCopingStrategy (copingstrategyId);
+        this.isDisabled = Transformations.map(copingStrategy, it -> it != null);
+        this.copingStrategy = copingStrategyRepository.getCopingStrategy (copingstrategyId);
     }
+
+
+
     public void addDisabilityToHiddenDisabilities() {
         AppExecutors.getInstance().diskIO().execute(() -> copingStrategyRepository.getCopingStrategy (copingstrategyId));
     }
@@ -40,5 +43,5 @@ public class CopingStrategyViewModel extends ViewModel {
     public LiveData<Boolean> getIsDisabled() {
         return isDisabled;
     }
-      }
+}
 

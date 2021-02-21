@@ -11,17 +11,20 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
-import com.tenacity.invisibledisabilities.carers.ConditionDatabaseCarer;
+import com.tenacity.invisibledisabilities.workers.ConditionDatabaseWorker;
 import com.tenacity.invisibledisabilities.utilities.Constants;
 
 /**
  * The Room database for this app
  */
-@Database(entities = {com.tenacity.invisibledisabilities.data.HiddenDisability.class, com.tenacity.invisibledisabilities.data.Disability.class}, version = 1, exportSchema = false)
+@Database(entities = {HiddenDisability.class, com.tenacity.invisibledisabilities.data.Disability.class}, version = 1, exportSchema = false)
 @TypeConverters(Converters.class)
 public abstract class AppDatabase extends RoomDatabase {
-    public abstract com.tenacity.invisibledisabilities.data.HiddenDisabilityDao getHiddenDisabilitiesDao();
-    public abstract com.tenacity.invisibledisabilities.data.DisabilityDao getDisabilityDao();
+    public abstract HiddenDisabilityDao getHiddenDisabilitiesDao();
+    public abstract DisabilityDao getDisabilityDao();
+    public abstract CopingStrategyDao getCopingStrategyDao();
+    public abstract CriteriaOneDao getCriteriaOneDao();
+
 
     private static volatile AppDatabase instance;
 
@@ -42,9 +45,12 @@ public abstract class AppDatabase extends RoomDatabase {
                     @Override
                     public void onCreate(@NonNull SupportSQLiteDatabase db) {
                         super.onCreate(db);
-                        WorkManager.getInstance(context).enqueue(OneTimeWorkRequest.from( ConditionDatabaseCarer.class));
+                        WorkManager.getInstance(context).enqueue(OneTimeWorkRequest.from( ConditionDatabaseWorker.class));
                     }
                 })
                 .build();
     }
+
+
+
 }

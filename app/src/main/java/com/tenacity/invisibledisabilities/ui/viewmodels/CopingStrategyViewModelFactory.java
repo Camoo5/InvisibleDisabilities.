@@ -4,21 +4,24 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.tenacity.invisibledisabilities.data.DisabilityRepository;
+import com.tenacity.invisibledisabilities.data.CopingStrategyRepository;
+
 
 
 public class CopingStrategyViewModelFactory extends ViewModelProvider.NewInstanceFactory {
-    private final DisabilityRepository repository;
+    private CopingStrategyRepository copingStrategyRepository;
+    private String copingstrategyId;
 
-    public CopingStrategyViewModelFactory(@NonNull DisabilityRepository repository) {
+    public CopingStrategyViewModelFactory(@NonNull CopingStrategyRepository copingStrategyRepository, String copingstrategyId) {
         super();
-        this.repository = repository;
+        this.copingStrategyRepository= copingStrategyRepository;
+        this.copingstrategyId = copingstrategyId;
     }
 
     @NonNull
     @Override
     @SuppressWarnings("unchecked")
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        return (T) new DisabilityListViewModel(repository);
+        return (T) new CopingStrategyViewModel(copingStrategyRepository, copingstrategyId);
     }
 }

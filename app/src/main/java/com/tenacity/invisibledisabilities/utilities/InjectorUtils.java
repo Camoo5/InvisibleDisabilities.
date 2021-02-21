@@ -8,6 +8,7 @@ import com.tenacity.invisibledisabilities.data.CriteriaOneRepository;
 import com.tenacity.invisibledisabilities.data.DisabilityRepository;
 import com.tenacity.invisibledisabilities.data.HiddenDisabilityRepository;
 import com.tenacity.invisibledisabilities.ui.viewmodels.CopingStrategyViewModelFactory;
+import com.tenacity.invisibledisabilities.ui.viewmodels.CriteriaOneViewModelFactory;
 import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityDetailViewModelFactory;
 import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityListViewModelFactory;
 import com.tenacity.invisibledisabilities.ui.viewmodels.HiddenDisabilityListViewModelFactory;
@@ -29,21 +30,11 @@ public class InjectorUtils {
                 AppDatabase.getInstance(context.getApplicationContext()).getHiddenDisabilitiesDao());
     }
 
-    private static CopingStrategyRepository getCopingStrategyRepository(Context context){
-      return CopingStrategyRepository.getInstance(
-              AppDatabase.getInstance(context.getApplicationContext()).getCopingStrategyDao());
-
-    }
-
-    private static CriteriaOneRepository getCriteriaOneRepository(Context context){
-        return CriteriaOneRepository.getInstance(
-                AppDatabase.getInstance(context.getApplicationContext()).get());
-
-    }
 
     public static HiddenDisabilityListViewModelFactory HiddenDisabilityListViewModelFactory (Context context) {
         return new HiddenDisabilityListViewModelFactory (getHiddenDisabilityRepository (context));
     }
+
 
     public static DisabilityListViewModelFactory provideDisabilityListViewModelFactory(Context context) {
         return new DisabilityListViewModelFactory (getDisabilityRepository ( context ));
@@ -53,8 +44,26 @@ public class InjectorUtils {
         return new DisabilityDetailViewModelFactory(getDisabilityRepository(context), getHiddenDisabilityRepository(context), disabilityId);
     }
 
-    public static CopingStrategyViewModelFactory
 
+    public static CopingStrategyViewModelFactory provideCopingStrategyViewModelFactory(Context context) {
+        return new CopingStrategyViewModelFactory (getCopingStrategyRepository ( context ));
 
+    }
 
+    private static CopingStrategyRepository getCopingStrategyRepository(Context context) {
+        return CopingStrategyRepository.getInstance(
+                AppDatabase.getInstance(context.getApplicationContext()).getCopingStrategyDao());
+
+    }
+
+    public static CriteriaOneViewModelFactory provideViewModelFactory(Context context) {
+        return new CriteriaOneViewModelFactory (getCriteriaOneRepository ( context ));
+
+    }
+
+    private static CriteriaOneRepository getCriteriaOneRepository(Context context) {
+        return CriteriaOneRepository.getInstance(
+                AppDatabase.getInstance(context.getApplicationContext()).getCriteriaOneDao());
+
+    }
 }
