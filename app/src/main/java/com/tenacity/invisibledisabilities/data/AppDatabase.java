@@ -11,8 +11,8 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
-import com.tenacity.invisibledisabilities.workers.ConditionDatabaseWorker;
 import com.tenacity.invisibledisabilities.utilities.Constants;
+import com.tenacity.invisibledisabilities.workers.ConditionDatabaseWorker;
 
 /**
  * The Room database for this app
@@ -24,6 +24,11 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract DisabilityDao getDisabilityDao();
     public abstract CopingStrategyDao getCopingStrategyDao();
     public abstract CriteriaOneDao getCriteriaOneDao();
+    public abstract CriteriaTwoDao getCriteriaTwoDao();
+    public abstract ExtensionToBlueBadgeDao getExtensionToBlueBadgeDao();
+    public abstract PractitionerDao getPractitionerDao();
+    public abstract SubConsiderationsDao getSubConsiderationsDao();
+    public abstract SupportingEvidenceDao getSupportingEvidenceDao();
 
 
     private static volatile AppDatabase instance;
@@ -50,7 +55,6 @@ public abstract class AppDatabase extends RoomDatabase {
                 })
                 .build();
     }
-
 
 
 }

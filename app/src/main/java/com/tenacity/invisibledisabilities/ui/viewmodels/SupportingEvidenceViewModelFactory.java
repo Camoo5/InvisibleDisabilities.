@@ -11,7 +11,7 @@ public class SupportingEvidenceViewModelFactory extends ViewModelProvider.NewIns
     private String supportingevidenceId;
     private SupportingEvidenceRepository supportingEvidenceRepository;
 
-    public  SupportingEvidenceViewModelFactory(@NonNull SupportingEvidenceRepository supportingEvidenceRepository, String supportingevidenceId) {
+    public  SupportingEvidenceViewModelFactory(@NonNull SupportingEvidenceRepository supportingEvidenceRepository) {
         super();
         this.supportingEvidenceRepository = supportingEvidenceRepository;
         this.supportingevidenceId= supportingevidenceId;

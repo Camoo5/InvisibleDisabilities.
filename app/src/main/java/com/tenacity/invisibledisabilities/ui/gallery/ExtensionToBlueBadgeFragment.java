@@ -31,7 +31,7 @@ public class ExtensionToBlueBadgeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentExtensionToBlueBadgeBinding binding = FragmentExtensionToBlueBadgeBinding .inflate(inflater, container, false);
-        ExtensionToBlueBadgeViewModelFactory factory = InjectorUtils.provideViewModelFactory(getContext());
+        ExtensionToBlueBadgeViewModelFactory factory = InjectorUtils.provideExtensionToBlueBadgeViewModelFactory(getContext());
         ListAdapter adapter = new ExtensionToBlueBadgeAdapter ();
         binding.extensionToBlueBadgeFragment.setAdapter(adapter);
         this.viewModel = new ViewModelProvider (this, factory).get(CriteriaTwoViewModel.class);

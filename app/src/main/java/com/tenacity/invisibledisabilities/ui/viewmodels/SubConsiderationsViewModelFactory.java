@@ -11,7 +11,7 @@ public class SubConsiderationsViewModelFactory extends ViewModelProvider.NewInst
     private String subconsiderationsId;
     private SubConsiderationsRepository subConsiderationsRepository;
 
-    public  SubConsiderationsViewModelFactory(@NonNull SubConsiderationsRepository subConsiderationsRepository, String subconsiderationsId) {
+    public  SubConsiderationsViewModelFactory(@NonNull SubConsiderationsRepository subConsiderationsRepository) {
         super();
         this.subConsiderationsRepository = subConsiderationsRepository;
         this.subconsiderationsId= subconsiderationsId;

@@ -37,7 +37,7 @@ public class CriteriaOneAdapter extends ListAdapter <com.tenacity.invisibledisab
 
     private View.OnClickListener createOnClickListener(String criteriaoneId) {
         return v -> Navigation.findNavController ( v ).navigate (
-                CriteriaOneFragmentDirections.criteriaOneFragmentToCriteriaTwoFragment (criteriaoneId ) );
+                CriteriaOneFragmentDirections.criteriaOneFragmentToCriteriaTwoFragment  (criteriaoneId ) );
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

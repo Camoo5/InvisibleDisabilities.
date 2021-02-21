@@ -11,8 +11,8 @@ import androidx.room.Query;
 public interface PractitionerDao {
 
 
-    @Query("SELECT * FROM Practitioner WHERE id = :practitionerId")
-    LiveData<Practitioner> getPractitioner (String practitionerId);
+    @Query("SELECT * FROM Practitioner WHERE id = :practitionersId")
+    LiveData<Practitioner> getPractitioner (String practitionersId);
 
 
 

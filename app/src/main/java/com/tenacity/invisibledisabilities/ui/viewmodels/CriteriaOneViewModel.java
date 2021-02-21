@@ -20,6 +20,8 @@ public class CriteriaOneViewModel extends ViewModel {
     private  LiveData<Boolean> isDisabled;
     public LiveData <CriteriaOne> criteriaOne;
 
+
+
     CriteriaOneViewModel(CriteriaOneRepository criteriaOneRepository, String criteriaoneId) {
         super();
         this.criteriaOneRepository = criteriaOneRepository;

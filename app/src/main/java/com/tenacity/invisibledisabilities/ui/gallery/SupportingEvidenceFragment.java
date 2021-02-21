@@ -32,7 +32,7 @@ public class SupportingEvidenceFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentSupportingEvidenceBinding binding = FragmentSupportingEvidenceBinding.inflate(inflater, container, false);
-        SupportingEvidenceViewModelFactory factory = InjectorUtils.provideViewModelFactory(getContext());
+        SupportingEvidenceViewModelFactory factory = InjectorUtils.provideSupportingEvidenceViewModelFactory (getContext());
         ListAdapter adapter = new CriteriaOneAdapter  ();
         binding.copingStrategy.setAdapter(adapter);
         this.viewModel = new ViewModelProvider (this, factory).get(CriteriaOneViewModel.class);

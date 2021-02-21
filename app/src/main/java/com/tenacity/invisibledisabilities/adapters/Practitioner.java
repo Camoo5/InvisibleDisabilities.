@@ -1,4 +1,5 @@
 
+
 package com.tenacity.invisibledisabilities.adapters;
 
 import android.annotation.SuppressLint;
@@ -14,13 +15,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.tenacity.invisibledisabilities.data.Practitioner;
 import com.tenacity.invisibledisabilities.databinding.FragmentPractitionerBinding;
-
+import com.tenacity.invisibledisabilities.ui.gallery.PractitionerFragment;
 
 
 public class PractitionerAdapter extends ListAdapter <Practitioner, PractitionerAdapter.ViewHolder> {
 
     public PractitionerAdapter() {
-        super ( new PractitionerDiffCallback ());
+        super ( new PractitionerDiffCallback());
     }
 
     @NonNull
@@ -33,13 +34,13 @@ public class PractitionerAdapter extends ListAdapter <Practitioner, Practitioner
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Practitioner practitioner = getItem ( position );
-        holder.bind ( createOnClickListener ( practitioner.getPractitionerId  () ), practitioner  );
+        holder.bind ( createOnClickListener ( practitioner.getPractitionersId  () ), practitioner  );
         holder.itemView.setTag ( practitioner );
     }
 
     private View.OnClickListener createOnClickListener(String practitionerId) {
         return v -> Navigation.findNavController ( v ).navigate (
-               PractitionerFragmentDirections.extensionToBlueBadgeFragmentToExtensionToCriteriaOneFragment  (practitionerId ) );
+               PractitionerFragment.extensionToBlueBadgeFragmentToExtensionToCriteriaOneFragment  (practitionersId ) );
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -61,7 +62,7 @@ public class PractitionerAdapter extends ListAdapter <Practitioner, Practitioner
 
         @Override
         public boolean areItemsTheSame(@NonNull Practitioner oldItem, @NonNull Practitioner newItem) {
-            return oldItem.getPractitionerId  ().equals(newItem.getPractitionerId ());
+            return oldItem.getPractitionersId  ().equals(newItem.getPractitionersId ());
         }
 
         @SuppressLint("DiffUtilEquals")

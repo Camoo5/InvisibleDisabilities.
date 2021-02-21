@@ -6,17 +6,19 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.tenacity.invisibledisabilities.data.CopingStrategyRepository;
 
-
-
 public class CopingStrategyViewModelFactory extends ViewModelProvider.NewInstanceFactory {
     private CopingStrategyRepository copingStrategyRepository;
     private String copingstrategyId;
 
-    public CopingStrategyViewModelFactory(@NonNull CopingStrategyRepository copingStrategyRepository, String copingstrategyId) {
+
+
+
+    public CopingStrategyViewModelFactory(@NonNull CopingStrategyRepository copingStrategyRepository) {
         super();
         this.copingStrategyRepository= copingStrategyRepository;
         this.copingstrategyId = copingstrategyId;
     }
+
 
     @NonNull
     @Override

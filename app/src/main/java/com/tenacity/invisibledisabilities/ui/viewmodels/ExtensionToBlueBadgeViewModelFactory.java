@@ -11,7 +11,7 @@ public class ExtensionToBlueBadgeViewModelFactory extends ViewModelProvider.NewI
     private String extensiontobluebadgeId;
     private ExtensionToBlueBadgeRepository extensionToBlueBadgeRepository;
 
-    public ExtensionToBlueBadgeViewModelFactory(@NonNull ExtensionToBlueBadgeRepository extensionToBlueBadgeRepository, String extensiontobluebadgeId) {
+    public ExtensionToBlueBadgeViewModelFactory(@NonNull ExtensionToBlueBadgeRepository extensionToBlueBadgeRepository) {
         super();
         this.extensionToBlueBadgeRepository = extensionToBlueBadgeRepository;
         this.extensiontobluebadgeId = extensiontobluebadgeId;

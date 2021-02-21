@@ -34,7 +34,7 @@ public class CopingStrategyFragment extends Fragment {
         FragmentCopingStrategyBinding binding = FragmentCopingStrategyBinding.inflate(inflater, container, false);
         CopingStrategyViewModelFactory factory = InjectorUtils.provideCopingStrategyViewModelFactory(getContext());
         ListAdapter adapter = new CopingStrategyAdapter ();
-        binding.setAdapter(adapter);
+        binding.copingStrategyFragment(adapter);
         this.viewModel = new ViewModelProvider (this, factory).get( CopingStrategyViewModel.class);
         subscribeUi(adapter);
 

@@ -30,7 +30,7 @@ public class CriteriaTwoFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentCriteriaTwoBinding binding = FragmentCriteriaTwoBinding.inflate(inflater, container, false);
-        CriteriaTwoViewModelFactory factory = InjectorUtils.provideViewModelFactory(getContext());
+        CriteriaTwoViewModelFactory factory = InjectorUtils.provideCriteriaTwoViewModelFactory(getContext());
         ListAdapter adapter = new CriteriaTwoAdapter ();
         binding.copingStrategy.setAdapter(adapter);
         this.viewModel = new ViewModelProvider (this, factory).get(CriteriaTwoViewModel.class);

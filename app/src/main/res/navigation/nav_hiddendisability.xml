@@ -67,6 +67,11 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="extensiontobluebadgeId"
+            app:argType="string" />
+
+
     </fragment>
 
     <fragment
@@ -82,6 +87,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="criteriaoneId"
+            app:argType="string" />
     </fragment>
 
     <fragment
@@ -97,6 +105,8 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument android:name="criteriatwoId"
+            app:argType="string" />
     </fragment>
 
     <fragment
@@ -112,6 +122,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="subconsiderationsId"
+            app:argType="string" />
     </fragment>
 
     <fragment
@@ -127,6 +140,8 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument android:name="supportingevidenceId"
+            app:argType="string" />
     </fragment>
 
     <fragment
@@ -142,6 +157,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="copingstrategyId"
+            app:argType="string" />
     </fragment>
 
     <fragment
@@ -149,12 +167,6 @@
         android:name="com.tenacity.invisibledisabilities.ui.gallery.PractitionerFragment"
         android:label="@string/practitioner_title"
         tools:layout="@layout/fragment_practitioner">
-
-
-
-
-
-
 
     </fragment>
 

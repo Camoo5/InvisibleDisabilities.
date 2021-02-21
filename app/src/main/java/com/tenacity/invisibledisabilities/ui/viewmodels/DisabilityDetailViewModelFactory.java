@@ -10,9 +10,9 @@ import com.tenacity.invisibledisabilities.data.HiddenDisabilityRepository;
 
 
 public class DisabilityDetailViewModelFactory extends ViewModelProvider.NewInstanceFactory {
-    private final String disabilityId;
-    private final DisabilityRepository disabilityRepository;
-    private final HiddenDisabilityRepository hiddenDisabilityRepository;
+    private  String disabilityId;
+    private  DisabilityRepository disabilityRepository;
+    private  HiddenDisabilityRepository hiddenDisabilityRepository;
 
     public DisabilityDetailViewModelFactory(DisabilityRepository disabilityRepository, HiddenDisabilityRepository hiddenDisabilityRepository,
             String disabilityId) {

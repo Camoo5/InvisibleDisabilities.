@@ -17,34 +17,34 @@ public final class Practitioner {
     @NonNull
     @PrimaryKey
     @ColumnInfo(name = "id")
-    private final String practitionerId;
+    private final String practitionersId;
 
-    public Practitioner(@NonNull String practitionerId) {
-        this.practitionerId = practitionerId;
+    public Practitioner(@NonNull String practitionersId) {
+        this.practitionersId = practitionersId;
 
     }
 
     @NonNull
-    public String getPractitionerId () {
-        return practitionerId;
+    public String getPractitionersId () {
+        return practitionersId;
     }
 
 
     @Override
     public boolean equals(@Nullable Object obj) {
         return obj instanceof Practitioner
-                && this.practitionerId.equals(((Practitioner) obj).practitionerId);
+                && this.practitionersId.equals(((Practitioner) obj).practitionersId);
     }
 
 
     @Override
     public int hashCode() {
-        return Objects.hash(practitionerId);
+        return Objects.hash(practitionersId);
     }
 
 
     @Override
     protected Object clone() {
-        return new Practitioner (practitionerId);
+        return new Practitioner (practitionersId);
     }
 }

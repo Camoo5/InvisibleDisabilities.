@@ -12,7 +12,7 @@ public class CriteriaTwoViewModelFactory extends ViewModelProvider.NewInstanceFa
     private String criteriatwoId;
     private CriteriaTwoRepository criteriatworepository;
 
-    public CriteriaTwoViewModelFactory(@NonNull CriteriaTwoRepository criteriaTworepository, String criteriatwoId) {
+    public CriteriaTwoViewModelFactory(@NonNull CriteriaTwoRepository criteriaTworepository) {
         super();
         this.criteriatworepository = criteriaTworepository;
         this.criteriatwoId = criteriatwoId;

@@ -11,7 +11,7 @@ public class PractitionerViewModelFactory extends ViewModelProvider.NewInstanceF
     private String practitionerId;
     private PractitionerRepository practitionerRepository;
 
-    public PractitionerViewModelFactory(@NonNull PractitionerRepository practitionerRepository, String practitionerId) {
+    public PractitionerViewModelFactory(@NonNull PractitionerRepository practitionerRepository) {
         super();
         this.practitionerRepository = practitionerRepository;
         this.practitionerId = practitionerId;

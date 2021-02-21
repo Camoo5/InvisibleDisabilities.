@@ -25,6 +25,7 @@ import com.tenacity.invisibledisabilities.R;
 import com.tenacity.invisibledisabilities.databinding.FragmentDisabilityDetailBinding;
 import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityDetailViewModel;
 import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityDetailViewModelFactory;
+import com.tenacity.invisibledisabilities.utilities.InjectorUtils;
 
 /**
  * A fragment representing a single Disability detail screen.
@@ -38,7 +39,7 @@ public class DisabilityDetailFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentDisabilityDetailBinding binding = FragmentDisabilityDetailBinding.inflate(inflater, container, false);
         DisabilityDetailFragmentArgs args = DisabilityDetailFragmentArgs.fromBundle(Preconditions.checkNotNull(getArguments()));
-        DisabilityDetailViewModelFactory factory = InjectorUtils.providerDisabilityDetailViewModelFactory(
+        DisabilityDetailViewModelFactory factory = InjectorUtils.providerDisabilityDetailViewModelFactory (
                 requireContext(), args.getDisabilityId());
         DisabilityDetailViewModel viewModel = ViewModelProviders.of(this, factory).get(DisabilityDetailViewModel.class);
         binding.setLifecycleOwner(this);

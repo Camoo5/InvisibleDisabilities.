@@ -15,19 +15,19 @@ public class PractitionerRepository {
         this.practitionersDao= practitionerDao;
     }
 
-    public static PractitionerRepository getInstance(PractitionerDao practionerDao) {
+    public static PractitionerRepository getInstance(PractitionerDao practitionerDao) {
         if (instance == null) {
             synchronized (PractitionerRepository.class) {
                 if (instance == null) {
-                    instance = new PractitionerRepository (practionerDao);
+                    instance = new PractitionerRepository (practitionerDao);
                 }
             }
         }
         return instance;
     }
 
-    public LiveData <Practitioner> getPractitioner(String practitionerId) {
-        return this.practitionersDao.getPractitioner (practitionerId);
+    public LiveData <Practitioner> getPractitioner(String practitionersId) {
+        return this.practitionersDao.getPractitioner (practitionersId);
     }
 }
 
