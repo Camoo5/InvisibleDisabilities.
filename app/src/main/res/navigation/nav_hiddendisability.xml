@@ -15,7 +15,10 @@
             app:destination="@id/disability_detail_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@+id/disability_detail_fragment"
+            app:popUpToInclusive="true"/>
+
         <argument
             android:name="disabilityId"
             app:argType="string" />
@@ -33,7 +36,10 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@+id/disability_detail_fragment"
+            app:popUpToInclusive="true"/>
+
     </fragment>
 
     <fragment
@@ -48,7 +54,9 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@+id/extension_to_blue_badge_fragment"
+            app:popUpToInclusive="true"/>
         <argument
             android:name="disabilityId"
             app:argType="string" />
@@ -66,7 +74,9 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@+id/criteria_one_fragment"
+            app:popUpToInclusive="true"/>
         <argument
             android:name="extensiontobluebadgeId"
             app:argType="string" />
@@ -86,7 +96,10 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@+id/criteria_two_fragment"
+            app:popUpToInclusive="true"/>
+
         <argument
             android:name="criteriaoneId"
             app:argType="string" />
@@ -104,7 +117,9 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@+id/sub_considerations_fragment"
+            app:popUpToInclusive="true"/>
         <argument android:name="criteriatwoId"
             app:argType="string" />
     </fragment>
@@ -121,7 +136,9 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@+id/supporting_evidence_fragment"
+            app:popUpToInclusive="true"/>
         <argument
             android:name="subconsiderationsId"
             app:argType="string" />
@@ -139,7 +156,10 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@+id/coping_strategy_fragment"
+            app:popUpToInclusive="true"/>
+
         <argument android:name="supportingevidenceId"
             app:argType="string" />
     </fragment>
@@ -156,7 +176,10 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@+id/practitioners_fragment"
+            app:popUpToInclusive="true"/>
+
         <argument
             android:name="copingstrategyId"
             app:argType="string" />
@@ -167,6 +190,21 @@
         android:name="com.tenacity.invisibledisabilities.ui.gallery.PractitionerFragment"
         android:label="@string/practitioner_title"
         tools:layout="@layout/fragment_practitioner">
+
+        <action
+            android:id="@+id/practitioners_fragment_to_hidden_disability_fragment"
+            app:destination="@+id/hidden_disability_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@+id/hidden_disability_fragment"
+            app:popUpToInclusive="true"/>
+        <argument
+            android:name="copingstrategyId"
+            app:argType="string" />
+
+
 
     </fragment>
 

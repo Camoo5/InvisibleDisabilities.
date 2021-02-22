@@ -17,6 +17,8 @@ import androidx.recyclerview.widget.ListAdapter;
 
 import com.tenacity.invisibledisabilities.R;
 import com.tenacity.invisibledisabilities.adapters.CriteriaOneAdapter;
+import com.tenacity.invisibledisabilities.adapters.SubConsiderationsAdapter;
+import com.tenacity.invisibledisabilities.adapters.SupportingEvidenceAdapter;
 import com.tenacity.invisibledisabilities.databinding.FragmentSupportingEvidenceBinding;
 import com.tenacity.invisibledisabilities.ui.viewmodels.CriteriaOneViewModel;
 import com.tenacity.invisibledisabilities.ui.viewmodels.SupportingEvidenceViewModel;
@@ -33,7 +35,7 @@ public class SupportingEvidenceFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentSupportingEvidenceBinding binding = FragmentSupportingEvidenceBinding.inflate(inflater, container, false);
         SupportingEvidenceViewModelFactory factory = InjectorUtils.provideSupportingEvidenceViewModelFactory (getContext());
-        ListAdapter adapter = new CriteriaOneAdapter  ();
+        ListAdapter adapter = new SupportingEvidenceAdapter ();
         binding.copingStrategy.setAdapter(adapter);
         this.viewModel = new ViewModelProvider (this, factory).get(CriteriaOneViewModel.class);
         subscribeUi(adapter);
@@ -59,7 +61,7 @@ public class SupportingEvidenceFragment extends Fragment {
     }
 
     private void subscribeUi(ListAdapter adapter) {
-        this.viewModel.criteriaone
+        this.viewModel.SupportingEvidenceLiveData
 
                 .observe(getViewLifecycleOwner(), copingstrategy -> {
                     if (criteriaone != null) {

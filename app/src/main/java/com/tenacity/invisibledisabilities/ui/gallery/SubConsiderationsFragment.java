@@ -16,9 +16,7 @@ import androidx.recyclerview.widget.ListAdapter;
 
 import com.tenacity.invisibledisabilities.R;
 import com.tenacity.invisibledisabilities.adapters.CriteriaOneAdapter;
-import com.tenacity.invisibledisabilities.databinding.FragmentCopingStrategyBinding;
 import com.tenacity.invisibledisabilities.databinding.FragmentSubConsiderationsBinding;
-import com.tenacity.invisibledisabilities.ui.viewmodels.CriteriaOneViewModel;
 import com.tenacity.invisibledisabilities.ui.viewmodels.SubConsiderationsViewModel;
 import com.tenacity.invisibledisabilities.ui.viewmodels.SubConsiderationsViewModelFactory;
 import com.tenacity.invisibledisabilities.utilities.InjectorUtils;
@@ -33,9 +31,9 @@ public class SubConsiderationsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentSubConsiderationsBinding binding = FragmentSubConsiderationsBinding.inflate(inflater, container, false);
         SubConsiderationsViewModelFactory factory = InjectorUtils.provideSubConsiderationsViewModelFactory (getContext());
-        ListAdapter adapter = new CriteriaOneAdapter  ();
+        ListAdapter adapter = new CriteriaOneAdapter ();
         binding.copingStrategy.setAdapter(adapter);
-        this.viewModel = new ViewModelProvider (this, factory).get(CriteriaOneViewModel.class);
+        this.viewModel = new ViewModelProvider (this, factory).get(SubConsiderationsViewModel.class);
         subscribeUi(adapter);
 
         setHasOptionsMenu(true);
@@ -59,11 +57,11 @@ public class SubConsiderationsFragment extends Fragment {
     }
 
     private void subscribeUi(ListAdapter adapter) {
-        this.viewModel.criteriaone
+        this.viewModel.subConsiderationsLiveData
 
-                .observe(getViewLifecycleOwner(), copingstrategy -> {
-                    if (criteriaone != null) {
-                        adapter.submitList(criteriaone);
+                .observe(getViewLifecycleOwner(), subConsiderations -> {
+                    if (subConsiderations != null) {
+                        adapter.submitList(subConsiderations);
                     }
                 });
     }

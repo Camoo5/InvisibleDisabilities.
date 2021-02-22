@@ -1,79 +1,72 @@
-
 package com.tenacity.invisibledisabilities.adapters;
 
-import android.annotation.SuppressLint;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.tenacity.invisibledisabilities.data.Practitioner;
+
 import com.tenacity.invisibledisabilities.data.SupportingEvidence;
-import com.tenacity.invisibledisabilities.databinding.FragmentPractitionerBinding;
-import com.tenacity.invisibledisabilities.databinding.FragmentSubConsiderationsBinding;
 import com.tenacity.invisibledisabilities.databinding.FragmentSupportingEvidenceBinding;
-import com.tenacity.invisibledisabilities.ui.gallery.SupportingEvidenceFragmentDirections;
 
 
-public class SupportingEvidencesAdapter extends ListAdapter <SupportingEvidence, SupportingEvidenceAdapter.ViewHolder> {
+public class SupportingEvidenceAdapter extends ListAdapter <SupportingEvidence, SupportingEvidenceAdapter.ViewHolder> {
 
     public SupportingEvidenceAdapter() {
-        super ( new SupportingEvidenceDiffCallback ());
+        super(new SupportingEvidenceDiffCallback());
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder ( FragmentSupportingEvidenceBinding.inflate (
-                LayoutInflater.from ( parent.getContext () ), parent, false ) );
+        return new ViewHolder(FragmentSupportingEvidenceBinding.inflate(
+                LayoutInflater.from(parent.getContext()), parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        SupportingEvidence supportingEvidence= (SupportingEvidence) getItem ( position );
-        holder.bind ( createOnClickListener ( SupportingEvidence.getSupportingEvidenceId  () ), supportingEvidence  );
-        holder.itemView.setTag ( supportingEvidence );
+        SupportingEvidence supportingEvidence = getItem(position);
+        holder.bind(createOnClickListener(supportingEvidence.getSupportingEvidenceId()),supportingEvidence);
+        holder.itemView.setTag(supportingEvidence);
     }
 
-    private View.OnClickListener createOnClickListener(String practitionersId) {
-        return v -> Navigation.findNavController ( v ).navigate (
-                SupportingEvidenceFragmentDirections.supportingEvidenceFragmentToCopingStrategyFragment  (practitionersId ) );
+    private View.OnClickListener createOnClickListener(String supportingevidenceId) {
+        return v -> Navigation.findNavController(v).navigate(
+                SupportingEvidenceFragmentDirections.actionPlantListFragmentToPlantDetailFragment( supportingevidenceId));
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        private final FragmentPractitionerBinding binding;
+        private final FragmentSupportingEvidenceBinding binding;
 
-        ViewHolder(@NonNull @NonNull @NonNull FragmentSupportingEvidenceBinding binding) {
-            super ( binding.getRoot () );
+        ViewHolder(@NonNull FragmentSupportingEvidenceBinding binding) {
+            super(binding.getRoot());
             this.binding = binding;
         }
 
-        void bind(View.OnClickListener listener,  SupportingEvidence item ) {
+        void bind(View.OnClickListener listener, SupportingEvidence item) {
             binding.setClickListener(listener);
-            binding.setExtensiontobluebadge ( item);
+            binding.setSupportingevidence (item);
             binding.executePendingBindings();
         }
     }
 
-    static class SupportingEvidenceDiffCallback extends DiffUtil.ItemCallback<Practitioner> {
+    static class  SupportingEvidenceDiffCallback extends DiffUtil.ItemCallback<SupportingEvidence> {
 
         @Override
         public boolean areItemsTheSame(@NonNull SupportingEvidence oldItem, @NonNull SupportingEvidence newItem) {
-            return oldItem.getSupportingEvidenceId  ().equals(newItem.getSupportingEvidenceId ());
+            return oldItem.getSupportingEvidenceId().equals(newItem.getSupportingEvidenceId());
         }
 
-        @SuppressLint("DiffUtilEquals")
         @Override
-        public boolean areContentsTheSame(@NonNull SupportingEvidence oldItem, @NonNull SupportingEvidence newItem) {
+        public boolean areContentsTheSame(@NonNull  SupportingEvidence oldItem, @NonNull  SupportingEvidence newItem) {
             return oldItem == newItem;
         }
     }
 }
-
-
 
