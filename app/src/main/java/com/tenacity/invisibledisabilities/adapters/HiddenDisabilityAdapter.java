@@ -15,9 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.tenacity.invisibledisabilities.R;
 import com.tenacity.invisibledisabilities.data.DisabilityAndHiddenDisabilities;
 import com.tenacity.invisibledisabilities.databinding.ListItemHiddenDisabilityBinding;
-import com.tenacity.invisibledisabilities.ui.gallery.HiddenDisabilityFragment;
 import com.tenacity.invisibledisabilities.ui.gallery.HiddenDisabilityFragmentDirections;
-import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityAndHiddenDisabilitiesViewModel;
 
 import java.util.Objects;
 
@@ -56,9 +54,9 @@ public class HiddenDisabilityAdapter extends ListAdapter<DisabilityAndHiddenDisa
             this.binding = binding;
         }
 
-        void bind(View.OnClickListener listener, DisabilityAndHiddenDisabilities hiddenDisabilities) {
+        void bind(View.OnClickListener listener, DisabilityAndHiddenDisabilities hiddenDisabilities ) {
             this.binding.setClickListener(listener);
-            this.binding.setViewModel(new DisabilityAndHiddenDisabilitiesViewModel  (hiddenDisabilities));
+            this.binding.setViewModel(new DisabilityAndHiddenDisabilities (hiddenDisabilities));
             this.binding.executePendingBindings();
         }
     }

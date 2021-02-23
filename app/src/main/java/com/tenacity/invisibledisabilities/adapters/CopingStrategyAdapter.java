@@ -1,7 +1,6 @@
 
         package com.tenacity.invisibledisabilities.adapters;
 
-import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,10 +63,10 @@ public class CopingStrategyAdapter extends ListAdapter <CopingStrategy, CopingSt
             return oldItem.getCopingstrategyId ().equals ( newItem.getCopingstrategyId () );
         }
 
-        @SuppressLint("DiffUtilEquals")
+
         @Override
         public boolean areContentsTheSame(@NonNull CopingStrategy oldItem, @NonNull CopingStrategy newItem) {
-            return oldItem == newItem;
+            return oldItem.equals ( newItem );
         }
     }
 }

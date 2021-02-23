@@ -10,28 +10,28 @@ import java.util.List;
 public class DisabilityAndHiddenDisabilities {
 
     @Embedded
-    private com.tenacity.invisibledisabilities.data.Disability disability;
+    private Disability disability;
 
     @Relation(parentColumn = "id", entityColumn = "disability_id")
-    private List<com.tenacity.invisibledisabilities.data.HiddenDisability> hiddenDisabilities;
+    private List<HiddenDisability> hiddenDisabilities;
 
     public  DisabilityAndHiddenDisabilities() {
         this.hiddenDisabilities = new ArrayList<>();
     }
 
-    public com.tenacity.invisibledisabilities.data.Disability getDisability() {
+    public Disability getDisability() {
         return disability;
     }
 
-    public void setDisability(com.tenacity.invisibledisabilities.data.Disability disability) {
+    public void setDisability(Disability disability) {
         this.disability = disability;
     }
 
-    public List<com.tenacity.invisibledisabilities.data.HiddenDisability> getHiddenDisabilities() {
+    public List<HiddenDisability> getHiddenDisabilities() {
         return hiddenDisabilities;
     }
 
-    public void setHiddenDisabilities(List<com.tenacity.invisibledisabilities.data.HiddenDisability> hiddenDisabilities) {
+    public void setHiddenDisabilities(List<HiddenDisability> hiddenDisabilities) {
         this.hiddenDisabilities = hiddenDisabilities;
     }
 }

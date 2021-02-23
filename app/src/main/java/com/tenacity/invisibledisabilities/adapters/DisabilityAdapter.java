@@ -1,6 +1,5 @@
 package com.tenacity.invisibledisabilities.adapters;
 
-import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,10 +64,10 @@ public class DisabilityAdapter extends ListAdapter <Disability, DisabilityAdapte
             return oldItem.getDisabilityId().equals(newItem.getDisabilityId());
         }
 
-        @SuppressLint("DiffUtilEquals")
+
         @Override
         public boolean areContentsTheSame(@NonNull Disability oldItem, @NonNull Disability newItem) {
-            return oldItem == newItem;
+            return oldItem.equals ( newItem );
         }
     }
 }

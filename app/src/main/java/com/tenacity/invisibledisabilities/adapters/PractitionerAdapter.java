@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.tenacity.invisibledisabilities.data.Practitioner;
 import com.tenacity.invisibledisabilities.databinding.FragmentPractitionerBinding;
+import com.tenacity.invisibledisabilities.ui.gallery.PractitionerFragmentDirections;
 
 public class PractitionerAdapter extends ListAdapter <Practitioner, PractitionerAdapter.ViewHolder> {
 
@@ -35,11 +36,11 @@ public class PractitionerAdapter extends ListAdapter <Practitioner, Practitioner
 
     private View.OnClickListener createOnClickListener(String practitionerId) {
         return v -> Navigation.findNavController(v).navigate(
-                PractitionerFragmentDirections.actionPlantListFragmentToPlantDetailFragment( practitionerId));
+                PractitionerFragmentDirections.practitionersFragmentToHiddenDisabilityFragment( practitionerId));
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        private FragmentPractitionerBinding binding;
+        private final FragmentPractitionerBinding binding;
 
         ViewHolder(@NonNull FragmentPractitionerBinding binding) {
             super(binding.getRoot());
@@ -62,7 +63,7 @@ public class PractitionerAdapter extends ListAdapter <Practitioner, Practitioner
 
         @Override
         public boolean areContentsTheSame(@NonNull  Practitioner oldItem, @NonNull  Practitioner newItem) {
-            return oldItem == newItem;
+            return oldItem.equals ( newItem );
         }
     }
 }

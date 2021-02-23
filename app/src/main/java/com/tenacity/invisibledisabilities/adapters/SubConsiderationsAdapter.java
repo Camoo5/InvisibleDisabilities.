@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.tenacity.invisibledisabilities.data.SubConsiderations;
 import com.tenacity.invisibledisabilities.databinding.FragmentSubConsiderationsBinding;
+import com.tenacity.invisibledisabilities.ui.gallery.SubConsiderationsFragmentDirections;
 
 
 public class SubConsiderationsAdapter extends ListAdapter<SubConsiderations, SubConsiderationsAdapter.ViewHolder> {
@@ -36,11 +37,11 @@ public class SubConsiderationsAdapter extends ListAdapter<SubConsiderations, Sub
 
     private View.OnClickListener createOnClickListener(String subconsiderationsId) {
         return v -> Navigation.findNavController(v).navigate(
-                SubConsiderationsFragmentDirections.actionPlantListFragmentToPlantDetailFragment(subconsiderationsId));
+                SubConsiderationsFragmentDirections.subConsiderationsFragmentToSupportingEvidenceFragment(subconsiderationsId));
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        private FragmentSubConsiderationsBinding binding;
+        private final FragmentSubConsiderationsBinding binding;
 
         ViewHolder(@NonNull FragmentSubConsiderationsBinding binding) {
             super(binding.getRoot());
@@ -63,7 +64,7 @@ public class SubConsiderationsAdapter extends ListAdapter<SubConsiderations, Sub
 
         @Override
         public boolean areContentsTheSame(@NonNull SubConsiderations oldItem, @NonNull SubConsiderations newItem) {
-            return oldItem == newItem;
+            return oldItem.equals ( newItem );
         }
     }
 }

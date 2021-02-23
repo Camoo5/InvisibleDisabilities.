@@ -1,7 +1,6 @@
 
 package com.tenacity.invisibledisabilities.adapters;
 
-import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,10 +63,10 @@ public class ExtensionToBlueBadgeAdapter extends ListAdapter <ExtensionToBlueBad
             return oldItem.getExtensiontobluebadgeId ().equals(newItem.getExtensiontobluebadgeId ());
         }
 
-        @SuppressLint("DiffUtilEquals")
+
         @Override
         public boolean areContentsTheSame(@NonNull ExtensionToBlueBadge oldItem, @NonNull ExtensionToBlueBadge newItem) {
-            return oldItem == newItem;
+            return oldItem.equals ( newItem );
         }
     }
 }

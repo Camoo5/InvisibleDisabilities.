@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.tenacity.invisibledisabilities.data.SupportingEvidence;
 import com.tenacity.invisibledisabilities.databinding.FragmentSupportingEvidenceBinding;
+import com.tenacity.invisibledisabilities.ui.gallery.SupportingEvidenceFragmentDirections;
 
 
 public class SupportingEvidenceAdapter extends ListAdapter <SupportingEvidence, SupportingEvidenceAdapter.ViewHolder> {
@@ -38,7 +39,7 @@ public class SupportingEvidenceAdapter extends ListAdapter <SupportingEvidence, 
 
     private View.OnClickListener createOnClickListener(String supportingevidenceId) {
         return v -> Navigation.findNavController(v).navigate(
-                SupportingEvidenceFragmentDirections.actionPlantListFragmentToPlantDetailFragment( supportingevidenceId));
+                SupportingEvidenceFragmentDirections.supportingEvidenceFragmentToCopingStrategyFragment ( supportingevidenceId));
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -65,7 +66,7 @@ public class SupportingEvidenceAdapter extends ListAdapter <SupportingEvidence, 
 
         @Override
         public boolean areContentsTheSame(@NonNull  SupportingEvidence oldItem, @NonNull  SupportingEvidence newItem) {
-            return oldItem == newItem;
+            return oldItem.equals ( newItem );
         }
     }
 }

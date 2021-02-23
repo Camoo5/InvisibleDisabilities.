@@ -1,6 +1,5 @@
 package com.tenacity.invisibledisabilities.adapters;
 
-import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,10 +62,10 @@ public class CriteriaTwoAdapter extends ListAdapter <com.tenacity.invisibledisab
             return oldItem.getCriteriatwoId ().equals(newItem.getCriteriatwoId ());
         }
 
-        @SuppressLint("DiffUtilEquals")
+
         @Override
         public boolean areContentsTheSame(@NonNull CriteriaTwo oldItem, @NonNull CriteriaTwo newItem) {
-            return oldItem == newItem;
+            return oldItem.equals ( newItem );
         }
     }
 }

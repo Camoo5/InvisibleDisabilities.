@@ -1,7 +1,5 @@
 package com.tenacity.invisibledisabilities.ui.viewmodels;
 
-import android.annotation.SuppressLint;
-
 import androidx.annotation.NonNull;
 import androidx.core.util.Preconditions;
 import androidx.databinding.ObservableField;
@@ -22,7 +20,7 @@ public class DisabilityAndHiddenDisabilitiesViewModel extends ViewModel {
     public ObservableField<String> disabilityDateString;
 
     public DisabilityAndHiddenDisabilitiesViewModel(@NonNull DisabilityAndHiddenDisabilities disabilities) {
-        @SuppressLint("RestrictedApi") final Disability disability = Preconditions.checkNotNull(disabilities.getDisability());
+       final Disability disability = Preconditions.checkNotNull (disabilities.getDisability());
         final HiddenDisability hiddenDisability = disabilities.getHiddenDisabilities().get(0);
         final DateFormat dateFormat = new SimpleDateFormat("MMM d, yyyy", Locale.UK);
 
