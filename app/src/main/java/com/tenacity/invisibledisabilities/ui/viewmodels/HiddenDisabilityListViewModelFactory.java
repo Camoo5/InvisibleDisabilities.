@@ -13,9 +13,9 @@ import com.tenacity.invisibledisabilities.data.HiddenDisabilityRepository;
  * [HiddenDisabilityRepository].
  */
 public class HiddenDisabilityListViewModelFactory extends ViewModelProvider.NewInstanceFactory {
-    private  HiddenDisabilityRepository repository;
+    private final HiddenDisabilityRepository repository;
 
-    public HiddenDisabilityListViewModelFactory(HiddenDisabilityRepository repository) {
+    public HiddenDisabilityListViewModelFactory(@NonNull HiddenDisabilityRepository repository) {
         super();
         this.repository = repository;
     }

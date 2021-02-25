@@ -21,6 +21,8 @@ import com.tenacity.invisibledisabilities.ui.viewmodels.CriteriaTwoViewModel;
 import com.tenacity.invisibledisabilities.ui.viewmodels.CriteriaTwoViewModelFactory;
 import com.tenacity.invisibledisabilities.utilities.InjectorUtils;
 
+import static com.tenacity.invisibledisabilities.BR.criteriatwo;
+
 
 public class CriteriaTwoFragment extends Fragment {
 
@@ -58,11 +60,11 @@ public class CriteriaTwoFragment extends Fragment {
     }
 
     private void subscribeUi(ListAdapter adapter) {
-        this.viewModel.criteriaone
+        this.viewModel.criteriaTwo
 
                 .observe(getViewLifecycleOwner(), copingstrategy -> {
-                    if (criteriaone != null) {
-                        adapter.submitList(criteriaone);
+                    if (criteriatwo != null) {
+                        adapter.submitList(criteriatwo);
                     }
                 });
     }

@@ -85,7 +85,7 @@ public class InjectorUtils {
     }
 
 
-    public static HiddenDisabilityListViewModelFactory HiddenDisabilityListViewModelFactory (Context context) {
+    public static HiddenDisabilityListViewModelFactory provideHiddenDisabilityListViewModelFactory (Context context) {
         return new HiddenDisabilityListViewModelFactory (getHiddenDisabilityRepository (context));
     }
 

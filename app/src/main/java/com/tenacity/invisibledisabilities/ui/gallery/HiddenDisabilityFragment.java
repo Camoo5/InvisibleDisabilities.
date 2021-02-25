@@ -31,20 +31,18 @@ public class HiddenDisabilityFragment extends Fragment {
     }
 
     private void subScribeUi(@NonNull HiddenDisabilityAdapter adapter, @NonNull FragmentHiddenDisabilityBinding binding
-        HiddenDisabilityListViewModelFactory =
-         InjectorUtils.provideHiddenDisabilityListViewModelFactory(requireContext())
+        HiddenDisabilityListViewModelFactory = InjectorUtils.provideHiddenDisabilityListViewModelFactory(requireContext());
     HiddenDisabilityListViewModel viewModel =
             new ViewModelProvider (this ).get(HiddenDisabilityListViewModel.class);
 
         viewModel.hiddenDisabilities.observe(getViewLifecycleOwner(),hiddenDisabilities->
-            binding.setHasDisabilities(hidddenDisabilities != null && !hiddenDisabilities.isEmpty()))
+            binding.setHasDisabilities(hidddenDisabilities != null && !hiddenDisabilities.isEmpty()));
 
-        viewModel.disabilityAndHiddenDisabilities.observe(
-
-    void getViewLifecycleOwner(), disabilityAndHiddenDisabilities -> {
+        viewModel.disabilityAndHiddenDisabilities.observe(getViewLifecycleOwner(), disabilityAndHiddenDisabilities -> {
         if (disabilityAndHiddenDisabilities != null && !disabilityAndHiddenDisabilitiesisEmpty()) {
             adapter.submitList(disabilityAndHiddenDisabilities);
         }
-    })
+    });
 }
+
 

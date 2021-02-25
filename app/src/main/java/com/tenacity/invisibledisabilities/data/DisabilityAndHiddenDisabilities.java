@@ -19,6 +19,8 @@ public class DisabilityAndHiddenDisabilities {
         this.hiddenDisabilities = new ArrayList<>();
     }
 
+
+
     public Disability getDisability() {
         return disability;
     }
