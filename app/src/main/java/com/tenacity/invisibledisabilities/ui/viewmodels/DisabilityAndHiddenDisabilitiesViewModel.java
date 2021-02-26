@@ -1,7 +1,6 @@
 package com.tenacity.invisibledisabilities.ui.viewmodels;
 
 import androidx.annotation.NonNull;
-import androidx.core.util.Preconditions;
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.ViewModel;
 
@@ -13,6 +12,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
+import static androidx.core.util.Preconditions.checkNotNull;
+
 public class DisabilityAndHiddenDisabilitiesViewModel extends ViewModel {
 
     public ObservableField<String> imageUrl;
@@ -20,7 +21,7 @@ public class DisabilityAndHiddenDisabilitiesViewModel extends ViewModel {
     public ObservableField<String> disabilityDateString;
 
     public DisabilityAndHiddenDisabilitiesViewModel(@NonNull DisabilityAndHiddenDisabilities disabilities) {
-       final Disability disability = Preconditions.checkNotNull (disabilities.getDisability());
+        final Disability disability = checkNotNull(disabilities.getDisability());
         final HiddenDisability hiddenDisability = disabilities.getHiddenDisabilities().get(0);
         final DateFormat dateFormat = new SimpleDateFormat("MMM d, yyyy", Locale.UK);
 

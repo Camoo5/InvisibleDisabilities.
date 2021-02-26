@@ -15,7 +15,7 @@ public class DisabilityAndHiddenDisabilities {
     @Relation(parentColumn = "id", entityColumn = "disability_id")
     private List<HiddenDisability> hiddenDisabilities;
 
-    public  DisabilityAndHiddenDisabilities() {
+    public  DisabilityAndHiddenDisabilities(DisabilityAndHiddenDisabilities hiddenDisabilities) {
         this.hiddenDisabilities = new ArrayList<>();
     }
 
