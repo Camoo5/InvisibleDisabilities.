@@ -30,20 +30,21 @@ public class HiddenDisabilityFragment extends Fragment {
         return binding.getRoot();
     }
 
-    {
-        if (disabilityAndHiddenDisabilities != null && !disabilityAndHiddenDisabilitiesisEmpty()) {
-            adapter.submitList(disabilityAndHiddenDisabilities);
-        }
-    })
-    HiddenDisabilityListViewModel viewModel =
-            new ViewModelProvider (this ).get(HiddenDisabilityListViewModel.class);
+    private void subScribeUi(@NonNull HiddenDisabilityAdapter adapter, @NonNull FragmentHiddenDisabilityBinding binding) {
+        HiddenDisabilityListViewModelFactory factory =
+                InjectorUtils.provideHiddenDisabilityListViewModelFactory (requireContext());
+        HiddenDisabilityListViewModel viewModel =
+               new ViewModelProvider(this, factory).get(HiddenDisabilityListViewModel.class);
 
-        viewModel.hiddenDisabilities.observe(getViewLifecycleOwner(),hiddenDisabilities->
-            binding.setHasDisabilities(hidddenDisabilities != null && !hiddenDisabilities.isEmpty()))
+        viewModel.hiddenDisabilities.observe(getViewLifecycleOwner(), hiddenDisabilities ->
+                binding.setHasDisabilities (hiddenDisabilities != null && !hiddenDisabilities.isEmpty()));
 
-        viewModel.disabilityAndHiddenDisabilities.observe(getViewLifecycleOwner(), disabilityAndHiddenDisabilities ->
-private void subScribeUi(@NonNull HiddenDisabilityAdapter adapter, @NonNull FragmentHiddenDisabilityBinding binding
-        HiddenDisabilityListViewModelFactory = InjectorUtils.provideHiddenDisabilityViewModelFactory(requireContext())
+        viewModel.disabilityAndHiddenDisabilities.observe(getViewLifecycleOwner(), disabilityAndHiddenDisabilities -> {
+            if (disabilityAndHiddenDisabilities != null && !disabilityAndHiddenDisabilities.isEmpty()) {
+                adapter.submitList(disabilityAndHiddenDisabilities);
+            }
+        });
+    }
 }
 
 
