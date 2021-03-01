@@ -6,7 +6,7 @@ package com.tenacity.invisibledisabilities.utilities;
 .
  */
 public class CriteriaTypeUtil {
-    public static int getAssessmentTypeNumber (int number) {
+    public static int getTypeNumber (int number) {
         if (( number <= 1 ) && (number == 2 )) {
         }
         return number;
