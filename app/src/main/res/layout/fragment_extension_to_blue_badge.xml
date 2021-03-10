@@ -1,5 +1,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -10,23 +11,24 @@
             type="com.tenacity.invisibledisabilities.data.ExtensionToBlueBadge"/>
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/extension_to_blue_badge"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="@{clickListener}">
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingLeft="@dimen/margin_normal"
+        android:paddingRight="@dimen/margin_normal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:context="com.tenacity.invisibledisabilities.HiddenDisabilityActivity"
+        tools:listitem="@layout/list_item_disability" />
 
 
-        <TextView
-            android:id="@+id/extension_to_blue_badge_fragment"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_small"
-            android:layout_marginEnd="@dimen/margin_small"
 
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/extension_to_blue_badge_fragment" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
 
 </layout>

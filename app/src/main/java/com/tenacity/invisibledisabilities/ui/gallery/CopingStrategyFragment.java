@@ -1,9 +1,11 @@
 
 package com.tenacity.invisibledisabilities.ui.gallery;
 
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -11,39 +13,63 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ListAdapter;
 
+import com.tenacity.invisibledisabilities.R;
 import com.tenacity.invisibledisabilities.adapters.CopingStrategyAdapter;
 import com.tenacity.invisibledisabilities.databinding.FragmentCopingStrategyBinding;
 import com.tenacity.invisibledisabilities.ui.viewmodels.CopingStrategyViewModel;
 import com.tenacity.invisibledisabilities.ui.viewmodels.CopingStrategyViewModelFactory;
-import com.tenacity.invisibledisabilities.ui.viewmodels.HiddenDisabilityListViewModel;
 import com.tenacity.invisibledisabilities.utilities.InjectorUtils;
 
+
 public class CopingStrategyFragment extends Fragment {
+
+    private CopingStrategyViewModel viewModel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentCopingStrategyBinding binding = FragmentCopingStrategyBinding.inflate(inflater, container, false);
-        CopingStrategyAdapter adapter = new CopingStrategyAdapter ();
-        binding.copingStrategyFragment.setAdapter(adapter);
-        subScribeUi(adapter, binding);
+        CopingStrategyViewModelFactory factory = InjectorUtils.provideCopingStrategyViewModelFactory(getContext());
+        ListAdapter adapter = new CopingStrategyAdapter ();
+        binding.copingStrategy.setAdapter(adapter);
+        this.viewModel = new ViewModelProvider (this, factory).get(CopingStrategyViewModel.class);
+        subscribeUi(adapter);
+
+        setHasOptionsMenu(true);
         return binding.getRoot();
     }
 
-    private void subScribeUi(@NonNull  CopingStrategyAdapter adapter, @NonNull FragmentCopingStrategyBinding binding) {
-        CopingStrategyViewModelFactory factory =
-                InjectorUtils.provideCopingStrategyViewModelFactory  (requireContext());
-        CopingStrategyViewModel viewModel =
-                new ViewModelProvider (this, factory).get(CopingStrategyViewModel.class);
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate( R.menu.menu_navigation, menu);
+    }
 
-        viewModel.copingStrategy.observe(getViewLifecycleOwner(), copingStrategy ->
-                binding.setCopingstrategy ( != null && !copingStrategy.isEmpty());
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.filter_criteria:
+                updateData();
+                return true;
 
-        viewModel.copingStrategy.observe(getViewLifecycleOwner(), copingStrategy -> {
-            if (copingStrategy != null && !copingStrategy.isEmpty()) {
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void subscribeUi(CopingStrategyAdapter adapter) {
+        this.viewModel.copingStrategy.observe(getViewLifecycleOwner(), copingStrategy -> {
+            if (copingStrategy != null) {
                 adapter.submitList(copingStrategy);
             }
         });
+    }
+
+    private void updateData() {
+        if (viewModel.isFiltered()) {
+            viewModel.cleanCriteriaNumber ();
+        } else {
+            viewModel.setCriteriaNumber ( 1 );
+        }
     }
 }

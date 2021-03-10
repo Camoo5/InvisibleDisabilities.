@@ -32,7 +32,7 @@ public class CriteriaOneFragment extends Fragment {
         FragmentCriteriaOneBinding binding = FragmentCriteriaOneBinding.inflate(inflater, container, false);
         CriteriaOneViewModelFactory factory = InjectorUtils.provideCriteriaOneViewModelFactory (getContext());
         ListAdapter adapter = new CriteriaOneAdapter  ();
-        binding.criteriaOneFragment.setAdapter(adapter);
+        binding.criteriaOneFragment.(adapter);
         this.viewModel = new ViewModelProvider (this, factory).get(CriteriaOneViewModel.class);
         subscribeUi(adapter);
 

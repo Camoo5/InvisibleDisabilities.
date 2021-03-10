@@ -33,7 +33,7 @@ public class PractitionerFragment extends Fragment {
         FragmentPractitionerBinding binding = FragmentPractitionerBinding .inflate(inflater, container, false);
         PractitionerViewModelFactory factory = InjectorUtils.providePractitionerViewModelFactory (getContext());
         ListAdapter adapter = new PractitionerAdapter ();
-        binding.practitioner.setAdapter(adapter);
+        binding.set(adapter);
         this.viewModel = new ViewModelProvider (this, factory).get(CriteriaTwoViewModel.class);
         subscribeUi(adapter);
 
