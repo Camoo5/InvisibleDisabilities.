@@ -20,11 +20,12 @@
 
     <string name="navigation_drawer_header_content_description" translation_description="Content description for the image that is shown at the top of the navigation drawer.">Navigation drawer header logo</string>
     <string name="added_disability_to_hidden_disabilities" translation_description="Confirmation text that is shown when a user adds a disability to their hidden_disabilities.">Added disability to hidden_disabilities</string>
+    <string name="added_copingstrategy_to_hidden_disabilities" translation_descrription="Confirmation text that is shown when a user adds a copingstrategy to their hidden_disabilties.">Added copingstrategy to hidden_disabilities</string>
     <string name="hidden_disabilities_empty" translation_description="Text that is shown on the 'Hidden_Disability screen when no disability have been added to the user's hidden_disability">Your hidden_disability is empty</string>
     <string name="added_date" translation_description="Text with placeholders that indicates when the disability was added. Example: 'Invisible_disabilities added on 26 Dec, 2020'.">%1$s added on %2$s</string>
     <string name="menu_item_share_disability" translation_description="The label for the Share menu item">Share</string>
     <string name="share_text_disability" translation_description="The default messaged used when sharing a disability on SNS, etc.">Check out the %s disability in the Android Invisible_Disabilities app</string>
-
+    <string name="share_text_copingstrategy" translation_description="The default messaged used when sharing a copingstrategy">Check out the %s copingstrategy in the Android Invisible_Disabilities app </string>
     <!-- Accessibility -->
     <string name="a11y_disability_item_image" translation_description="Accessibility text for each of the disability images shown in the 'hidden_disabilities' and 'Disability list' screens.">Picture of disability</string>
     <string name="my_hidden_disability_title">my_hidden_disability_title</string>

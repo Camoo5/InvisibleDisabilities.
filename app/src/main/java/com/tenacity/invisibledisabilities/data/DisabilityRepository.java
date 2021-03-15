@@ -27,7 +27,7 @@ public class DisabilityRepository {
         return instance;
     }
 
-    public LiveData <List<com.tenacity.invisibledisabilities.data.Disability>> getDisabilities() {
+    public LiveData <List<Disability>> getDisabilities() {
         return this.disabilityDao.getDisabilities ();
     }
 
@@ -35,7 +35,7 @@ public class DisabilityRepository {
         return this.disabilityDao.getDisability(disabilityId);
     }
 
-    public LiveData<List<com.tenacity.invisibledisabilities.data.Disability>> getDisabilitiesWithCriteriaNumber (int criteriaNumber) {
+    public LiveData<List<Disability>> getDisabilitiesWithCriteriaNumber (int criteriaNumber) {
         return this.disabilityDao.getDisabilitiesWithCriteriaNumber (criteriaNumber);
     }
 }

@@ -11,11 +11,11 @@ public class HiddenDisabilityRepository {
     private static HiddenDisabilityRepository instance;
     private final HiddenDisabilityDao hiddenDisabilityDao;
 
-    private HiddenDisabilityRepository(com.tenacity.invisibledisabilities.data.HiddenDisabilityDao hiddenDisabilityDao) {
+    private HiddenDisabilityRepository(HiddenDisabilityDao hiddenDisabilityDao) {
         this.hiddenDisabilityDao = hiddenDisabilityDao;
     }
 
-    public static HiddenDisabilityRepository getInstance(com.tenacity.invisibledisabilities.data.HiddenDisabilityDao hiddenDisabilityDao) {
+    public static HiddenDisabilityRepository getInstance(HiddenDisabilityDao hiddenDisabilityDao) {
         if (instance == null) {
             synchronized (HiddenDisabilityRepository.class) {
                 if (instance == null) {
@@ -38,6 +38,10 @@ public class HiddenDisabilityRepository {
 
     public LiveData <HiddenDisability> getHiddenDisabilityForDisability(String disabilityId) {
         return   hiddenDisabilityDao.getHiddenDisabilityForDisability(disabilityId);
+    }
+
+    public LiveData <HiddenDisability> getHiddenDisabilityForCopingStrategy(String copingstrategyId) {
+        return   hiddenDisabilityDao.getHiddenDisabilityForCopingStrategy(copingstrategyId);
     }
 
     public LiveData<List<HiddenDisability>> getHiddenDisabilities() {

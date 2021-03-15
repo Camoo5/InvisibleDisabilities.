@@ -14,14 +14,14 @@ import java.util.List;
 @Dao
 public interface DisabilityDao {
     @Query("SELECT * FROM disabilities ORDER BY name")
-    LiveData<List<com.tenacity.invisibledisabilities.data.Disability>> getDisabilities();
+    LiveData<List<Disability>> getDisabilities();
 
     @Query("SELECT * FROM disabilities WHERE criteriaNumber = :criteriaNumber ORDER BY name")
-    LiveData<List<com.tenacity.invisibledisabilities.data.Disability>> getDisabilitiesWithCriteriaNumber(int criteriaNumber);
+    LiveData<List<Disability>> getDisabilitiesWithCriteriaNumber(int criteriaNumber);
 
     @Query("SELECT * FROM disabilities WHERE id = :disabilityId")
     LiveData<Disability> getDisability(String disabilityId);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertAll(List<com.tenacity.invisibledisabilities.data.Disability> disabilities);
+    void insertAll(List<Disability> disabilities);
 }
