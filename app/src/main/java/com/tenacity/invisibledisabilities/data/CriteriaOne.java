@@ -18,21 +18,48 @@ public final class CriteriaOne {
     @ColumnInfo(name = "id")
     private final String criteriaoneId;
 
-    public CriteriaOne(@NonNull String criteriaoneId) {
+    @NonNull
+    private final String name;
+
+    @NonNull
+    private final String description;
+
+
+    public CriteriaOne(@NonNull String criteriaoneId, @NonNull String name, @NonNull String description) {
         this.criteriaoneId = criteriaoneId;
+        this.name = name;
+        this.description = description;
 
     }
+
 
     @NonNull
     public String getCriteriaoneId() {
         return criteriaoneId;
     }
 
+    @NonNull
+    public String getName() {
+        return name;
+    }
+
+    @NonNull
+    public String getDescription() {
+        return description;
+    }
+
+
+    @NonNull
+    @Override
+    public String toString() {
+        return name;
+    }
+
 
     @Override
     public boolean equals(@Nullable Object obj) {
         return obj instanceof CriteriaOne
-                && this.criteriaoneId.equals(((CriteriaOne) obj).criteriaoneId);
+                && this.criteriaoneId.equals ( ( (CriteriaOne) obj ).criteriaoneId );
     }
 
 
@@ -44,6 +71,6 @@ public final class CriteriaOne {
 
     @Override
     protected Object clone() {
-        return new CriteriaOne (criteriaoneId);
+        return new CopingStrategy (criteriaoneId, name, description);
     }
 }

@@ -19,21 +19,48 @@ public final class Practitioner {
     @ColumnInfo(name = "id")
     private final String practitionersId;
 
-    public Practitioner(@NonNull String practitionersId) {
+    @NonNull
+    private final String name;
+
+    @NonNull
+    private final String description;
+
+
+    public Practitioner(@NonNull String practitionersId, @NonNull String name, @NonNull String description) {
         this.practitionersId = practitionersId;
+        this.name = name;
+        this.description = description;
 
     }
 
+
     @NonNull
-    public String getPractitionersId () {
+    public String getPractitionersId() {
         return practitionersId;
+    }
+
+    @NonNull
+    public String getName() {
+        return name;
+    }
+
+    @NonNull
+    public String getDescription() {
+        return description;
+    }
+
+
+    @NonNull
+    @Override
+    public String toString() {
+        return name;
     }
 
 
     @Override
     public boolean equals(@Nullable Object obj) {
         return obj instanceof Practitioner
-                && this.practitionersId.equals(((Practitioner) obj).practitionersId);
+                && this.practitionersId.equals ( ( (Practitioner) obj ).practitionersId );
     }
 
 
@@ -45,6 +72,6 @@ public final class Practitioner {
 
     @Override
     protected Object clone() {
-        return new Practitioner (practitionersId);
+        return new Practitioner (practitionersId, name, description);
     }
 }

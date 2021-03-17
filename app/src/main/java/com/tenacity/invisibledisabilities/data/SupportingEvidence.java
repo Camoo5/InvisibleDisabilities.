@@ -19,21 +19,48 @@ public final class SupportingEvidence {
     @ColumnInfo(name = "id")
     private final String supportingevidenceId;
 
-    public SupportingEvidence(@NonNull String  supportingevidenceId) {
-        this. supportingevidenceId=  supportingevidenceId;
+    @NonNull
+    private final String name;
+
+    @NonNull
+    private final String description;
+
+
+    public SupportingEvidence (@NonNull String supportingevidenceId, @NonNull String name, @NonNull String description) {
+        this.supportingevidenceId = supportingevidenceId;
+        this.name = name;
+        this.description = description;
 
     }
 
+
     @NonNull
-    public String getSupportingEvidenceId () {
+    public String getSupportingevidenceId() {
         return supportingevidenceId;
+    }
+
+    @NonNull
+    public String getName() {
+        return name;
+    }
+
+    @NonNull
+    public String getDescription() {
+        return description;
+    }
+
+
+    @NonNull
+    @Override
+    public String toString() {
+        return name;
     }
 
 
     @Override
     public boolean equals(@Nullable Object obj) {
         return obj instanceof SupportingEvidence
-                && this.supportingevidenceId.equals(((SupportingEvidence) obj).supportingevidenceId);
+                && this.supportingevidenceId.equals ( ( (SupportingEvidence) obj ).supportingevidenceId );
     }
 
 
@@ -45,6 +72,6 @@ public final class SupportingEvidence {
 
     @Override
     protected Object clone() {
-        return new SupportingEvidence (supportingevidenceId);
+        return new SupportingEvidence (supportingevidenceId, name, description);
     }
 }

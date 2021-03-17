@@ -18,21 +18,48 @@ public final class ExtensionToBlueBadge {
     @ColumnInfo(name = "id")
     private final String extensiontobluebadgeId;
 
-    public ExtensionToBlueBadge(@NonNull String extensiontobluebadgeId) {
+    @NonNull
+    private final String name;
+
+    @NonNull
+    private final String description;
+
+
+    public ExtensionToBlueBadge(@NonNull String extensiontobluebadgeId, @NonNull String name, @NonNull String description) {
         this.extensiontobluebadgeId = extensiontobluebadgeId;
+        this.name = name;
+        this.description = description;
 
     }
+
 
     @NonNull
     public String getExtensiontobluebadgeId() {
         return extensiontobluebadgeId;
     }
 
+    @NonNull
+    public String getName() {
+        return name;
+    }
+
+    @NonNull
+    public String getDescription() {
+        return description;
+    }
+
+
+    @NonNull
+    @Override
+    public String toString() {
+        return name;
+    }
+
 
     @Override
     public boolean equals(@Nullable Object obj) {
-        return obj instanceof ExtensionToBlueBadge
-                && this.extensiontobluebadgeId.equals(((ExtensionToBlueBadge) obj).extensiontobluebadgeId);
+        return obj instanceof CriteriaOne
+                && this.extensiontobluebadgeId.equals ( ( (ExtensionToBlueBadge) obj ).extensiontobluebadgeId );
     }
 
 
@@ -44,6 +71,6 @@ public final class ExtensionToBlueBadge {
 
     @Override
     protected Object clone() {
-        return new ExtensionToBlueBadge (extensiontobluebadgeId);
+        return new ExtensionToBlueBadge (extensiontobluebadgeId, name, description);
     }
 }
