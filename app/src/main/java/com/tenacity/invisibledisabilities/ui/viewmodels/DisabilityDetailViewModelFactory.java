@@ -1,7 +1,10 @@
 package com.tenacity.invisibledisabilities.ui.viewmodels;
 
 
+import android.os.Build;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -10,9 +13,9 @@ import com.tenacity.invisibledisabilities.data.HiddenDisabilityRepository;
 
 
 public class DisabilityDetailViewModelFactory extends ViewModelProvider.NewInstanceFactory {
-    private  String disabilityId;
-    private  DisabilityRepository disabilityRepository;
-    private  HiddenDisabilityRepository hiddenDisabilityRepository;
+    private final String disabilityId;
+    private final DisabilityRepository disabilityRepository;
+    private final HiddenDisabilityRepository hiddenDisabilityRepository;
 
     public DisabilityDetailViewModelFactory(DisabilityRepository disabilityRepository, HiddenDisabilityRepository hiddenDisabilityRepository,
             String disabilityId) {
@@ -22,6 +25,7 @@ public class DisabilityDetailViewModelFactory extends ViewModelProvider.NewInsta
         this.hiddenDisabilityRepository = hiddenDisabilityRepository;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @NonNull
     @Override
     @SuppressWarnings("unchecked")

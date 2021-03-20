@@ -1,6 +1,9 @@
 package com.tenacity.invisibledisabilities.ui.viewmodels;
 
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
@@ -10,6 +13,8 @@ import com.tenacity.invisibledisabilities.data.CopingStrategyRepository;
 import com.tenacity.invisibledisabilities.data.HiddenDisability;
 import com.tenacity.invisibledisabilities.data.HiddenDisabilityRepository;
 import com.tenacity.invisibledisabilities.utilities.AppExecutors;
+
+import java.util.Objects;
 
 /**
  * The ViewModel used in [CopingStrategyFragment].
@@ -22,6 +27,7 @@ public class CopingStrategyViewModel extends ViewModel {
     private final LiveData<Boolean> isDisabled;
     public LiveData<CopingStrategy> copingStrategy;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     CopingStrategyViewModel(CopingStrategyRepository copingStrategyRepository, HiddenDisabilityRepository hiddenDisabilityRepository, String copingstrategyId) {
         super();
         this.hiddenDisabilityRepository = hiddenDisabilityRepository;
@@ -32,7 +38,7 @@ public class CopingStrategyViewModel extends ViewModel {
          * are found. In these cases isDisabled is false. If a record is found then isDisabled is
          * true. */
         LiveData<HiddenDisability> hiddenDisabilityForCopingStrategy = hiddenDisabilityRepository.getHiddenDisabilityForCopingStrategy(copingstrategyId);
-        this.isDisabled= Transformations.map(hiddenDisabilityForCopingStrategy, it -> it != null);
+        this.isDisabled= Transformations.map(hiddenDisabilityForCopingStrategy, Objects::nonNull );
         this.copingStrategy = copingStrategyRepository.getCopingStrategy (copingstrategyId);
     }
 

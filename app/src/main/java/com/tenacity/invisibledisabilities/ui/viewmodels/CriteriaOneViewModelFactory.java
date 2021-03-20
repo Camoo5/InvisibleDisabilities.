@@ -4,24 +4,29 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.tenacity.invisibledisabilities.data.CopingStrategyRepository;
+import com.tenacity.invisibledisabilities.data.CriteriaOne;
 import com.tenacity.invisibledisabilities.data.CriteriaOneRepository;
 
 
 public class CriteriaOneViewModelFactory extends ViewModelProvider.NewInstanceFactory {
+    private final CriteriaOneRepository criteriaOneRepository;
     private String criteriaoneId;
-    private CriteriaOneRepository criteriaOneRepository;
 
-    public CriteriaOneViewModelFactory(CriteriaOneRepository criteriaOneRepository) {
+
+
+
+    public CriteriaOneViewModelFactory(@NonNull CriteriaOneRepository criteriaOneRepository) {
         super();
-        this.criteriaOneRepository = criteriaOneRepository;
+        this.criteriaOneRepository= criteriaOneRepository;
         this.criteriaoneId = criteriaoneId;
     }
+
 
     @NonNull
     @Override
     @SuppressWarnings("unchecked")
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        return (T) new CriteriaOneViewModel(criteriaOneRepository, criteriaoneId );
+        return (T) new CriteriaOneviewModel(criteriaOneRepository, criteriaoneId);
     }
 }
-

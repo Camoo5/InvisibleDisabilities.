@@ -94,7 +94,7 @@ public class InjectorUtils {
     }
 
 
-    public static CopingStrategyViewModelFactory provideCopingStrategyViewModelFactory(Context context, String copingstrategyId) {
+    public static CopingStrategyViewModelFactory provideCopingStrategyViewModelFactory(Context context) {
         return new CopingStrategyViewModelFactory (getCopingStrategyRepository ( context ));
 
     }

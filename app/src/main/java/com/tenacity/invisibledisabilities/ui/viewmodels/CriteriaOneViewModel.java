@@ -1,44 +1,49 @@
 package com.tenacity.invisibledisabilities.ui.viewmodels;
 
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
 import com.tenacity.invisibledisabilities.data.CriteriaOne;
 import com.tenacity.invisibledisabilities.data.CriteriaOneRepository;
+import com.tenacity.invisibledisabilities.data.HiddenDisability;
+import com.tenacity.invisibledisabilities.data.HiddenDisabilityRepository;
 import com.tenacity.invisibledisabilities.utilities.AppExecutors;
 
+import java.util.Objects;
+
 /**
- * The ViewModel used in [CriteriaOne Fragment].
+ * The ViewModel used in [CriteriaOneFragment].
  */
 public class CriteriaOneViewModel extends ViewModel {
-    private CriteriaOneRepository criteriaOneRepository;
+    private final HiddenDisabilityRepository hiddenDisabilityRepository;
 
-    private String criteriaoneId;
+    private final String criteriaoneId;
 
-    private  LiveData<Boolean> isDisabled;
-    public LiveData <CriteriaOne> criteriaOne;
+    private final LiveData<Boolean> isDisabled;
+    public LiveData<CriteriaOne> criteriaOne;
 
-
-
-    CriteriaOneViewModel(CriteriaOneRepository criteriaOneRepository, String criteriaoneId) {
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    CriteriaOneViewModel(CriteriaOneRepository criteriaOneRepository, HiddenDisabilityRepository hiddenDisabilityRepository, String criteriaoneId) {
         super();
-        this.criteriaOneRepository = criteriaOneRepository;
-        this.criteriaoneId = criteriaoneId;
+        this.hiddenDisabilityRepository = hiddenDisabilityRepository;
+        this.criteriaoneId= criteriaoneId;
 
-        /* The getCriteriaOne method returns a LiveData from querying the database. The
+        /* The getHiddenDisabilitiesForCriteriaOne method returns a LiveData from querying the database. The
          * method can return null in two cases: when the database query is running and if no records
          * are found. In these cases isDisabled is false. If a record is found then isDisabled is
          * true. */
-        LiveData <CriteriaOne> criteriaOne= criteriaOneRepository.getCriteriaOne (criteriaoneId);
-        this.isDisabled = Transformations.map(criteriaOne, it -> it != null);
+        LiveData<HiddenDisability> hiddenDisabilityForCriteriaOne= hiddenDisabilityRepository.getHiddenDisabilityForCriteriaOne(criteriaoneId);
+        this.isDisabled= Transformations.map(hiddenDisabilityForCriteriaOne, Objects::nonNull );
         this.criteriaOne = criteriaOneRepository.getCriteriaOne (criteriaoneId);
     }
 
-
-    public void addDisabilityToHiddenDisabilities() {
-        AppExecutors.getInstance().diskIO().execute(() -> criteriaOneRepository.getCriteriaOne (criteriaoneId));
+    public void addCriteriaOneToHiddenDisability() {
+        AppExecutors.getInstance().diskIO().execute(() -> hiddenDisabilityRepository.createHiddenDisability(criteriaoneId));
     }
 
     public LiveData<Boolean> getIsDisabled() {

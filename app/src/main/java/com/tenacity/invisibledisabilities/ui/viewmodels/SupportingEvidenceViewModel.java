@@ -17,28 +17,30 @@ public class SupportingEvidenceViewModel extends ViewModel {
 
     private final String supportingevidenceId;
 
-    private final LiveData<Boolean> isDisabled;
-    public LiveData<SupportingEvidence> SupportingEvidenceLiveData;
+    private final LiveData <Boolean> isDisabled;
+    public LiveData <SupportingEvidence> supportingEvidence;
 
     public SupportingEvidenceViewModel(SupportingEvidenceRepository supportingEvidenceRepository, String supportingevidenceId) {
-        super();
+        super ();
         this.supportingEvidenceRepository = supportingEvidenceRepository;
-        this.supportingevidenceId= supportingevidenceId;
+        this.supportingevidenceId = supportingevidenceId;
 
         /* The getSupportingEvidence method returns a LiveData from querying the database. The
          * method can return null in two cases: when the database query is running and if no records
          * are found. In these cases isDisabled is false. If a record is found then isDisabled is
          * true. */
-        LiveData<SupportingEvidence> supportingEvidenceLiveData= supportingEvidenceRepository.getSupportingEvidence (supportingevidenceId);
-        this.isDisabled = Transformations.map(supportingEvidenceLiveData, it -> it != null);
-        this.SupportingEvidenceLiveData = supportingEvidenceRepository.getSupportingEvidence  (supportingevidenceId);
-    }
-    public void addDisabilityToHiddenDisabilities() {
-        AppExecutors.getInstance().diskIO().execute(() -> supportingEvidenceRepository.getSupportingEvidence (supportingevidenceId));
+        LiveData <SupportingEvidence> supportingEvidence = supportingEvidenceRepository.getSupportingEvidence ( supportingevidenceId );
+        this.isDisabled = Transformations.map ( supportingEvidence, it -> it != null );
+        this.supportingEvidence = supportingEvidenceRepository.getSupportingEvidence ( supportingevidenceId );
     }
 
-    public LiveData<Boolean> getIsDisabled() {
+    public void addSupportingEvidenceToHiddenDisability() {
+        AppExecutors.getInstance ().diskIO ().execute ( () -> supportingEvidenceRepository.getSupportingEvidence ( supportingevidenceId ) );
+    }
+
+    public LiveData <Boolean> getIsDisabled() {
         return isDisabled;
     }
 }
+
 

@@ -27,28 +27,54 @@ public class HiddenDisabilityRepository {
     }
 
     public void createHiddenDisability(String disabilityId) {
-        AppExecutors.getInstance().diskIO().execute(() ->
-                hiddenDisabilityDao.insertHiddenDisability (new HiddenDisability (disabilityId,null )));
+        AppExecutors.getInstance ().diskIO ().execute ( () ->
+                hiddenDisabilityDao.insertHiddenDisability ( new HiddenDisability ( disabilityId, null ) ) );
     }
 
-    public void removeHiddenDisability (HiddenDisability hiddenDisability) {
-        AppExecutors.getInstance().diskIO().execute(() ->
-                hiddenDisabilityDao.deleteHiddenDisability ( hiddenDisability ));
+    public void removeHiddenDisability(HiddenDisability hiddenDisability) {
+        AppExecutors.getInstance ().diskIO ().execute ( () ->
+                hiddenDisabilityDao.deleteHiddenDisability ( hiddenDisability ) );
     }
 
     public LiveData <HiddenDisability> getHiddenDisabilityForDisability(String disabilityId) {
-        return   hiddenDisabilityDao.getHiddenDisabilityForDisability(disabilityId);
+        return hiddenDisabilityDao.getHiddenDisabilityForDisability ( disabilityId );
     }
 
     public LiveData <HiddenDisability> getHiddenDisabilityForCopingStrategy(String copingstrategyId) {
-        return   hiddenDisabilityDao.getHiddenDisabilityForCopingStrategy(copingstrategyId);
+        return hiddenDisabilityDao.getHiddenDisabilityForCopingStrategy ( copingstrategyId );
     }
 
-    public LiveData<List<HiddenDisability>> getHiddenDisabilities() {
+    public LiveData <HiddenDisability> getHiddenDisabilityForCriteriaOne(String criteriaoneId) {
+        return hiddenDisabilityDao.getHiddenDisabilityForCriteriaOne ( criteriaoneId );
+    }
+
+    public LiveData <HiddenDisability> getHiddenDisabilityForCriteriaTwo(String criteriatwoId) {
+        return hiddenDisabilityDao.getHiddenDisabilityForCriteriaTwo ( criteriatwoId );
+    }
+
+    public LiveData <HiddenDisability> getHiddenDisabilityForExtensionToBlueBadge(String extensiontobluebadgeId) {
+        return hiddenDisabilityDao.getHiddenDisabilityForExtensionToBlueBadge ( extensiontobluebadgeId );
+    }
+
+    public LiveData <HiddenDisability> getHiddenDisabilityForPractitioner(String practitionerId) {
+        return hiddenDisabilityDao.getHiddenDisabilityForPractitioner ( practitionerId );
+    }
+
+    public LiveData <HiddenDisability> getHiddenDisabilityForSubConsiderations(String subconsiderationsId) {
+        return hiddenDisabilityDao.getHiddenDisabilityForSubConsiderations ( subconsiderationsId );
+
+        public LiveData <HiddenDisability> getHiddenDisabilityForSupportingEvidence ( String supportingevidenceId){
+            return hiddenDisabilityDao.getHiddenDisabilityForSupportingEvidence ( supportingevidenceId );
+        }
+
+
+    }
+
+    public LiveData <List <HiddenDisability>> getHiddenDisabilities() {
         return hiddenDisabilityDao.getHiddenDisabilities ();
     }
 
-    public LiveData<List<DisabilityAndHiddenDisabilities>> getDisabilityAndHiddenDisabilities() {
-        return hiddenDisabilityDao.getDisabilityAndHiddenDisabilities();
+    public LiveData <List <DisabilityAndHiddenDisabilities>> getDisabilityAndHiddenDisabilities() {
+        return hiddenDisabilityDao.getDisabilityAndHiddenDisabilities ();
     }
 }

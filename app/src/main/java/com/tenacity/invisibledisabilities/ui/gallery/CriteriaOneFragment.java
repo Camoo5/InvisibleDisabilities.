@@ -19,7 +19,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.google.android.material.snackbar.Snackbar;
 import com.tenacity.invisibledisabilities.R;
 import com.tenacity.invisibledisabilities.databinding.FragmentCriteriaOneBinding;
-import com.tenacity.invisibledisabilities.ui.viewmodels.CopingStrategyViewModel;
 import com.tenacity.invisibledisabilities.ui.viewmodels.CriteriaOneViewModel;
 import com.tenacity.invisibledisabilities.ui.viewmodels.CriteriaOneViewModelFactory;
 import com.tenacity.invisibledisabilities.utilities.InjectorUtils;
@@ -37,7 +36,7 @@ public class CriteriaOneFragment extends Fragment {
         FragmentCriteriaOneBinding binding = FragmentCriteriaOneBinding.inflate(inflater, container, false);
         CriteriaOneFragmentArgs args = CriteriaOneFragmentArgs.fromBundle( requireArguments());
         CriteriaOneViewModelFactory factory = InjectorUtils.provideCriteriaOneViewModelFactory(
-                requireContext(), args.getCriteriaoneId  ());
+                requireContext() );
         CriteriaOneViewModel viewModel = new ViewModelProvider ( this, factory).get( CriteriaOneViewModel.class);
         binding.setLifecycleOwner(this);
 

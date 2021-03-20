@@ -18,7 +18,7 @@ public class SubConsiderationsViewModel extends ViewModel {
     private final String subconsiderationsId;
 
     private final LiveData<Boolean> isDisabled;
-    public LiveData<SubConsiderations> subConsiderationsLiveData;
+    public LiveData<SubConsiderations> subConsiderations;
 
     public SubConsiderationsViewModel(SubConsiderationsRepository subConsiderationsRepository, String subconsiderationsId) {
         super();
@@ -29,11 +29,11 @@ public class SubConsiderationsViewModel extends ViewModel {
          * method can return null in two cases: when the database query is running and if no records
          * are found. In these cases isDisabled is false. If a record is found then isDisabled is
          * true. */
-        LiveData<SubConsiderations> subConsiderationsLiveData= subConsiderationsRepository.getSubConsiderations (subconsiderationsId);
-        this.isDisabled = Transformations.map(subConsiderationsLiveData, it -> it != null);
-        this.subConsiderationsLiveData = subConsiderationsRepository.getSubConsiderations (subconsiderationsId);
+        LiveData<SubConsiderations> subConsiderations= subConsiderationsRepository.getSubConsiderations (subconsiderationsId);
+        this.isDisabled = Transformations.map(subConsiderations, it -> it != null);
+        this.subConsiderations= subConsiderationsRepository.getSubConsiderations (subconsiderationsId);
     }
-    public void addDisabilityToHiddenDisabilities() {
+    public void addSubConsiderationsToHiddenDisability() {
         AppExecutors.getInstance().diskIO().execute(() -> subConsiderationsRepository.getSubConsiderations (subconsiderationsId));
     }
 

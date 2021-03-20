@@ -1,6 +1,9 @@
 package com.tenacity.invisibledisabilities.ui.viewmodels;
 
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
@@ -10,6 +13,8 @@ import com.tenacity.invisibledisabilities.data.DisabilityRepository;
 import com.tenacity.invisibledisabilities.data.HiddenDisability;
 import com.tenacity.invisibledisabilities.data.HiddenDisabilityRepository;
 import com.tenacity.invisibledisabilities.utilities.AppExecutors;
+
+import java.util.Objects;
 
 /**
  * The ViewModel used in [DisabilityDetailFragment].
@@ -22,6 +27,7 @@ public class DisabilityDetailViewModel extends ViewModel {
     private final LiveData<Boolean> isDisabled;
     public LiveData<Disability> disability;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     DisabilityDetailViewModel(DisabilityRepository disabilityRepository, HiddenDisabilityRepository hiddenDisabilityRepository, String disabilityId) {
         super();
         this.hiddenDisabilityRepository = hiddenDisabilityRepository;
@@ -32,7 +38,7 @@ public class DisabilityDetailViewModel extends ViewModel {
          * are found. In these cases isDisabled is false. If a record is found then isDisabled is
          * true. */
         LiveData<HiddenDisability> getHiddenDisabilitiesForDisability = hiddenDisabilityRepository.getHiddenDisabilityForDisability ( disabilityId );
-        this.isDisabled = Transformations.map(getHiddenDisabilitiesForDisability, it -> it != null);
+        this.isDisabled = Transformations.map(getHiddenDisabilitiesForDisability, Objects::nonNull );
         this.disability = disabilityRepository.getDisability(disabilityId);
     }
 

@@ -24,6 +24,12 @@ public interface HiddenDisabilityDao {
     @Query("SELECT * FROM hidden_disabilities WHERE disability_id = :disabilityId")
     LiveData<HiddenDisability> getHiddenDisabilityForDisability(@NonNull String disabilityId);
     LiveData<HiddenDisability> getHiddenDisabilityForCopingStrategy(String copingstrategyId);
+    LiveData<HiddenDisability> getHiddenDisabilityForCriteriaOne(String criteriaoneId);
+    LiveData<HiddenDisability> getHiddenDisabilityForCriteriaTwo(String criteriatwoId);
+    LiveData<HiddenDisability> getHiddenDisabilityForExtensionToBlueBadge(String extensiontobluebadgeId);
+    LiveData<HiddenDisability> getHiddenDisabilityForPractitioner(String practitionerId);
+    LiveData<HiddenDisability> getHiddenDisabilityForSupportingEvidence(String supportingevidenceId);
+    LiveData<HiddenDisability> getHiddenDisabilityForSubConsiderations(String subconsiderationsId);
     /**
      * This query will tell Room to query both the [Disability] and [HiddenDisability] tables and handle
      * the object mapping.

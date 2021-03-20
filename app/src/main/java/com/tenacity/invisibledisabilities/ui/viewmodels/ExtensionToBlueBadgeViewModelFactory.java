@@ -1,6 +1,9 @@
 package com.tenacity.invisibledisabilities.ui.viewmodels;
 
+import android.os.Build;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -9,7 +12,7 @@ import com.tenacity.invisibledisabilities.data.ExtensionToBlueBadgeRepository;
 
 public class ExtensionToBlueBadgeViewModelFactory extends ViewModelProvider.NewInstanceFactory {
     private String extensiontobluebadgeId;
-    private ExtensionToBlueBadgeRepository extensionToBlueBadgeRepository;
+    private final ExtensionToBlueBadgeRepository extensionToBlueBadgeRepository;
 
     public ExtensionToBlueBadgeViewModelFactory(@NonNull ExtensionToBlueBadgeRepository extensionToBlueBadgeRepository) {
         super();
@@ -17,6 +20,7 @@ public class ExtensionToBlueBadgeViewModelFactory extends ViewModelProvider.NewI
         this.extensiontobluebadgeId = extensiontobluebadgeId;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @NonNull
     @Override
     @SuppressWarnings("unchecked")
