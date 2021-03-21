@@ -18,7 +18,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.google.android.material.snackbar.Snackbar;
 import com.tenacity.invisibledisabilities.R;
 import com.tenacity.invisibledisabilities.databinding.FragmentSubConsiderationsBinding;
-import com.tenacity.invisibledisabilities.ui.viewmodels.PractitionerViewModelFactory;
+import com.tenacity.invisibledisabilities.ui.viewmodels.PractitionerAndHiddenDisabilitiesViewModel;
 import com.tenacity.invisibledisabilities.ui.viewmodels.SubConsiderationsViewModel;
 import com.tenacity.invisibledisabilities.utilities.InjectorUtils;
 
@@ -35,7 +35,7 @@ public class SubConsiderationsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentSubConsiderationsBinding binding = FragmentSubConsiderationsBinding.inflate ( inflater, container, false );
         SubConsiderationsFragmentArgs args = SubConsiderationsFragmentArgs.fromBundle ( requireArguments () );
-        PractitionerViewModelFactory factory = InjectorUtils.providePractitionerViewModelFactory (
+        PractitionerAndHiddenDisabilitiesViewModel factory = InjectorUtils.providePractitionerViewModelFactory (
                 requireContext () );
         SubConsiderationsViewModel viewModel = new ViewModelProvider ( this, factory ).get ( SubConsiderationsViewModel.class );
         binding.setLifecycleOwner ( this );

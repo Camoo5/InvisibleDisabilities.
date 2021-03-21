@@ -20,7 +20,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.tenacity.invisibledisabilities.R;
 import com.tenacity.invisibledisabilities.databinding.FragmentSupportingEvidenceBinding;
 import com.tenacity.invisibledisabilities.ui.viewmodels.SupportingEvidenceViewModel;
-import com.tenacity.invisibledisabilities.ui.viewmodels.SupportingEvidenceViewModelFactory;
+import com.tenacity.invisibledisabilities.ui.viewmodels.SupportingEvidenceAndHiddenDisabilitiesViewModel;
 import com.tenacity.invisibledisabilities.utilities.InjectorUtils;
 
 
@@ -36,7 +36,7 @@ public class SupportingEvidenceFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentSupportingEvidenceBinding binding = FragmentSupportingEvidenceBinding.inflate ( inflater, container, false );
         SupportingEvidenceFragmentArgs args = SupportingEvidenceFragmentArgs.fromBundle ( requireArguments () );
-        SupportingEvidenceViewModelFactory factory = InjectorUtils.provideSupportingEvidenceViewModelFactory (
+        SupportingEvidenceAndHiddenDisabilitiesViewModel factory = InjectorUtils.provideSupportingEvidenceViewModelFactory (
                 requireContext () );
         SupportingEvidenceViewModel viewModel = new ViewModelProvider ( this, factory ).get ( SupportingEvidenceViewModel.class );
         binding.setLifecycleOwner ( this );

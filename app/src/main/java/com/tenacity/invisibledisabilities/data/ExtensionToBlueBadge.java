@@ -24,12 +24,15 @@ public final class ExtensionToBlueBadge {
     @NonNull
     private final String description;
 
+    @NonNull
+    private final String imageUrl;
 
-    public ExtensionToBlueBadge(@NonNull String extensiontobluebadgeId, @NonNull String name, @NonNull String description) {
+
+    public ExtensionToBlueBadge(@NonNull String extensiontobluebadgeId, @NonNull String name, @NonNull String description, @NonNull String imageUrl) {
         this.extensiontobluebadgeId = extensiontobluebadgeId;
         this.name = name;
         this.description = description;
-
+        this.imageUrl = imageUrl;
     }
 
 
@@ -71,6 +74,6 @@ public final class ExtensionToBlueBadge {
 
     @Override
     protected Object clone() {
-        return new ExtensionToBlueBadge (extensiontobluebadgeId, name, description);
+        return new ExtensionToBlueBadge (extensiontobluebadgeId, name, description, imageUrl);
     }
 }

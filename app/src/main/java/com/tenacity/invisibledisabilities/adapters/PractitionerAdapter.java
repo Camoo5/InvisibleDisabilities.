@@ -1,70 +1,48 @@
+
 package com.tenacity.invisibledisabilities.adapters;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.DiffUtil;
-import androidx.recyclerview.widget.ListAdapter;
-import androidx.recyclerview.widget.RecyclerView;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.tenacity.invisibledisabilities.data.Practitioner;
-import com.tenacity.invisibledisabilities.databinding.FragmentPractitionerBinding;
-import com.tenacity.invisibledisabilities.ui.gallery.PractitionerFragmentDirections;
+import androidx.core.text.HtmlCompat;
+import androidx.databinding.BindingAdapter;
 
-public class PractitionerAdapter extends ListAdapter <Practitioner, PractitionerAdapter.ViewHolder> {
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-    public PractitionerAdapter() {
-        super(new PractitionerDiffCallback());
-    }
-
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(FragmentPractitionerBinding.inflate(
-                LayoutInflater.from(parent.getContext()), parent, false));
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Practitioner practitioner = getItem(position);
-        holder.bind(createOnClickListener(practitioner.getPractitionersId()), practitioner);
-        holder.itemView.setTag(practitioner);
-    }
-
-    private View.OnClickListener createOnClickListener(String practitionerId) {
-        return v -> Navigation.findNavController(v).navigate(
-                PractitionerFragmentDirections.practitionersFragmentToHiddenDisabilityFragment( practitionerId));
-    }
-
-    static class ViewHolder extends RecyclerView.ViewHolder {
-        private final FragmentPractitionerBinding binding;
-
-        ViewHolder(@NonNull FragmentPractitionerBinding binding) {
-            super(binding.getRoot());
-            this.binding = binding;
-        }
-
-        void bind(View.OnClickListener listener, Practitioner item) {
-            binding.setClickListener(listener);
-            binding.setPractitioner(item);
-            binding.executePendingBindings();
+public class PractitionerAdapter {
+    @BindingAdapter("imageFromUrl")
+    public static void bindImageFromUrl(ImageView view, String imageUrl) {
+        if (!TextUtils.isEmpty(imageUrl)) {
+            Glide.with(view.getContext())
+                    .load(imageUrl)
+                    .transition( DrawableTransitionOptions.withCrossFade())
+                    .into(view);
         }
     }
 
-    static class  PractitionerDiffCallback extends DiffUtil.ItemCallback<Practitioner> {
-
-        @Override
-        public boolean areItemsTheSame(@NonNull Practitioner oldItem, @NonNull Practitioner newItem) {
-            return oldItem.getPractitionersId().equals(newItem.getPractitionersId());
-        }
-
-        @Override
-        public boolean areContentsTheSame(@NonNull  Practitioner oldItem, @NonNull  Practitioner newItem) {
-            return oldItem.equals ( newItem );
+    @BindingAdapter("isGone")
+    public static void bindIsGone(FloatingActionButton view, boolean isGone) {
+        if (isGone) {
+            view.hide();
+        } else {
+            view.show();
         }
     }
+
+    @BindingAdapter("renderHtml")
+    public static void bindReaderHtml(TextView view, String description) {
+        if (description == null) {
+            view.setText("");
+        } else {
+            view.setText( HtmlCompat.fromHtml(description, HtmlCompat.FROM_HTML_MODE_COMPACT));
+            view.setMovementMethod( LinkMovementMethod.getInstance());
+        }
+    }
+
+
 }
-

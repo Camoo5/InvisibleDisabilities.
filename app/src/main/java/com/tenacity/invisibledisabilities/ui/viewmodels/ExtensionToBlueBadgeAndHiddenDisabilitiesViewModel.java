@@ -10,11 +10,11 @@ import androidx.lifecycle.ViewModelProvider;
 import com.tenacity.invisibledisabilities.data.ExtensionToBlueBadgeRepository;
 
 
-public class ExtensionToBlueBadgeViewModelFactory extends ViewModelProvider.NewInstanceFactory {
+public class ExtensionToBlueBadgeAndHiddenDisabilitiesViewModel extends ViewModelProvider.NewInstanceFactory {
     private String extensiontobluebadgeId;
     private final ExtensionToBlueBadgeRepository extensionToBlueBadgeRepository;
 
-    public ExtensionToBlueBadgeViewModelFactory(@NonNull ExtensionToBlueBadgeRepository extensionToBlueBadgeRepository) {
+    public ExtensionToBlueBadgeAndHiddenDisabilitiesViewModel(@NonNull ExtensionToBlueBadgeRepository extensionToBlueBadgeRepository) {
         super();
         this.extensionToBlueBadgeRepository = extensionToBlueBadgeRepository;
         this.extensiontobluebadgeId = extensiontobluebadgeId;

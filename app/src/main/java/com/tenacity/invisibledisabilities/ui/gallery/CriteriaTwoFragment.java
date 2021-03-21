@@ -19,7 +19,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.tenacity.invisibledisabilities.R;
 import com.tenacity.invisibledisabilities.databinding.FragmentCriteriaTwoBinding;
 import com.tenacity.invisibledisabilities.ui.viewmodels.CriteriaTwoViewModel;
-import com.tenacity.invisibledisabilities.ui.viewmodels.CriteriaTwoViewModelFactory;
+import com.tenacity.invisibledisabilities.ui.viewmodels.CriteriaTwoAndHiddenDisabilitiesViewModel;
 import com.tenacity.invisibledisabilities.utilities.InjectorUtils;
 
 
@@ -35,7 +35,7 @@ public class CriteriaTwoFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentCriteriaTwoBinding binding = FragmentCriteriaTwoBinding.inflate ( inflater, container, false );
         CriteriaTwoFragmentArgs args = CriteriaTwoFragmentArgs.fromBundle ( requireArguments () );
-        CriteriaTwoViewModelFactory factory = InjectorUtils.provideCriteriaTwoViewModelFactory (
+        CriteriaTwoAndHiddenDisabilitiesViewModel factory = InjectorUtils.provideCriteriaTwoViewModelFactory (
                 requireContext () );
         CriteriaTwoViewModel viewModel = new ViewModelProvider ( this, factory ).get ( CriteriaTwoViewModel.class );
         binding.setLifecycleOwner ( this );

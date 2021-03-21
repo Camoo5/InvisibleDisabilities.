@@ -11,11 +11,11 @@ import androidx.lifecycle.ViewModelProvider;
 import com.tenacity.invisibledisabilities.data.CriteriaTwoRepository;
 
 
-public class CriteriaTwoViewModelFactory extends ViewModelProvider.NewInstanceFactory {
+public class CriteriaTwoAndHiddenDisabilitiesViewModel extends ViewModelProvider.NewInstanceFactory {
     private String criteriatwoId;
     private final CriteriaTwoRepository criteriatworepository;
 
-    public CriteriaTwoViewModelFactory(@NonNull CriteriaTwoRepository criteriaTworepository) {
+    public CriteriaTwoAndHiddenDisabilitiesViewModel(@NonNull CriteriaTwoRepository criteriaTworepository) {
         super();
         this.criteriatworepository = criteriaTworepository;
         this.criteriatwoId = criteriatwoId;

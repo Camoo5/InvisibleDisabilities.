@@ -20,7 +20,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.tenacity.invisibledisabilities.R;
 import com.tenacity.invisibledisabilities.databinding.FragmentCopingStrategyBinding;
 import com.tenacity.invisibledisabilities.ui.viewmodels.CopingStrategyViewModel;
-import com.tenacity.invisibledisabilities.ui.viewmodels.CopingStrategyViewModelFactory;
+import com.tenacity.invisibledisabilities.ui.viewmodels.CopingStrategyAndHiddenDisabilitiesViewModel;
 import com.tenacity.invisibledisabilities.utilities.InjectorUtils;
 
 /**
@@ -35,7 +35,7 @@ public class CopingStrategyFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentCopingStrategyBinding binding = FragmentCopingStrategyBinding.inflate(inflater, container, false);
         CopingStrategyFragmentArgs args = CopingStrategyFragmentArgs.fromBundle( requireArguments());
-        CopingStrategyViewModelFactory factory = InjectorUtils.provideCopingStrategyViewModelFactory(
+        CopingStrategyAndHiddenDisabilitiesViewModel factory = InjectorUtils.provideCopingStrategyViewModelFactory(
                 requireContext(), args.getCopingstrategyId ());
         CopingStrategyViewModel viewModel = new ViewModelProvider ( this, factory).get( CopingStrategyViewModel.class);
         binding.setLifecycleOwner(this);

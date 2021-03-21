@@ -9,14 +9,14 @@ import com.tenacity.invisibledisabilities.data.CriteriaOne;
 import com.tenacity.invisibledisabilities.data.CriteriaOneRepository;
 
 
-public class CriteriaOneViewModelFactory extends ViewModelProvider.NewInstanceFactory {
+public class CriteriaOneAndHiddenDisabilitiesViewModel extends ViewModelProvider.NewInstanceFactory {
     private final CriteriaOneRepository criteriaOneRepository;
     private String criteriaoneId;
 
 
 
 
-    public CriteriaOneViewModelFactory(@NonNull CriteriaOneRepository criteriaOneRepository) {
+    public CriteriaOneAndHiddenDisabilitiesViewModel(@NonNull CriteriaOneRepository criteriaOneRepository) {
         super();
         this.criteriaOneRepository= criteriaOneRepository;
         this.criteriaoneId = criteriaoneId;

@@ -10,11 +10,11 @@ import androidx.lifecycle.ViewModelProvider;
 import com.tenacity.invisibledisabilities.data.PractitionerRepository;
 
 
-public class PractitionerViewModelFactory extends ViewModelProvider.NewInstanceFactory {
+public class PractitionerAndHiddenDisabilitiesViewModel extends ViewModelProvider.NewInstanceFactory {
     private String practitionerId;
     private final PractitionerRepository practitionerRepository;
 
-    public PractitionerViewModelFactory(@NonNull PractitionerRepository practitionerRepository) {
+    public PractitionerAndHiddenDisabilitiesViewModel(@NonNull PractitionerRepository practitionerRepository) {
         super();
         this.practitionerRepository = practitionerRepository;
         this.practitionerId =practitionerId;

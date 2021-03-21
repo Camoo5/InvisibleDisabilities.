@@ -24,12 +24,15 @@ public final class CriteriaTwo {
     @NonNull
     private final String description;
 
+    @NonNull
+    private final String imageUrl;
 
-    public  CriteriaTwo(@NonNull String criteriatwoId, @NonNull String name, @NonNull String description) {
+
+    public  CriteriaTwo(@NonNull String criteriatwoId, @NonNull String name, @NonNull String description, @NonNull String imageUrl) {
         this.criteriatwoId = criteriatwoId;
         this.name = name;
         this.description = description;
-
+        this.imageUrl = imageUrl;
     }
 
     @NonNull
@@ -47,6 +50,10 @@ public final class CriteriaTwo {
         return description;
     }
 
+    @NonNull
+    public String getImageUrl() {
+        return imageUrl;
+    }
 
     @NonNull
     @Override
@@ -70,6 +77,6 @@ public final class CriteriaTwo {
 
     @Override
     protected Object clone() {
-        return new CriteriaTwo (criteriatwoId, name, description);
+        return new CriteriaTwo (criteriatwoId, name, description, imageUrl);
     }
 }

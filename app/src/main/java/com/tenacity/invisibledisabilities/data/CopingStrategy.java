@@ -24,12 +24,14 @@ public final class CopingStrategy {
     @NonNull
     private final String description;
 
+    @NonNull
+    private final String imageUrl;
 
-    public CopingStrategy(@NonNull String copingstrategyId, @NonNull String name, @NonNull String description) {
+    public CopingStrategy(@NonNull String copingstrategyId, @NonNull String name, @NonNull String description, @NonNull String imageUrl) {
         this.copingstrategyId = copingstrategyId;
         this.name = name;
         this.description = description;
-
+        this.imageUrl = imageUrl;
     }
 
 
@@ -55,6 +57,12 @@ public final class CopingStrategy {
         return name;
     }
 
+    @NonNull
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+
 
     @Override
     public boolean equals(@Nullable Object obj) {
@@ -71,6 +79,6 @@ public final class CopingStrategy {
 
     @Override
     protected Object clone() {
-        return new CopingStrategy (copingstrategyId, name, description);
+        return new CopingStrategy (copingstrategyId, name, description, imageUrl);
     }
 }

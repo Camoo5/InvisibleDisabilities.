@@ -7,11 +7,11 @@ import androidx.lifecycle.ViewModelProvider;
 import com.tenacity.invisibledisabilities.data.SupportingEvidenceRepository;
 
 
-public class SupportingEvidenceViewModelFactory extends ViewModelProvider.NewInstanceFactory {
+public class SupportingEvidenceAndHiddenDisabilitiesViewModel extends ViewModelProvider.NewInstanceFactory {
     private String supportingevidenceId;
     private SupportingEvidenceRepository supportingEvidenceRepository;
 
-    public  SupportingEvidenceViewModelFactory(@NonNull SupportingEvidenceRepository supportingEvidenceRepository) {
+    public SupportingEvidenceAndHiddenDisabilitiesViewModel(@NonNull SupportingEvidenceRepository supportingEvidenceRepository) {
         super();
         this.supportingEvidenceRepository = supportingEvidenceRepository;
         this.supportingevidenceId= supportingevidenceId;

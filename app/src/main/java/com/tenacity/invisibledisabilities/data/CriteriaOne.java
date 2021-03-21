@@ -24,12 +24,15 @@ public final class CriteriaOne {
     @NonNull
     private final String description;
 
+    @NonNull
+    private final String imageUrl;
 
-    public CriteriaOne(@NonNull String criteriaoneId, @NonNull String name, @NonNull String description) {
+
+    public CriteriaOne(@NonNull String criteriaoneId, @NonNull String name, @NonNull String description, @NonNull String imageUrl) {
         this.criteriaoneId = criteriaoneId;
         this.name = name;
         this.description = description;
-
+        this.imageUrl = imageUrl;
     }
 
 
@@ -71,6 +74,6 @@ public final class CriteriaOne {
 
     @Override
     protected Object clone() {
-        return new CopingStrategy (criteriaoneId, name, description);
+        return new CopingStrategy (criteriaoneId, name, description, imageUrl);
     }
 }

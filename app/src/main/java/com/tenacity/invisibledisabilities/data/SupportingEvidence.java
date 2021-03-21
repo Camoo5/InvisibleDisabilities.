@@ -25,12 +25,15 @@ public final class SupportingEvidence {
     @NonNull
     private final String description;
 
+    @NonNull
+    private final String imageUrl;
 
-    public SupportingEvidence (@NonNull String supportingevidenceId, @NonNull String name, @NonNull String description) {
+
+    public SupportingEvidence (@NonNull String supportingevidenceId, @NonNull String name, @NonNull String description, @NonNull String imageUrl) {
         this.supportingevidenceId = supportingevidenceId;
         this.name = name;
         this.description = description;
-
+        this.imageUrl = imageUrl;
     }
 
 
@@ -72,6 +75,6 @@ public final class SupportingEvidence {
 
     @Override
     protected Object clone() {
-        return new SupportingEvidence (supportingevidenceId, name, description);
+        return new SupportingEvidence (supportingevidenceId, name, description, imageUrl);
     }
 }

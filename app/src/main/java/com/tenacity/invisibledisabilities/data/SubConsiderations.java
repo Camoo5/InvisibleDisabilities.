@@ -25,12 +25,14 @@ public final class SubConsiderations {
     @NonNull
     private final String description;
 
+    @NonNull final String imageUrl;
 
-    public SubConsiderations(@NonNull String subconsiderationsId, @NonNull String name, @NonNull String description) {
+
+    public SubConsiderations(@NonNull String subconsiderationsId, @NonNull String name, @NonNull String description, @NonNull String imageUrl) {
         this.subconsiderationsId = subconsiderationsId;
         this.name = name;
         this.description = description;
-
+        this.imageUrl = imageUrl;
     }
 
 
@@ -72,6 +74,6 @@ public final class SubConsiderations {
 
     @Override
     protected Object clone() {
-        return new SubConsiderations (subconsiderationsId, name, description);
+        return new SubConsiderations (subconsiderationsId, name, description, imageUrl);
     }
 }

@@ -1,72 +1,48 @@
+
 package com.tenacity.invisibledisabilities.adapters;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.DiffUtil;
-import androidx.recyclerview.widget.ListAdapter;
-import androidx.recyclerview.widget.RecyclerView;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.tenacity.invisibledisabilities.data.CriteriaTwo;
-import com.tenacity.invisibledisabilities.databinding.FragmentCriteriaTwoBinding;
-import com.tenacity.invisibledisabilities.ui.gallery.CriteriaTwoFragmentDirections;
+import androidx.core.text.HtmlCompat;
+import androidx.databinding.BindingAdapter;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class CriteriaTwoAdapter extends ListAdapter <com.tenacity.invisibledisabilities.data.CriteriaTwo, CriteriaTwoAdapter.ViewHolder> {
-
-    public CriteriaTwoAdapter() {
-        super ( new CriteriaTwoDiffCallback ());
-    }
-
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder ( FragmentCriteriaTwoBinding.inflate (
-                LayoutInflater.from ( parent.getContext () ), parent, false ) );
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        com.tenacity.invisibledisabilities.data.CriteriaTwo criteriaTwo = getItem ( position );
-        holder.bind ( createOnClickListener ( criteriaTwo.getCriteriatwoId () ), criteriaTwo );
-        holder.itemView.setTag ( criteriaTwo);
-    }
-
-    private View.OnClickListener createOnClickListener(String criteriatwoId) {
-        return v -> Navigation.findNavController ( v ).navigate (
-                CriteriaTwoFragmentDirections.criteriaTwoFragmentToSubConsiderationsFragment (criteriatwoId ) );
-    }
-
-    static class ViewHolder extends RecyclerView.ViewHolder {
-        private final FragmentCriteriaTwoBinding binding;
-
-        ViewHolder(@NonNull FragmentCriteriaTwoBinding binding) {
-            super ( binding.getRoot () );
-            this.binding = binding;
-        }
-
-        void bind(View.OnClickListener listener,   com.tenacity.invisibledisabilities.data.CriteriaTwo item ) {
-            binding.setClickListener(listener);
-            binding.setCriteriatwo ( item );
-            binding.executePendingBindings();
+public class CriteriaTwoAdapter {
+    @BindingAdapter("imageFromUrl")
+    public static void bindImageFromUrl(ImageView view, String imageUrl) {
+        if (!TextUtils.isEmpty(imageUrl)) {
+            Glide.with(view.getContext())
+                    .load(imageUrl)
+                    .transition( DrawableTransitionOptions.withCrossFade())
+                    .into(view);
         }
     }
 
-    static class CriteriaTwoDiffCallback extends DiffUtil.ItemCallback<CriteriaTwo> {
-
-        @Override
-        public boolean areItemsTheSame(@NonNull CriteriaTwo oldItem, @NonNull CriteriaTwo newItem) {
-            return oldItem.getCriteriatwoId ().equals(newItem.getCriteriatwoId ());
-        }
-
-
-        @Override
-        public boolean areContentsTheSame(@NonNull CriteriaTwo oldItem, @NonNull CriteriaTwo newItem) {
-            return oldItem.equals ( newItem );
+    @BindingAdapter("isGone")
+    public static void bindIsGone(FloatingActionButton view, boolean isGone) {
+        if (isGone) {
+            view.hide();
+        } else {
+            view.show();
         }
     }
+
+    @BindingAdapter("renderHtml")
+    public static void bindReaderHtml(TextView view, String description) {
+        if (description == null) {
+            view.setText("");
+        } else {
+            view.setText( HtmlCompat.fromHtml(description, HtmlCompat.FROM_HTML_MODE_COMPACT));
+            view.setMovementMethod( LinkMovementMethod.getInstance());
+        }
+    }
+
+
 }
-

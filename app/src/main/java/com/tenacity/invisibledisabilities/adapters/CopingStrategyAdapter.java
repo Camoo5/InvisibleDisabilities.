@@ -1,72 +1,48 @@
 
-        package com.tenacity.invisibledisabilities.adapters;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import androidx.annotation.NonNull;
-import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.DiffUtil;
-import androidx.recyclerview.widget.ListAdapter;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.tenacity.invisibledisabilities.data.CopingStrategy;
-import com.tenacity.invisibledisabilities.databinding.FragmentCopingStrategyBinding;
-import com.tenacity.invisibledisabilities.ui.gallery.CopingStrategyFragmentDirections;
+package com.tenacity.invisibledisabilities.adapters;
 
 
-public class CopingStrategyAdapter extends ListAdapter <CopingStrategy, CopingStrategyAdapter.ViewHolder> {
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-    public CopingStrategyAdapter() {
-        super(new CopingStrategyDiffCallback());
-    }
+import androidx.core.text.HtmlCompat;
+import androidx.databinding.BindingAdapter;
 
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder( FragmentCopingStrategyBinding .inflate(
-                LayoutInflater.from(parent.getContext()), parent, false));
-    }
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        CopingStrategy copingStrategy = getItem(position);
-        holder.bind(createOnClickListener(copingStrategy.getCopingstrategyId ()), copingStrategy);
-        holder.itemView.setTag(copingStrategy);
-    }
-
-    private View.OnClickListener createOnClickListener(String copingstrategyId) {
-        return v -> Navigation.findNavController(v).navigate(
-                CopingStrategyFragmentDirections.copingStrategyFragmentToPractitionersFragment (copingstrategyId));
-    }
-
-    static class ViewHolder extends RecyclerView.ViewHolder {
-        private final FragmentCopingStrategyBinding binding;
-
-        ViewHolder(@NonNull FragmentCopingStrategyBinding binding) {
-            super(binding.getRoot());
-            this.binding = binding;
-        }
-
-        void bind(View.OnClickListener listener, CopingStrategy item) {
-            binding.setClickListener ( listener );
-            binding.setCopingstrategy ( item );
-            binding.executePendingBindings ();
+public class CopingStrategyAdapter {
+    @BindingAdapter("imageFromUrl")
+    public static void bindImageFromUrl(ImageView view, String imageUrl) {
+        if (!TextUtils.isEmpty(imageUrl)) {
+            Glide.with(view.getContext())
+                    .load(imageUrl)
+                    .transition( DrawableTransitionOptions.withCrossFade())
+                    .into(view);
         }
     }
 
-    static class CopingStrategyDiffCallback extends DiffUtil.ItemCallback <CopingStrategy> {
-
-        @Override
-        public boolean areItemsTheSame(@NonNull CopingStrategy oldItem, @NonNull CopingStrategy newItem) {
-            return oldItem.getCopingstrategyId ().equals ( newItem.getCopingstrategyId () );
-        }
-
-
-        @Override
-        public boolean areContentsTheSame(@NonNull CopingStrategy oldItem, @NonNull CopingStrategy newItem) {
-            return oldItem.equals ( newItem );
+    @BindingAdapter("isGone")
+    public static void bindIsGone(FloatingActionButton view, boolean isGone) {
+        if (isGone) {
+            view.hide();
+        } else {
+            view.show();
         }
     }
+
+    @BindingAdapter("renderHtml")
+    public static void bindReaderHtml(TextView view, String description) {
+        if (description == null) {
+            view.setText("");
+        } else {
+            view.setText( HtmlCompat.fromHtml(description, HtmlCompat.FROM_HTML_MODE_COMPACT));
+            view.setMovementMethod( LinkMovementMethod.getInstance());
+        }
+    }
+
+
 }

@@ -1,72 +1,48 @@
+
 package com.tenacity.invisibledisabilities.adapters;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.DiffUtil;
-import androidx.recyclerview.widget.ListAdapter;
-import androidx.recyclerview.widget.RecyclerView;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.tenacity.invisibledisabilities.data.SubConsiderations;
-import com.tenacity.invisibledisabilities.databinding.FragmentSubConsiderationsBinding;
-import com.tenacity.invisibledisabilities.ui.gallery.SubConsiderationsFragmentDirections;
+import androidx.core.text.HtmlCompat;
+import androidx.databinding.BindingAdapter;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class SubConsiderationsAdapter extends ListAdapter<SubConsiderations, SubConsiderationsAdapter.ViewHolder> {
-
-    public SubConsiderationsAdapter() {
-        super(new SubConsiderationsDiffCallback());
-    }
-
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder( FragmentSubConsiderationsBinding.inflate(
-                LayoutInflater.from(parent.getContext()), parent, false));
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        SubConsiderations subconsiderations = getItem(position);
-        holder.bind(createOnClickListener(subconsiderations.getSubConsiderationsId()), subconsiderations);
-        holder.itemView.setTag(subconsiderations);
-    }
-
-    private View.OnClickListener createOnClickListener(String subconsiderationsId) {
-        return v -> Navigation.findNavController(v).navigate(
-                SubConsiderationsFragmentDirections.subConsiderationsFragmentToSupportingEvidenceFragment(subconsiderationsId));
-    }
-
-    static class ViewHolder extends RecyclerView.ViewHolder {
-        private final FragmentSubConsiderationsBinding binding;
-
-        ViewHolder(@NonNull FragmentSubConsiderationsBinding binding) {
-            super(binding.getRoot());
-            this.binding = binding;
-        }
-
-        void bind(View.OnClickListener listener, SubConsiderations item) {
-            binding.setClickListener(listener);
-            binding.setSubconsiderations  (item);
-            binding.executePendingBindings();
+public class SubConsiderationsAdapter {
+    @BindingAdapter("imageFromUrl")
+    public static void bindImageFromUrl(ImageView view, String imageUrl) {
+        if (!TextUtils.isEmpty(imageUrl)) {
+            Glide.with(view.getContext())
+                    .load(imageUrl)
+                    .transition( DrawableTransitionOptions.withCrossFade())
+                    .into(view);
         }
     }
 
-    static class SubConsiderationsDiffCallback extends DiffUtil.ItemCallback<SubConsiderations> {
-
-        @Override
-        public boolean areItemsTheSame(@NonNull SubConsiderations oldItem, @NonNull SubConsiderations newItem) {
-            return oldItem.getSubConsiderationsId().equals(newItem.getSubConsiderationsId());
-        }
-
-        @Override
-        public boolean areContentsTheSame(@NonNull SubConsiderations oldItem, @NonNull SubConsiderations newItem) {
-            return oldItem.equals ( newItem );
+    @BindingAdapter("isGone")
+    public static void bindIsGone(FloatingActionButton view, boolean isGone) {
+        if (isGone) {
+            view.hide();
+        } else {
+            view.show();
         }
     }
+
+    @BindingAdapter("renderHtml")
+    public static void bindReaderHtml(TextView view, String description) {
+        if (description == null) {
+            view.setText("");
+        } else {
+            view.setText( HtmlCompat.fromHtml(description, HtmlCompat.FROM_HTML_MODE_COMPACT));
+            view.setMovementMethod( LinkMovementMethod.getInstance());
+        }
+    }
+
+
 }
-
-

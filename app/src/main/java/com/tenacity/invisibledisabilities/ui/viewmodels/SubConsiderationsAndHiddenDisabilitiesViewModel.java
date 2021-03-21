@@ -7,11 +7,11 @@ import androidx.lifecycle.ViewModelProvider;
 import com.tenacity.invisibledisabilities.data.SubConsiderationsRepository;
 
 
-public class SubConsiderationsViewModelFactory extends ViewModelProvider.NewInstanceFactory {
+public class SubConsiderationsAndHiddenDisabilitiesViewModel extends ViewModelProvider.NewInstanceFactory {
     private String subconsiderationsId;
     private SubConsiderationsRepository subConsiderationsRepository;
 
-    public  SubConsiderationsViewModelFactory(@NonNull SubConsiderationsRepository subConsiderationsRepository) {
+    public SubConsiderationsAndHiddenDisabilitiesViewModel(@NonNull SubConsiderationsRepository subConsiderationsRepository) {
         super();
         this.subConsiderationsRepository = subConsiderationsRepository;
         this.subconsiderationsId= subconsiderationsId;

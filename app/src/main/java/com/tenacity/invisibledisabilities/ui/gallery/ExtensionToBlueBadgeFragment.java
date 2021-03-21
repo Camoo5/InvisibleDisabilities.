@@ -18,7 +18,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.google.android.material.snackbar.Snackbar;
 import com.tenacity.invisibledisabilities.R;
 import com.tenacity.invisibledisabilities.databinding.FragmentExtensionToBlueBadgeBinding;
-import com.tenacity.invisibledisabilities.ui.viewmodels.CriteriaTwoViewModelFactory;
+import com.tenacity.invisibledisabilities.ui.viewmodels.CriteriaTwoAndHiddenDisabilitiesViewModel;
 import com.tenacity.invisibledisabilities.ui.viewmodels.ExtensionToBlueBadgeViewModel;
 import com.tenacity.invisibledisabilities.utilities.InjectorUtils;
 
@@ -35,7 +35,7 @@ import com.tenacity.invisibledisabilities.utilities.InjectorUtils;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentExtensionToBlueBadgeBinding binding = FragmentExtensionToBlueBadgeBinding.inflate ( inflater, container, false );
         ExtensionToBlueBadgeFragmentArgs args = ExtensionToBlueBadgeFragmentArgs.fromBundle ( requireArguments () );
-        CriteriaTwoViewModelFactory factory = InjectorUtils.provideCriteriaTwoViewModelFactory (
+        CriteriaTwoAndHiddenDisabilitiesViewModel factory = InjectorUtils.provideCriteriaTwoViewModelFactory (
                 requireContext () );
         ExtensionToBlueBadgeViewModel viewModel = new ViewModelProvider ( this, factory ).get ( ExtensionToBlueBadgeViewModel.class );
         binding.setLifecycleOwner ( this );

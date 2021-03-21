@@ -25,12 +25,14 @@ public final class Practitioner {
     @NonNull
     private final String description;
 
+    @NonNull
+    private final String imageUrl;
 
-    public Practitioner(@NonNull String practitionersId, @NonNull String name, @NonNull String description) {
+    public Practitioner(@NonNull String practitionersId, @NonNull String name, @NonNull String description, @NonNull String imageUrl) {
         this.practitionersId = practitionersId;
         this.name = name;
         this.description = description;
-
+        this.imageUrl = imageUrl;
     }
 
 
@@ -72,6 +74,6 @@ public final class Practitioner {
 
     @Override
     protected Object clone() {
-        return new Practitioner (practitionersId, name, description);
+        return new Practitioner (practitionersId, name, description,imageUrl);
     }
 }
