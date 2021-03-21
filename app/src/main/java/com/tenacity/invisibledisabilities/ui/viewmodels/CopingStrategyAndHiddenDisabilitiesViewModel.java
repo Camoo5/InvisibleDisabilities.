@@ -12,7 +12,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
-import static androidx.core.util.Preconditions.checkNotNull;
+
 
 public class CopingStrategyAndHiddenDisabilitiesViewModel extends ViewModel {
 
@@ -21,7 +21,7 @@ public class CopingStrategyAndHiddenDisabilitiesViewModel extends ViewModel {
     public ObservableField<String> copingstrategyDateString;
 
     public CopingStrategyAndHiddenDisabilitiesViewModel(@NonNull CopingStrategyAndHiddenDisabilities disabilities) {
-        final CopingStrategy copingStrategy= checkNotNull(disabilities.getCopingStrategy ());
+        final CopingStrategy copingStrategy= (disabilities.getCopingStrategy ());
         final HiddenDisability hiddenDisability = disabilities.getHiddenDisabilities().get(0);
         final DateFormat dateFormat = new SimpleDateFormat("MMM d, yyyy", Locale.UK);
 

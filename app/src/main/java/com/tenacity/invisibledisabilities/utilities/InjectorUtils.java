@@ -13,6 +13,7 @@ import com.tenacity.invisibledisabilities.data.PractitionerRepository;
 import com.tenacity.invisibledisabilities.data.SubConsiderationsRepository;
 import com.tenacity.invisibledisabilities.data.SupportingEvidenceRepository;
 import com.tenacity.invisibledisabilities.ui.viewmodels.CopingStrategyAndHiddenDisabilitiesViewModel;
+import com.tenacity.invisibledisabilities.ui.viewmodels.CopingStrategyViewModelFactory;
 import com.tenacity.invisibledisabilities.ui.viewmodels.CriteriaOneAndHiddenDisabilitiesViewModel;
 import com.tenacity.invisibledisabilities.ui.viewmodels.CriteriaTwoAndHiddenDisabilitiesViewModel;
 import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityDetailViewModelFactory;
@@ -21,7 +22,6 @@ import com.tenacity.invisibledisabilities.ui.viewmodels.ExtensionToBlueBadgeAndH
 import com.tenacity.invisibledisabilities.ui.viewmodels.HiddenDisabilityListViewModelFactory;
 import com.tenacity.invisibledisabilities.ui.viewmodels.PractitionerAndHiddenDisabilitiesViewModel;
 import com.tenacity.invisibledisabilities.ui.viewmodels.SubConsiderationsAndHiddenDisabilitiesViewModel;
-import com.tenacity.invisibledisabilities.ui.viewmodels.SupportingEvidenceAndHiddenDisabilitiesViewModel;
 
 
 /**
@@ -94,8 +94,8 @@ public class InjectorUtils {
     }
 
 
-    public static CopingStrategyAndHiddenDisabilitiesViewModel provideCopingStrategyViewModelFactory(Context context, String copingstrategyId) {
-        return new CopingStrategyAndHiddenDisabilitiesViewModel (getCopingStrategyRepository ( context ));
+    public static CopingStrategyViewModelFactory providerCopingStrategyViewModelFactory(Context context, String copingstrategyId) {
+        return new CopingStrategyViewModelFactory (getCopingStrategyRepository ( context ), getHiddenDisabilityRepository (context), copingstrategyId);
 
     }
 
@@ -124,10 +124,7 @@ public class InjectorUtils {
 
     }
 
-    public static SupportingEvidenceAndHiddenDisabilitiesViewModel provideSupportingEvidenceViewModelFactory(Context context) {
-        return new SupportingEvidenceAndHiddenDisabilitiesViewModel ( getSupportingEvidenceRepository ( context ));
 
-    }
 
 
 }

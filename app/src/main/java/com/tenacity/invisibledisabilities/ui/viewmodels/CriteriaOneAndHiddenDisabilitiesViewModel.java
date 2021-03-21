@@ -1,32 +1,32 @@
 package com.tenacity.invisibledisabilities.ui.viewmodels;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.ObservableField;
 import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
 
-import com.tenacity.invisibledisabilities.data.CopingStrategyRepository;
 import com.tenacity.invisibledisabilities.data.CriteriaOne;
-import com.tenacity.invisibledisabilities.data.CriteriaOneRepository;
+import com.tenacity.invisibledisabilities.data.CriteriaOneAndHiddenDisabilities;
+import com.tenacity.invisibledisabilities.data.HiddenDisability;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 
-public class CriteriaOneAndHiddenDisabilitiesViewModel extends ViewModelProvider.NewInstanceFactory {
-    private final CriteriaOneRepository criteriaOneRepository;
-    private String criteriaoneId;
 
+public class CriteriaOneAndHiddenDisabilitiesViewModel extends ViewModel {
 
+    public ObservableField<String> imageUrl;
+    public ObservableField<String> criteriaone;
+    public ObservableField<String> criteriaoneDateString;
 
+    public CriteriaOneAndHiddenDisabilitiesViewModel(@NonNull CriteriaOneAndHiddenDisabilities disabilities) {
+        final CriteriaOne criteriaOne= (disabilities.getCriteriaOne ());
+        final HiddenDisability hiddenDisability = disabilities.getHiddenDisabilities().get(0);
+        final DateFormat dateFormat = new SimpleDateFormat("MMM d, yyyy", Locale.UK);
 
-    public CriteriaOneAndHiddenDisabilitiesViewModel(@NonNull CriteriaOneRepository criteriaOneRepository) {
-        super();
-        this.criteriaOneRepository= criteriaOneRepository;
-        this.criteriaoneId = criteriaoneId;
-    }
-
-
-    @NonNull
-    @Override
-    @SuppressWarnings("unchecked")
-    public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        return (T) new CriteriaOneviewModel(criteriaOneRepository, criteriaoneId);
+        this.imageUrl = new ObservableField<>(criteriaOne.getImageUrl());
+        this.criteriaone = new ObservableField<>(criteriaOne.getName());
+        this.criteriaoneDateString = new ObservableField<>(dateFormat.format( hiddenDisability.getDisabilityDate().getTime()));
     }
 }

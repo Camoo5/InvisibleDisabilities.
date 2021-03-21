@@ -1,31 +1,32 @@
 package com.tenacity.invisibledisabilities.ui.viewmodels;
 
-import android.os.Build;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
+import androidx.databinding.ObservableField;
 import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
+
+import com.tenacity.invisibledisabilities.data.CriteriaTwo;
+import com.tenacity.invisibledisabilities.data.CriteriaTwoAndHiddenDisabilities;
+import com.tenacity.invisibledisabilities.data.HiddenDisability;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 
-import com.tenacity.invisibledisabilities.data.CriteriaTwoRepository;
 
+public class CriteriaTwoAndHiddenDisabilitiesViewModel extends ViewModel {
 
-public class CriteriaTwoAndHiddenDisabilitiesViewModel extends ViewModelProvider.NewInstanceFactory {
-    private String criteriatwoId;
-    private final CriteriaTwoRepository criteriatworepository;
+    public ObservableField<String> imageUrl;
+    public ObservableField<String> criteriatwo;
+    public ObservableField<String> criteriatwoDateString;
 
-    public CriteriaTwoAndHiddenDisabilitiesViewModel(@NonNull CriteriaTwoRepository criteriaTworepository) {
-        super();
-        this.criteriatworepository = criteriaTworepository;
-        this.criteriatwoId = criteriatwoId;
-    }
+    public CriteriaTwoAndHiddenDisabilitiesViewModel(@NonNull CriteriaTwoAndHiddenDisabilities disabilities) {
+        final CriteriaTwo criteriaTwo= (disabilities.getCriteriaTwo ());
+        final HiddenDisability hiddenDisability = disabilities.getHiddenDisabilities().get(0);
+        final DateFormat dateFormat = new SimpleDateFormat("MMM d, yyyy", Locale.UK);
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    @NonNull
-    @Override
-    @SuppressWarnings("unchecked")
-    public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        return (T) new CriteriaTwoViewModel(criteriatworepository, criteriatwoId );
+        this.imageUrl = new ObservableField<>(criteriaTwo.getImageUrl());
+        this.criteriatwo = new ObservableField<>(criteriaTwo.getName());
+        this.criteriatwoDateString = new ObservableField<>(dateFormat.format( hiddenDisability.getDisabilityDate().getTime()));
     }
 }

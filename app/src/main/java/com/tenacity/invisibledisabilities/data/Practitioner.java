@@ -58,6 +58,11 @@ public final class Practitioner {
         return name;
     }
 
+    @NonNull
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
 
     @Override
     public boolean equals(@Nullable Object obj) {

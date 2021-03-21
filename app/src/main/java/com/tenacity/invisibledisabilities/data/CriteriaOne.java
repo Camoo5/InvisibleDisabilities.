@@ -58,6 +58,11 @@ public final class CriteriaOne {
         return name;
     }
 
+    @NonNull
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
 
     @Override
     public boolean equals(@Nullable Object obj) {

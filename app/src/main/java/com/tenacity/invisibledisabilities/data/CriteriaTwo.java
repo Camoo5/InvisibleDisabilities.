@@ -62,6 +62,8 @@ public final class CriteriaTwo {
     }
 
 
+
+
     @Override
     public boolean equals(@Nullable Object obj) {
         return obj instanceof CriteriaTwo

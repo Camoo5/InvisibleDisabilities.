@@ -1,30 +1,32 @@
 package com.tenacity.invisibledisabilities.ui.viewmodels;
 
-import android.os.Build;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
+import androidx.databinding.ObservableField;
 import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
 
-import com.tenacity.invisibledisabilities.data.ExtensionToBlueBadgeRepository;
+import com.tenacity.invisibledisabilities.data.ExtensionToBlueBadge;
+import com.tenacity.invisibledisabilities.data.ExtensionToBlueBadgeAndHiddenDisabilities;
+import com.tenacity.invisibledisabilities.data.HiddenDisability;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 
-public class ExtensionToBlueBadgeAndHiddenDisabilitiesViewModel extends ViewModelProvider.NewInstanceFactory {
-    private String extensiontobluebadgeId;
-    private final ExtensionToBlueBadgeRepository extensionToBlueBadgeRepository;
 
-    public ExtensionToBlueBadgeAndHiddenDisabilitiesViewModel(@NonNull ExtensionToBlueBadgeRepository extensionToBlueBadgeRepository) {
-        super();
-        this.extensionToBlueBadgeRepository = extensionToBlueBadgeRepository;
-        this.extensiontobluebadgeId = extensiontobluebadgeId;
-    }
+public class ExtensionToBlueBadgeAndHiddenDisabilitiesViewModel extends ViewModel {
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    @NonNull
-    @Override
-    @SuppressWarnings("unchecked")
-    public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        return (T) new ExtensionToBlueBadgeViewModel(extensionToBlueBadgeRepository, extensiontobluebadgeId );
+    public ObservableField<String> imageUrl;
+    public ObservableField<String> extensiontobluebadge;
+    public ObservableField<String> extensiontobluebadgeDateString;
+
+    public ExtensionToBlueBadgeAndHiddenDisabilitiesViewModel(@NonNull ExtensionToBlueBadgeAndHiddenDisabilities disabilities) {
+        final ExtensionToBlueBadge extensionToBlueBadge= (disabilities.getExtensionToBlueBadge());
+        final HiddenDisability hiddenDisability = disabilities.getHiddenDisabilities().get(0);
+        final DateFormat dateFormat = new SimpleDateFormat("MMM d, yyyy", Locale.UK);
+
+        this.imageUrl = new ObservableField<>(extensionToBlueBadge.getImageUrl());
+        this.extensiontobluebadge = new ObservableField<>(extensionToBlueBadge.getName());
+        this.extensiontobluebadgeDateString = new ObservableField<>(dateFormat.format( hiddenDisability.getDisabilityDate().getTime()));
     }
 }
