@@ -20,7 +20,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.tenacity.invisibledisabilities.R;
 import com.tenacity.invisibledisabilities.databinding.FragmentSupportingEvidenceBinding;
 import com.tenacity.invisibledisabilities.ui.viewmodels.SupportingEvidenceViewModel;
-import com.tenacity.invisibledisabilities.ui.viewmodels.SupportingEvidenceAndHiddenDisabilitiesViewModel;
+import com.tenacity.invisibledisabilities.ui.viewmodels.SupportingEvidenceViewModelFactory;
 import com.tenacity.invisibledisabilities.utilities.InjectorUtils;
 
 
@@ -36,15 +36,15 @@ public class SupportingEvidenceFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentSupportingEvidenceBinding binding = FragmentSupportingEvidenceBinding.inflate ( inflater, container, false );
         SupportingEvidenceFragmentArgs args = SupportingEvidenceFragmentArgs.fromBundle ( requireArguments () );
-        SupportingEvidenceAndHiddenDisabilitiesViewModel factory = InjectorUtils.provideSupportingEvidenceViewModelFactory (
-                requireContext () );
-        SupportingEvidenceViewModel viewModel = new ViewModelProvider ( this, factory ).get ( SupportingEvidenceViewModel.class );
+        SupportingEvidenceViewModelFactory factory = InjectorUtils.providerSupportingEvidenceViewModelFactory(
+                requireContext(), args.getSupportingevidenceId  ());
+        SupportingEvidenceViewModel viewModel = new ViewModelProvider ( this, (ViewModelProvider.Factory) factory ).get( SupportingEvidenceViewModel.class);
         binding.setLifecycleOwner ( this );
 
         binding.setViewModel ( viewModel );
         binding.fab.setOnClickListener ( v -> {
             viewModel.addSupportingEvidenceToHiddenDisability ();
-            Snackbar.make ( v, R.string.added_subconsiderations_to_hidden_disabilities, Snackbar.LENGTH_LONG ).show ();
+            Snackbar.make ( v, R.string.added_supportingevidence_to_hidden_disabilities, Snackbar.LENGTH_LONG ).show ();
         } );
 
         viewModel.supportingEvidence.observe ( getViewLifecycleOwner (), SupportingEvidence ->
@@ -57,7 +57,7 @@ public class SupportingEvidenceFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate ( R.menu.menu_sub_considerations, menu );
+        inflater.inflate ( R.menu.menu_supporting_evidence, menu );
         super.onCreateOptionsMenu ( menu, inflater );
     }
 

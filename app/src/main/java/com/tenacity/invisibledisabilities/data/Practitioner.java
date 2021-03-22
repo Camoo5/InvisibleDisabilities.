@@ -17,7 +17,7 @@ public final class Practitioner {
     @NonNull
     @PrimaryKey
     @ColumnInfo(name = "id")
-    private final String practitionersId;
+    private final String practitionerId;
 
     @NonNull
     private final String name;
@@ -28,8 +28,8 @@ public final class Practitioner {
     @NonNull
     private final String imageUrl;
 
-    public Practitioner(@NonNull String practitionersId, @NonNull String name, @NonNull String description, @NonNull String imageUrl) {
-        this.practitionersId = practitionersId;
+    public Practitioner(@NonNull String practitionerId, @NonNull String name, @NonNull String description, @NonNull String imageUrl) {
+        this.practitionerId = practitionerId;
         this.name = name;
         this.description = description;
         this.imageUrl = imageUrl;
@@ -37,8 +37,8 @@ public final class Practitioner {
 
 
     @NonNull
-    public String getPractitionersId() {
-        return practitionersId;
+    public String getPractitionerId() {
+        return practitionerId;
     }
 
     @NonNull
@@ -67,18 +67,18 @@ public final class Practitioner {
     @Override
     public boolean equals(@Nullable Object obj) {
         return obj instanceof Practitioner
-                && this.practitionersId.equals ( ( (Practitioner) obj ).practitionersId );
+                && this.practitionerId.equals ( ( (Practitioner) obj ).practitionerId );
     }
 
 
     @Override
     public int hashCode() {
-        return Objects.hash(practitionersId);
+        return Objects.hash(practitionerId);
     }
 
 
     @Override
     protected Object clone() {
-        return new Practitioner (practitionersId, name, description,imageUrl);
+        return new Practitioner (practitionerId, name, description,imageUrl);
     }
 }

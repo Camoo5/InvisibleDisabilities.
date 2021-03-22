@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
+import com.tenacity.invisibledisabilities.data.HiddenDisabilityRepository;
 import com.tenacity.invisibledisabilities.data.Practitioner;
 import com.tenacity.invisibledisabilities.data.PractitionerRepository;
 import com.tenacity.invisibledisabilities.utilities.AppExecutors;
@@ -26,7 +27,7 @@ public class PractitionerViewModel extends ViewModel {
     public LiveData<Practitioner> practitioner;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public PractitionerViewModel(PractitionerRepository practitionerRepository, String practitionerId) {
+    public PractitionerViewModel(PractitionerRepository practitionerRepository, HiddenDisabilityRepository hiddenDisabilityRepository, String practitionerId) {
         super();
 
 

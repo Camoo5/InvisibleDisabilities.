@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
+import com.tenacity.invisibledisabilities.data.HiddenDisabilityRepository;
 import com.tenacity.invisibledisabilities.data.SupportingEvidence;
 import com.tenacity.invisibledisabilities.data.SupportingEvidenceRepository;
 import com.tenacity.invisibledisabilities.utilities.AppExecutors;
@@ -20,7 +21,7 @@ public class SupportingEvidenceViewModel extends ViewModel {
     private final LiveData <Boolean> isDisabled;
     public LiveData <SupportingEvidence> supportingEvidence;
 
-    public SupportingEvidenceViewModel(SupportingEvidenceRepository supportingEvidenceRepository, String supportingevidenceId) {
+    public SupportingEvidenceViewModel(SupportingEvidenceRepository supportingEvidenceRepository, HiddenDisabilityRepository hiddenDisabilityRepository, String supportingevidenceId) {
         super ();
         this.supportingEvidenceRepository = supportingEvidenceRepository;
         this.supportingevidenceId = supportingevidenceId;

@@ -19,7 +19,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.tenacity.invisibledisabilities.R;
 import com.tenacity.invisibledisabilities.databinding.FragmentPractitionerBinding;
 import com.tenacity.invisibledisabilities.ui.viewmodels.PractitionerViewModel;
-import com.tenacity.invisibledisabilities.ui.viewmodels.PractitionerAndHiddenDisabilitiesViewModel;
+import com.tenacity.invisibledisabilities.ui.viewmodels.PractitionerViewModelFactory;
 import com.tenacity.invisibledisabilities.utilities.InjectorUtils;
 
 /**
@@ -34,9 +34,9 @@ public class PractitionerFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentPractitionerBinding binding = FragmentPractitionerBinding.inflate ( inflater, container, false );
         PractitionerFragmentArgs args = PractitionerFragmentArgs.fromBundle ( requireArguments () );
-        PractitionerAndHiddenDisabilitiesViewModel factory = InjectorUtils.providePractitionerViewModelFactory (
-                requireContext () );
-        PractitionerViewModel viewModel = new ViewModelProvider ( this, factory ).get ( PractitionerViewModel.class );
+        PractitionerViewModelFactory factory = InjectorUtils.providerPractitionerViewModelFactory(
+                requireContext(), args.getPractitionerId ());
+        PractitionerViewModel viewModel = new ViewModelProvider ( this, (ViewModelProvider.Factory) factory ).get(  PractitionerViewModel.class);
         binding.setLifecycleOwner ( this );
 
         binding.setViewModel ( viewModel );

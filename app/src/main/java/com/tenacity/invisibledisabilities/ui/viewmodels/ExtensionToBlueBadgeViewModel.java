@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.tenacity.invisibledisabilities.data.ExtensionToBlueBadge;
 import com.tenacity.invisibledisabilities.data.ExtensionToBlueBadgeRepository;
+import com.tenacity.invisibledisabilities.data.HiddenDisabilityRepository;
 import com.tenacity.invisibledisabilities.utilities.AppExecutors;
 
 import java.util.Objects;
@@ -26,7 +27,7 @@ public class ExtensionToBlueBadgeViewModel extends ViewModel {
     public LiveData<ExtensionToBlueBadge> extensionToBlueBadge;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public ExtensionToBlueBadgeViewModel(ExtensionToBlueBadgeRepository extensionToBlueBadgeRepository, String extensiontobluebadgeId) {
+    public ExtensionToBlueBadgeViewModel(ExtensionToBlueBadgeRepository extensionToBlueBadgeRepository, HiddenDisabilityRepository hiddenDisabilityRepository, String extensiontobluebadgeId) {
         super();
 
 

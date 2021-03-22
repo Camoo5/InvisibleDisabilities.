@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
+import com.tenacity.invisibledisabilities.data.HiddenDisabilityRepository;
 import com.tenacity.invisibledisabilities.data.SubConsiderations;
 import com.tenacity.invisibledisabilities.data.SubConsiderationsRepository;
 import com.tenacity.invisibledisabilities.utilities.AppExecutors;
@@ -20,7 +21,7 @@ public class SubConsiderationsViewModel extends ViewModel {
     private final LiveData<Boolean> isDisabled;
     public LiveData<SubConsiderations> subConsiderations;
 
-    public SubConsiderationsViewModel(SubConsiderationsRepository subConsiderationsRepository, String subconsiderationsId) {
+    public SubConsiderationsViewModel(SubConsiderationsRepository subConsiderationsRepository, HiddenDisabilityRepository hiddenDisabilityRepository, String subconsiderationsId) {
         super();
         this.subConsiderationsRepository = subConsiderationsRepository;
         this.subconsiderationsId= subconsiderationsId;

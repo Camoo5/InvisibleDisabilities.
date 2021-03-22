@@ -172,7 +172,7 @@
 
         <action
             android:id="@+id/coping_strategy_fragment_to_practitioners_fragment"
-            app:destination="@id/practitioners_fragment"
+            app:destination="@id/practitioner_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -186,7 +186,7 @@
     </fragment>
 
     <fragment
-        android:id="@+id/practitioners_fragment"
+        android:id="@+id/practitioner_fragment"
         android:name="com.tenacity.invisibledisabilities.ui.gallery.PractitionerFragment"
         android:label="@string/practitioner_title"
         tools:layout="@layout/fragment_practitioner">
@@ -201,7 +201,7 @@
             app:popUpTo="@+id/hidden_disability_fragment"
             app:popUpToInclusive="true"/>
         <argument
-            android:name="copingstrategyId"
+            android:name="practitionerId"
             app:argType="string" />
 
 
