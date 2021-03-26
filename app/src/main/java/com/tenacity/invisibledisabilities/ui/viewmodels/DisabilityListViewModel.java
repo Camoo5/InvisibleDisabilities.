@@ -14,36 +14,36 @@ import java.util.List;
 
 
 public class DisabilityListViewModel extends ViewModel {
-    private static final int NO_CRITERIA = -1;
+    private static final int NO_CRITERIA_TYPE = -1;
 
     private final DisabilityRepository disabilityRepository;
 
-    private final MutableLiveData<Integer> criteriaNumber;
+    private final MutableLiveData<Integer> criteriaTypeNumber;
 
     public LiveData<List<Disability>> disabilities;
 
     DisabilityListViewModel(@NonNull DisabilityRepository disabilityRepository) {
         super();
         this.disabilityRepository = disabilityRepository;
-        this.criteriaNumber = new MutableLiveData<>(-1);
-        this.disabilities = Transformations.switchMap(criteriaNumber, it -> {
-            if (it == NO_CRITERIA) {
+        this.criteriaTypeNumber = new MutableLiveData<>(-1);
+        this.disabilities = Transformations.switchMap(criteriaTypeNumber, it -> {
+            if (it == NO_CRITERIA_TYPE) {
                 return this.disabilityRepository.getDisabilities();
             } else {
-                return this.disabilityRepository.getDisabilitiesWithCriteriaNumber (it);
+                return this.disabilityRepository.getDisabilitiesWithCriteriaTypeNumber (it);
             }
         });
     }
 
-    public void setCriteriaNumber(int num) {
-        this.criteriaNumber.setValue(num);
+    public void setCriteriaTypeNumber(int num) {
+        this.criteriaTypeNumber.setValue(num);
     }
 
-    public void cleanCriteriaNumber() {
-        this.criteriaNumber.setValue(NO_CRITERIA);
+    public void cleanCriteriaTypeNumber() {
+        this.criteriaTypeNumber.setValue(NO_CRITERIA_TYPE);
     }
 
     public boolean isFiltered() {
-        return this.criteriaNumber.getValue() != NO_CRITERIA;
+        return this.criteriaTypeNumber.getValue() != NO_CRITERIA_TYPE;
     }
 }

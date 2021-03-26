@@ -10,17 +10,17 @@ import java.util.List;
  */
 public class DisabilityRepository {
     private static DisabilityRepository instance;
-    private final com.tenacity.invisibledisabilities.data.DisabilityDao disabilityDao;
+    private final DisabilityDao disabilityDao;
 
-    private DisabilityRepository(com.tenacity.invisibledisabilities.data.DisabilityDao hiddenDisabilitiesDao) {
-        this.disabilityDao = hiddenDisabilitiesDao;
+    private DisabilityRepository(DisabilityDao hiddenDisabilityDao) {
+        this.disabilityDao = hiddenDisabilityDao;
     }
 
-    public static DisabilityRepository getInstance(com.tenacity.invisibledisabilities.data.DisabilityDao hiddenDisabilitiesDao) {
+    public static DisabilityRepository getInstance(DisabilityDao hiddenDisabilityDao) {
         if (instance == null) {
             synchronized (DisabilityRepository.class) {
                 if (instance == null) {
-                    instance = new DisabilityRepository(hiddenDisabilitiesDao);
+                    instance = new DisabilityRepository(hiddenDisabilityDao);
                 }
             }
         }
@@ -31,11 +31,11 @@ public class DisabilityRepository {
         return this.disabilityDao.getDisabilities ();
     }
 
-    public LiveData<com.tenacity.invisibledisabilities.data.Disability> getDisability(String disabilityId) {
+    public LiveData<Disability> getDisability(String disabilityId) {
         return this.disabilityDao.getDisability(disabilityId);
     }
 
-    public LiveData<List<Disability>> getDisabilitiesWithCriteriaNumber (int criteriaNumber) {
-        return this.disabilityDao.getDisabilitiesWithCriteriaNumber (criteriaNumber);
+    public LiveData<List<Disability>> getDisabilitiesWithCriteriaTypeNumber (int criteriaTypeNumber) {
+        return this.disabilityDao.getDisabilitiesWithCriteriaTypeNumber (criteriaTypeNumber);
     }
 }

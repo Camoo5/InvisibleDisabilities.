@@ -24,7 +24,7 @@ public final class Disability {
     @NonNull
     private final String description;
 
-    private final int criteriaNumber;
+    private final int criteriaTypeNumber;
 
 
 
@@ -32,11 +32,11 @@ public final class Disability {
     private final String imageUrl;
 
     public Disability(@NonNull String disabilityId, @NonNull String name, @NonNull String description,
-                 int criteriaNumber,  @NonNull String imageUrl) {
+                 int criteriaTypeNumber,  @NonNull String imageUrl) {
         this.disabilityId = disabilityId;
         this.name = name;
         this.description = description;
-        this.criteriaNumber = criteriaNumber;
+        this.criteriaTypeNumber = criteriaTypeNumber;
         this.imageUrl = imageUrl;
     }
 
@@ -57,8 +57,8 @@ public final class Disability {
         return description;
     }
 
-    public int getCriteriaNumber() {
-        return criteriaNumber;
+    public int getCriteriaTypeNumber() {
+        return criteriaTypeNumber;
     }
 
     @NonNull
@@ -85,7 +85,7 @@ public final class Disability {
 
     /**
      * As [Plant.kt] is declared as [Data class], {@link Object#hashCode()} implicit implemented.
-     * So we explicit implemented {@link Object#hashCode()} in [Plant.java]
+     * So we explicit implemented {@link Object#hashCode()} in [Disability.java]
      * see: https://kotlinlang.org/docs/reference/data-classes.html
      */
     @Override
@@ -100,6 +100,6 @@ public final class Disability {
      */
     @Override
     protected Object clone() {
-        return new Disability(disabilityId, name, description, criteriaNumber, imageUrl);
+        return new Disability(disabilityId, name, description, criteriaTypeNumber, imageUrl);
     }
 }

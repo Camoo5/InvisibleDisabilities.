@@ -67,9 +67,9 @@ public class DisabilityListFragment extends Fragment {
 
     private void updateData() {
         if (viewModel.isFiltered()) {
-            viewModel.cleanCriteriaNumber ();
+            viewModel.cleanCriteriaTypeNumber ();
         } else {
-            viewModel.setCriteriaNumber ( 1 );
+            viewModel.setCriteriaTypeNumber ( 1 );
         }
     }
 }

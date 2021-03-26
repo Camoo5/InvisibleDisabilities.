@@ -5,7 +5,7 @@ import androidx.room.Dao;
 import androidx.room.Query;
 
 /**
- * The Data Access Object for the SupportingEvidenceclass.
+ * The Data Access Object for the SupportingEvidence class.
  */
 @Dao
 public interface SupportingEvidenceDao {
