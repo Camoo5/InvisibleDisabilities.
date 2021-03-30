@@ -36,7 +36,7 @@ public class PractitionerFragment extends Fragment {
         PractitionerFragmentArgs args = PractitionerFragmentArgs.fromBundle ( requireArguments () );
         PractitionerViewModelFactory factory = InjectorUtils.providerPractitionerViewModelFactory(
                 requireContext(), args.getPractitionerId ());
-        PractitionerViewModel viewModel = new ViewModelProvider ( this, (ViewModelProvider.Factory) factory ).get(  PractitionerViewModel.class);
+        PractitionerViewModel viewModel = new ViewModelProvider ( this, factory ).get(  PractitionerViewModel.class);
         binding.setLifecycleOwner ( this );
 
         binding.setViewModel ( viewModel );

@@ -9,7 +9,7 @@ import androidx.lifecycle.LiveData;
 
 public class PractitionerRepository {
     private static PractitionerRepository instance;
-    private PractitionerDao practitionersDao;
+    private final PractitionerDao practitionersDao;
 
     private PractitionerRepository(PractitionerDao practitionerDao) {
         this.practitionersDao= practitionerDao;

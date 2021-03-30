@@ -38,7 +38,7 @@ public class SupportingEvidenceFragment extends Fragment {
         SupportingEvidenceFragmentArgs args = SupportingEvidenceFragmentArgs.fromBundle ( requireArguments () );
         SupportingEvidenceViewModelFactory factory = InjectorUtils.providerSupportingEvidenceViewModelFactory(
                 requireContext(), args.getSupportingevidenceId  ());
-        SupportingEvidenceViewModel viewModel = new ViewModelProvider ( this, (ViewModelProvider.Factory) factory ).get( SupportingEvidenceViewModel.class);
+        SupportingEvidenceViewModel viewModel = new ViewModelProvider ( this, factory ).get( SupportingEvidenceViewModel.class);
         binding.setLifecycleOwner ( this );
 
         binding.setViewModel ( viewModel );

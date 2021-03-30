@@ -37,7 +37,7 @@ public class SubConsiderationsFragment extends Fragment {
         SubConsiderationsFragmentArgs args = SubConsiderationsFragmentArgs.fromBundle ( requireArguments () );
         SubConsiderationsViewModelFactory factory = InjectorUtils.providerSubConsiderationsViewModelFactory(
                 requireContext(), args.getSubconsiderationsId  ());
-        SubConsiderationsViewModel viewModel = new ViewModelProvider ( this, (ViewModelProvider.Factory) factory ).get( SubConsiderationsViewModel.class);
+        SubConsiderationsViewModel viewModel = new ViewModelProvider ( this, factory ).get( SubConsiderationsViewModel.class);
         binding.setLifecycleOwner ( this );
 
         binding.setViewModel ( viewModel );

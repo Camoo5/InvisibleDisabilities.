@@ -8,7 +8,7 @@ import com.tenacity.invisibledisabilities.data.DisabilityRepository;
 
 
 public class DisabilityListViewModelFactory extends ViewModelProvider.NewInstanceFactory {
-    private DisabilityRepository repository;
+    private final DisabilityRepository repository;
 
     public DisabilityListViewModelFactory(@NonNull DisabilityRepository repository) {
         super();

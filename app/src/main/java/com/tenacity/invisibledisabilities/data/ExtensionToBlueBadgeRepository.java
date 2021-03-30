@@ -8,7 +8,7 @@ import androidx.lifecycle.LiveData;
  */
 public class ExtensionToBlueBadgeRepository {
     private static ExtensionToBlueBadgeRepository instance;
-    private ExtensionToBlueBadgeDao extensionToBlueBadgeDao;
+    private final ExtensionToBlueBadgeDao extensionToBlueBadgeDao;
 
     private ExtensionToBlueBadgeRepository(ExtensionToBlueBadgeDao extensionToBlueBadgeDao) {
         this.extensionToBlueBadgeDao = extensionToBlueBadgeDao;

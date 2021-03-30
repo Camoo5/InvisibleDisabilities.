@@ -37,7 +37,7 @@ import com.tenacity.invisibledisabilities.utilities.InjectorUtils;
         ExtensionToBlueBadgeFragmentArgs args = ExtensionToBlueBadgeFragmentArgs.fromBundle ( requireArguments () );
         ExtensionToBlueBadgeViewModelFactory factory = InjectorUtils.providerExtensionToBlueBadgeViewModelFactory(
                 requireContext(), args.getExtensiontobluebadgeId  ());
-        ExtensionToBlueBadgeViewModel viewModel = new ViewModelProvider ( this, (ViewModelProvider.Factory) factory ).get( ExtensionToBlueBadgeViewModel.class);
+        ExtensionToBlueBadgeViewModel viewModel = new ViewModelProvider ( this, factory ).get( ExtensionToBlueBadgeViewModel.class);
         binding.setLifecycleOwner ( this );
 
         binding.setViewModel ( viewModel );

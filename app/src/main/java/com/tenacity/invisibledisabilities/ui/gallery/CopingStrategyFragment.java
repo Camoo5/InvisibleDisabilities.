@@ -37,7 +37,7 @@ public class CopingStrategyFragment extends Fragment {
         CopingStrategyFragmentArgs args = CopingStrategyFragmentArgs.fromBundle( requireArguments());
         CopingStrategyViewModelFactory factory = InjectorUtils.providerCopingStrategyViewModelFactory(
                 requireContext(), args.getCopingstrategyId ());
-        CopingStrategyViewModel viewModel = new ViewModelProvider ( this, (ViewModelProvider.Factory) factory ).get( CopingStrategyViewModel.class);
+        CopingStrategyViewModel viewModel = new ViewModelProvider ( this, factory ).get( CopingStrategyViewModel.class);
         binding.setLifecycleOwner(this);
 
         binding.setViewModel(viewModel);

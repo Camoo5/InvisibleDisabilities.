@@ -8,7 +8,7 @@ import androidx.lifecycle.LiveData;
 
 public class SubConsiderationsRepository {
     private static SubConsiderationsRepository instance;
-    private SubConsiderationsDao subConsiderationsDao;
+    private final SubConsiderationsDao subConsiderationsDao;
 
     private SubConsiderationsRepository(SubConsiderationsDao subConsiderationsDao) {
         this.subConsiderationsDao = subConsiderationsDao;

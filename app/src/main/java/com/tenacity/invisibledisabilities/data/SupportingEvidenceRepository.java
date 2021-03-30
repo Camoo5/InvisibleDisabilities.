@@ -8,7 +8,7 @@ import androidx.lifecycle.LiveData;
 
 public class SupportingEvidenceRepository {
     private static SupportingEvidenceRepository instance;
-    private SupportingEvidenceDao supportingEvidenceDao;
+    private final SupportingEvidenceDao supportingEvidenceDao;
 
     private SupportingEvidenceRepository(SupportingEvidenceDao supportingEvidenceDao) {
         this.supportingEvidenceDao = supportingEvidenceDao;

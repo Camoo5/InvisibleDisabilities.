@@ -9,7 +9,7 @@ import androidx.lifecycle.LiveData;
 
 public class CriteriaOneRepository {
     private static CriteriaOneRepository instance;
-    private  CriteriaOneDao criteriaOneDao;
+    private final CriteriaOneDao criteriaOneDao;
 
     private CriteriaOneRepository(CriteriaOneDao criteriaOneDao) {
         this.criteriaOneDao = criteriaOneDao;

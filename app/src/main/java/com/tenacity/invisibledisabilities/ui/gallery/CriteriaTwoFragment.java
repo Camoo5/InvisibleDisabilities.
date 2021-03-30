@@ -37,7 +37,7 @@ public class CriteriaTwoFragment extends Fragment {
         CriteriaTwoFragmentArgs args = CriteriaTwoFragmentArgs.fromBundle ( requireArguments () );
         CriteriaTwoViewModelFactory factory = InjectorUtils.providerCriteriaTwoViewModelFactory(
                 requireContext(), args.getCriteriatwoId ());
-        CriteriaTwoViewModel viewModel = new ViewModelProvider ( this, (ViewModelProvider.Factory) factory ).get( CriteriaTwoViewModel.class);
+        CriteriaTwoViewModel viewModel = new ViewModelProvider ( this, factory ).get( CriteriaTwoViewModel.class);
         binding.setLifecycleOwner ( this );
 
         binding.setViewModel ( viewModel );

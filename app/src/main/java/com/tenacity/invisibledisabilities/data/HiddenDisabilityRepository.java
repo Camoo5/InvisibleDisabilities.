@@ -63,12 +63,11 @@ public class HiddenDisabilityRepository {
     public LiveData <HiddenDisability> getHiddenDisabilityForSubConsiderations(String subconsiderationsId) {
         return hiddenDisabilityDao.getHiddenDisabilityForSubConsiderations ( subconsiderationsId );
 
-        public LiveData <HiddenDisability> getHiddenDisabilityForSupportingEvidence ( String supportingevidenceId){
-            return hiddenDisabilityDao.getHiddenDisabilityForSupportingEvidence ( supportingevidenceId );
+
         }
 
 
-    }
+
 
     public LiveData <List <HiddenDisability>> getHiddenDisabilities() {
         return hiddenDisabilityDao.getHiddenDisabilities ();

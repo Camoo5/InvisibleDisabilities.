@@ -45,6 +45,7 @@
     <!-- Accessibility -->
     <string name="a11y_disability_item_image" translation_description="Accessibility text for each of the disability images shown in the 'hidden_disabilities' and 'Disability list' screens.">Picture of disability</string>
     <string name="my_hidden_disability_title">my_hidden_disability_title</string>
+    <string name="submit">Submit</string>
 
 
 </resources>
