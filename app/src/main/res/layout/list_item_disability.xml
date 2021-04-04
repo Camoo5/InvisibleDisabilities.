@@ -2,15 +2,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-        <variable
-            name="clickListener"
-            type="android.view.View.OnClickListener"/>
-        <variable
-            name="disability"
-            type="com.tenacity.invisibledisabilities.data.Disability"/>
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,33 +11,43 @@
             android:id="@+id/disability_item_image"
             android:layout_width="0dp"
             android:layout_height="@dimen/disability_item_image_height"
-            android:layout_marginTop="@dimen/margin_normal"
-            android:layout_marginBottom="@dimen/margin_small"
-            android:layout_marginEnd="@dimen/margin_small"
             android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_small"
             android:contentDescription="@string/a11y_disability_item_image"
             android:scaleType="centerCrop"
             app:imageFromUrl="@{disability.imageUrl}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent/"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/disability_item_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_normal"
-            android:layout_marginEnd="@dimen/margin_small"
             android:layout_marginStart="@dimen/margin_small"
             android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_normal"
             android:text="@{disability.name}"
             android:textAppearance="?attr/textAppearanceListItem"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/disability_item_image"
-            tools:text="IBS"/>
+            tools:text="IBS" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="disability"
+            type="com.tenacity.invisibledisabilities.data.Disability" />
+    </data>
 
 </layout>
