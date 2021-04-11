@@ -22,6 +22,5 @@
 #-renamesourcefileattribute SourceFile
 
 # ServiceLoader support
--keepnames class kotlinx.coroutines.internal.MainDispatcherFactory {}
--keepnames class kotlinx.coroutines.CoroutineExceptionHandler {}
+
 

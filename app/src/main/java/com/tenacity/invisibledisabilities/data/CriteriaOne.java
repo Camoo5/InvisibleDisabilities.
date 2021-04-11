@@ -6,6 +6,9 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 
@@ -77,6 +80,8 @@ public final class CriteriaOne {
     }
 
 
+    @NotNull
+    @Contract(value = " -> new", pure = true)
     @Override
     protected Object clone() {
         return new CopingStrategy (criteriaoneId, name, description, imageUrl);

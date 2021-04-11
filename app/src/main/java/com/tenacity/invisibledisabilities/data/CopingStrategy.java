@@ -78,7 +78,7 @@ public final class CopingStrategy {
 
 
     @Override
-    protected Object clone() {
+    public Object clone() {
         return new CopingStrategy (copingstrategyId, name, description, imageUrl);
     }
 }
