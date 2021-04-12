@@ -66,10 +66,10 @@
         android:id="@+id/extension_to_blue_badge_fragment"
         android:name="com.tenacity.invisibledisabilities.ui.gallery.ExtensionToBlueBadgeFragment"
         android:label="@string/extension_to_blue_badge_title"
-        tools:layout="@layout/fragment_extension_to_blue_badge">
+        tools:layout="@layout/fragment_extension_to_blue_badge_detail">
 
         <action
-            android:id="@+id/extension_to_blue_badge_fragment_to_extension_to_criteria_one_fragment"
+            android:id="@+id/action_extension_to_blue_badge_fragment_to_extension_to_criteria_one_fragment"
             app:destination="@id/criteria_one_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -88,10 +88,10 @@
         android:id="@+id/criteria_one_fragment"
         android:name="com.tenacity.invisibledisabilities.ui.gallery.CriteriaOneFragment"
         android:label="@string/criteria_one_title"
-        tools:layout="@layout/fragment_criteria_one">
+        tools:layout="@layout/fragment_criteria_one_detail">
 
         <action
-            android:id="@+id/criteria_one_fragment_to_criteria_two_fragment"
+            android:id="@+id/action_criteria_one_fragment_to_criteria_two_fragment"
             app:destination="@id/criteria_two_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -109,10 +109,10 @@
         android:id="@+id/criteria_two_fragment"
         android:name="com.tenacity.invisibledisabilities.ui.gallery.CriteriaTwoFragment"
         android:label="@string/criteria_two_title"
-        tools:layout="@layout/fragment_criteria_two">
+        tools:layout="@layout/fragment_criteria_two_detail">
 
         <action
-            android:id="@+id/criteria_two_fragment_to_sub_considerations_fragment"
+            android:id="@+id/action_criteria_two_fragment_to_sub_considerations_fragment"
             app:destination="@id/sub_considerations_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -128,10 +128,10 @@
         android:id="@+id/sub_considerations_fragment"
         android:name="com.tenacity.invisibledisabilities.ui.gallery.SubConsiderationsFragment"
         android:label="@string/sub_considerations_title"
-        tools:layout="@layout/fragment_sub_considerations">
+        tools:layout="@layout/fragment_sub_considerations_detail">
 
         <action
-            android:id="@+id/sub_considerations_fragment_to_supporting_evidence_fragment"
+            android:id="@+id/action_sub_considerations_fragment_to_supporting_evidence_fragment"
             app:destination="@id/supporting_evidence_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -148,10 +148,10 @@
         android:id="@+id/supporting_evidence_fragment"
         android:name="com.tenacity.invisibledisabilities.ui.gallery.SupportingEvidenceFragment"
         android:label="@string/supporting_evidence_title"
-        tools:layout="@layout/fragment_supporting_evidence">
+        tools:layout="@layout/fragment_supporting_evidence_detail">
 
         <action
-            android:id="@+id/supporting_evidence_fragment_to_coping_strategy_fragment"
+            android:id="@+id/action_supporting_evidence_fragment_to_coping_strategy_fragment"
             app:destination="@id/coping_strategy_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -168,10 +168,10 @@
         android:id="@+id/coping_strategy_fragment"
         android:name="com.tenacity.invisibledisabilities.ui.gallery.CopingStrategyFragment"
         android:label="@string/coping_strategy_title"
-        tools:layout="@layout/fragment_coping_strategy">
+        tools:layout="@layout/fragment_coping_strategy_detail">
 
         <action
-            android:id="@+id/coping_strategy_fragment_to_practitioners_fragment"
+            android:id="@+id/action_coping_strategy_fragment_to_practitioners_fragment"
             app:destination="@id/practitioner_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -189,10 +189,10 @@
         android:id="@+id/practitioner_fragment"
         android:name="com.tenacity.invisibledisabilities.ui.gallery.PractitionerFragment"
         android:label="@string/practitioner_title"
-        tools:layout="@layout/fragment_practitioner">
+        tools:layout="@layout/fragment_practitioner_detail">
 
         <action
-            android:id="@+id/practitioners_fragment_to_hidden_disability_fragment"
+            android:id="@+id/action_practitioners_fragment_to_hidden_disability_fragment"
             app:destination="@+id/hidden_disability_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"

@@ -10,49 +10,50 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.tenacity.invisibledisabilities.data.CopingStrategy;
 import com.tenacity.invisibledisabilities.data.Disability;
+import com.tenacity.invisibledisabilities.databinding.ListItemCopingStrategyBinding;
 import com.tenacity.invisibledisabilities.databinding.ListItemDisabilityBinding;
-import com.tenacity.invisibledisabilities.ui.gallery.DisabilityListFragmentDirections;
 
 
 
 
-public class DisabilityAdapter extends ListAdapter <Disability, DisabilityAdapter.ViewHolder> {
+public class CopingStrategyAdapter extends ListAdapter <CopingStrategy, CopingStrategyAdapter.ViewHolder> {
 
-    public DisabilityAdapter() {
-        super(new DisabilityDiffCallback());
+    public CopingStrategyAdapter() {
+        super(new CopingStrategyDiffCallback());
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder( ListItemDisabilityBinding.inflate(
+        return new ViewHolder( ListItemCopingStrategyBinding.inflate(
                 LayoutInflater.from(parent.getContext()), parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Disability disability = getItem(position);
-        holder.bind(createOnClickListener(disability.getDisabilityId()), disability);
-        holder.itemView.setTag(disability);
+        CopingStrategy copingStrategy = getItem(position);
+        holder.bind(createOnClickListener(copingStrategy.getCopingStrategyId()), copingStrategy);
+        holder.itemView.setTag(copingStrategy);
     }
 
     private View.OnClickListener createOnClickListener(String disabilityId) {
         return v -> Navigation.findNavController(v).navigate(
-                DisabilityListFragmentDirections.actionDisabilityListFragmentToDisabilityDetailFragment(disabilityId));
+                CopingStrategyListFragmentDirections.actionCopingStrategyListFragmentToDisabilityDetailFragment(disabilityId));
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         private final ListItemDisabilityBinding binding;
 
-        ViewHolder(@NonNull ListItemDisabilityBinding binding) {
+        ViewHolder(@NonNull ListItemCopingStrategyBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
 
-        void bind(View.OnClickListener listener, Disability item) {
+        void bind(View.OnClickListener listener, CopingStrategy item) {
             binding.setClickListener(listener);
-            binding.setDisability(item);
+            binding.setCopingStrategy(item);
             binding.executePendingBindings();
         }
     }
