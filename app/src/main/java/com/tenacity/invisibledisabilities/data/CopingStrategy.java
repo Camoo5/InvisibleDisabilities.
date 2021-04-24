@@ -6,11 +6,12 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.List;
 import java.util.Objects;
 
 
 @Entity(tableName = "copingStrategies")
-public final class CopingStrategy {
+public final class CopingStrategy implements List {
 
 
     @NonNull

@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class DisabilityDetailBindingAdapters {
+public class   DisabilityDetailBindingAdapters {
     @BindingAdapter("imageFromUrl")
     public static void bindImageFromUrl(ImageView view, String imageUrl) {
         if (!TextUtils.isEmpty(imageUrl)) {

@@ -7,16 +7,13 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DiffUtil;
-import androidx.recyclerview.widget. ListAdapter;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tenacity.invisibledisabilities.data.CopingStrategy;
-import com.tenacity.invisibledisabilities.databinding.FragmentCopingStrategyBinding;
-import com.tenacity.invisibledisabilities.databinding.FragmentCopingStrategyListBinding;
-import com.tenacity.invisibledisabilities.ui.gallery.CopingStrategyFragmentDirections;
+import com.tenacity.invisibledisabilities.databinding.ListItemCopingStrategyBinding;
 
-
-public class CopingStrategy extends ListAdapter <CopingStrategy, CopingStrategyAdapter.ViewHolder> {
+public class CopingStrategyAdapter extends ListAdapter <CopingStrategy, CopingStrategyAdapter.ViewHolder> {
 
     public CopingStrategyAdapter() {
         super(new CopingStrategyDiffCallback());
@@ -25,7 +22,7 @@ public class CopingStrategy extends ListAdapter <CopingStrategy, CopingStrategyA
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder( FragmentCopingStrategyListBinding.inflate(
+        return new ViewHolder( ListItemCopingStrategyBinding.inflate(
                 LayoutInflater.from(parent.getContext()), parent, false));
     }
 
@@ -38,34 +35,38 @@ public class CopingStrategy extends ListAdapter <CopingStrategy, CopingStrategyA
 
     private View.OnClickListener createOnClickListener(String copingstrategyId) {
         return v -> Navigation.findNavController(v).navigate(
-                CopingStrategyFragmentDirections.actionCopingStrategyFragmentToPractitionersFragment (copingstrategyId));
+                CopingStrategyFragmentDirections.actionDisabilityListFragmentToDisabilitytDetailFragment(copingstrategyId));
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        private final FragmentCopingStrategyListBinding binding;
+        private final ListItemCopingStrategyBinding binding;
 
-        ViewHolder( @NonNull FragmentCopingStrategyListBinding binding) {
+        ViewHolder(@NonNull ListItemCopingStrategyBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
 
         void bind(View.OnClickListener listener, CopingStrategy item) {
             binding.setClickListener(listener);
-            binding.setCopingStrategy(item);
+            binding.setCopingstrategy(item);
             binding.executePendingBindings();
         }
     }
 
-    static class CopingStrategyDiffCallback extends DiffUtil.ItemCallback<CopingStrategy> {
+    static class CopingStrategyDiffCallback extends DiffUtil.ItemCallback<CopingStrategy {
 
         @Override
-        public boolean areItemsTheSame(@NonNull CopingStrategy oldItem, @NonNull CopingStrategy newItem) {
-            return oldItem.getCopingstrategyId ().equals(newItem.getCopingstrategyId ());
+        public boolean areItemsTheSame(@NonNull CopingStrategy oldItem, @NonNull    CopingStrategy newItem) {
+            return oldItem.getCopingstrategyId ().equals(newItem.getCopingstrategyId());
         }
 
         @Override
-        public boolean areContentsTheSame(@NonNull CopingStrategy oldItem, @NonNull CopingStrategy newItem) {
+        public boolean areContentsTheSame(@NonNull CopingStrategy oldItem, @NonNull    CopingStrategy newItem) {
             return oldItem.equals ( newItem );
         }
     }
+
+
+
+
 }

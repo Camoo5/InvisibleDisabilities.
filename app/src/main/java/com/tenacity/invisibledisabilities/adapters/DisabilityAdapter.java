@@ -10,65 +10,63 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.tenacity.invisibledisabilities.data.CopingStrategy;
 import com.tenacity.invisibledisabilities.data.Disability;
-import com.tenacity.invisibledisabilities.databinding.ListItemCopingStrategyBinding;
 import com.tenacity.invisibledisabilities.databinding.ListItemDisabilityBinding;
+import com.tenacity.invisibledisabilities.ui.gallery.DisabilityListFragment;
 
+public class DisabilityAdapter extends ListAdapter <Disability, DisabilityAdapter.ViewHolder> {
 
-
-
-public class CopingStrategyAdapter extends ListAdapter <CopingStrategy, CopingStrategyAdapter.ViewHolder> {
-
-    public CopingStrategyAdapter() {
-        super(new CopingStrategyDiffCallback());
-    }
+public DisabilityAdapter() {
+    super(new DisabilityDiffCallback());
+}
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder( ListItemCopingStrategyBinding.inflate(
+        return new ViewHolder( ListItemDisabilityBinding.inflate(
                 LayoutInflater.from(parent.getContext()), parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        CopingStrategy copingStrategy = getItem(position);
-        holder.bind(createOnClickListener(copingStrategy.getCopingStrategyId()), copingStrategy);
-        holder.itemView.setTag(copingStrategy);
+        Disability disability = getItem(position);
+        holder.bind(createOnClickListener(disability.getDisabilityId ()), disability);
+        holder.itemView.setTag(disability);
     }
 
     private View.OnClickListener createOnClickListener(String disabilityId) {
         return v -> Navigation.findNavController(v).navigate(
-                CopingStrategyListFragmentDirections.actionCopingStrategyListFragmentToDisabilityDetailFragment(disabilityId));
+                DisabilityListFragmentDirections.actionDisabilityListFragmentToDisabilityDetailFragment(disabilityId));
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         private final ListItemDisabilityBinding binding;
 
-        ViewHolder(@NonNull ListItemCopingStrategyBinding binding) {
+        ViewHolder(@NonNull ListItemDisabilityBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
 
-        void bind(View.OnClickListener listener, CopingStrategy item) {
+        void bind(View.OnClickListener listener, Disability item) {
             binding.setClickListener(listener);
-            binding.setCopingStrategy(item);
+            binding.setDisability(item);
             binding.executePendingBindings();
         }
     }
 
-    static class DisabilityDiffCallback extends DiffUtil.ItemCallback<Disability> {
+    static class DisabilityDiffCallback extends DiffUtil.ItemCallback<Disability {
 
         @Override
         public boolean areItemsTheSame(@NonNull Disability oldItem, @NonNull Disability newItem) {
-            return oldItem.getDisabilityId().equals(newItem.getDisabilityId());
+            return oldItem.getDisabilityId ().equals(newItem.getDisabilityId());
         }
-
 
         @Override
         public boolean areContentsTheSame(@NonNull Disability oldItem, @NonNull Disability newItem) {
             return oldItem.equals ( newItem );
         }
     }
+
+
+
 }

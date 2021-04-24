@@ -102,7 +102,7 @@
 
         <variable
             name="viewModel"
-            type="com.tenacity.invisibledisabilities.ui.viewmodels.PractitionerViewModel" />
+            type="com.tenacity.invisibledisabilities.ui.viewmodels.PractitionerListViewModel" />
     </data>
 
 </layout>

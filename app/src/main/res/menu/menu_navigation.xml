@@ -3,14 +3,10 @@
 
 
     <item
-        android:id="@+id/criteria_one_fragment"
-        android:title="@string/criteria_one_title"/>
+        android:id="@+id/criterias_fragment"
+        android:title="@string/criterias_title"/>
 
-    <item
-        android:id="@+id/criteria_two_fragment"
-        android:title="@string/criteria_two_title"/>
-
-    <item
+      <item
         android:id="@+id/coping_strategy_fragment"
         android:title="@string/coping_strategy_title"/>
 

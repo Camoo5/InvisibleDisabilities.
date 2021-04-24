@@ -6,6 +6,9 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 
@@ -98,6 +101,8 @@ public final class Disability {
      * So we explicit implemented {@link Object#clone()} in [Plant.java]
      * see: https://kotlinlang.org/docs/reference/data-classes.html
      */
+    @NotNull
+    @Contract(value = " -> new", pure = true)
     @Override
     protected Object clone() {
         return new Disability(disabilityId, name, description, criteriaTypeNumber, imageUrl);

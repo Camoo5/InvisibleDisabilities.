@@ -4,24 +4,22 @@ import android.content.Context;
 
 import com.tenacity.invisibledisabilities.data.AppDatabase;
 import com.tenacity.invisibledisabilities.data.CopingStrategyRepository;
-import com.tenacity.invisibledisabilities.data.CriteriaOneRepository;
-import com.tenacity.invisibledisabilities.data.CriteriaTwoRepository;
+import com.tenacity.invisibledisabilities.data.CriteriasRepository;
 import com.tenacity.invisibledisabilities.data.DisabilityRepository;
 import com.tenacity.invisibledisabilities.data.ExtensionToBlueBadgeRepository;
 import com.tenacity.invisibledisabilities.data.HiddenDisabilityRepository;
 import com.tenacity.invisibledisabilities.data.PractitionerRepository;
 import com.tenacity.invisibledisabilities.data.SubConsiderationsRepository;
 import com.tenacity.invisibledisabilities.data.SupportingEvidenceRepository;
-import com.tenacity.invisibledisabilities.ui.viewmodels.CopingStrategyViewModelFactory;
-import com.tenacity.invisibledisabilities.ui.viewmodels.CriteriaOneViewModelFactory;
-import com.tenacity.invisibledisabilities.ui.viewmodels.CriteriaTwoViewModelFactory;
+import com.tenacity.invisibledisabilities.ui.viewmodels.CopingStrategyListViewModelFactory;
+import com.tenacity.invisibledisabilities.ui.viewmodels.CriteriasDetailViewModelFactory;
 import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityDetailViewModelFactory;
 import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityListViewModelFactory;
-import com.tenacity.invisibledisabilities.ui.viewmodels.ExtensionToBlueBadgeViewModelFactory;
+import com.tenacity.invisibledisabilities.ui.viewmodels.ExtensionToBlueBadgeListViewModelFactory;
 import com.tenacity.invisibledisabilities.ui.viewmodels.HiddenDisabilityListViewModelFactory;
-import com.tenacity.invisibledisabilities.ui.viewmodels.PractitionerViewModelFactory;
-import com.tenacity.invisibledisabilities.ui.viewmodels.SubConsiderationsViewModelFactory;
-import com.tenacity.invisibledisabilities.ui.viewmodels.SupportingEvidenceViewModelFactory;
+import com.tenacity.invisibledisabilities.ui.viewmodels.PractitionerListViewModelFactory;
+import com.tenacity.invisibledisabilities.ui.viewmodels.SubConsiderationsListViewModelFactory;
+import com.tenacity.invisibledisabilities.ui.viewmodels.SupportingEvidenceListViewModelFactory;
 
 
 /**
@@ -44,17 +42,13 @@ public class InjectorUtils {
 
     }
 
-    private static CriteriaOneRepository getCriteriaOneRepository(Context context) {
-        return CriteriaOneRepository.getInstance(
+    private static CriteriasRepository getCriteriaOneRepository(Context context) {
+        return CriteriasRepository.getInstance(
                 AppDatabase.getInstance(context.getApplicationContext()).getCriteriaOneDao());
 
     }
 
-    private static CriteriaTwoRepository getCriteriaTwoRepository(Context context) {
-        return CriteriaTwoRepository.getInstance(
-                AppDatabase.getInstance(context.getApplicationContext()).getCriteriaTwoDao());
 
-    }
     private static ExtensionToBlueBadgeRepository getExtensionToBlueBadgeRepository(Context context) {
         return ExtensionToBlueBadgeRepository.getInstance(
                 AppDatabase.getInstance(context.getApplicationContext()).getExtensionToBlueBadgeDao());
@@ -94,37 +88,33 @@ public class InjectorUtils {
     }
 
 
-    public static CopingStrategyViewModelFactory providerCopingStrategyViewModelFactory(Context context, String copingstrategyId) {
-        return new CopingStrategyViewModelFactory (getCopingStrategyRepository ( context ), getHiddenDisabilityRepository (context), copingstrategyId);
+    public static CopingStrategyListViewModelFactory providerCopingStrategyViewModelFactory(Context context) {
+        return new CopingStrategyListViewModelFactory (getCopingStrategyRepository ( context ), getHiddenDisabilityRepository (context), copingstrategyId);
 
     }
 
-    public static CriteriaOneViewModelFactory providerCriteriaOneViewModelFactory(Context context, String criteriaoneId) {
-        return new CriteriaOneViewModelFactory (getCriteriaOneRepository ( context ), getHiddenDisabilityRepository (context), criteriaoneId);
+    public static CriteriasDetailViewModelFactory providerCriteriaOneViewModelFactory(Context context, String criteriaoneId) {
+        return new CriteriasDetailViewModelFactory (getCriteriaOneRepository ( context ), getHiddenDisabilityRepository (context), criteriaoneId);
 
     }
 
 
-    public static CriteriaTwoViewModelFactory providerCriteriaTwoViewModelFactory(Context context, String criteriatwoId) {
-        return new CriteriaTwoViewModelFactory (getCriteriaTwoRepository ( context ), getHiddenDisabilityRepository (context), criteriatwoId);
+
+    public static ExtensionToBlueBadgeListViewModelFactory providerExtensionToBlueBadgeViewModelFactory(Context context, String extensiontobluebadgeId) {
+        return new ExtensionToBlueBadgeListViewModelFactory (getExtensionToBlueBadgeRepository ( context ), getHiddenDisabilityRepository (context), extensiontobluebadgeId);
 
     }
 
-    public static ExtensionToBlueBadgeViewModelFactory providerExtensionToBlueBadgeViewModelFactory(Context context, String extensiontobluebadgeId) {
-        return new ExtensionToBlueBadgeViewModelFactory (getExtensionToBlueBadgeRepository ( context ), getHiddenDisabilityRepository (context), extensiontobluebadgeId);
+    public static PractitionerListViewModelFactory providerPractitionerViewModelFactory(Context context, String practitionerId) {
+        return new PractitionerListViewModelFactory (getPractitionerRepository ( context ), getHiddenDisabilityRepository (context), practitionerId);
 
     }
-
-    public static PractitionerViewModelFactory providerPractitionerViewModelFactory(Context context, String practitionerId) {
-        return new PractitionerViewModelFactory (getPractitionerRepository ( context ), getHiddenDisabilityRepository (context), practitionerId);
-
-    }
-    public static SubConsiderationsViewModelFactory providerSubConsiderationsViewModelFactory(Context context, String subconsiderationsId) {
-        return new SubConsiderationsViewModelFactory (getSubConsiderationsRepository ( context ), getHiddenDisabilityRepository (context), subconsiderationsId);
+    public static SubConsiderationsListViewModelFactory providerSubConsiderationsViewModelFactory(Context context, String subconsiderationsId) {
+        return new SubConsiderationsListViewModelFactory (getSubConsiderationsRepository ( context ), getHiddenDisabilityRepository (context), subconsiderationsId);
 
     }
-    public static SupportingEvidenceViewModelFactory providerSupportingEvidenceViewModelFactory(Context context, String supportingevidenceId) {
-        return new SupportingEvidenceViewModelFactory (getSupportingEvidenceRepository ( context ), getHiddenDisabilityRepository (context), supportingevidenceId);
+    public static SupportingEvidenceListViewModelFactory providerSupportingEvidenceViewModelFactory(Context context, String supportingevidenceId) {
+        return new SupportingEvidenceListViewModelFactory (getSupportingEvidenceRepository ( context ), getHiddenDisabilityRepository (context), supportingevidenceId);
 
     }
 

@@ -32,7 +32,7 @@ public class DisabilityListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentDisabilityListBinding binding = FragmentDisabilityListBinding.inflate(inflater, container, false);
         DisabilityListViewModelFactory factory = InjectorUtils.provideDisabilityListViewModelFactory(getContext());
-        DisabilityAdapter adapter = new DisabilityAdapter();
+        ListAdapter adapter = new DisabilityAdapter();
         binding.disabilityList.setAdapter(adapter);
         this.viewModel = new ViewModelProvider (this, factory).get(DisabilityListViewModel.class);
         subscribeUi(adapter);
@@ -59,7 +59,9 @@ public class DisabilityListFragment extends Fragment {
 
     private void subscribeUi(ListAdapter adapter) {
         this.viewModel.disabilities.observe(getViewLifecycleOwner(), disabilities -> {
-            if (disabilities != null) adapter.submitList ( disabilities );
+            if (disabilities != null) {
+                adapter.submitList(disabilities);
+            }
         });
     }
 

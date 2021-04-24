@@ -23,7 +23,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract HiddenDisabilityDao getHiddenDisabilitiesDao();
     public abstract DisabilityDao getDisabilityDao();
     public abstract CopingStrategyDao getCopingStrategyDao();
-    public abstract CriteriaOneDao getCriteriaOneDao();
+    public abstract CriteriasDao getCriteriaOneDao();
     public abstract CriteriaTwoDao getCriteriaTwoDao();
     public abstract ExtensionToBlueBadgeDao getExtensionToBlueBadgeDao();
     public abstract PractitionerDao getPractitionerDao();

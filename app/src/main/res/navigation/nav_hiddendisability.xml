@@ -69,13 +69,13 @@
         tools:layout="@layout/fragment_extension_to_blue_badge_detail">
 
         <action
-            android:id="@+id/action_extension_to_blue_badge_fragment_to_extension_to_criteria_one_fragment"
-            app:destination="@id/criteria_one_fragment"
+            android:id="@+id/action_extension_to_blue_badge_fragment_to_criterias_fragment"
+            app:destination="@id/criterias_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@+id/criteria_one_fragment"
+            app:popUpTo="@+id/criterias_fragment"
             app:popUpToInclusive="true"/>
         <argument
             android:name="extensiontobluebadgeId"
@@ -85,50 +85,33 @@
     </fragment>
 
     <fragment
-        android:id="@+id/criteria_one_fragment"
-        android:name="com.tenacity.invisibledisabilities.ui.gallery.CriteriaOneFragment"
-        android:label="@string/criteria_one_title"
-        tools:layout="@layout/fragment_criteria_one_detail">
+        android:id="@+id/criterias_fragment"
+        android:name="com.tenacity.invisibledisabilities.ui.gallery.CriteriasFragment"
+        android:label="@string/criterias_title"
+        tools:layout="@layout/fragment_criterias_detail">
 
         <action
-            android:id="@+id/action_criteria_one_fragment_to_criteria_two_fragment"
-            app:destination="@id/criteria_two_fragment"
+            android:id="@+id/action_criterias_fragment_to_disability_detail_fragment"
+            app:destination="@id/disability_detail_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@+id/criteria_two_fragment"
+            app:popUpTo="@+id/disability_detail_fragment"
             app:popUpToInclusive="true"/>
 
         <argument
-            android:name="criteriaoneId"
+            android:name="criteriasId"
             app:argType="string" />
     </fragment>
 
-    <fragment
-        android:id="@+id/criteria_two_fragment"
-        android:name="com.tenacity.invisibledisabilities.ui.gallery.CriteriaTwoFragment"
-        android:label="@string/criteria_two_title"
-        tools:layout="@layout/fragment_criteria_two_detail">
-
-        <action
-            android:id="@+id/action_criteria_two_fragment_to_sub_considerations_fragment"
-            app:destination="@id/sub_considerations_fragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@+id/sub_considerations_fragment"
-            app:popUpToInclusive="true"/>
-        <argument android:name="criteriatwoId"
-            app:argType="string" />
-    </fragment>
+    
 
     <fragment
-        android:id="@+id/sub_considerations_fragment"
+        android:id="@+id/subconsiderations_fragment"
         android:name="com.tenacity.invisibledisabilities.ui.gallery.SubConsiderationsFragment"
         android:label="@string/sub_considerations_title"
-        tools:layout="@layout/fragment_sub_considerations_detail">
+        tools:layout="@layout/fragment_subconsiderations_detail">
 
         <action
             android:id="@+id/action_sub_considerations_fragment_to_supporting_evidence_fragment"
@@ -166,7 +149,7 @@
 
     <fragment
         android:id="@+id/coping_strategy_fragment"
-        android:name="com.tenacity.invisibledisabilities.ui.gallery.CopingStrategyFragment"
+        android:name="com.tenacity.invisibledisabilities.ui.gallery.CopingStrategyListFragment"
         android:label="@string/coping_strategy_title"
         tools:layout="@layout/fragment_coping_strategy_detail">
 

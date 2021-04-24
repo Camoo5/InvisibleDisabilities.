@@ -29,8 +29,7 @@ public class HiddenDisabilityActivity extends AppCompatActivity {
         this.drawerLayout = binding.drawerLayout;
         this.navController = Navigation.findNavController(this, R.id.hidden_disability_nav_host_fragment);
         this.navController = Navigation.findNavController(this, R.id.coping_strategy_fragment);
-        this.navController = Navigation.findNavController(this, R.id.criteria_one_fragment);
-        this.navController = Navigation.findNavController(this, R.id.criteria_two_fragment);
+        this.navController = Navigation.findNavController(this, R.id.criterias_fragment);
         this.navController = Navigation.findNavController(this, R.id.extension_to_blue_badge_fragment);
         this.navController = Navigation.findNavController(this, R.id.practitioners_fragment);
         this.navController = Navigation.findNavController(this, R.id.sub_considerations_fragment);

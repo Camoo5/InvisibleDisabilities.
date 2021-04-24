@@ -65,7 +65,7 @@ public final class ExtensionToBlueBadge {
 
     @Override
     public boolean equals(@Nullable Object obj) {
-        return obj instanceof CriteriaOne
+        return obj instanceof Criterias
                 && this.extensiontobluebadgeId.equals ( ( (ExtensionToBlueBadge) obj ).extensiontobluebadgeId );
     }
 

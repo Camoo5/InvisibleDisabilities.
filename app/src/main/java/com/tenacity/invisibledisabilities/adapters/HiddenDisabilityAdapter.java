@@ -4,12 +4,12 @@ package com.tenacity.invisibledisabilities.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DiffUtil;
-import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tenacity.invisibledisabilities.R;
@@ -21,7 +21,7 @@ import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityAndHiddenDisab
 import java.util.Objects;
 
 
-public class HiddenDisabilityAdapter extends ListAdapter<DisabilityAndHiddenDisabilities, HiddenDisabilityAdapter.ViewHolder> {
+public class HiddenDisabilityAdapter extends ListAdapter <DisabilityAndHiddenDisabilities, HiddenDisabilityAdapter.ViewHolder> {
 
     public HiddenDisabilityAdapter() {
         super(new HiddenDisabilityDiffCallback());
@@ -37,7 +37,7 @@ public class HiddenDisabilityAdapter extends ListAdapter<DisabilityAndHiddenDisa
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-      DisabilityAndHiddenDisabilities hiddenDisabilities = getItem(position);
+      DisabilityAndHiddenDisabilities hiddenDisabilities = (DisabilityAndHiddenDisabilities) getItem(position);
         holder.itemView.setTag(hiddenDisabilities);
         holder.bind(createOnClickListener(hiddenDisabilities.getDisability ().getDisabilityId ()), hiddenDisabilities);
     }
