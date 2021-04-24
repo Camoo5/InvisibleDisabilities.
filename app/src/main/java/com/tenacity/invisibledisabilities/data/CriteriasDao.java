@@ -5,14 +5,14 @@ import androidx.room.Dao;
 import androidx.room.Query;
 
 /**
- * The Data Access Object for the CopingStrategy class.
+ * The Data Access Object for the Criterias class.
  */
 @Dao
 public interface CriteriasDao {
 
 
-    @Query("SELECT * FROM Criterias WHERE id = :criteriaoneId")
-    LiveData<Criterias> getCriteriaOne (String criteriaoneId);
+    @Query("SELECT * FROM Criterias WHERE id = :criteriasId")
+    LiveData<Criterias> getCriterias (String criteriasId);
 
 
 

@@ -11,7 +11,7 @@
         tools:ignore="MergeRootFrame">
 
         <androidx.core.widget.NestedScrollView
-            android:id="@+id/criteria_one_fragment_scrollview"
+            android:id="@+id/criterias_fragment_scrollview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
@@ -30,7 +30,7 @@
                     android:layout_marginStart="@dimen/margin_small"
                     android:layout_marginTop="@dimen/margin_normal"
                     android:layout_marginEnd="@dimen/margin_small"
-                    android:text="@{viewModel.criteriaOne.name}"
+                    android:text="@{viewModel.criterias.name}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -49,7 +49,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/criterias"
-                    app:renderHtml="@{viewModel.criteriaOne.description}"
+                    app:renderHtml="@{viewModel.criterias.description}"
                     tools:text="Details about criteria one" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -70,7 +70,7 @@
                 android:fitsSystemWindows="true"
                 app:contentScrim="?attr/colorPrimary"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:title="@{viewModel.criteriaOne.name}"
+                app:title="@{viewModel.criterias.name}"
                 app:toolbarId="@+id/toolbar">
 
 
@@ -87,7 +87,7 @@
             android:layout_margin="@dimen/fab_margin"
             android:tint="@android:color/white"
             app:isGone="@{viewModel.isDisabled}"
-            app:layout_anchor="@id/criteria_one_fragment_scrollview"
+            app:layout_anchor="@id/criterias_fragment_scrollview"
             app:layout_anchorGravity="bottom|end"
             app:srcCompat="@drawable/ic_plus"
             tools:ignore="ContentDescription">

@@ -42,7 +42,7 @@ public class CriteriasListViewModel extends ViewModel {
         this.criterias = criteriasRepository.getCriterias (criteriasId);
     }
 
-    public void addCriteriaOneToHiddenDisability() {
+    public void addCriteriasToHiddenDisability() {
         AppExecutors.getInstance().diskIO().execute(() -> hiddenDisabilityRepository.createHiddenDisability(criteriasId));
     }
 

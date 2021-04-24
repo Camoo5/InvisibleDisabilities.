@@ -12,6 +12,6 @@
         android:paddingRight="@dimen/margin_normal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:context="com.tenacity.invisibledisabilities.HiddenDisabilityActivity"
-        tools:listitem="@layout/fragment_coping_strategy_list" />
+        tools:listitem="@layout/fragment_copingstrategy_list" />
 
 </layout>

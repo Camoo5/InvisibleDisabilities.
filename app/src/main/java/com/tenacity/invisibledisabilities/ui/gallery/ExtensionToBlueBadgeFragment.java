@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.ListAdapter;
 
 import com.tenacity.invisibledisabilities.R;
 import com.tenacity.invisibledisabilities.adapters.ExtensionToBlueBadgeAdapter;
+import com.tenacity.invisibledisabilities.data.ExtensionToBlueBadge;
 import com.tenacity.invisibledisabilities.databinding.FragmentExtensionToBlueBadgeBinding;
 import com.tenacity.invisibledisabilities.databinding.FragmentExtensionToBlueBadgeDetailBinding;
 import com.tenacity.invisibledisabilities.ui.viewmodels.ExtensionToBlueBadgeListViewModel;
@@ -32,8 +33,8 @@ public class ExtensionToBlueBadgeFragment extends Fragment {
         FragmentExtensionToBlueBadgeDetailBinding binding = FragmentExtensionToBlueBadgeDetailBinding .inflate(inflater, container, false);
         ExtensionToBlueBadgeListViewModelFactory factory = InjectorUtilsprovideExtensionToBlueBadgeViewModelFactory(getContext());
         ListAdapter adapter = new ExtensionToBlueBadgeAdapter ();
-        binding.extensionToBlueBadgeFragment.setAdapter(adapter);
-        this.viewModel = new ViewModelProvider (this, factory).get(CriteriaTwoViewModel.class);
+        binding.extensionToBlueBadgeList.setAdapter(adapter);
+        this.viewModel = new ViewModelProvider (this, factory).get( ExtensionToBlueBadgeViewModel.class);
         subscribeUi(adapter);
 
 

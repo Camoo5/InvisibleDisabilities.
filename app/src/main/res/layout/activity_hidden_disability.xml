@@ -33,7 +33,7 @@
                 android:layout_width="510dp"
                 android:layout_height="794dp"
                 app:defaultNavHost="true"
-                app:navGraph="@navigation/nav_hiddendisability" />
+                app:navGraph="@navigation/hidden_disability" />
 
         </LinearLayout>
 
