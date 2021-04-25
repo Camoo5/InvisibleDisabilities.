@@ -17,9 +17,9 @@ import androidx.recyclerview.widget.ListAdapter;
 
 import com.tenacity.invisibledisabilities.R;
 import com.tenacity.invisibledisabilities.adapters.CopingStrategyAdapter;
-import com.tenacity.invisibledisabilities.databinding.FragmentCopingStrategyDetailBinding;
+import com.tenacity.invisibledisabilities.databinding.FragmentCopingstrategyListBinding;
+import com.tenacity.invisibledisabilities.ui.viewmodels.CopingStrategyDetailViewModelFactory;
 import com.tenacity.invisibledisabilities.ui.viewmodels.CopingStrategyListViewModel;
-import com.tenacity.invisibledisabilities.ui.viewmodels.CopingStrategyListViewModelFactory;
 import com.tenacity.invisibledisabilities.utilities.InjectorUtils;
 
 
@@ -30,8 +30,8 @@ public class CopingStrategyListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        FragmentCopingStrategyDetailBinding binding = FragmentCopingStrategyDetailBinding.inflate(inflater, container, false);
-        CopingStrategyListViewModelFactory factory = InjectorUtils.providerCopingStrategyViewModelFactory(getContext());
+        FragmentCopingstrategyListBinding binding = FragmentCopingstrategyListBinding .inflate(inflater, container, false);
+        CopingStrategyDetailViewModelFactory factory = InjectorUtils.providerCopingStrategyViewModelFactory(getContext());
         ListAdapter adapter = new CopingStrategyAdapter ();
         binding.copingstrategyList.setAdapter(adapter);
         this.viewModel = new ViewModelProvider (this, factory).get( CopingStrategyListViewModel.class);
@@ -59,7 +59,7 @@ public class CopingStrategyListFragment extends Fragment {
 
     private void subscribeUi(ListAdapter adapter) {
         this.viewModel.copingstrategies.observe(getViewLifecycleOwner(), copingStrategy -> {
-            if (copingstrategies != null) {
+            if (copingStrategy != null) {
                 adapter.submitList(copingStrategy);
             }
         });

@@ -11,6 +11,7 @@ import com.tenacity.invisibledisabilities.data.HiddenDisabilityRepository;
 import com.tenacity.invisibledisabilities.data.PractitionerRepository;
 import com.tenacity.invisibledisabilities.data.SubConsiderationsRepository;
 import com.tenacity.invisibledisabilities.data.SupportingEvidenceRepository;
+import com.tenacity.invisibledisabilities.ui.viewmodels.CopingStrategyDetailViewModelFactory;
 import com.tenacity.invisibledisabilities.ui.viewmodels.CopingStrategyListViewModelFactory;
 import com.tenacity.invisibledisabilities.ui.viewmodels.CriteriasDetailViewModelFactory;
 import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityDetailViewModelFactory;
@@ -88,8 +89,9 @@ public class InjectorUtils {
     }
 
 
-    public static CopingStrategyListViewModelFactory providerCopingStrategyViewModelFactory(Context context) {
-        return new CopingStrategyListViewModelFactory (getCopingStrategyRepository ( context ), getHiddenDisabilityRepository (context), copingstrategyId);
+
+    public static CopingStrategyDetailViewModelFactory providerCopingStrategyViewModelFactory(Context context) {
+        return new CopingStrategyDetailViewModelFactory (getCopingStrategyRepository ( context ), getHiddenDisabilityRepository (context), copingstrategyId);
 
     }
 

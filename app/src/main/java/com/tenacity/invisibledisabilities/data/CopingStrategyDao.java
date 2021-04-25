@@ -5,7 +5,6 @@ import androidx.room.Dao;
 import androidx.room.Query;
 
 
-
 /**
  * The Data Access Object for the CopingStrategy class.
  */
@@ -18,3 +17,4 @@ public interface CopingStrategyDao {
 
 
 }
+

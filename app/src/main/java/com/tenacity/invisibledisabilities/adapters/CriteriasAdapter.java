@@ -1,32 +1,20 @@
 package com.tenacity.invisibledisabilities.adapters;
 
-import android.location.Criteria;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.tenacity.invisibledisabilities.data.CopingStrategy;
 import com.tenacity.invisibledisabilities.data.Criterias;
 import com.tenacity.invisibledisabilities.databinding.ListItemCriteriasBinding;
 
 public class CriteriasAdapter extends ListAdapter <Criterias, CriteriasAdapter.ViewHolder> {
-
-<Criterias {
-
-        @Override
-        public boolean areItemsTheSame(@NonNull Criteria soldItem, @NonNull    Criterias newItem) {
-            return oldItem.getCriteriasId ().equals(newItem.getCriteriasId());
-        }
-
-        @Override
-        public boolean areContentsTheSame(@NonNull Criterias oldItem, @NonNull    Criterias newItem) {
-            return oldItem.equals ( newItem );
-        }
-    }
 
     public CriteriasAdapter() {
         super ( new CriteriasDiffCallback () );
@@ -51,7 +39,7 @@ public class CriteriasAdapter extends ListAdapter <Criterias, CriteriasAdapter.V
                 CriteriasFragmentDirections.actionDisabilityListFragmentToDisabilitytDetailFragment ( criteriasId ) );
     }
 
-        static class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
         private final ListItemCriteriasBinding binding;
 
         ViewHolder(@NonNull ListItemCriteriasBinding binding) {
@@ -65,11 +53,22 @@ public class CriteriasAdapter extends ListAdapter <Criterias, CriteriasAdapter.V
             binding.executePendingBindings ();
         }
     }
-static class CriteriasDiffCallback extends Item Callback
 
+    static class CriteriasDiffCallback extends DiffUtil.ItemCallback <Criterias {
 
+        @Override
+        public boolean areItemsTheSame(@NonNull Criterias oldItem, @NonNull Criterias newItem) {
+            return oldItem.getCriteriasId ().equals ( newItem.getCriteriasId () );
+        }
 
+        @Override
+        public boolean areContentsTheSame(@NonNull CopingStrategy oldItem, @NonNull CopingStrategy newItem) {
+            return oldItem.equals ( newItem );
+        }
+    }
 
 }
+
+
 
 

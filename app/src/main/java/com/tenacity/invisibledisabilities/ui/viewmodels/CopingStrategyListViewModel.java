@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.tenacity.invisibledisabilities.data.CopingStrategy;
 import com.tenacity.invisibledisabilities.data.CopingStrategyRepository;
-import com.tenacity.invisibledisabilities.data.DisabilityRepository;
+import com.tenacity.invisibledisabilities.data.HiddenDisabilityRepository;
 
 import java.util.List;
 
@@ -22,15 +22,15 @@ public class   CopingStrategyListViewModel extends ViewModel {
 
     public LiveData<List <CopingStrategy>> copingstrategies;
 
-    CopingStrategyListViewModel(@NonNull CopingStrategyRepository copingStrategyRepository) {
+    CopingStrategyListViewModel(@NonNull CopingStrategyRepository copingStrategyRepository, HiddenDisabilityRepository hiddenDisabilityRepository, String copingstrategyId) {
         super();
         this.copingStrategyRepository = copingStrategyRepository;
         this.criteriaTypeNumber = new MutableLiveData<>(-1);
         this.copingstrategies = Transformations.switchMap(criteriaTypeNumber, it -> {
             if (it == NO_CRITERIA_TYPE) {
-                return this.copingStrategyRepository.getCopingstrategies();
+                return this.copingStrategyRepository.getCopingStrategies ();
             } else {
-                return this.copingStrategyRepository.getCopingstrategiesWithCriteriaTypeNumber (it);
+                return this.copingStrategyRepository.getCopingStrategiesWithCriteriaTypeNumber (it);
             }
         });
     }

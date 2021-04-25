@@ -4,7 +4,6 @@ package com.tenacity.invisibledisabilities.data;
 import androidx.lifecycle.LiveData;
 
 
-
 /**
  * Repository module for handling data operations.
  */
@@ -28,9 +27,8 @@ public class CopingStrategyRepository {
     }
 
 
-
     public LiveData<CopingStrategy> getCopingStrategy(String copingstrategyId) {
-        return this.copingStrategyDao.getCopingStrategy(copingstrategyId);
+        return this.copingStrategyDao.getCopingStrategy (copingstrategyId);
     }
 
 
