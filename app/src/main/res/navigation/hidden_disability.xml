@@ -105,27 +105,6 @@
             app:argType="string" />
     </fragment>
 
-
-    <fragment
-        android:id="@+id/subconsiderations_fragment"
-        android:name="com.tenacity.invisibledisabilities.ui.gallery.SubConsiderationsFragment"
-        android:label="@string/sub_considerations_title"
-        tools:layout="@layout/fragment_subconsiderations_detail">
-
-        <action
-            android:id="@+id/action_sub_considerations_fragment_to_supporting_evidence_fragment"
-            app:destination="@id/supporting_evidence_fragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@+id/supporting_evidence_fragment"
-            app:popUpToInclusive="true" />
-        <argument
-            android:name="subconsiderationsId"
-            app:argType="string" />
-    </fragment>
-
     <fragment
         android:id="@+id/supporting_evidence_fragment"
         android:name="com.tenacity.invisibledisabilities.ui.gallery.SupportingEvidenceFragment"

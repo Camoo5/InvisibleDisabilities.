@@ -28,8 +28,8 @@ public class CriteriasRepository {
 
 
 
-    public LiveData <Criterias> getCriteriaOne(String criteriaoneId) {
-        return this.criteriaOneDao.getCriteriaOne  (criteriaoneId);
+    public LiveData <Criterias> getCriterias(String criteriasId) {
+        return this.criteriasDao.getCriterias  (criteriasId);
     }
     }
 

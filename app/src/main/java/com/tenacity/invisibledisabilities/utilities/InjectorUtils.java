@@ -9,17 +9,14 @@ import com.tenacity.invisibledisabilities.data.DisabilityRepository;
 import com.tenacity.invisibledisabilities.data.ExtensionToBlueBadgeRepository;
 import com.tenacity.invisibledisabilities.data.HiddenDisabilityRepository;
 import com.tenacity.invisibledisabilities.data.PractitionerRepository;
-import com.tenacity.invisibledisabilities.data.SubConsiderationsRepository;
 import com.tenacity.invisibledisabilities.data.SupportingEvidenceRepository;
 import com.tenacity.invisibledisabilities.ui.viewmodels.CopingStrategyDetailViewModelFactory;
-import com.tenacity.invisibledisabilities.ui.viewmodels.CopingStrategyListViewModelFactory;
 import com.tenacity.invisibledisabilities.ui.viewmodels.CriteriasDetailViewModelFactory;
 import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityDetailViewModelFactory;
 import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityListViewModelFactory;
 import com.tenacity.invisibledisabilities.ui.viewmodels.ExtensionToBlueBadgeListViewModelFactory;
 import com.tenacity.invisibledisabilities.ui.viewmodels.HiddenDisabilityListViewModelFactory;
 import com.tenacity.invisibledisabilities.ui.viewmodels.PractitionerListViewModelFactory;
-import com.tenacity.invisibledisabilities.ui.viewmodels.SubConsiderationsListViewModelFactory;
 import com.tenacity.invisibledisabilities.ui.viewmodels.SupportingEvidenceListViewModelFactory;
 
 
@@ -56,11 +53,7 @@ public class InjectorUtils {
 
     }
 
-    private static SubConsiderationsRepository getSubConsiderationsRepository(Context context) {
-        return SubConsiderationsRepository.getInstance(
-                AppDatabase.getInstance(context.getApplicationContext()).getSubConsiderationsDao());
 
-    }
 
     private static PractitionerRepository getPractitionerRepository(Context context) {
         return PractitionerRepository.getInstance(
@@ -90,7 +83,7 @@ public class InjectorUtils {
 
 
 
-    public static CopingStrategyDetailViewModelFactory providerCopingStrategyViewModelFactory(Context context) {
+    public static CopingStrategyDetailViewModelFactory providerCopingStrategyViewModelFactory(Context context,String copingstrategyId) {
         return new CopingStrategyDetailViewModelFactory (getCopingStrategyRepository ( context ), getHiddenDisabilityRepository (context), copingstrategyId);
 
     }
@@ -111,10 +104,7 @@ public class InjectorUtils {
         return new PractitionerListViewModelFactory (getPractitionerRepository ( context ), getHiddenDisabilityRepository (context), practitionerId);
 
     }
-    public static SubConsiderationsListViewModelFactory providerSubConsiderationsViewModelFactory(Context context, String subconsiderationsId) {
-        return new SubConsiderationsListViewModelFactory (getSubConsiderationsRepository ( context ), getHiddenDisabilityRepository (context), subconsiderationsId);
 
-    }
     public static SupportingEvidenceListViewModelFactory providerSupportingEvidenceViewModelFactory(Context context, String supportingevidenceId) {
         return new SupportingEvidenceListViewModelFactory (getSupportingEvidenceRepository ( context ), getHiddenDisabilityRepository (context), supportingevidenceId);
 
