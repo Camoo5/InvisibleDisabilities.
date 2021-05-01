@@ -11,7 +11,7 @@
         tools:ignore="MergeRootFrame">
 
         <androidx.core.widget.NestedScrollView
-            android:id="@+id/subconsiderations_fragment_scrollview"
+            android:id="@+id/coping_strategy_detail_scrollview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
@@ -23,14 +23,14 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/subconsiderations"
+                    android:id="@+id/coping_strategy_name"
                     style="?android:attr/textAppearanceLarge"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_small"
                     android:layout_marginTop="@dimen/margin_normal"
                     android:layout_marginEnd="@dimen/margin_small"
-                    android:text="@{viewModel.subConsiderations.name}"
+                    android:text="@string/a11y_copingstrategy_item_image"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -38,7 +38,7 @@
 
 
                 <TextView
-                    android:id="@+id/subconsiderations_description"
+                    android:id="@+id/coping_strategy_description"
                     style="?android:attr/textAppearanceMedium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -48,9 +48,9 @@
                     android:textIsSelectable="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/subconsiderations"
-                    app:renderHtml="@{viewModel.subConsiderations.description}"
-                    tools:text="Details about practitioner" />
+                    app:layout_constraintTop_toBottomOf="@+id/disability_name"
+                    app:renderHtml="@{viewModel.copingstrategy.description}"
+                    tools:text="Details about copingstrategy" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -70,9 +70,18 @@
                 android:fitsSystemWindows="true"
                 app:contentScrim="?attr/colorPrimary"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:title="@{viewModel.subConsiderations.name}"
+                app:title="@string/coping_strategy_title"
                 app:toolbarId="@+id/toolbar">
 
+                <ImageView
+                    android:id="@+id/detail_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/coping_strategy_detail_image_content_description"
+                    android:fitsSystemWindows="true"
+                    android:scaleType="centerCrop"
+                    app:imageFromUrl="@{viewModel.copingstrategy.imageUrl}"
+                    app:layout_collapseMode="parallax" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -85,15 +94,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
+            android:contentDescription="@string/submit"
             android:tint="@android:color/white"
             app:isGone="@{viewModel.isDisabled}"
-            app:layout_anchor="@id/subconsiderations_fragment_scrollview"
             app:layout_anchorGravity="bottom|end"
-            app:srcCompat="@drawable/ic_plus"
-            tools:ignore="ContentDescription">
-
-        </com.google.android.material.floatingactionbutton.FloatingActionButton>
-
+            app:srcCompat="@drawable/ic_plus" />
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
@@ -102,7 +107,7 @@
 
         <variable
             name="viewModel"
-            type="com.tenacity.invisibledisabilities.ui.viewmodels.SubConsiderationsListViewModel" />
+            type="com.tenacity.invisibledisabilities.ui.viewmodels.CopyingStrategyDetailViewModel" />
     </data>
 
 </layout>

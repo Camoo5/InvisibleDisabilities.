@@ -24,10 +24,12 @@ public final class CopingStrategy  {
     @NonNull
     private final String description;
 
+
+
     @NonNull
     private final String imageUrl;
 
-    public CopingStrategy(@NonNull String copingstrategyId, @NonNull String name, @NonNull String description, @NonNull String imageUrl) {
+    public CopingStrategy(@NonNull String copingstrategyId, @NonNull String name, @NonNull String description,  @NonNull String imageUrl) {
         this.copingstrategyId = copingstrategyId;
         this.name = name;
         this.description = description;
@@ -61,6 +63,8 @@ public final class CopingStrategy  {
     public String getImageUrl() {
         return imageUrl;
     }
+
+
 
 
 

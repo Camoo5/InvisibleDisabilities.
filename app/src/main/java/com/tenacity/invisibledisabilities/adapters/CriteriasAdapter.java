@@ -1,5 +1,6 @@
 package com.tenacity.invisibledisabilities.adapters;
 
+import android.location.Criteria;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,6 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.tenacity.invisibledisabilities.data.CopingStrategy;
 import com.tenacity.invisibledisabilities.data.Criterias;
 import com.tenacity.invisibledisabilities.databinding.ListItemCriteriasBinding;
 
@@ -34,7 +34,7 @@ public class CriteriasAdapter extends ListAdapter <Criterias, CriteriasAdapter.V
         holder.itemView.setTag ( criterias );
     }
 
-    private View.OnClickListener createOnClickListener(String criterias Id) {
+    private View.OnClickListener createOnClickListener(String criteriasId) {
         return v -> Navigation.findNavController ( v ).navigate (
                 CriteriasFragmentDirections.actionDisabilityListFragmentToDisabilitytDetailFragment ( criteriasId ) );
     }
@@ -54,21 +54,23 @@ public class CriteriasAdapter extends ListAdapter <Criterias, CriteriasAdapter.V
         }
     }
 
-    static class CriteriasDiffCallback extends DiffUtil.ItemCallback <Criterias {
+    static class CriteriasDiffCallback extends DiffUtil.ItemCallback<Criterias {
 
         @Override
-        public boolean areItemsTheSame(@NonNull Criterias oldItem, @NonNull Criterias newItem) {
-            return oldItem.getCriteriasId ().equals ( newItem.getCriteriasId () );
+        public boolean areItemsTheSame(@NonNull Criterias oldItem, @NonNull    Criterias newItem) {
+            return oldItem.getcriteriasId ().equals(newItem.getCriteriasId());
         }
 
         @Override
-        public boolean areContentsTheSame(@NonNull CopingStrategy oldItem, @NonNull CopingStrategy newItem) {
+        public boolean areContentsTheSame(@NonNull Criteria oldItem, @NonNull Criteria newItem) {
             return oldItem.equals ( newItem );
         }
     }
 
-}
 
+
+
+}
 
 
 

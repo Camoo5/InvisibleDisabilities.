@@ -14,10 +14,7 @@ import com.tenacity.invisibledisabilities.ui.viewmodels.CopingStrategyDetailView
 import com.tenacity.invisibledisabilities.ui.viewmodels.CriteriasDetailViewModelFactory;
 import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityDetailViewModelFactory;
 import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityListViewModelFactory;
-import com.tenacity.invisibledisabilities.ui.viewmodels.ExtensionToBlueBadgeListViewModelFactory;
 import com.tenacity.invisibledisabilities.ui.viewmodels.HiddenDisabilityListViewModelFactory;
-import com.tenacity.invisibledisabilities.ui.viewmodels.PractitionerListViewModelFactory;
-import com.tenacity.invisibledisabilities.ui.viewmodels.SupportingEvidenceListViewModelFactory;
 
 
 /**
@@ -42,7 +39,7 @@ public class InjectorUtils {
 
     private static CriteriasRepository getCriteriaOneRepository(Context context) {
         return CriteriasRepository.getInstance(
-                AppDatabase.getInstance(context.getApplicationContext()).getCriteriaOneDao());
+                AppDatabase.getInstance(context.getApplicationContext()).getCriteriasDao());
 
     }
 

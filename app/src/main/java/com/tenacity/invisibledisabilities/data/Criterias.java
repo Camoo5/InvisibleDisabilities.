@@ -31,7 +31,7 @@ public final class Criterias {
     private final String imageUrl;
 
 
-    public Criterias(@NonNull String criteriasId, @NonNull String name, @NonNull String description, @NonNull String imageUrl) {
+    public Criterias(@NonNull String criteriasId, @NonNull String name, @NonNull String description,  @NonNull String imageUrl) {
         this.criteriasId = criteriasId;
         this.name = name;
         this.description = description;

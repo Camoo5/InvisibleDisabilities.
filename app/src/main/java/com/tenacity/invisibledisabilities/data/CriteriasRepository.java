@@ -9,17 +9,17 @@ import androidx.lifecycle.LiveData;
 
 public class CriteriasRepository {
     private static CriteriasRepository instance;
-    private final CriteriasDao criteriaOneDao;
+    private final CriteriasDao criteriasDao;
 
-    private CriteriasRepository(CriteriasDao criteriaOneDao) {
-        this.criteriaOneDao = criteriaOneDao;
+    private CriteriasRepository(CriteriasDao criteriasDao) {
+        this.criteriasDao = criteriasDao;
     }
 
-    public static CriteriasRepository getInstance(CriteriasDao criteriaOneDao) {
+    public static CriteriasRepository getInstance(CriteriasDao criteriasDao) {
         if (instance == null) {
             synchronized (CriteriasRepository.class) {
                 if (instance == null) {
-                    instance = new CriteriasRepository (criteriaOneDao);
+                    instance = new CriteriasRepository (criteriasDao);
                 }
             }
         }
