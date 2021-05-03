@@ -10,19 +10,9 @@
     <string name="hidden_disability_title" translation_description="Title for the 'hidden_disabilities' screen where the user can see the list of disabilities that have been added to their hidden_disability.">Hidden_disability</string>
     <string name="disability_list_title" translation_description="Title for the disability list screen where the user can see a list of disabilities available to add to their hidden_disabilities.">Disability list</string>
     <string name="disability_details_title" translation_description="Title for the disability details screen where the user can see the details for a specific disability.">Disability details</string>
-    <string name="extension_to_blue_badge_title" translation_description="Title for extension_to_blue_badge screen where the user can know more about the new criteria, eligibility criterias. ">Extension_to_blue_badge</string>
-    <string name="supporting_evidence_title" translation_description="Title for supporting evidence screen where the user can see evidence required for successful application">Supporting evidence</string>
-    <string name="criterias_title" translation_description="Title for criterias screen where user can view if there disability falls under psychological distress whilst walking as part of a journey or people at risk of serious harm, when walking, or pose when walking, a risk of serious harm to themselves or any other person">Criterias</string>
-    <string name="coping_strategy_title" translation_description="Title for coping strategy screen where user can consider whether existing strategies adopted to manage there disability are effective">Coping strategy</string>
-    <string name="practitioner_title" translation_description="Title for practitioner screen where user can view list of examples of health/social care practitioners involved in  diagnosis and treatment whether these appropriate for the conditions causing the behaviour">Practitioner</string>
 
     <string name="navigation_drawer_header_content_description" translation_description="Content description for the image that is shown at the top of the navigation drawer.">Navigation drawer header logo</string>
     <string name="added_disability_to_hidden_disabilities" translation_description="Confirmation text that is shown when a user adds a disability to their hidden_disabilities.">Added disability to hidden_disabilities</string>
-    <string name="added_copingstrategy_to_hidden_disabilities" translation_descrription="Confirmation text that is shown when a user adds a copingstrategy to their hidden_disabilities.">Added copingstrategy to hidden_disabilities</string>
-    <string name="added_criterias_to_hidden_disabilities" translation_descrription="Confirmation text that is shown when a user adds a criteria to their hidden_disabilities.">Added criteriaone to hidden_disabilities</string>
-    <string name="added_extensiontobluebadge_to_hidden_disabilities" translation_descrription="Confirmation text that is shown when a user adds extensiontobluebadge to their hidden_disabilities.">Added extensiontobluebadge to hidden_disabilities</string>
-    <string name="added_practitioner_to_hidden_disabilities" translation_descrription="Confirmation text that is shown when a user adds practitioner to their hidden_disabilities.">Added practitioner to hidden_disabilities</string>
-    <string name="added_supportingevidence_to_hidden_disabilities" translation_descrription="Confirmation text that is shown when a user adds supportingevidence_to their hidden_disabilities.">Added supportingevidence_ to hidden_disabilities</string>
 
 
     <string name="hidden_disabilities_empty" translation_description="Text that is shown on the 'Hidden_Disability screen when no disability have been added to the user's hidden_disability">Your hidden_disability is empty</string>
@@ -30,20 +20,10 @@
     <string name="menu_item_share_disability" translation_description="The label for the Share menu item">Share</string>
     <string name="menu_item_share_coping_strategy" translation_description="The label for the Share menu item">Share</string>
     <string name="share_text_disability" translation_description="The default messaged used when sharing a disability on SNS, etc.">Check out the %s disability in the Android Invisible_Disabilities app</string>
-    <string name="share_text_copingstrategy" translation_description="The default messaged used when sharing a copingstrategy">Check out the %s copingstrategy in the Android Invisible_Disabilities app </string>
-    <string name="share_text_criterias" translation_description="The default messaged used when sharing a criteriaone">Check out the %s criterias in the Android Invisible_Disabilities app </string>
-    <string name="share_text_extensiontobluebadge" translation_description="The default messaged used when sharing a extensiontobluebadge">Check out the %s extensiontobluebadge in the Android Invisible_Disabilities app </string>
-    <string name="share_text_practitioner" translation_description="The default messaged used when sharing a practitioner">Check out the %s practitioner in the Android Invisible_Disabilities app </string>
-    <string name="share_text_supportingevidence" translation_description="The default messaged used when sharing a subconsiderations">Check out the %s subconsiderations in the Android Invisible_Disabilities app </string>
 
 
     <!-- Accessibility -->
     <string name="a11y_disability_item_image" translation_description="Accessibility text for each of the disability images shown in the 'hidden_disabilities' and 'Disability list' screens.">Picture of disability</string>
-    <string name="a11y_copingstrategy_item_image" translation_description="Accessibility text for copingstrategy shown in the 'hidden_disabilities' and 'Disability list' screens.">Picture of copingstrategy</string>
-    <string name="a11y_criterias_item_image" translation_description="Accessibility text for criterias shown in the 'hidden_disabilities' and 'Disability list' screens.">Picture of criterias</string>
-    <string name="a11y_extension_to_bluebadge_item_image" translation_description="Accessibility text for extension_to_bluebadge shown in the 'hidden_disabilities' and 'Disability list' screens.">Picture of extensiontobluebadge</string>
-    <string name="a11y_practitioner_item_image" translation_description="Accessibility text for practitioners shown in the 'hidden_disabilities' and 'Disability list' screens.">Picture of practioners</string>
-    <string name="a11y_supportingevidence_item_image" translation_description="Accessibility text for supporting evidence shown in the 'hidden_disabilities' and 'Disability list' screens.">Picture of supporting evidence</string>
 
     <string name="my_hidden_disability_title">my_hidden_disability_title</string>
 

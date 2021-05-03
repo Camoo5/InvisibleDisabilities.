@@ -46,102 +46,12 @@
         android:label="@string/disability_details_title"
         tools:layout="@layout/fragment_disability_detail">
 
-
-        <action
-            android:id="@+id/action_disability_detail_fragment_to_extension_to_blue_badge_detail_fragment"
-            app:destination="@id/extension_to_blue_badge_detail_fragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@+id/extension_to_blue_badge_detail_fragment"
-            app:popUpToInclusive="true" />
-
+        <argument
+            android:name="disabilityId"
+            app:argType="string" />
     </fragment>
 
-    <fragment
-        android:id="@+id/extension_to_blue_badge_detail_fragment"
-        android:name="com.tenacity.invisibledisabilities.ui.gallery.ExtensionToBlueBadgeDetailFragment"
-        android:label="@string/extension_to_blue_badge_title"
-        tools:layout="@layout/fragment_extension_to_blue_badge_detail">
 
-        <action
-            android:id="@+id/action_extension_to_blue_badge_detail_fragment_to_criterias_detail_fragment"
-            app:destination="@id/criterias_detail_fragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@+id/criterias_detail_fragment"
-            app:popUpToInclusive="true" />
-
-    </fragment>
-
-    <fragment
-        android:id="@+id/criterias_detail_fragment"
-        android:name="com.tenacity.invisibledisabilities.ui.gallery.CriteriasDetailFragment"
-        android:label="@string/criterias_title"
-        tools:layout="@layout/fragment_criterias_detail">
-
-        <action
-            android:id="@+id/action_criterias_detail_fragment_to_disability_detail_fragment"
-            app:destination="@id/disability_detail_fragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@+id/disability_detail_fragment"
-            app:popUpToInclusive="true" />
-
-    </fragment>
-
-    <fragment
-        android:id="@+id/supporting_evidence_detail_fragment"
-        android:name="com.tenacity.invisibledisabilities.ui.gallery.SupportingEvidenceDetailFragment"
-        android:label="@string/supporting_evidence_title"
-        tools:layout="@layout/fragment_supporting_evidence_detail">
-
-        <action
-            android:id="@+id/action_supporting_evidence_detail_fragment_to_coping_strategy_detail_fragment"
-            app:destination="@id/coping_strategy_detail_fragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@+id/coping_strategy_detail_fragment"
-            app:popUpToInclusive="true" />
-
-    </fragment>
-
-    <fragment
-        android:id="@+id/coping_strategy_detail_fragment"
-        android:name="com.tenacity.invisibledisabilities.ui.gallery.CopingStrategyDetailFragment"
-        android:label="@string/coping_strategy_title"
-        tools:layout="@layout/fragment_coping_strategy_detail">
-
-        <action
-            android:id="@+id/action_coping_strategy_detail_fragment_to_practitioners_detail_fragment"
-            app:destination="@id/practitioner_detail_fragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@+id/practitioner_detail_fragment"
-            app:popUpToInclusive="true" />
-
-    </fragment>
-
-    <fragment
-        android:id="@+id/practitioner_detail_fragment"
-        android:name="com.tenacity.invisibledisabilities.ui.gallery.PractitionerDetailFragment"
-        android:label="@string/practitioner_title"
-        tools:layout="@layout/fragment_practitioner_detail">
-
-        <action
-            android:id="@+id/action_practitioner_detail_fragment_to_hidden_disability_fragment"
-            app:destination="@id/hidden_disability_fragment" />
-
-    </fragment>
 
 
 </navigation>
