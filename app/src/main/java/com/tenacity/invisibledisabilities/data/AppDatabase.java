@@ -22,11 +22,6 @@ import com.tenacity.invisibledisabilities.workers.ConditionDatabaseWorker;
 public abstract class AppDatabase extends RoomDatabase {
     public abstract HiddenDisabilityDao getHiddenDisabilitiesDao();
     public abstract DisabilityDao getDisabilityDao();
-    public abstract CopingStrategyDao getCopingStrategyDao();
-    public abstract CriteriasDao getCriteriasDao();
-    public abstract ExtensionToBlueBadgeDao getExtensionToBlueBadgeDao();
-    public abstract PractitionerDao getPractitionerDao();
-    public abstract SupportingEvidenceDao getSupportingEvidenceDao();
 
 
     private static volatile AppDatabase instance;

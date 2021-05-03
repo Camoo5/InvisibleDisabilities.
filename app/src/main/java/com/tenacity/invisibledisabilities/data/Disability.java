@@ -50,7 +50,7 @@ public final class Disability {
     private final String imageUrl;
 
     public Disability(@NonNull String disabilityId, @NonNull String name, @NonNull String description, @NonNull String subconsiderations,
-                      @NonNull String criteria, @NonNull String practitioners,  @NonNull String supportingevidence, @NonNull String copingstrategy,    int criteriaTypeNumber,  @NonNull String imageUrl) {
+                      @NonNull String criteria, @NonNull String practitioners,  @NonNull String supportingevidence, @NonNull String copingstrategy,  int criteriaTypeNumber,  @NonNull String imageUrl) {
 
         this.disabilityId = disabilityId;
         this.name = name;

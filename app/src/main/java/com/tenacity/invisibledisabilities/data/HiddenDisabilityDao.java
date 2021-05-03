@@ -24,26 +24,7 @@ public interface HiddenDisabilityDao {
     @Query("SELECT * FROM hidden_disabilities WHERE disability_id = :disabilityId")
     LiveData<HiddenDisability> getHiddenDisabilityForDisability(@NonNull String disabilityId);
 
-    @Query("SELECT * FROM hidden_disabilities WHERE disability_id = :copingstrategyId")
-    LiveData<HiddenDisability> getHiddenDisabilityForCopingStrategy(@NonNull String copingstrategyId);
 
-    @Query("SELECT * FROM hidden_disabilities WHERE disability_id = :criteriaoneId")
-    LiveData<HiddenDisability> getHiddenDisabilityForCriteriaOne(@NonNull String criteriaoneId);
-
-    @Query("SELECT * FROM hidden_disabilities WHERE disability_id = :criteriatwoId")
-    LiveData<HiddenDisability> getHiddenDisabilityForCriteriaTwo(@NonNull String criteriatwoId);
-
-    @Query("SELECT * FROM hidden_disabilities WHERE disability_id = :extensiontobluebadgeId")
-    LiveData<HiddenDisability> getHiddenDisabilityForExtensionToBlueBadge(@NonNull String extensiontobluebadgeId);
-
-    @Query("SELECT * FROM hidden_disabilities WHERE disability_id = :practitionerId")
-    LiveData<HiddenDisability> getHiddenDisabilityForPractitioner(@NonNull String practitionerId);
-
-    @Query("SELECT * FROM hidden_disabilities WHERE disability_id = :supportingevidenceId")
-    LiveData<HiddenDisability> getHiddenDisabilityForSupportingEvidence(@NonNull String supportingevidenceId);
-
-    @Query("SELECT * FROM hidden_disabilities WHERE subconsiderations_id = :subconsiderationsId")
-    LiveData<HiddenDisability> getHiddenDisabilityForSubConsiderations(@NonNull String subconsiderationsId);
     /**
      * This query will tell Room to query both the [Disability] and [HiddenDisability] tables and handle
      * the object mapping.

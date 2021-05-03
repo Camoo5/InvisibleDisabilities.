@@ -28,12 +28,7 @@ public class HiddenDisabilityActivity extends AppCompatActivity {
         ActivityHiddenDisabilityBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_hidden_disability );
         this.drawerLayout = binding.drawerLayout;
         this.navController = Navigation.findNavController(this, R.id.hidden_disability_nav_host_fragment);
-        this.navController = Navigation.findNavController(this, R.id.coping_strategy_fragment);
-        this.navController = Navigation.findNavController(this, R.id.criterias_fragment);
-        this.navController = Navigation.findNavController(this, R.id.extension_to_blue_badge_fragment);
-        this.navController = Navigation.findNavController(this, R.id.practitioners_fragment);
-        this.navController = Navigation.findNavController(this, R.id.sub_considerations_fragment);
-        this.navController = Navigation.findNavController(this, R.id.supporting_evidence_fragment);
+
 
         this.appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).setOpenableLayout (drawerLayout).build();
 
