@@ -34,7 +34,8 @@ public interface HiddenDisabilityDao {
     LiveData<List<DisabilityAndHiddenDisabilities>> getDisabilityAndHiddenDisabilities();
 
     @Insert
-    long insertHiddenDisability(@NonNull HiddenDisability hiddenDisability);
+    void insertHiddenDisability(@NonNull HiddenDisability hiddenDisability);
+
 
     @Delete
     void deleteHiddenDisability(@NonNull HiddenDisability hiddenDisability);

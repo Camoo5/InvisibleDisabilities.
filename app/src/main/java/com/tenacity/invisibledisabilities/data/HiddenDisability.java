@@ -74,13 +74,13 @@ public final class HiddenDisability {
         if (this == obj) {
             return true;
         }
-        if (this.getClass() != obj.getClass()) {
+        if (obj.getClass () != this.getClass ()) {
             return false;
         }
        HiddenDisability target = (HiddenDisability) obj;
 
         return this.disabilityId.equals(target.disabilityId)
-                && this.disabilityDate.equals(this.disabilityDate);
+                && Objects.equals ( this.disabilityDate, this.disabilityDate );
 
     }
 
@@ -101,6 +101,13 @@ public final class HiddenDisability {
      */
     @Override
     protected Object clone() {
+        try {
+            super.clone ();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace ();
+        }
+
+
         return new HiddenDisability (disabilityId, disabilityDate );
     }
 }

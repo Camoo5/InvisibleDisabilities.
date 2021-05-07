@@ -39,7 +39,7 @@ public class DisabilityAdapter extends ListAdapter <Disability, DisabilityAdapte
                 DisabilityListFragmentDirections.actionDisabilityListFragmentToDisabilityDetailFragment ( disabilityId ) );
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         private final ListItemDisabilityBinding binding;
 
         ViewHolder(@NonNull ListItemDisabilityBinding binding) {

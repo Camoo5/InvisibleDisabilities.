@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.ListAdapter;
 
 import com.tenacity.invisibledisabilities.R;
 import com.tenacity.invisibledisabilities.adapters.DisabilityAdapter;
+import com.tenacity.invisibledisabilities.data.Disability;
 import com.tenacity.invisibledisabilities.databinding.FragmentDisabilityListBinding;
 import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityListViewModel;
 import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityListViewModelFactory;
@@ -32,7 +33,7 @@ public class DisabilityListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentDisabilityListBinding binding = FragmentDisabilityListBinding.inflate(inflater, container, false);
         DisabilityListViewModelFactory factory = InjectorUtils.provideDisabilityListViewModelFactory(getContext());
-        ListAdapter adapter = new DisabilityAdapter();
+        ListAdapter <Disability, DisabilityAdapter.ViewHolder> adapter = new DisabilityAdapter();
         binding.disabilityList.setAdapter(adapter);
         this.viewModel = new ViewModelProvider (this, factory).get(DisabilityListViewModel.class);
         subscribeUi(adapter);
@@ -48,19 +49,17 @@ public class DisabilityListFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.filter_criteria:
-                updateData();
-                return true;
-
+        if (item.getItemId () == R.id.filter_criteria) {
+            updateData ();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void subscribeUi(ListAdapter adapter) {
+    private void subscribeUi(ListAdapter <Disability, DisabilityAdapter.ViewHolder> adapter) {
         this.viewModel.disabilities.observe(getViewLifecycleOwner(), disabilities -> {
             if (disabilities != null) {
-                adapter.submitList(disabilities);
+                adapter.submitList ( disabilities );
             }
         });
     }

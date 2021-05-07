@@ -6,7 +6,6 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -150,9 +149,13 @@ public final class Disability {
      * see: https://kotlinlang.org/docs/reference/data-classes.html
      */
     @NotNull
-    @Contract(value = " -> new", pure = true)
     @Override
-    protected Object clone() {
+    public Object clone() {
+        try {
+            super.clone ();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace ();
+        }
         return new Disability(disabilityId, name, description, subconsiderations, criteria, practitioners, supportingevidence, copingstrategy, criteriaTypeNumber, imageUrl);
     }
 }

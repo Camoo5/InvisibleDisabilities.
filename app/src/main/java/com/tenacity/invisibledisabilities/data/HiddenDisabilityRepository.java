@@ -40,34 +40,6 @@ public class HiddenDisabilityRepository {
         return hiddenDisabilityDao.getHiddenDisabilityForDisability ( disabilityId );
     }
 
-    public LiveData <HiddenDisability> getHiddenDisabilityForCopingStrategy(String copingstrategyId) {
-        return hiddenDisabilityDao.getHiddenDisabilityForCopingStrategy ( copingstrategyId );
-    }
-
-    public LiveData <HiddenDisability> getHiddenDisabilityForCriteriaOne(String criteriaoneId) {
-        return hiddenDisabilityDao.getHiddenDisabilityForCriteriaOne ( criteriaoneId );
-    }
-
-    public LiveData <HiddenDisability> getHiddenDisabilityForCriteriaTwo(String criteriatwoId) {
-        return hiddenDisabilityDao.getHiddenDisabilityForCriteriaTwo ( criteriatwoId );
-    }
-
-    public LiveData <HiddenDisability> getHiddenDisabilityForExtensionToBlueBadge(String extensiontobluebadgeId) {
-        return hiddenDisabilityDao.getHiddenDisabilityForExtensionToBlueBadge ( extensiontobluebadgeId );
-    }
-
-    public LiveData <HiddenDisability> getHiddenDisabilityForPractitioner(String practitionerId) {
-        return hiddenDisabilityDao.getHiddenDisabilityForPractitioner ( practitionerId );
-    }
-
-    public LiveData <HiddenDisability> getHiddenDisabilityForSubConsiderations(String subconsiderationsId) {
-        return hiddenDisabilityDao.getHiddenDisabilityForSubConsiderations ( subconsiderationsId );
-
-
-        }
-
-
-
 
     public LiveData <List <HiddenDisability>> getHiddenDisabilities() {
         return hiddenDisabilityDao.getHiddenDisabilities ();
