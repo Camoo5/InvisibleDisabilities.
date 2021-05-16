@@ -10,6 +10,7 @@ import java.util.List;
 public class HiddenDisabilityRepository {
     private static HiddenDisabilityRepository instance;
     private final HiddenDisabilityDao hiddenDisabilityDao;
+    private HiddenDisability hiddenDisability;
 
     private HiddenDisabilityRepository(HiddenDisabilityDao hiddenDisabilityDao) {
         this.hiddenDisabilityDao = hiddenDisabilityDao;
@@ -32,6 +33,7 @@ public class HiddenDisabilityRepository {
     }
 
     public void removeHiddenDisability(HiddenDisability hiddenDisability) {
+        this.hiddenDisability = hiddenDisability;
         AppExecutors.getInstance ().diskIO ().execute ( () ->
                 hiddenDisabilityDao.deleteHiddenDisability ( hiddenDisability ) );
     }

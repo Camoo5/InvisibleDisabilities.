@@ -21,6 +21,7 @@ import com.tenacity.invisibledisabilities.workers.ConditionDatabaseWorker;
 @TypeConverters(Converters.class)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract HiddenDisabilityDao getHiddenDisabilitiesDao();
+
     public abstract DisabilityDao getDisabilityDao();
 
 
@@ -29,7 +30,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public static AppDatabase getInstance(Context context) {
         if (instance == null) {
             synchronized (AppDatabase.class) {
-                instance = buildDatabase(context);
+                instance = buildDatabase ( context );
             }
         }
         return instance;
@@ -38,15 +39,15 @@ public abstract class AppDatabase extends RoomDatabase {
     // Create and pre-populate the database. See this article for more details:
     // https://medium.com/google-developers/7-pro-tips-for-room-fbadea4bfbd1#4785
     private static AppDatabase buildDatabase(Context context) {
-        return Room.databaseBuilder(context, AppDatabase.class, Constants.DATABASE_NAME)
-                .addCallback(new RoomDatabase.Callback() {
+        return Room.databaseBuilder ( context, AppDatabase.class, Constants.DATABASE_NAME )
+                .addCallback ( new RoomDatabase.Callback () {
                     @Override
                     public void onCreate(@NonNull SupportSQLiteDatabase db) {
-                        super.onCreate(db);
-                        WorkManager.getInstance(context).enqueue(OneTimeWorkRequest.from( ConditionDatabaseWorker.class));
+                        super.onCreate ( db );
+                        WorkManager.getInstance ( context ).enqueue ( OneTimeWorkRequest.from ( ConditionDatabaseWorker.class ) );
                     }
-                })
-                .build();
+                } )
+                .build ();
     }
 
 

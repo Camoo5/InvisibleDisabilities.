@@ -2,15 +2,15 @@ buildscript {
     // Define versions in a single place
     ext {
         // Sdk and tools
-        compileSdkVersion = 29
+        compileSdkVersion = 30
         minSdkVersion = 23
-        targetSdkVersion = 29
+        targetSdkVersion = 30
 
         // App dependencies
         appCompatVersion = '1.3.0-alpha02'
         constraintLayoutVersion = '2.1.0-beta01'
         coreTestingVersion = '2.1.0'
-        coroutinesVersion = "1.3.0-M2"
+        coroutinesVersion = '1.1.13 RC-native-mt'
         espressoVersion = '3.3.0'
         fragmentVersion = '1.3.2'
         glideVersion = '4.12.0'
@@ -34,11 +34,11 @@ buildscript {
 
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 
     dependencies {
-        classpath "com.android.tools.build:gradle:$gradleVersion"
+        classpath "com.android.tools.build:gradle:${gradleVersion}"
         //noinspection DifferentKotlinGradleVersion
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
     }
@@ -51,7 +51,7 @@ plugins {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 }
 
