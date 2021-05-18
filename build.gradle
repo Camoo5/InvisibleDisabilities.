@@ -39,13 +39,13 @@ buildscript {
 
     dependencies {
         classpath "com.android.tools.build:gradle:${gradleVersion}"
-        //noinspection DifferentKotlinGradleVersion
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
     }
 }
 
 plugins {
     id "com.diffplug.gradle.spotless" version "3.13.0"
+
 }
 
 allprojects {

@@ -43,7 +43,6 @@ android {
 
 dependencies {
 
-    implementation 'androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     //noinspection GradleDependency
