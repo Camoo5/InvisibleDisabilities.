@@ -32,7 +32,7 @@ public class DisabilityDetailFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentDisabilityDetailBinding binding = FragmentDisabilityDetailBinding.inflate(inflater, container, false);
         DisabilityDetailFragmentArgs args = DisabilityDetailFragmentArgs.fromBundle( requireArguments());
         DisabilityDetailViewModelFactory factory = InjectorUtils.providerDisabilityDetailViewModelFactory (
@@ -66,7 +66,7 @@ public class DisabilityDetailFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId () == R.id.action_share) {
-            Intent shareIntent = new ShareCompat.IntentBuilder ( requireActivity () )
+            Intent shareIntent = ShareCompat.IntentBuilder.from ( requireActivity())
                     .setText ( this.shareText )
                     .setType ( "text/plain" )
                     .createChooserIntent ();

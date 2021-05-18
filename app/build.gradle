@@ -45,7 +45,7 @@ dependencies {
 
     implementation 'androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.3.0-rc01'
+
     //noinspection GradleDependency
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
     //noinspection GradleDependency
@@ -68,10 +68,11 @@ dependencies {
     //noinspection GradleDependency
     implementation "com.google.android.material:material:$rootProject.materialVersion"
     implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
-    //noinspection GradleDependency,GradleDependency,DifferentStdlibGradleVersion
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$rootProject.kotlinVersion"
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutinesVersion"
-
+    implementation 'org.jetbrains:annotations:15.0'
+    implementation 'org.jetbrains:annotations:15.0'
 
     // Testing dependencies
     androidTestImplementation "androidx.arch.core:core-testing:${coreTestingVersion}"
