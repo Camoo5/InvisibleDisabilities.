@@ -11,7 +11,7 @@
         android:paddingLeft="@dimen/margin_normal"
         android:paddingRight="@dimen/margin_normal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:context="com.tenacity.invisibledisabilities.HiddenDisabilityActivity"
+        tools:context="com.tenacity.hiddendisabilities.HiddenDisabilityActivity"
         tools:listitem="@layout/list_item_disability" />
 
 </layout>

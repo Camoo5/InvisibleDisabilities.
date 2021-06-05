@@ -22,7 +22,7 @@ buildscript {
         ktlintVersion = '0.30.0'
         lifecycleVersion = '2.3.1'
         materialVersion = '1.4.0-beta01'
-        navigationVersion = '2.3.5'
+        navigationVersion = '2.0.0'
         recyclerViewVersion = '1.2.0'
         roomVersion = '2.3.0'
         runnerVersion = '1.0.1'
@@ -46,7 +46,9 @@ buildscript {
     }
 }
 
-
+plugins {
+    id "com.diffplug.gradle.spotless" version "3.13.0"
+}
 allprojects {
     repositories {
         google()
@@ -54,6 +56,9 @@ allprojects {
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+spotless {
+    kotlin {
+        target "**/*.kt"
+        ktlint(ktlintVersion)
+    }
 }

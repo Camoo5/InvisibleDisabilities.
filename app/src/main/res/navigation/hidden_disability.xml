@@ -2,12 +2,11 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/hidden_disability_nav_host_fragment"
     app:startDestination="@id/hidden_disability_fragment">
 
     <fragment
         android:id="@+id/hidden_disability_fragment"
-        android:name="com.tenacity.invisibledisabilities.ui.gallery.HiddenDisabilityFragment"
+        android:name="com.tenacity.hiddendisabilities.ui.gallery.HiddenDisabilityFragment"
         android:label="@string/hidden_disability_title"
         tools:layout="@layout/fragment_hidden_disability">
 
@@ -24,7 +23,7 @@
 
     <fragment
         android:id="@+id/disability_list_fragment"
-        android:name="com.tenacity.invisibledisabilities.ui.gallery.DisabilityListFragment"
+        android:name="com.tenacity.hiddendisabilities.ui.gallery.DisabilityListFragment"
         android:label="@string/disability_list_title"
         tools:layout="@layout/fragment_disability_list">
 
@@ -42,7 +41,7 @@
 
     <fragment
         android:id="@+id/disability_detail_fragment"
-        android:name="com.tenacity.invisibledisabilities.ui.gallery.DisabilityDetailFragment"
+        android:name="com.tenacity.hiddendisabilities.ui.gallery.DisabilityDetailFragment"
         android:label="@string/disability_details_title"
         tools:layout="@layout/fragment_disability_detail">
 
