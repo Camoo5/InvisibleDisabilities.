@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
@@ -22,38 +23,39 @@ public class HiddenDisabilityActivity extends AppCompatActivity {
     private NavController navController;
 
 
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         ActivityHiddenDisabilityBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_hidden_disability );
         this.drawerLayout = binding.drawerLayout;
-        this.navController = Navigation.findNavController(this, R.id.hidden_disability_nav_fragment);
 
+       NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.nav_host_fragment);
+        NavController navCo = navHostFragment.getNavController();
 
-        this.appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).setDrawerLayout (drawerLayout).build();
+        // Set up ActionBar withNavController
+        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        // Set up ActionBar
-        setSupportActionBar(binding.toolbar);
-        NavigationUI.setupActionBarWithNavController(this, this.navController, this.appBarConfiguration);
-        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        // Set up navigation menu
-        NavigationUI.setupWithNavController(binding.navigationView, this.navController);
     }
-
+      // On supportNavigateUp to handle Up navigation
     @Override
     public boolean onSupportNavigateUp() {
-        return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        return NavigationUI.navigateUp(navController, appBarConfiguration)
+                || super.onSupportNavigateUp();
     }
 
     @Override
     public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen( GravityCompat.START)) {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
     }
+}
 
-    }

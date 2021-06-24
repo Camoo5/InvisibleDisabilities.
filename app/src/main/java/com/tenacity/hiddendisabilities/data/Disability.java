@@ -30,9 +30,6 @@ public final class Disability {
     private final String subconsiderations;
 
     @NonNull
-    private final String criteria;
-
-    @NonNull
     private final String practitioners;
 
     @NonNull
@@ -41,23 +38,22 @@ public final class Disability {
     @NonNull
     private final String copingstrategy;
 
-    private final int criteriaTypeNumber;
+    private final int criteriaType;
 
     @NonNull
     private final String imageUrl;
 
     public Disability(@NonNull String disabilityId, @NonNull String name, @NonNull String description, @NonNull String subconsiderations,
-                      @NonNull String criteria, @NonNull String practitioners,  @NonNull String supportingevidence, @NonNull String copingstrategy,  int criteriaTypeNumber,  @NonNull String imageUrl) {
+                      @NonNull String practitioners,  @NonNull String supportingevidence, @NonNull String copingstrategy,  int criteriaType,  @NonNull String imageUrl) {
 
         this.disabilityId = disabilityId;
         this.name = name;
         this.description = description;
         this.subconsiderations = subconsiderations;
-        this.criteria = criteria;
         this.practitioners = practitioners;
         this.supportingevidence = supportingevidence;
         this.copingstrategy = copingstrategy;
-        this.criteriaTypeNumber = criteriaTypeNumber;
+        this.criteriaType = criteriaType;
         this.imageUrl = imageUrl;
     }
 
@@ -79,8 +75,8 @@ public final class Disability {
     }
 
 
-    public int getCriteriaTypeNumber() {
-        return criteriaTypeNumber;
+    public int getCriteriaType() {
+        return criteriaType;
     }
 
     @NonNull
@@ -128,6 +124,6 @@ public final class Disability {
         } catch (CloneNotSupportedException e) {
             e.printStackTrace ();
         }
-        return new Disability(disabilityId, name, description, subconsiderations, criteria, practitioners, supportingevidence, copingstrategy, criteriaTypeNumber, imageUrl);
+        return new Disability(disabilityId, name, description, subconsiderations,  practitioners, supportingevidence, copingstrategy, criteriaType, imageUrl);
     }
 }

@@ -35,7 +35,7 @@ public class DisabilityRepository {
         return this.disabilityDao.getDisability(disabilityId);
     }
 
-    public LiveData<List<Disability>> getDisabilitiesWithCriteriaTypeNumber (int criteriaTypeNumber) {
-        return this.disabilityDao.getDisabilitiesWithCriteriaTypeNumber (criteriaTypeNumber);
+    public LiveData<List<Disability>> getDisabilitiesWithCriteriaType (int criteriaType) {
+        return this.disabilityDao.getDisabilitiesWithCriteriaType (criteriaType);
     }
 }

@@ -17,9 +17,13 @@ import com.tenacity.hiddendisabilities.workers.ConditionDatabaseWorker;
 /**
  * The Room database for this app
  */
-@Database(entities = {HiddenDisability.class, com.tenacity.hiddendisabilities.data.Disability.class}, version = 1, exportSchema = false)
+@Database(entities = {HiddenDisability.class, com.tenacity.hiddendisabilities.data.Disability.class}, version = 2, exportSchema = false)
 @TypeConverters(Converters.class)
 public abstract class AppDatabase extends RoomDatabase {
+    public abstract HiddenDisabilityDao getHiddenDisabilitiesDao();
+    public abstract DisabilityDao getDisabilityDao();
+
+
     private static volatile AppDatabase instance;
 
     public static AppDatabase getInstance(Context context) {
@@ -44,10 +48,6 @@ public abstract class AppDatabase extends RoomDatabase {
                 } )
                 .build ();
     }
-
-    public abstract HiddenDisabilityDao getHiddenDisabilitiesDao();
-
-    public abstract DisabilityDao getDisabilityDao();
 
 
 }
