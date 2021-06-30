@@ -37,7 +37,8 @@ public class HiddenDisabilityActivity extends AppCompatActivity {
         NavController navCo = navHostFragment.getNavController();
 
         // Set up ActionBar withNavController
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
+        AppBarConfiguration appBarConfiguration =
+                new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
     }
