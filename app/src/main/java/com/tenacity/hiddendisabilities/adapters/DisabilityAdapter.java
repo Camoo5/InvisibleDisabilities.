@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
@@ -35,8 +36,8 @@ public class DisabilityAdapter extends ListAdapter <Disability, DisabilityAdapte
     }
 
     private View.OnClickListener createOnClickListener(String disabilityId) {
-        return v -> Navigation.findNavController ( v ).navigate (
-                DisabilityListFragmentDirections.actionDisabilityListFragmentToDisabilityDetailFragment ( disabilityId ) );
+        return v -> Navigation.findNavController ( v ).navigate(
+                (NavDirections) DisabilityListFragmentDirections.actionDisabilityListFragmentToDisabilityDetailFragment ( disabilityId ) );
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

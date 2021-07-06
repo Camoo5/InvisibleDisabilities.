@@ -16,6 +16,10 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.tenacity.hiddendisabilities.databinding.ActivityHiddenDisabilityBinding;
 
+import java.util.Objects;
+
+import static java.util.Objects.*;
+
 
 public class HiddenDisabilityActivity extends AppCompatActivity {
 
@@ -29,12 +33,20 @@ public class HiddenDisabilityActivity extends AppCompatActivity {
         super.onCreate ( savedInstanceState );
 
         ActivityHiddenDisabilityBinding binding = DataBindingUtil.setContentView ( this, R.layout.activity_hidden_disability );
-        this.drawerLayout = binding.drawerLayout;
+        this.drawerLayout = ( binding.drawerLayout );
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager ().findFragmentById ( R.id.nav_host_fragment );
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder ( navController.getGraph ()).setDrawerLayout ( drawerLayout ).build ();
-        NavigationUI.setupActionBarWithNavController ( this, navController, appBarConfiguration );
+        NavController navController = navHostFragment.getNavController();
+        appBarConfiguration = new AppBarConfiguration.Builder ( navController.getGraph ()).setDrawerLayout ( drawerLayout ).build ();
 
-        Toolbar toolbar = findViewById ( R.id.toolbar );
+        // Set up ActionBar
+        setSupportActionBar(binding.toolbar);
+        NavigationUI.setupActionBarWithNavController ( this, navController, appBarConfiguration );
+        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        // Set up navigation menu
+        NavigationUI.setupWithNavController(binding.toolbar, navController, appBarConfiguration);
+
 
     }
         @Override
