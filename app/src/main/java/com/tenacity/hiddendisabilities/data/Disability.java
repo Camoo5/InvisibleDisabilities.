@@ -73,6 +73,24 @@ public final class Disability {
     public String getDescription() {
         return description;
     }
+    @NonNull
+    public String getSubconsiderations() {
+        return subconsiderations;
+    }
+
+    @NonNull
+    public String getPractitioners() {
+        return practitioners;
+    }
+@NonNull
+    public String getSupportingevidence() {
+        return supportingevidence;
+    }
+
+    @NonNull
+    public String getCopingstrategy() {
+        return copingstrategy;
+    }
 
 
     public int getCriteriaType() {
