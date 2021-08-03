@@ -1,5 +1,5 @@
 
-package com.tenacity.hiddendisabilities.adapters;
+package com.tenacity.invisibledisabilities.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +12,11 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.tenacity.hiddendisabilities.R;
-import com.tenacity.hiddendisabilities.data.DisabilityAndHiddenDisabilities;
-import com.tenacity.hiddendisabilities.databinding.ListItemHiddenDisabilityBinding;
-import com.tenacity.hiddendisabilities.ui.gallery.HiddenDisabilityFragmentDirections;
-import com.tenacity.hiddendisabilities.ui.viewmodels.DisabilityAndHiddenDisabilitiesViewModel;
+import com.tenacity.invisibledisabilities.R;
+import com.tenacity.invisibledisabilities.data.DisabilityAndHiddenDisabilities;
+import com.tenacity.invisibledisabilities.ui.gallery.HiddenDisabilityFragmentDirections;
+import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityAndHiddenDisabilitiesViewModel;
+import com.tenacity.invisibledisabilities.databinding.ListItemHiddenDisabilityBinding;
 
 import java.util.Objects;
 

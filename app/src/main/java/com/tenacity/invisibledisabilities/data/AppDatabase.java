@@ -1,4 +1,4 @@
-package com.tenacity.hiddendisabilities.data;
+package com.tenacity.invisibledisabilities.data;
 
 import android.content.Context;
 
@@ -11,8 +11,12 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
-import com.tenacity.hiddendisabilities.utilities.Constants;
-import com.tenacity.hiddendisabilities.workers.ConditionDatabaseWorker;
+import com.tenacity.invisibledisabilities.data.DisabilityDao;
+import com.tenacity.invisibledisabilities.data.HiddenDisabilityDao;
+import com.tenacity.invisibledisabilities.utilities.Constants;
+import com.tenacity.invisibledisabilities.workers.ConditionDatabaseWorker;
+import com.tenacity.invisibledisabilities.data.Disability;
+import com.tenacity.invisibledisabilities.data.HiddenDisability;
 
 /**
  * The Room database for this app
@@ -22,9 +26,9 @@ import com.tenacity.hiddendisabilities.workers.ConditionDatabaseWorker;
 public abstract class AppDatabase extends RoomDatabase {
     public abstract HiddenDisabilityDao getHiddenDisabilitiesDao();
     public abstract DisabilityDao getDisabilityDao();
+    private static AppDatabase instance = null;
 
 
-    private static volatile AppDatabase instance;
 
     public static AppDatabase getInstance(Context context) {
         if (instance == null) {

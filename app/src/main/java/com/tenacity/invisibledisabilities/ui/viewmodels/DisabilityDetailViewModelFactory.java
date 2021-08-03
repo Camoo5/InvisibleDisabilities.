@@ -1,5 +1,4 @@
-package com.tenacity.hiddendisabilities.ui.viewmodels;
-
+package com.tenacity.invisibledisabilities.ui.viewmodels;
 
 import android.os.Build;
 
@@ -8,8 +7,8 @@ import androidx.annotation.RequiresApi;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.tenacity.hiddendisabilities.data.DisabilityRepository;
-import com.tenacity.hiddendisabilities.data.HiddenDisabilityRepository;
+import com.tenacity.invisibledisabilities.data.DisabilityRepository;
+import com.tenacity.invisibledisabilities.data.HiddenDisabilityRepository;
 
 
 public class DisabilityDetailViewModelFactory extends ViewModelProvider.NewInstanceFactory {
@@ -31,6 +30,6 @@ public class DisabilityDetailViewModelFactory extends ViewModelProvider.NewInsta
     @Override
     @SuppressWarnings("unchecked")
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        return (T) new DisabilityDetailViewModel(disabilityRepository, hiddenDisabilityRepository, disabilityId);
+        return (T) new DisabilityDetailViewModel (disabilityRepository, hiddenDisabilityRepository, disabilityId);
     }
 }

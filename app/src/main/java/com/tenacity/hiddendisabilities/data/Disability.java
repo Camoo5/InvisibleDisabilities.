@@ -1,4 +1,4 @@
-package com.tenacity.hiddendisabilities.data;
+package com.tenacity.invisibledisabilities.data;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -73,6 +73,7 @@ public final class Disability {
     public String getDescription() {
         return description;
     }
+
     @NonNull
     public String getSubconsiderations() {
         return subconsiderations;

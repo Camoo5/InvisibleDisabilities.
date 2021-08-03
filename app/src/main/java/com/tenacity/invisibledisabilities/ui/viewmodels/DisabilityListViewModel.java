@@ -1,4 +1,4 @@
-package com.tenacity.hiddendisabilities.ui.viewmodels;
+package com.tenacity.invisibledisabilities.ui.viewmodels;
 
 
 import androidx.annotation.NonNull;
@@ -7,8 +7,8 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
-import com.tenacity.hiddendisabilities.data.Disability;
-import com.tenacity.hiddendisabilities.data.DisabilityRepository;
+import com.tenacity.invisibledisabilities.data.Disability;
+import com.tenacity.invisibledisabilities.data.DisabilityRepository;
 
 import java.util.List;
 

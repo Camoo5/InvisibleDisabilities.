@@ -1,4 +1,4 @@
-package com.tenacity.hiddendisabilities.workers;
+package com.tenacity.invisibledisabilities.workers;
 
 import android.content.Context;
 import android.util.Log;
@@ -10,9 +10,8 @@ import androidx.work.WorkerParameters;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
-import com.tenacity.hiddendisabilities.data.AppDatabase;
-import com.tenacity.hiddendisabilities.data.Disability;
-import com.tenacity.hiddendisabilities.utilities.Constants;
+import com.tenacity.invisibledisabilities.data.AppDatabase;
+import com.tenacity.invisibledisabilities.data.Disability;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,7 +36,7 @@ public class ConditionDatabaseWorker extends Worker {
     @Override
     public Result doWork() {
         try {
-            InputStream input = getApplicationContext().getAssets().open(Constants.DISABILITY_DATA_FILENAME);
+            InputStream input = getApplicationContext().getAssets().open("DISABILITY_DATA_FILENAME");
             JsonReader reader = new JsonReader(new InputStreamReader(input));
             Type disabilityType = new TypeToken<List<Disability>>(){}.getType();
             List<Disability> disabilityList = new Gson().fromJson(reader, disabilityType);

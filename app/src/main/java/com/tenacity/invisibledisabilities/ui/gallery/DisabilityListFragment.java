@@ -1,5 +1,5 @@
 
-package com.tenacity.hiddendisabilities.ui.gallery;
+package com.tenacity.invisibledisabilities.ui.gallery;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,13 +15,13 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ListAdapter;
 
-import com.tenacity.hiddendisabilities.R;
-import com.tenacity.hiddendisabilities.adapters.DisabilityAdapter;
-import com.tenacity.hiddendisabilities.data.Disability;
-import com.tenacity.hiddendisabilities.databinding.FragmentDisabilityListBinding;
-import com.tenacity.hiddendisabilities.ui.viewmodels.DisabilityListViewModel;
-import com.tenacity.hiddendisabilities.ui.viewmodels.DisabilityListViewModelFactory;
-import com.tenacity.hiddendisabilities.utilities.InjectorUtils;
+import com.tenacity.invisibledisabilities.R;
+import com.tenacity.invisibledisabilities.adapters.DisabilityAdapter;
+import com.tenacity.invisibledisabilities.data.Disability;
+import com.tenacity.invisibledisabilities.databinding.FragmentDisabilityListBinding;
+import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityListViewModel;
+import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityListViewModelFactory;
+import com.tenacity.invisibledisabilities.utilities.InjectorUtils;
 
 
 public class DisabilityListFragment extends Fragment {
@@ -31,7 +31,9 @@ public class DisabilityListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         FragmentDisabilityListBinding binding = FragmentDisabilityListBinding.inflate(inflater, container, false);
+
         DisabilityListViewModelFactory factory = InjectorUtils.provideDisabilityListViewModelFactory(getContext());
         ListAdapter <Disability, DisabilityAdapter.ViewHolder> adapter = new DisabilityAdapter();
         binding.disabilityList.setAdapter(adapter);
@@ -49,11 +51,11 @@ public class DisabilityListFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId () == R.id.filter_criteria) {
-            updateData ();
-            return true;
+        if (item.getItemId () != R.id.filter_criteria) {
+            return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
+        updateData ();
+        return true;
     }
 
     private void subscribeUi(ListAdapter <Disability, DisabilityAdapter.ViewHolder> adapter) {

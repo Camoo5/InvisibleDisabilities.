@@ -1,4 +1,4 @@
-package com.tenacity.hiddendisabilities.data;
+ package com.tenacity.invisibledisabilities.data;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +18,7 @@ import java.util.Objects;
  * database migration, as the column name would not change.
  */
 @Entity(tableName = "hidden_disabilities",
-        foreignKeys = {@ForeignKey(entity = Disability.class, parentColumns = {"id"}, childColumns = {"disability_id"})},
+        foreignKeys = {@ForeignKey(entity = com.tenacity.invisibledisabilities.data.Disability.class, parentColumns = {"id"}, childColumns = {"disability_id"})},
         indices = {@Index("disability_id")})
 public final class HiddenDisability {
     @ColumnInfo(name = "disability_id") private final String disabilityId;

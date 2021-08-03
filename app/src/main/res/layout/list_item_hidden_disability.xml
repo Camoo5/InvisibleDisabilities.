@@ -44,7 +44,7 @@
             type="android.view.View.OnClickListener"/>
         <variable
             name="viewModel"
-            type="com.tenacity.hiddendisabilities.ui.viewmodels.DisabilityAndHiddenDisabilitiesViewModel"/>
+            type="com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityAndHiddenDisabilitiesViewModel"/>
     </data>
 
 </layout>

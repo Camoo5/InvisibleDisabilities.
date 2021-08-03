@@ -1,4 +1,4 @@
-package com.tenacity.hiddendisabilities.data;
+package com.tenacity.invisibledisabilities.data;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -14,14 +14,14 @@ import java.util.List;
 @Dao
 public interface DisabilityDao {
     @Query("SELECT * FROM disabilities ORDER BY name")
-    LiveData<List<Disability>> getDisabilities();
+    LiveData<List<com.tenacity.invisibledisabilities.data.Disability>> getDisabilities();
 
     @Query("SELECT * FROM disabilities WHERE criteriaType = :criteriaType ORDER BY name")
-    LiveData<List<Disability>> getDisabilitiesWithCriteriaType(int criteriaType);
+    LiveData<List<com.tenacity.invisibledisabilities.data.Disability>> getDisabilitiesWithCriteriaType(int criteriaType);
 
     @Query("SELECT * FROM disabilities WHERE id = :disabilityId")
-    LiveData<Disability> getDisability(String disabilityId);
+    LiveData<com.tenacity.invisibledisabilities.data.Disability> getDisability(String disabilityId);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertAll(List<Disability> disabilities);
+    void insertAll(List<com.tenacity.invisibledisabilities.data.Disability> disabilities);
 }

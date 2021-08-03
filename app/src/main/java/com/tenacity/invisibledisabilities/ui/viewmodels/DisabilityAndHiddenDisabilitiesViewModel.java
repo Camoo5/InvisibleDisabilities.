@@ -1,12 +1,12 @@
-package com.tenacity.hiddendisabilities.ui.viewmodels;
+package com.tenacity.invisibledisabilities.ui.viewmodels;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.ViewModel;
 
-import com.tenacity.hiddendisabilities.data.Disability;
-import com.tenacity.hiddendisabilities.data.DisabilityAndHiddenDisabilities;
-import com.tenacity.hiddendisabilities.data.HiddenDisability;
+import com.tenacity.invisibledisabilities.data.Disability;
+import com.tenacity.invisibledisabilities.data.DisabilityAndHiddenDisabilities;
+import com.tenacity.invisibledisabilities.data.HiddenDisability;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

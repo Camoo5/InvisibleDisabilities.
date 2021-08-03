@@ -1,13 +1,13 @@
-package com.tenacity.hiddendisabilities.utilities;
+package com.tenacity.invisibledisabilities.utilities;
 
 import android.content.Context;
 
-import com.tenacity.hiddendisabilities.data.AppDatabase;
-import com.tenacity.hiddendisabilities.data.DisabilityRepository;
-import com.tenacity.hiddendisabilities.data.HiddenDisabilityRepository;
-import com.tenacity.hiddendisabilities.ui.viewmodels.DisabilityDetailViewModelFactory;
-import com.tenacity.hiddendisabilities.ui.viewmodels.DisabilityListViewModelFactory;
-import com.tenacity.hiddendisabilities.ui.viewmodels.HiddenDisabilityListViewModelFactory;
+import com.tenacity.invisibledisabilities.data.AppDatabase;
+import com.tenacity.invisibledisabilities.data.DisabilityRepository;
+import com.tenacity.invisibledisabilities.data.HiddenDisabilityRepository;
+import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityDetailViewModelFactory;
+import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityListViewModelFactory;
+import com.tenacity.invisibledisabilities.ui.viewmodels.HiddenDisabilityListViewModelFactory;
 
 
 /**

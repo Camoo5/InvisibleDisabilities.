@@ -1,5 +1,5 @@
 
-package com.tenacity.hiddendisabilities.adapters;
+package com.tenacity.invisibledisabilities.adapters;
 
 
 import android.view.View;

@@ -1,4 +1,4 @@
-package com.tenacity.hiddendisabilities.adapters;
+package com.tenacity.invisibledisabilities.adapters;
 
 
 import android.text.TextUtils;

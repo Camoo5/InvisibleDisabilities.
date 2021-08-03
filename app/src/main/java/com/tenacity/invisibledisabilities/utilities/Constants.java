@@ -1,5 +1,5 @@
 
-package com.tenacity.hiddendisabilities.utilities;
+package com.tenacity.invisibledisabilities.utilities;
 
 /**
  * Constants used throughout the app.

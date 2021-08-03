@@ -1,7 +1,10 @@
 
-package com.tenacity.hiddendisabilities.data;
+package com.tenacity.invisibledisabilities.data;
 
 import androidx.lifecycle.LiveData;
+
+import com.tenacity.invisibledisabilities.data.Disability;
+import com.tenacity.invisibledisabilities.data.DisabilityDao;
 
 import java.util.List;
 

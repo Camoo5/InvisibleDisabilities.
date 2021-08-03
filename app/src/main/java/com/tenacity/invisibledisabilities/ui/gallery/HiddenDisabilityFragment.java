@@ -1,4 +1,4 @@
-package com.tenacity.hiddendisabilities.ui.gallery;
+package com.tenacity.invisibledisabilities.ui.gallery;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,11 +10,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.tenacity.hiddendisabilities.adapters.HiddenDisabilityAdapter;
-import com.tenacity.hiddendisabilities.databinding.FragmentHiddenDisabilityBinding;
-import com.tenacity.hiddendisabilities.ui.viewmodels.HiddenDisabilityListViewModel;
-import com.tenacity.hiddendisabilities.ui.viewmodels.HiddenDisabilityListViewModelFactory;
-import com.tenacity.hiddendisabilities.utilities.InjectorUtils;
+import com.tenacity.invisibledisabilities.adapters.HiddenDisabilityAdapter;
+import com.tenacity.invisibledisabilities.databinding.FragmentHiddenDisabilityBinding;
+import com.tenacity.invisibledisabilities.ui.viewmodels.HiddenDisabilityListViewModel;
+import com.tenacity.invisibledisabilities.ui.viewmodels.HiddenDisabilityListViewModelFactory;
+import com.tenacity.invisibledisabilities.utilities.InjectorUtils;
 
 
 

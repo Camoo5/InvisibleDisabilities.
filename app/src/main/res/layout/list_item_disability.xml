@@ -47,7 +47,7 @@
 
         <variable
             name="disability"
-            type="com.tenacity.hiddendisabilities.data.Disability" />
+            type="com.tenacity.invisibledisabilities.data.Disability" />
     </data>
 
 </layout>

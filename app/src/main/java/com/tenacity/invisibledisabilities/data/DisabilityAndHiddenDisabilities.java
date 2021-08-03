@@ -1,7 +1,10 @@
-package com.tenacity.hiddendisabilities.data;
+package com.tenacity.invisibledisabilities.data;
 
 import androidx.room.Embedded;
 import androidx.room.Relation;
+
+import com.tenacity.invisibledisabilities.data.Disability;
+import com.tenacity.invisibledisabilities.data.HiddenDisability;
 
 import java.util.ArrayList;
 import java.util.List;

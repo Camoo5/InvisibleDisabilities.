@@ -1,10 +1,10 @@
-package com.tenacity.hiddendisabilities.ui.viewmodels;
+package com.tenacity.invisibledisabilities.ui.viewmodels;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.tenacity.hiddendisabilities.data.DisabilityRepository;
+import com.tenacity.invisibledisabilities.data.DisabilityRepository;
 
 
 public class DisabilityListViewModelFactory extends ViewModelProvider.NewInstanceFactory {

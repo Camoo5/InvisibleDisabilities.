@@ -1,5 +1,4 @@
-
-package com.tenacity.hiddendisabilities.ui.gallery;
+package com.tenacity.invisibledisabilities.ui.gallery;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,14 +16,15 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.tenacity.hiddendisabilities.R;
-import com.tenacity.hiddendisabilities.databinding.FragmentDisabilityDetailBinding;
-import com.tenacity.hiddendisabilities.ui.viewmodels.DisabilityDetailViewModel;
-import com.tenacity.hiddendisabilities.ui.viewmodels.DisabilityDetailViewModelFactory;
-import com.tenacity.hiddendisabilities.utilities.InjectorUtils;
+import com.tenacity.invisibledisabilities.ui.gallery.DisabilityDetailFragmentArgs;
+import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityDetailViewModelFactory;
+import com.tenacity.invisibledisabilities.utilities.InjectorUtils;
+import com.tenacity.invisibledisabilities.R;
+import com.tenacity.invisibledisabilities.databinding.FragmentDisabilityDetailBinding;
+import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityDetailViewModel;
 
 /**
- * A fragment representing a single Disability detail screen.
+ * A fragment representing a single Disability detail screen.in
  */
 public class DisabilityDetailFragment extends Fragment {
 
@@ -33,40 +33,38 @@ public class DisabilityDetailFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        FragmentDisabilityDetailBinding binding = FragmentDisabilityDetailBinding.inflate(inflater, container, false);
-        DisabilityDetailFragmentArgs args = DisabilityDetailFragmentArgs.fromBundle( requireArguments());
+        FragmentDisabilityDetailBinding binding = FragmentDisabilityDetailBinding.inflate ( inflater, container, false );
+        DisabilityDetailFragmentArgs args = DisabilityDetailFragmentArgs.fromBundle ( requireArguments () );
         DisabilityDetailViewModelFactory factory = InjectorUtils.provideDisabilityDetailViewModelFactory (
-                requireContext(), args.getDisabilityId());
-        DisabilityDetailViewModel viewModel = new ViewModelProvider(this, factory).get(DisabilityDetailViewModel.class);
-        binding.setLifecycleOwner(this);
+                requireContext (), args.getDisabilityId () );
+        DisabilityDetailViewModel viewModel = new ViewModelProvider ( this, factory ).get ( DisabilityDetailViewModel.class );
+        binding.setLifecycleOwner ( this );
 
 
-
-
-        binding.setViewModel(viewModel);
-        binding.fab.setOnClickListener(v -> {
+        binding.setViewModel ( viewModel );
+        binding.fab.setOnClickListener ( v -> {
             viewModel.addDisabilityToHiddenDisability ();
-            Snackbar.make(v, R.string.added_disability_to_hidden_disabilities, Snackbar.LENGTH_LONG).show();
-        });
+            Snackbar.make ( v, R.string.added_disability_to_hidden_disabilities, Snackbar.LENGTH_LONG ).show ();
+        } );
 
-        viewModel.disability.observe(getViewLifecycleOwner(), disability ->
-                this.shareText = disability == null ? "" : getString(R.string.share_text_disability, disability.getName()));
+        viewModel.disability.observe ( getViewLifecycleOwner (), disability ->
+                this.shareText = disability == null ? "" : getString ( R.string.share_text_disability, disability.getName () ) );
 
-        setHasOptionsMenu(true);
+        setHasOptionsMenu ( true );
 
-        return binding.getRoot();
+        return binding.getRoot ();
     }
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate( R.menu.menu_disability_detail, menu);
-        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate ( R.menu.menu_disability_detail, menu );
+        super.onCreateOptionsMenu ( menu, inflater );
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId () == R.id.action_share) {
-            Intent shareIntent = ShareCompat.IntentBuilder.from ( requireActivity())
+            Intent shareIntent = ShareCompat.IntentBuilder.from ( requireActivity () )
                     .setText ( this.shareText )
                     .setType ( "text/plain" )
                     .createChooserIntent ();

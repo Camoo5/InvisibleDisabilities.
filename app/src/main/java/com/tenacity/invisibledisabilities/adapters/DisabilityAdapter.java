@@ -1,19 +1,18 @@
-package com.tenacity.hiddendisabilities.adapters;
+package com.tenacity.invisibledisabilities.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.tenacity.hiddendisabilities.data.Disability;
-import com.tenacity.hiddendisabilities.databinding.ListItemDisabilityBinding;
-import com.tenacity.hiddendisabilities.ui.gallery.DisabilityListFragmentDirections;
+import com.tenacity.invisibledisabilities.data.Disability;
+import com.tenacity.invisibledisabilities.ui.gallery.DisabilityListFragmentDirections;
+import com.tenacity.invisibledisabilities.databinding.ListItemDisabilityBinding;
 
 public class DisabilityAdapter extends ListAdapter <Disability, DisabilityAdapter.ViewHolder> {
 
@@ -37,7 +36,7 @@ public class DisabilityAdapter extends ListAdapter <Disability, DisabilityAdapte
 
     private View.OnClickListener createOnClickListener(String disabilityId) {
         return v -> Navigation.findNavController ( v ).navigate(
-                (NavDirections) DisabilityListFragmentDirections.actionDisabilityListFragmentToDisabilityDetailFragment ( disabilityId ) );
+                DisabilityListFragmentDirections.actionDisabilityListFragmentToDisabilityDetailFragment ( disabilityId ) );
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

@@ -1,4 +1,4 @@
-package com.tenacity.hiddendisabilities.data;
+package com.tenacity.invisibledisabilities.data;
 
 import androidx.room.TypeConverter;
 
