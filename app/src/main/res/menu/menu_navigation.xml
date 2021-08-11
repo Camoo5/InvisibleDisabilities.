@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/hidden_disability_fragment"
-        android:title="@string/my_hidden_disability_title"/>
+        android:id="@+id/hiddendisability_fragment"
+        android:title="@string/disability_title"/>
     <item
         android:id="@+id/disability_list_fragment"
         android:title="@string/disability_list_title"/>

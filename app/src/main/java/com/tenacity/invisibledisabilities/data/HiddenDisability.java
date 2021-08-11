@@ -33,7 +33,7 @@ public final class HiddenDisability {
     @ColumnInfo(name = "id")
     private long hiddenDisabilityId = 0L;
 
-    public HiddenDisability(String disabilityId, Calendar disabilityDate) {
+    public HiddenDisability(String disabilityId) {
         this.disabilityId = disabilityId;
         this.disabilityDate = disabilityDate == null ? Calendar.getInstance() : disabilityDate;
 
@@ -108,6 +108,6 @@ public final class HiddenDisability {
         }
 
 
-        return new HiddenDisability (disabilityId, disabilityDate );
+        return new HiddenDisability (disabilityId );
     }
 }

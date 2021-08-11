@@ -1,11 +1,12 @@
 package com.tenacity.invisibledisabilities;
 
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -13,43 +14,42 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.tenacity.invisibledisabilities.R;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.tenacity.invisibledisabilities.databinding.ActivityHiddenDisabilityBinding;
 
 
 public class HiddenDisabilityActivity extends AppCompatActivity {
 
-    private DrawerLayout drawerLayout;
-    private AppBarConfiguration appBarConfiguration;
-    private NavController navController;
+    private DrawerLayout mDrawerLayout;
+    private NavController mNavController;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
       super.onCreate ( savedInstanceState );
-      setContentView ( R.layout.activity_hidden_disability );
+
+        ActivityHiddenDisabilityBinding binding = DataBindingUtil.setContentView (this, R.layout.activity_hidden_disability);
+        mDrawerLayout = binding.drawerLayout;
+
+        setSupportActionBar(binding.toolbar);
+        mNavController = Navigation.findNavController(this, R.id.hidden_disability_fragment);
+        NavigationUI.setupActionBarWithNavController(this, mNavController, mDrawerLayout);
+        NavigationUI.setupWithNavController(binding.navigationView, mNavController);
 
 
-        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager ().findFragmentById ( R.id.nav_host_fragment );
-        NavController navController = navHostFragment.getNavController();
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
     }
 
     @Override
     public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
+        return NavigationUI.navigateUp(mNavController, mDrawerLayout);
     }
 
 
         @Override
         public void onBackPressed ( ) {
-            if (drawerLayout.isDrawerOpen ( GravityCompat.START )) {
-                drawerLayout.closeDrawer ( GravityCompat.START );
+            if (mDrawerLayout.isDrawerOpen ( GravityCompat.START )) {
+                mDrawerLayout.closeDrawer ( GravityCompat.START );
             } else {
                 super.onBackPressed ();
             }

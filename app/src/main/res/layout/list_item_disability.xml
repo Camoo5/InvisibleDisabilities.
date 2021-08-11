@@ -2,6 +2,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="disability"
+            type="com.tenacity.invisibledisabilities.data.Disability" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,15 +50,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <data>
 
-        <variable
-            name="clickListener"
-            type="android.view.View.OnClickListener" />
-
-        <variable
-            name="disability"
-            type="com.tenacity.invisibledisabilities.data.Disability" />
-    </data>
 
 </layout>

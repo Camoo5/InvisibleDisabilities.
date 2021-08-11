@@ -3,9 +3,6 @@ package com.tenacity.invisibledisabilities.data;
 import androidx.room.Embedded;
 import androidx.room.Relation;
 
-import com.tenacity.invisibledisabilities.data.Disability;
-import com.tenacity.invisibledisabilities.data.HiddenDisability;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,30 +10,16 @@ import java.util.List;
 public class DisabilityAndHiddenDisabilities {
 
     @Embedded
-    private Disability disability;
+    com.tenacity.invisibledisabilities.data.Disability disability;
 
     @Relation(parentColumn = "id", entityColumn = "disability_id")
-    private List<HiddenDisability> hiddenDisabilities;
+  List<HiddenDisability> hiddenDisabilities = new ArrayList <> ();
 
-    public  DisabilityAndHiddenDisabilities() {
-        this.hiddenDisabilities = new ArrayList<>();
+    public com.tenacity.invisibledisabilities.data.Disability getDisability () {
+    return disability;
     }
 
-
-
-    public Disability getDisability() {
-        return disability;
-    }
-
-    public void setDisability(Disability disability) {
-        this.disability = disability;
-    }
-
-    public List<HiddenDisability> getHiddenDisabilities() {
-        return hiddenDisabilities;
-    }
-
-    public void setHiddenDisabilities(List<HiddenDisability> hiddenDisabilities) {
-        this.hiddenDisabilities = hiddenDisabilities;
+    public List<HiddenDisability> getHiddenDisabilities(){
+        return  hiddenDisabilities;
     }
 }

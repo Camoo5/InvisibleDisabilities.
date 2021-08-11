@@ -1,26 +1,24 @@
 package com.tenacity.invisibledisabilities.data;
 
-import androidx.lifecycle.LiveData;
+import android.os.AsyncTask;
 
-import com.tenacity.invisibledisabilities.data.HiddenDisability;
-import com.tenacity.invisibledisabilities.data.HiddenDisabilityDao;
-import com.tenacity.invisibledisabilities.utilities.AppExecutors;
+import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
 
 public class HiddenDisabilityRepository {
-    private static HiddenDisabilityRepository instance;
-    private final HiddenDisabilityDao hiddenDisabilityDao;
-    private HiddenDisability hiddenDisability;
+ static HiddenDisabilityRepository instance;
+ HiddenDisabilityDao hiddenDisabilityDao;
 
-    private HiddenDisabilityRepository(HiddenDisabilityDao hiddenDisabilityDao) {
+
+   public HiddenDisabilityRepository(HiddenDisabilityDao hiddenDisabilityDao) {
         this.hiddenDisabilityDao = hiddenDisabilityDao;
     }
 
     public static HiddenDisabilityRepository getInstance(HiddenDisabilityDao hiddenDisabilityDao) {
         if (instance == null) {
-            synchronized (HiddenDisabilityRepository.class) {
+            synchronized (HiddenDisability.class) {
                 if (instance == null) {
                     instance = new HiddenDisabilityRepository ( hiddenDisabilityDao );
                 }
@@ -30,14 +28,14 @@ public class HiddenDisabilityRepository {
     }
 
     public void createHiddenDisability(String disabilityId) {
-        AppExecutors.getInstance ().diskIO ().execute ( () ->
-                hiddenDisabilityDao.insertHiddenDisability ( new HiddenDisability ( disabilityId, null ) ) );
+        AsyncTask.execute( new Runnable() {
+            @Override
+            public void run() {
+                HiddenDisability hiddenDisability = new HiddenDisability(disabilityId);
+                hiddenDisabilityDao.insertHiddenDisability (hiddenDisability);
     }
+        });
 
-    public void removeHiddenDisability(HiddenDisability hiddenDisability) {
-        this.hiddenDisability = hiddenDisability;
-        AppExecutors.getInstance ().diskIO ().execute ( () ->
-                hiddenDisabilityDao.deleteHiddenDisability ( hiddenDisability ) );
     }
 
     public LiveData <HiddenDisability> getHiddenDisabilityForDisability(String disabilityId) {
@@ -50,6 +48,14 @@ public class HiddenDisabilityRepository {
     }
 
     public LiveData <List <DisabilityAndHiddenDisabilities>> getDisabilityAndHiddenDisabilities() {
-        return hiddenDisabilityDao.getDisabilityAndHiddenDisabilities ();
+        return hiddenDisabilityDao.getDisabilityAndHiddenDisabilities();
     }
+
+//    private ExecutorService IO_EXECUTOR = Executors.newSingleThreadExecutor();
+//
+//    void runOnIoThread() {
+//        IO_EXECUTOR.execute();
+//    }
+
+
 }

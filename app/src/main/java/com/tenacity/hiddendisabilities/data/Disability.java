@@ -1,148 +1,117 @@
 package com.tenacity.invisibledisabilities.data;
 
+import android.widget.ImageView;
+
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.databinding.BindingAdapter;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Objects;
+import com.bumptech.glide.Glide;
 
 
 @Entity(tableName = "disabilities")
-public final class Disability {
+public  class Disability {
 
 
     @NonNull
     @PrimaryKey
     @ColumnInfo(name = "id")
-    private final String disabilityId;
-
-    @NonNull
-    private final String name;
-
-    @NonNull
-    private final String description;
-
-    @NonNull
-    private final String subconsiderations;
-
-    @NonNull
-    private final String practitioners;
-
-    @NonNull
-    private final String supportingevidence;
-
-    @NonNull
-    private final String copingstrategy;
-
-    private final int criteriaType;
-
-    @NonNull
-    private final String imageUrl;
-
-    public Disability(@NonNull String disabilityId, @NonNull String name, @NonNull String description, @NonNull String subconsiderations,
-                      @NonNull String practitioners,  @NonNull String supportingevidence, @NonNull String copingstrategy,  int criteriaType,  @NonNull String imageUrl) {
-
-        this.disabilityId = disabilityId;
-        this.name = name;
-        this.description = description;
-        this.subconsiderations = subconsiderations;
-        this.practitioners = practitioners;
-        this.supportingevidence = supportingevidence;
-        this.copingstrategy = copingstrategy;
-        this.criteriaType = criteriaType;
-        this.imageUrl = imageUrl;
-    }
+    private  String disabilityId;
+    private  String name;
+    private String description;
+    private  String subconsiderations;
+    private  String practitioners;
+    private String supportingevidence;
+    private String copingstrategy;
+    private  int criteriaType;
+    private  String imageUrl  ="";
 
 
-
-    @NonNull
     public String getDisabilityId() {
         return disabilityId;
     }
 
-    @NonNull
+    @BindingAdapter("imageFromUrl")
+    public static void imageFromUrl(ImageView view, String imageUrl) {
+        if (imageUrl !=  null && !imageUrl.isEmpty())
+            Glide.with(view.getContext()).load(imageUrl).into(view);
+    }
     public String getName() {
         return name;
     }
 
-    @NonNull
+    public void setDisabilityId(String disabilityId) {
+
+        this.disabilityId = disabilityId;
+    }
+
     public String getDescription() {
         return description;
     }
 
-    @NonNull
+    public void setName(String name) {
+
+        this.name = name;
+    }
     public String getSubconsiderations() {
         return subconsiderations;
     }
 
-    @NonNull
+    public void setDescription(String description) {
+   this.description = description;
+
+        }
+
+
     public String getPractitioners() {
         return practitioners;
     }
-@NonNull
+
+    public void setSubconsiderations(String subconsiderations){
+
+        this.subconsiderations = subconsiderations;
+    }
+
     public String getSupportingevidence() {
         return supportingevidence;
     }
 
-    @NonNull
+    public void setPractitioners(String practitioners){
+
+        this.practitioners = practitioners;
+    }
+
     public String getCopingstrategy() {
         return copingstrategy;
     }
 
+    public void setSupportingevidence(String supportingevidence){
+
+        this.supportingevidence = supportingevidence;
+    }
 
     public int getCriteriaType() {
         return criteriaType;
     }
 
-    @NonNull
+    public void setCopingstrategy(String copingstrategy){
+
+        this.copingstrategy = copingstrategy;
+    }
+
+
     public String getImageUrl() {
         return imageUrl;
     }
 
-    @NonNull
-    @Override
-    public String toString() {
-        return name;
+    public void setCriteriaType(int  criteriaType){
+
+        this.criteriaType = criteriaType;
     }
 
-    /**
-     * As [Disability.kt] is declared as [Data class], {@link Object#equals(Object)} implicit implemented.
-     * So we explicit implemented {@link Object#equals(Object)} in [Plant.java]
-     * see: https://kotlinlang.org/docs/reference/data-classes.html
-     */
-    @Override
-    public boolean equals(@Nullable Object obj) {
-        return obj instanceof Disability
-                && this.disabilityId.equals(((Disability) obj).disabilityId);
-    }
-
-    /**
-     * As [Plant.kt] is declared as [Data class], {@link Object#hashCode()} implicit implemented.
-     * So we explicit implemented {@link Object#hashCode()} in [Disability.java]
-     * see: https://kotlinlang.org/docs/reference/data-classes.html
-     */
-    @Override
-    public int hashCode() {
-        return Objects.hash(disabilityId);
-    }
-
-    /**
-     * As [Disability.kt] is declared as [Data class], {copy()} implicit implemented.
-     * So we explicit implemented {@link Object#clone()} in [Plant.java]
-     * see: https://kotlinlang.org/docs/reference/data-classes.html
-     */
-    @NotNull
-    @Override
-    public Object clone() {
-        try {
-            super.clone ();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace ();
-        }
-        return new Disability(disabilityId, name, description, subconsiderations,  practitioners, supportingevidence, copingstrategy, criteriaType, imageUrl);
+    public void setImageUrl(String imageUrl){
+        this.imageUrl = imageUrl;
     }
 }

@@ -3,42 +3,39 @@ package com.tenacity.invisibledisabilities.data;
 
 import androidx.lifecycle.LiveData;
 
-import com.tenacity.invisibledisabilities.data.Disability;
-import com.tenacity.invisibledisabilities.data.DisabilityDao;
-
 import java.util.List;
 
 /**
  * Repository module for handling data operations.
  */
 public class DisabilityRepository {
-    private static DisabilityRepository instance;
     private final DisabilityDao disabilityDao;
+    private static volatile DisabilityRepository instance;
 
-    private DisabilityRepository(DisabilityDao hiddenDisabilityDao) {
-        this.disabilityDao = hiddenDisabilityDao;
+    DisabilityRepository(DisabilityDao disabilityDao) {
+        this.disabilityDao = disabilityDao;
     }
 
-    public static DisabilityRepository getInstance(DisabilityDao hiddenDisabilityDao) {
+    public static DisabilityRepository getInstance(DisabilityDao disabilityDao) {
         if (instance == null) {
-            synchronized (DisabilityRepository.class) {
-                if (instance == null) {
-                    instance = new DisabilityRepository(hiddenDisabilityDao);
-                }
+            synchronized(DisabilityRepository.class) {
+                if (instance == null)
+                    instance = new DisabilityRepository(disabilityDao);
             }
         }
         return instance;
     }
 
-    public LiveData <List<Disability>> getDisabilities() {
-        return this.disabilityDao.getDisabilities ();
+    public LiveData <List<com.tenacity.invisibledisabilities.data.Disability>> getDisabilities() {
+        return disabilityDao.getDisabilities ();
     }
 
-    public LiveData<Disability> getDisability(String disabilityId) {
-        return this.disabilityDao.getDisability(disabilityId);
+    public LiveData<com.tenacity.invisibledisabilities.data.Disability> getDisability(String id) {
+        return disabilityDao.getDisability(id);
     }
 
-    public LiveData<List<Disability>> getDisabilitiesWithCriteriaType (int criteriaType) {
-        return this.disabilityDao.getDisabilitiesWithCriteriaType (criteriaType);
+    public LiveData<List<com.tenacity.invisibledisabilities.data.Disability>> getDisabilitiesWithCriteriaType (int criteriaType) {
+        return disabilityDao.getDisabilitiesByCriteriaType  (criteriaType);
     }
+
 }

@@ -21,17 +21,20 @@ public class InjectorUtils {
 
     private static HiddenDisabilityRepository getHiddenDisabilityRepository(Context context) {
         return HiddenDisabilityRepository.getInstance(
-                AppDatabase.getInstance(context.getApplicationContext()).getHiddenDisabilitiesDao());
+                AppDatabase.getInstance(context).getHiddenDisabilitiesDao());
     }
 
 
     public static DisabilityListViewModelFactory provideDisabilityListViewModelFactory(Context context) {
-        return new DisabilityListViewModelFactory (getDisabilityRepository ( context ));
+        DisabilityRepository repository = getDisabilityRepository ( context );
+        DisabilityListViewModelFactory vmFactory = new DisabilityListViewModelFactory ( repository );
+        return vmFactory;
     }
 
 
     public static HiddenDisabilityListViewModelFactory provideHiddenDisabilityListViewModelFactory (Context context) {
-        return new HiddenDisabilityListViewModelFactory (getHiddenDisabilityRepository (context));
+        HiddenDisabilityRepository hiddenDisabilityRepository = getHiddenDisabilityRepository ( context );
+        return new HiddenDisabilityListViewModelFactory (hiddenDisabilityRepository);
     }
 
     public static DisabilityDetailViewModelFactory provideDisabilityDetailViewModelFactory(Context context, String disabilityId) {

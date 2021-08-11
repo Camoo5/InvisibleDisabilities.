@@ -33,14 +33,10 @@
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/nav_host_fragment"
                 android:name="androidx.navigation.fragment.NavHostFragment"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:defaultNavHost="true"
                 app:navGraph="@navigation/nav_graph" />
-
-
-
-
 
         </LinearLayout>
 
@@ -52,7 +48,6 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             app:headerLayout="@layout/nav_header"
-            android:fitsSystemWindows="true"
             app:menu="@menu/menu_navigation"/>
 
     </androidx.drawerlayout.widget.DrawerLayout>

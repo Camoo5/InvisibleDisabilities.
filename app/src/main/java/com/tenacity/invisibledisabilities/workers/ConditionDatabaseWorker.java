@@ -13,42 +13,40 @@ import com.google.gson.stream.JsonReader;
 import com.tenacity.invisibledisabilities.data.AppDatabase;
 import com.tenacity.invisibledisabilities.data.Disability;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 
 public class ConditionDatabaseWorker extends Worker {
-
-    private static final String TAG = ConditionDatabaseWorker.class.getSimpleName();
-
-    /**
-     * @param appContext   The application {@link Context}
-     * @param workerParams Parameters to setup the internal state of this worker
-     */
-    public ConditionDatabaseWorker(@NonNull Context appContext, @NonNull WorkerParameters workerParams) {
-        super(appContext, workerParams);
+    public ConditionDatabaseWorker(@NonNull @NotNull Context context, @NonNull @NotNull WorkerParameters workerParams) {
+        super ( context, workerParams );
     }
 
     @NonNull
     @Override
     public Result doWork() {
+
         try {
-            InputStream input = getApplicationContext().getAssets().open("DISABILITY_DATA_FILENAME");
-            JsonReader reader = new JsonReader(new InputStreamReader(input));
-            Type disabilityType = new TypeToken<List<Disability>>(){}.getType();
-            List<Disability> disabilityList = new Gson().fromJson(reader, disabilityType);
-            input.close();
-
-            AppDatabase database = AppDatabase.getInstance(getApplicationContext());
-            database.getDisabilityDao ().insertAll(disabilityList);
-
+            InputStream inputStream = getApplicationContext().getAssets().open("disabilities.json");
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+            String json = new String(buffer, StandardCharsets.UTF_8 );
+            List<Disability> disabilityList = new Gson().fromJson(json, new TypeToken<List<Disability>>() {
+            }.getType());
+            AppDatabase appDatabase = AppDatabase.getInstance(getApplicationContext());
+            appDatabase.disabilityDao ().insertAll(disabilityList);
             return Result.success();
         } catch (IOException e) {
-            Log.e(TAG, "Error finding database", e);
-            return Result.failure();
+            e.printStackTrace();
+            return Result.Failure;
         }
     }
 }

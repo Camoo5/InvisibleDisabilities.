@@ -13,64 +13,55 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.ListAdapter;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.tenacity.invisibledisabilities.R;
 import com.tenacity.invisibledisabilities.adapters.DisabilityAdapter;
 import com.tenacity.invisibledisabilities.data.Disability;
-import com.tenacity.invisibledisabilities.databinding.FragmentDisabilityListBinding;
 import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityListViewModel;
 import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityListViewModelFactory;
 import com.tenacity.invisibledisabilities.utilities.InjectorUtils;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class DisabilityListFragment extends Fragment {
 
+    private final List <Disability> disabilitiesList = new ArrayList <> ();
     private DisabilityListViewModel viewModel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_disability_list, container, false);
 
-        FragmentDisabilityListBinding binding = FragmentDisabilityListBinding.inflate(inflater, container, false);
+       DisabilityListViewModelFactory factory = InjectorUtils.provideDisabilityListViewModelFactory(getActivity());
+        viewModel = new ViewModelProvider (this, factory).get(DisabilityListViewModel.class);
 
-        DisabilityListViewModelFactory factory = InjectorUtils.provideDisabilityListViewModelFactory(getContext());
-        ListAdapter <Disability, DisabilityAdapter.ViewHolder> adapter = new DisabilityAdapter();
-        binding.disabilityList.setAdapter(adapter);
-        this.viewModel = new ViewModelProvider (this, factory).get(DisabilityListViewModel.class);
-        subscribeUi(adapter);
+        DisabilityAdapter adapter = new DisabilityAdapter(disabilitiesList);
+        RecyclerView recyclerView = view.findViewById(R.id.disability_list);
+        recyclerView.setAdapter(adapter);
+        subscribeUI(adapter);
 
         setHasOptionsMenu(true);
-        return binding.getRoot();
+        return view;
     }
 
     @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate( R.menu.menu_disability_list, menu);
+    public void onCreateOptionsMenu(@NotNull Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_disability_list, menu);
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId () != R.id.filter_criteria) {
-            return super.onOptionsItemSelected(item);
-        }
-        updateData ();
-        return true;
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 
-    private void subscribeUi(ListAdapter <Disability, DisabilityAdapter.ViewHolder> adapter) {
-        this.viewModel.disabilities.observe(getViewLifecycleOwner(), disabilities -> {
-            if (disabilities != null) {
-                adapter.submitList ( disabilities );
-            }
-        });
+    private void subscribeUI(DisabilityAdapter adapter) {
+        viewModel.getDisabilities ().observe(getViewLifecycleOwner(), disabilities -> adapter.updateItems(disabilities) );
     }
 
-    private void updateData() {
-        if (viewModel.isFiltered()) {
-            viewModel.cleanCriteriaType ();
-        } else {
-            viewModel.setCriteriaType ( 1 );
-        }
-    }
 }

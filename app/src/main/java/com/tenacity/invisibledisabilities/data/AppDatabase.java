@@ -11,17 +11,13 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
-import com.tenacity.invisibledisabilities.data.DisabilityDao;
-import com.tenacity.invisibledisabilities.data.HiddenDisabilityDao;
 import com.tenacity.invisibledisabilities.utilities.Constants;
 import com.tenacity.invisibledisabilities.workers.ConditionDatabaseWorker;
-import com.tenacity.invisibledisabilities.data.Disability;
-import com.tenacity.invisibledisabilities.data.HiddenDisability;
 
 /**
  * The Room database for this app
  */
-@Database(entities = {HiddenDisability.class, Disability.class}, version = 1, exportSchema = false)
+@Database(entities = {HiddenDisability.class, com.tenacity.invisibledisabilities.data.Disability.class}, version = 1, exportSchema = false)
 @TypeConverters(Converters.class)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract HiddenDisabilityDao getHiddenDisabilitiesDao();
@@ -52,5 +48,9 @@ public abstract class AppDatabase extends RoomDatabase {
                     }
                 }).build();
 
+    }
+
+    public static void destroyDatabase() {
+        instance = null;
     }
 }

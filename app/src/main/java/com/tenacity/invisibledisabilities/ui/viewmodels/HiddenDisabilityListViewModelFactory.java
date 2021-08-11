@@ -13,17 +13,16 @@ import com.tenacity.invisibledisabilities.data.HiddenDisabilityRepository;
  * [HiddenDisabilityRepository].
  */
 public class HiddenDisabilityListViewModelFactory extends ViewModelProvider.NewInstanceFactory {
-    private final HiddenDisabilityRepository repository;
+    private final HiddenDisabilityRepository hiddenDisabilityRepository;
 
-    public HiddenDisabilityListViewModelFactory(@NonNull HiddenDisabilityRepository repository) {
-        super();
-        this.repository = repository;
+    public HiddenDisabilityListViewModelFactory(HiddenDisabilityRepository repository) {
+        this.hiddenDisabilityRepository = repository;
     }
 
     @NonNull
     @Override
     @SuppressWarnings("unchecked")
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        return (T) new com.tenacity.invisibledisabilities.ui.viewmodels.HiddenDisabilityListViewModel (repository);
+         return (T) new HiddenDisabilityListViewModel(hiddenDisabilityRepository);
     }
 }
