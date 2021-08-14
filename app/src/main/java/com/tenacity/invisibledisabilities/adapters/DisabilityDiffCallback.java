@@ -29,16 +29,16 @@ public class DisabilityDiffCallback extends DiffUtil.Callback {
 
     @Override
     public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-        Disability oldPlant = oldList.get(oldItemPosition);
-       Disability newPlant = newList.get(newItemPosition);
-        return oldPlant.getDisabilityId () == newPlant.getDisabilityId();
+        Disability oldDisability= oldList.get(oldItemPosition);
+       Disability newDisability = newList.get(newItemPosition);
+        return oldDisability.getDisabilityId () == newDisability.getDisabilityId();
     }
 
     @Override
     public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
-        Disability oldPlant = oldList.get(oldItemPosition);
-       Disability newPlant = newList.get(newItemPosition);
-        return oldPlant.equals(newPlant);
+        Disability oldDisability= oldList.get(oldItemPosition);
+       Disability newDisability = newList.get(newItemPosition);
+        return oldDisability.equals(newDisability);
     }
 
 }

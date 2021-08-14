@@ -2,22 +2,17 @@
 package com.tenacity.invisibledisabilities.adapters;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DiffUtil;
-import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tenacity.invisibledisabilities.R;
 import com.tenacity.invisibledisabilities.data.DisabilityAndHiddenDisabilities;
-import com.tenacity.invisibledisabilities.data.HiddenDisability;
-import com.tenacity.invisibledisabilities.ui.gallery.HiddenDisabilityFragmentDirections;
-import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityAndHiddenDisabilitiesViewModel;
 import com.tenacity.invisibledisabilities.databinding.ListItemHiddenDisabilityBinding;
+import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityAndHiddenDisabilitiesViewModel;
 
 import java.util.List;
 

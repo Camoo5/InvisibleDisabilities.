@@ -8,7 +8,8 @@ import java.util.List;
 
 
 public class HiddenDisabilityRepository {
- static HiddenDisabilityRepository instance;
+
+    static HiddenDisabilityRepository instance;
  HiddenDisabilityDao hiddenDisabilityDao;
 
 
@@ -28,13 +29,13 @@ public class HiddenDisabilityRepository {
     }
 
     public void createHiddenDisability(String disabilityId) {
-        AsyncTask.execute( new Runnable() {
+        AsyncTask.execute( new Runnable () {
             @Override
             public void run() {
-                HiddenDisability hiddenDisability = new HiddenDisability(disabilityId);
-                hiddenDisabilityDao.insertHiddenDisability (hiddenDisability);
-    }
-        });
+                HiddenDisability hiddenDisability = new HiddenDisability ( disabilityId );
+                hiddenDisabilityDao.insertHiddenDisability ( hiddenDisability );
+            }
+        } );
 
     }
 

@@ -6,8 +6,7 @@
 
     <!-- Translatable resources -->
     <string name="menu_filter_by_criteria_type" translation_description="The label for the menu item to filter the displayed disabilities by criteria type.">Filter by criteria</string>
-    <string name="disability_detail_image_content_description" translation_description="Content description for the header / hero image that is show at the top of the disability detail screen.">Image of disability</string>
-    <item name="empty_hidden_disability" type="id" />
+    <string name="disability_detail_scrollview" translation_description="Content description for the header / hero image that is show at the top of the disability detail screen.">Image of disability</string>
     <string name="disability_list_title" translation_description="Title for the disability list screen where the user can see a list of disabilities available to add to their hidden_disabilities.">Disability list</string>
     <string name="disability_details_title" translation_description="Title for the disability details screen where the user can see the details for a specific disability.">Disability details</string>
     <string name="navigation_drawer_header_content_description" translation_description="Content description for the image that is shown at the top of the navigation drawer.">Navigation drawer header logo</string>
@@ -24,8 +23,11 @@
 
     <string name="my_hidden_disability_title">my_hidden_disability_title</string>
 
+
     <string name="submit">Submit</string>
 
 
     <string name="disability_title" translation_description="Title for the 'hidden_disabilities' screen where the user can see the list of disabilities that have been added to their hidden_disability.">Hidden_disability</string>
+    <string name="disability_detail_image_content_description">disability_detail_image_content_description</string>
+
 </resources>

@@ -13,44 +13,29 @@
         <androidx.core.widget.NestedScrollView
             android:id="@+id/disability_detail_scrollview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:paddingBottom="@dimen/fab_bottom_padding"
+            android:layout_height="719dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+
                 <TextView
-                    android:id="@+id/disability_name"
+                    android:id="@+id/disability_detail"
                     style="?android:attr/textAppearanceLarge"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_small"
-                    android:layout_marginTop="@dimen/margin_normal"
                     android:layout_marginEnd="@dimen/margin_small"
-                    android:text="@string/a11y_disability_item_image"
+                    android:text="@{viewModel.disability.description}"
+                    android:textIsSelectable="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="InvisibleDisabilities" />
-
-
-                <TextView
-                    android:id="@+id/disability_description"
-                    style="?android:attr/textAppearanceMedium"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_small"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:layout_marginEnd="@dimen/margin_small"
-                    android:textIsSelectable="true"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/disability_name"
-                    app:renderHtml="@{viewModel.disability.description}"
-                    tools:text="Details about disability" />
+                    tools:text="Details about the disability" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -64,15 +49,14 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:id="@+id/collapsing_toolbar_layout"
+                android:id="@+id/toolbar_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
+                app:title="@{viewModel.disability.name}"
                 app:contentScrim="?attr/colorPrimary"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:title="@{viewModel.disability.name}"
                 app:toolbarId="@+id/toolbar">
-
 
                 <ImageView
                     android:id="@+id/detail_image"
@@ -85,7 +69,7 @@
                     app:layout_collapseMode="parallax" />
 
                 <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
+                    android:id="@+id/detail_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin"
@@ -95,20 +79,18 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
             style="@style/Widget.MaterialComponents.FloatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
+            android:layout_gravity="center_vertical|start"
             android:layout_margin="@dimen/fab_margin"
-            android:contentDescription="@string/submit"
             android:tint="@android:color/white"
-            app:isGone="@{viewModel.isDisabled}"
-            app:layout_anchorGravity="bottom|end"
+            android:contentDescription="@string/disability_detail_image_content_description"
+            app:layout_anchor="@id/disability_detail_scrollview"
+            app:layout_anchorGravity="top|end"
             app:srcCompat="@drawable/ic_plus" />
-
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
@@ -118,6 +100,5 @@
             name="viewModel"
             type="com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityDetailViewModel" />
     </data>
-
 
 </layout>

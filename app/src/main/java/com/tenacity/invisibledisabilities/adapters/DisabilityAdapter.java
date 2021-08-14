@@ -32,7 +32,7 @@ public class DisabilityAdapter extends RecyclerView.Adapter<DisabilityAdapter.Vi
             layoutInflater = LayoutInflater.from(parent.getContext());
         }
         ListItemDisabilityBinding binding = DataBindingUtil.inflate(layoutInflater, R.layout.list_item_disability, parent, false);
-        return new ViewHolder(binding);
+        return new ViewHolder ( binding );
     }
 
     @Override
@@ -42,14 +42,11 @@ public class DisabilityAdapter extends RecyclerView.Adapter<DisabilityAdapter.Vi
     }
 
     private View.OnClickListener createClickListener(String disabilityId) {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               DisabilityListFragmentDirections.ActionDisabilityListFragmentToDisabilityDetailFragment direction =
-                       DisabilityListFragmentDirections.actionDisabilityListFragmentToDisabilityDetailFragment(disabilityId);
-                Navigation.findNavController(view).navigate(direction);
+        return view -> {
+           DisabilityListFragmentDirections.ActionDisabilityListFragmentToDisabilityDetailFragment direction =
+                   DisabilityListFragmentDirections.actionDisabilityListFragmentToDisabilityDetailFragment(disabilityId);
+            Navigation.findNavController(view).navigate(direction);
 
-            }
         };
     }
 
@@ -67,7 +64,7 @@ public class DisabilityAdapter extends RecyclerView.Adapter<DisabilityAdapter.Vi
         diffResult.dispatchUpdatesTo(this);
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
         ListItemDisabilityBinding binding;
 
         ViewHolder(@NonNull ListItemDisabilityBinding binding) {

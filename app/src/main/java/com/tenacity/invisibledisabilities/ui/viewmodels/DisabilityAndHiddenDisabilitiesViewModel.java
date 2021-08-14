@@ -10,7 +10,6 @@ import com.tenacity.invisibledisabilities.data.Disability;
 import com.tenacity.invisibledisabilities.data.DisabilityAndHiddenDisabilities;
 import com.tenacity.invisibledisabilities.data.HiddenDisability;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
@@ -18,8 +17,8 @@ import java.util.Locale;
 
 public class DisabilityAndHiddenDisabilitiesViewModel extends ViewModel {
 
-    public final ObservableField<String> imageUrl;
-    public final ObservableField<String> disabilityDate;
+   private final ObservableField<String> imageUrl;
+    private final ObservableField<String> disabilityDate;
     private Disability disability;
     private HiddenDisability hiddenDisability;
 
@@ -31,8 +30,8 @@ public class DisabilityAndHiddenDisabilitiesViewModel extends ViewModel {
         String disabilityDateStr = dateFormat.format ( hiddenDisability.disabilityDate.getTime () );
 
 
-       imageUrl = new ObservableField<String>(disability.getImageUrl());
-       disabilityDate = new ObservableField<String>(context.getString ( R.string.disability_date, disability.getName (), disabilityDateStr));
+       imageUrl = new ObservableField <String> ( disability.getImageUrl () );
+       disabilityDate = new ObservableField <String> ( context.getString ( R.string.disability_date, disability.getName (), disabilityDateStr ) );
     }
 
     public ObservableField<String> getImageUrl() {

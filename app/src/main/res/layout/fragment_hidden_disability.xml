@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="@string/hidden_disabilities_empty"
+            android:text="@string/empty_hidden_disability"
             android:textSize="24sp"
             app:isGone="@{hasDisabilities}" />
 
