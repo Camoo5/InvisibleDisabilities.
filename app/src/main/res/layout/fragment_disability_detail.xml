@@ -10,37 +10,6 @@
         tools:context="com.tenacity.invisibledisabilities.HiddenDisabilityActivity"
         tools:ignore="MergeRootFrame">
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/disability_detail_scrollview"
-            android:layout_width="match_parent"
-            android:layout_height="719dp"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
-                <TextView
-                    android:id="@+id/disability_detail"
-                    style="?android:attr/textAppearanceLarge"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_small"
-                    android:layout_marginEnd="@dimen/margin_small"
-                    android:text="@{viewModel.disability.description}"
-                    android:textIsSelectable="true"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Details about the disability" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.core.widget.NestedScrollView>
-
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar"
             android:layout_width="match_parent"
@@ -79,6 +48,36 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
+  <androidx.core.widget.NestedScrollView
+            android:id="@+id/disability_detail_scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="719dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/disability_detail"
+                    style="?android:attr/textAppearanceLarge"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:text="@{viewModel.disability.description}"
+                    android:textIsSelectable="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Details about the disability" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
             style="@style/Widget.MaterialComponents.FloatingActionButton"
@@ -100,5 +99,7 @@
             name="viewModel"
             type="com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityDetailViewModel" />
     </data>
+
+
 
 </layout>

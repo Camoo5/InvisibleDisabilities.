@@ -41,7 +41,7 @@ public class HiddenDisabilityFragment extends Fragment {
         HiddenDisabilityAdapter adapter = new HiddenDisabilityAdapter ( disabilitiesList );
 
         mTextViewEmptyHiddenDisability = view.findViewById ( R.id.empty_hidden_disability );
-        mRecyclerView = view.findViewById ( R.id.hidden_disabilities_list );
+        mRecyclerView = view.findViewById ( R.id.hidden_disability_list );
         mRecyclerView.setAdapter ( adapter );
         subscribeUI ( adapter );
         return view;
@@ -62,7 +62,7 @@ public class HiddenDisabilityFragment extends Fragment {
 
         viewModel.disabilityAndHiddenDisabilities.observe ( getViewLifecycleOwner(), hiddenDisabilitiesList -> {
             if (hiddenDisabilitiesList != null && !hiddenDisabilitiesList.isEmpty ()) {
-                adapter.updateList (hiddenDisabilitiesList );
+                adapter.updateList ( hiddenDisabilitiesList );
             }
         } );
     }
