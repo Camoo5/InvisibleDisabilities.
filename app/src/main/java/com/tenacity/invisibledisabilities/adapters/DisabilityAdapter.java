@@ -43,8 +43,8 @@ public class DisabilityAdapter extends RecyclerView.Adapter<DisabilityAdapter.Vi
 
     private View.OnClickListener createClickListener(String disabilityId) {
         return view -> {
-           DisabilityListFragmentDirections.ActionDisabilityListFragmentToDisabilityDetailFragment direction =
-                   DisabilityListFragmentDirections.actionDisabilityListFragmentToDisabilityDetailFragment(disabilityId);
+            DisabilityListFragmentDirections.ActionDisabilityListFragmentToDisabilityDetailFragment direction =
+                    DisabilityListFragmentDirections.actionDisabilityListFragmentToDisabilityDetailFragment(disabilityId);
             Navigation.findNavController(view).navigate(direction);
 
         };

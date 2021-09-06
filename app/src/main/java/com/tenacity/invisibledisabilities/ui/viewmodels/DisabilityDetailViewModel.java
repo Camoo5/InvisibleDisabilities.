@@ -13,7 +13,7 @@ import com.tenacity.invisibledisabilities.data.HiddenDisabilityRepository;
  * The ViewModel used in [DisabilityDetailFragment].
  */
 public class DisabilityDetailViewModel extends ViewModel {
-    private final LiveData <HiddenDisability> hiddenDisabilityForDisability;
+   private LiveData<HiddenDisability> hiddenDisabilityForDisability;
     HiddenDisabilityRepository hiddenDisabilityRepository;
     LiveData<Boolean> isDisabled;
     public LiveData<Disability> disability;
@@ -24,7 +24,7 @@ public class DisabilityDetailViewModel extends ViewModel {
         this.disabilityId = disabilityId;
         this.disability = disabilityRepository.getDisability ( disabilityId );
         this.hiddenDisabilityRepository = hiddenDisabilityRepository;
-        hiddenDisabilityForDisability = hiddenDisabilityRepository.getHiddenDisabilityForDisability (disabilityId);
+        hiddenDisabilityRepository.getHiddenDisabilityForDisability(disabilityId);
     }
 
     public void addDisabilityToHiddenDisability() {
@@ -35,9 +35,4 @@ public class DisabilityDetailViewModel extends ViewModel {
         return disability;
     }
 
-//    @Override
-//    protected void onCleared() {
-//        super.onCleared();
-//        viewModelScope.cancel();
-//    }
 }

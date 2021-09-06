@@ -31,7 +31,7 @@ public class HiddenDisabilityDiffCallback extends DiffUtil.Callback {
     public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
         DisabilityAndHiddenDisabilities oldDisability = oldList.get ( oldItemPosition );
         DisabilityAndHiddenDisabilities newDisability = newList.get ( newItemPosition );
-        return oldDisability.getDisability ().getDisabilityId () == newDisability.getDisability ().getDisabilityId ();
+        return oldDisability.getDisability ().getDisabilityId ().equals ( newDisability.getDisability ().getDisabilityId () );
     }
 
     @Override

@@ -27,6 +27,7 @@ public class HiddenDisabilityActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
       super.onCreate ( savedInstanceState );
+      setContentView ( R.layout.activity_hidden_disability );
 
         ActivityHiddenDisabilityBinding binding = DataBindingUtil.setContentView (this, R.layout.activity_hidden_disability);
         mDrawerLayout = binding.drawerLayout;

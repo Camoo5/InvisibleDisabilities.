@@ -24,7 +24,7 @@ public class DisabilityDetailViewModelFactory extends ViewModelProvider.NewInsta
 
     @NonNull
     @Override
-    @SuppressWarnings("unchecked")
+
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         return (T) new DisabilityDetailViewModel (disabilityRepository, hiddenDisabilityRepository, disabilityId);
     }

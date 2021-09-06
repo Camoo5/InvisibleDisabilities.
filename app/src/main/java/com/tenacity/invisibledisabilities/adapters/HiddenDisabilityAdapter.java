@@ -29,7 +29,7 @@ public class HiddenDisabilityAdapter extends RecyclerView.Adapter<HiddenDisabili
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
         ListItemHiddenDisabilityBinding binding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.getContext()), R.layout.list_item_hidden_disability, parent, false);
-        return new ViewHolder(binding);
+        return new ViewHolder ( binding );
     }
 
     @Override
@@ -51,7 +51,7 @@ public class HiddenDisabilityAdapter extends RecyclerView.Adapter<HiddenDisabili
         diffResult.dispatchUpdatesTo(this);
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
         private final ListItemHiddenDisabilityBinding binding;
 
         ViewHolder(@NonNull ListItemHiddenDisabilityBinding binding) {

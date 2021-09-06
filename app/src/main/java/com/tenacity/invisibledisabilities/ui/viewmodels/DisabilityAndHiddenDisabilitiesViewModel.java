@@ -30,8 +30,8 @@ public class DisabilityAndHiddenDisabilitiesViewModel extends ViewModel {
         String disabilityDateStr = dateFormat.format ( hiddenDisability.disabilityDate.getTime () );
 
 
-       imageUrl = new ObservableField <String> ( disability.getImageUrl () );
-       disabilityDate = new ObservableField <String> ( context.getString ( R.string.disability_date, disability.getName (), disabilityDateStr ) );
+       imageUrl = new ObservableField <> ( disability.getImageUrl () );
+       disabilityDate = new ObservableField <> ( context.getString ( R.string.disability_date, disability.getName (), disabilityDateStr ) );
     }
 
     public ObservableField<String> getImageUrl() {

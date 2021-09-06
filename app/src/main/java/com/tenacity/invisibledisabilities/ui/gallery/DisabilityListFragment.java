@@ -56,12 +56,12 @@ public class DisabilityListFragment extends Fragment {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         return super.onOptionsItemSelected(item);
     }
 
     private void subscribeUI(DisabilityAdapter adapter) {
-        viewModel.getDisabilities ().observe(getViewLifecycleOwner(), disabilities -> adapter.updateItems(disabilities) );
+        viewModel.getDisabilities ().observe(getViewLifecycleOwner(), adapter::updateItems );
     }
 
 }

@@ -29,12 +29,9 @@ public class HiddenDisabilityRepository {
     }
 
     public void createHiddenDisability(String disabilityId) {
-        AsyncTask.execute( new Runnable () {
-            @Override
-            public void run() {
-                HiddenDisability hiddenDisability = new HiddenDisability ( disabilityId );
-                hiddenDisabilityDao.insertHiddenDisability ( hiddenDisability );
-            }
+        AsyncTask.execute( () -> {
+            HiddenDisability hiddenDisability = new HiddenDisability ( disabilityId );
+            hiddenDisabilityDao.insertHiddenDisability ( hiddenDisability );
         } );
 
     }

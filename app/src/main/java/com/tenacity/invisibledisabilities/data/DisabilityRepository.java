@@ -18,24 +18,24 @@ public class DisabilityRepository {
 
     public static DisabilityRepository getInstance(DisabilityDao disabilityDao) {
         if (instance == null) {
-            synchronized(DisabilityRepository.class) {
+            synchronized (DisabilityRepository.class) {
                 if (instance == null)
-                    instance = new DisabilityRepository(disabilityDao);
+                    instance = new DisabilityRepository ( disabilityDao );
             }
         }
         return instance;
+
     }
 
-    public LiveData <List<com.tenacity.invisibledisabilities.data.Disability>> getDisabilities() {
+    public LiveData <List <com.tenacity.invisibledisabilities.data.Disability>> getDisabilities() {
         return disabilityDao.getDisabilities ();
     }
 
-    public LiveData<com.tenacity.invisibledisabilities.data.Disability> getDisability(String id) {
-        return disabilityDao.getDisability(id);
+    public LiveData <com.tenacity.invisibledisabilities.data.Disability> getDisability(String id) {
+        return disabilityDao.getDisability ( id );
     }
 
-    public LiveData<List<com.tenacity.invisibledisabilities.data.Disability>> getDisabilitiesWithCriteriaType (int criteriaType) {
-        return disabilityDao.getDisabilitiesByCriteriaType  (criteriaType);
+    public LiveData <List <com.tenacity.invisibledisabilities.data.Disability>> getDisabilitiesWithCriteriaType(int criteriaType) {
+        return disabilityDao.getDisabilitiesByCriteriaType ( criteriaType );
     }
-
 }

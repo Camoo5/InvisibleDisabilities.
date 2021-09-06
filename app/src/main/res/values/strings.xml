@@ -29,5 +29,7 @@
 
     <string name="disability_title" translation_description="Title for the 'hidden_disabilities' screen where the user can see the list of disabilities that have been added to their hidden_disability.">Hidden_disability</string>
     <string name="disability_detail_image_content_description">disability_detail_image_content_description</string>
+    <string name="description_of_the_disability">description of the disability</string>
+
 
 </resources>
