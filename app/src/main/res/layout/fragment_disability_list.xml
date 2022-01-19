@@ -10,8 +10,11 @@
         android:clipToPadding="false"
         android:paddingLeft="@dimen/margin_normal"
         android:paddingRight="@dimen/margin_normal"
+        android:scrollbars="vertical"
+        app:fastScrollEnabled="false"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:context="com.tenacity.invisibledisabilities.HiddenDisabilityActivity"
-        tools:listitem="@layout/list_item_disability" />
+        tools:context="com.tenacity.invisibledisabilities.ui.gallery.HiddenDisabilityActivity"
+        tools:listitem="@layout/list_item_disability"
+        />
 
 </layout>

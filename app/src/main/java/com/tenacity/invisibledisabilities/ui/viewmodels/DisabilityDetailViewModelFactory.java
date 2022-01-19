@@ -26,6 +26,6 @@ public class DisabilityDetailViewModelFactory extends ViewModelProvider.NewInsta
     @Override
 
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        return (T) new DisabilityDetailViewModel (disabilityRepository, hiddenDisabilityRepository, disabilityId);
+        return (T) new DisabilityDetailViewModel ( disabilityRepository, hiddenDisabilityRepository, disabilityId);
     }
 }

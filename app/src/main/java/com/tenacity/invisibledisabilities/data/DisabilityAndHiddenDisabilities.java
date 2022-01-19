@@ -10,12 +10,12 @@ import java.util.List;
 public class DisabilityAndHiddenDisabilities {
 
     @Embedded
-    com.tenacity.invisibledisabilities.data.Disability disability;
+  Disability disability;
 
     @Relation(parentColumn = "id", entityColumn = "disability_id")
   List<HiddenDisability> hiddenDisabilities = new ArrayList <> ();
 
-    public com.tenacity.invisibledisabilities.data.Disability getDisability () {
+    public Disability getDisability () {
     return disability;
     }
 

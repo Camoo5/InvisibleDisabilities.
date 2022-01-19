@@ -4,27 +4,32 @@
 
     <data>
         <variable
-            name="viewModel"
+            name="clickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+           name="viewModel"
             type="com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityAndHiddenDisabilitiesViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="wrap_content"
+        android:onClick="@{clickListener}">
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="399dp"
-            android:layout_height="132dp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
             android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_small"
             android:contentDescription="@string/a11y_disability_item_image"
             android:scaleType="centerCrop"
             app:imageFromUrl="@{viewModel.imageUrl}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"/>
 
         <TextView
             android:id="@+id/disability_date"
@@ -34,8 +39,7 @@
             android:layout_marginTop="@dimen/margin_normal"
             android:layout_marginEnd="@dimen/margin_small"
             android:layout_marginBottom="548dp"
-            android:text="@{@string/disability_date(viewModel.disabilityDate)}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@{@string/disability_date(viewModel.disabilityName, viewModel.disabilityDateString)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageView" />

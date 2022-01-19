@@ -1,5 +1,6 @@
 package com.tenacity.invisibledisabilities.ui.viewmodels;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
@@ -16,19 +17,17 @@ public class HiddenDisabilityListViewModel extends ViewModel {
     public LiveData <List <DisabilityAndHiddenDisabilities>> disabilityAndHiddenDisabilities;
     public LiveData<List<HiddenDisability>> hiddenDisabilities;
 
-    public HiddenDisabilityListViewModel(HiddenDisabilityRepository hiddenDisabilityRepository) {
-        hiddenDisabilities = hiddenDisabilityRepository.getHiddenDisabilities ();
-        disabilityAndHiddenDisabilities =
-                Transformations.map(hiddenDisabilityRepository.getDisabilityAndHiddenDisabilities (), disabilities -> {
-                    List<DisabilityAndHiddenDisabilities> disabilitiesListNew = new ArrayList <> ();
-                    for (int i = 0; i < disabilities.size(); i++) {
-                        if (disabilities.get(i).getHiddenDisabilities () != null && !disabilities.get(i).getHiddenDisabilities ().isEmpty()) {
-                            disabilitiesListNew.add(disabilities.get(i));
-                        }
-                    }
-                    return disabilitiesListNew;
-                });
-    }
-
-
+     HiddenDisabilityListViewModel(@NonNull HiddenDisabilityRepository repository) {
+        this.hiddenDisabilities = repository.getHiddenDisabilities();
+        this.disabilityAndHiddenDisabilities = Transformations.map(repository.getDisabilityAndHiddenDisabilities(), items -> {
+        List<DisabilityAndHiddenDisabilities> removeItems = new ArrayList<>();
+        for (DisabilityAndHiddenDisabilities item:items) {
+            if (item.getHiddenDisabilities().isEmpty()) {
+                removeItems.add(item);
+            }
+             }
+            items.removeAll(removeItems);
+            return items;
+        });
+     }
 }

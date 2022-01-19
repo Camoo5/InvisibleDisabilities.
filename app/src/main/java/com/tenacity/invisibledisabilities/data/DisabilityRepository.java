@@ -10,32 +10,32 @@ import java.util.List;
  */
 public class DisabilityRepository {
     private final DisabilityDao disabilityDao;
-    private static volatile DisabilityRepository instance;
+    private static DisabilityRepository instance;
 
-    DisabilityRepository(DisabilityDao disabilityDao) {
-        this.disabilityDao = disabilityDao;
+   private DisabilityRepository(DisabilityDao hiddenDisabilityDao) {
+        this.disabilityDao = hiddenDisabilityDao;
     }
 
-    public static DisabilityRepository getInstance(DisabilityDao disabilityDao) {
+    public static DisabilityRepository getInstance(DisabilityDao hiddenDisabilityDao) {
         if (instance == null) {
             synchronized (DisabilityRepository.class) {
                 if (instance == null)
-                    instance = new DisabilityRepository ( disabilityDao );
+                    instance = new DisabilityRepository(hiddenDisabilityDao);
             }
         }
         return instance;
 
     }
 
-    public LiveData <List <com.tenacity.invisibledisabilities.data.Disability>> getDisabilities() {
-        return disabilityDao.getDisabilities ();
+    public LiveData<List<Disability>> getDisabilities(DisabilityRepository disabilityRepository) {
+        return this.disabilityDao.getDisabilities();
     }
 
-    public LiveData <com.tenacity.invisibledisabilities.data.Disability> getDisability(String id) {
-        return disabilityDao.getDisability ( id );
+    public LiveData<Disability> getDisability(String disabilityid) {
+        return this.disabilityDao.getDisability(disabilityid);
     }
 
-    public LiveData <List <com.tenacity.invisibledisabilities.data.Disability>> getDisabilitiesWithCriteriaType(int criteriaType) {
-        return disabilityDao.getDisabilitiesByCriteriaType ( criteriaType );
-    }
+
+
+
 }

@@ -1,15 +1,17 @@
 package com.tenacity.invisibledisabilities.ui.viewmodels;
 
-import android.content.Context;
+import android.annotation.SuppressLint;
 
+import androidx.annotation.NonNull;
+import androidx.core.util.Preconditions;
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.ViewModel;
 
-import com.tenacity.invisibledisabilities.R;
 import com.tenacity.invisibledisabilities.data.Disability;
 import com.tenacity.invisibledisabilities.data.DisabilityAndHiddenDisabilities;
 import com.tenacity.invisibledisabilities.data.HiddenDisability;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
@@ -17,45 +19,19 @@ import java.util.Locale;
 
 public class DisabilityAndHiddenDisabilitiesViewModel extends ViewModel {
 
-   private final ObservableField<String> imageUrl;
-    private final ObservableField<String> disabilityDate;
-    private Disability disability;
-    private HiddenDisability hiddenDisability;
-
-    public DisabilityAndHiddenDisabilitiesViewModel(Context context, DisabilityAndHiddenDisabilities disabilities) {
-        this.disability = disabilities.getDisability ();
-        this.hiddenDisability = disabilities.getHiddenDisabilities ().get ( 0 );
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat ("MMM d, yyyy", Locale.UK);
-        String disabilityDateStr = dateFormat.format ( hiddenDisability.disabilityDate.getTime () );
+    public ObservableField<String> imageUrl;
+    public ObservableField<String> disabilityDateString;
+    public  ObservableField<String> disabilityName;
 
 
-       imageUrl = new ObservableField <> ( disability.getImageUrl () );
-       disabilityDate = new ObservableField <> ( context.getString ( R.string.disability_date, disability.getName (), disabilityDateStr ) );
+    public DisabilityAndHiddenDisabilitiesViewModel(@NonNull DisabilityAndHiddenDisabilities disabilities) {
+        @SuppressLint("RestrictedApi") final Disability disability = Preconditions.checkNotNull(disabilities.getDisability());
+        final HiddenDisability hiddenDisability = disabilities.getHiddenDisabilities().get(0);
+        final DateFormat dateFormat = new SimpleDateFormat("MMM d, yyyy", Locale.UK);
+
+        this.imageUrl = new ObservableField<>(disability.getImageUrl());
+        this.disabilityName = new ObservableField<>(disability.getName());
+        this.disabilityDateString = new ObservableField<>(dateFormat.format(hiddenDisability.getDisabilityDate().getTime()));
     }
 
-    public ObservableField<String> getImageUrl() {
-        return imageUrl;
-
-}
-
-    public ObservableField<String> getDisabilityDate() {
-        return disabilityDate;
-    }
-
-    public Disability getDisability() {
-        return disability;
-    }
-
-    public void setDisability(Disability disability) {
-        this.disability= disability;
-    }
-
-    public HiddenDisability getHiddenDisability() {
-        return hiddenDisability;
-    }
-
-    public void setHiddenDisability(HiddenDisability hiddenDisability) {
-        this.hiddenDisability = hiddenDisability;
-    }
 }

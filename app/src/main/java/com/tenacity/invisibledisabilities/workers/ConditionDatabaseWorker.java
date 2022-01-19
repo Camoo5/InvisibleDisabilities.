@@ -41,8 +41,8 @@ public class ConditionDatabaseWorker extends Worker {
             String json = new String(buffer, StandardCharsets.UTF_8 );
             List<Disability> disabilityList = new Gson().fromJson(json, new TypeToken<List<Disability>>() {
             }.getType());
-            AppDatabase database = AppDatabase.getInstance ( getApplicationContext () );
-            database.getDisabilityDao ().insertAll ( disabilityList );
+            AppDatabase appDatabase = AppDatabase.getInstance ( getApplicationContext () );
+            appDatabase.disabilityDao ().insertAll ( disabilityList );
             return Result.success ();
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,5 +1,6 @@
 package com.tenacity.invisibledisabilities.data;
 
+
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
@@ -14,13 +15,13 @@ import java.util.List;
 @Dao
 public interface HiddenDisabilityDao {
     @Query("SELECT * FROM hidden_disabilities")
-    LiveData <List <HiddenDisability>> getHiddenDisabilities();
+    LiveData<List<HiddenDisability>> getHiddenDisabilities();
 
     @Query("SELECT * FROM hidden_disabilities WHERE id = :hiddenDisabilityId")
-    LiveData <HiddenDisability> getHiddenDisability(long hiddenDisabilityId);
+    LiveData<HiddenDisability> getHiddenDisability(long hiddenDisabilityId);
 
     @Query("SELECT * FROM hidden_disabilities WHERE disability_id = :disabilityId")
-    LiveData <HiddenDisability> getHiddenDisabilityForDisability(String disabilityId);
+    LiveData<HiddenDisability> getHiddenDisabilityForDisability(String disabilityId);
 
 
     /**
@@ -29,10 +30,9 @@ public interface HiddenDisabilityDao {
      */
     @Transaction
     @Query("SELECT * FROM disabilities")
-    LiveData <List <DisabilityAndHiddenDisabilities>> getDisabilityAndHiddenDisabilities();
+    LiveData<List<DisabilityAndHiddenDisabilities>> getDisabilityAndHiddenDisabilities();
 
     @Insert
-    void insertHiddenDisability(HiddenDisability hiddenDisability);
-
+    long insertHiddenDisability(HiddenDisability hiddenDisability);
 
 }

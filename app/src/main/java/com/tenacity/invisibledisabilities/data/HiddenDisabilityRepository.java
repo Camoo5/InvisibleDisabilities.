@@ -1,16 +1,16 @@
 package com.tenacity.invisibledisabilities.data;
 
-import android.os.AsyncTask;
-
 import androidx.lifecycle.LiveData;
+
+import com.tenacity.invisibledisabilities.utilities.AppExecutors;
 
 import java.util.List;
 
 
 public class HiddenDisabilityRepository {
 
-    static HiddenDisabilityRepository instance;
- HiddenDisabilityDao hiddenDisabilityDao;
+   private static HiddenDisabilityRepository instance;
+ private final HiddenDisabilityDao hiddenDisabilityDao;
 
 
    public HiddenDisabilityRepository(HiddenDisabilityDao hiddenDisabilityDao) {
@@ -19,7 +19,7 @@ public class HiddenDisabilityRepository {
 
     public static HiddenDisabilityRepository getInstance(HiddenDisabilityDao hiddenDisabilityDao) {
         if (instance == null) {
-            synchronized (HiddenDisability.class) {
+            synchronized (HiddenDisabilityRepository.class) {
                 if (instance == null) {
                     instance = new HiddenDisabilityRepository ( hiddenDisabilityDao );
                 }
@@ -29,15 +29,14 @@ public class HiddenDisabilityRepository {
     }
 
     public void createHiddenDisability(String disabilityId) {
-        AsyncTask.execute( () -> {
-            HiddenDisability hiddenDisability = new HiddenDisability ( disabilityId );
-            hiddenDisabilityDao.insertHiddenDisability ( hiddenDisability );
-        } );
-
+        AppExecutors.getInstance().diskIO().execute(() ->
+                hiddenDisabilityDao.insertHiddenDisability(new HiddenDisability(disabilityId, null)));
     }
 
-    public LiveData <HiddenDisability> getHiddenDisabilityForDisability(String disabilityId) {
-        return hiddenDisabilityDao.getHiddenDisabilityForDisability ( disabilityId );
+
+    public LiveData<HiddenDisability> getHiddenDisabilityForDisability(String disabilityId) {
+        return hiddenDisabilityDao.getHiddenDisabilityForDisability(disabilityId);
+
     }
 
 
@@ -49,11 +48,7 @@ public class HiddenDisabilityRepository {
         return hiddenDisabilityDao.getDisabilityAndHiddenDisabilities();
     }
 
-//    private ExecutorService IO_EXECUTOR = Executors.newSingleThreadExecutor();
-//
-//    void runOnIoThread() {
-//        IO_EXECUTOR.execute();
-//    }
+
 
 
 }

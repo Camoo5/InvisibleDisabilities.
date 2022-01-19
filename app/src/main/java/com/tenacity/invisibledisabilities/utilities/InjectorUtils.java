@@ -16,19 +16,18 @@ import com.tenacity.invisibledisabilities.ui.viewmodels.HiddenDisabilityListView
 public class InjectorUtils {
 
     private static DisabilityRepository getDisabilityRepository(Context context) {
-        return DisabilityRepository.getInstance( AppDatabase.getInstance(context.getApplicationContext()).getDisabilityDao());
+        return DisabilityRepository.getInstance( AppDatabase.getInstance(context).disabilityDao());
     }
 
     private static HiddenDisabilityRepository getHiddenDisabilityRepository(Context context) {
         return HiddenDisabilityRepository.getInstance(
-                AppDatabase.getInstance(context).getHiddenDisabilitiesDao());
+                AppDatabase.getInstance(context).hiddenDisabilityDao());
     }
 
 
     public static DisabilityListViewModelFactory provideDisabilityListViewModelFactory(Context context) {
         DisabilityRepository repository = getDisabilityRepository ( context );
-        DisabilityListViewModelFactory vmFactory = new DisabilityListViewModelFactory ( repository );
-        return vmFactory;
+        return new DisabilityListViewModelFactory ( repository );
     }
 
 

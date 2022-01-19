@@ -1,10 +1,8 @@
 package com.tenacity.invisibledisabilities.ui.viewmodels;
 
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MediatorLiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
 import com.tenacity.invisibledisabilities.data.Disability;
@@ -14,40 +12,21 @@ import java.util.List;
 
 
 public class DisabilityListViewModel extends ViewModel {
-    private final int NO_CRITERIA_TYPE = -1;
-    private final DisabilityRepository disabilityRepository;
-    private final MutableLiveData<Integer> criteriaType = new MutableLiveData<>();
-    private final MediatorLiveData<List<Disability>> disabilityList = new MediatorLiveData <> ();
 
-    DisabilityListViewModel(DisabilityRepository disabilityRepository) {
+    public  LiveData<List<Disability>> disabilities;
+    private DisabilityRepository disabilityRepository;
+
+    DisabilityListViewModel(@NonNull DisabilityRepository disabilityRepository) {
+        super();
         this.disabilityRepository = disabilityRepository;
-        this.criteriaType.setValue ( NO_CRITERIA_TYPE );
+        this.disabilities = disabilityRepository.getDisabilities(disabilityRepository);
 
-        LiveData <List<Disability>> liveDisabilityList = Transformations.switchMap(criteriaType, (cr_ty) -> {
-            if (cr_ty == NO_CRITERIA_TYPE) {
-                return disabilityRepository.getDisabilities ();
-            } else {
-                return disabilityRepository.getDisabilitiesWithCriteriaType (cr_ty );
-            }
-        });
+        disabilityRepository.getDisabilities(disabilityRepository);
 
-        disabilityList.addSource(liveDisabilityList, disabilities -> disabilityList.setValue(disabilities));
+
+
+
     }
 
-    public MediatorLiveData<List<Disability>> getDisabilities() {
-        return disabilityList;
-    }
-
-    public void setCriteriaType(int no) {
-        criteriaType.setValue(no);
-    }
-
-    public void clearCriteriaType() {
-        criteriaType.setValue(NO_CRITERIA_TYPE);
-    }
-
-    public boolean isFiltered() {
-        return criteriaType.getValue() != NO_CRITERIA_TYPE;
-    }
 
 }

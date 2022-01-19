@@ -1,7 +1,8 @@
 package com.tenacity.invisibledisabilities.ui.gallery;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -9,15 +10,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
+import androidx.core.app.ShareCompat;
+import androidx.core.util.Preconditions;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.tenacity.invisibledisabilities.R;
-import com.tenacity.invisibledisabilities.data.Disability;
 import com.tenacity.invisibledisabilities.databinding.FragmentDisabilityDetailBinding;
 import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityDetailViewModel;
 import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityDetailViewModelFactory;
@@ -28,68 +29,59 @@ import com.tenacity.invisibledisabilities.utilities.InjectorUtils;
  */
 public class DisabilityDetailFragment extends Fragment {
 
+    private String shareText;
 
-    private static final String TAG = "DisabilityDetailFragment";
-    private static final String ARG_ITEM_ITEM = "item_id";
-
-
- String shareText;
-DisabilityDetailViewModel mViewModel;
-
-    public static DisabilityDetailFragment newInstance(String disabilityId) {
-        Bundle args = new Bundle();
-        args.putString(ARG_ITEM_ITEM, disabilityId);
-       DisabilityDetailFragment fragment = new DisabilityDetailFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        FragmentDisabilityDetailBinding binding = DataBindingUtil.inflate(inflater,
-                R.layout.fragment_disability_detail, container, false);
-
-        String disabilityId = DisabilityDetailFragmentArgs.fromBundle(getArguments()).getDisabilityId();
-        setupViewModel(disabilityId);
-
-        binding.setViewModel(mViewModel);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        FragmentDisabilityDetailBinding binding = FragmentDisabilityDetailBinding.inflate(inflater, container, false);
+        DisabilityDetailFragmentArgs args = DisabilityDetailFragmentArgs.fromBundle(Preconditions.checkNotNull(getArguments()));
+        DisabilityDetailViewModelFactory factory = InjectorUtils.provideDisabilityDetailViewModelFactory(
+                requireContext(), args.getDisabilityId());
+        DisabilityDetailViewModel viewModel = ViewModelProviders.of(this, factory).get(DisabilityDetailViewModel.class);
         binding.setLifecycleOwner(this);
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mViewModel.addDisabilityToHiddenDisability ();
-                Snackbar.make(view, R.string.added_disability_to_hidden_disabilities, Snackbar.LENGTH_LONG).show();
 
-                //Todo: Hide button after adding disability to hiddendisability.
-            }
+        binding.setViewModel(viewModel);
+        binding.fab.setOnClickListener(v -> {
+            viewModel.addDisabilityToHiddenDisability();
+            Snackbar.make(v, R.string.added_disability_to_hidden_disabilities, Snackbar.LENGTH_LONG).show();
         });
 
+        viewModel.disability.observe(this, disability ->
+                this.shareText = disability == null ? "" : getString(R.string.share_text_disability, disability.getName()));
+
         setHasOptionsMenu(true);
+
         return binding.getRoot();
     }
 
-    private void setupViewModel(String disabilityId) {
-        DisabilityDetailViewModelFactory factory = InjectorUtils
-                .provideDisabilityDetailViewModelFactory(getActivity(), disabilityId);
-        mViewModel = ViewModelProviders.of(this, factory).get(DisabilityDetailViewModel.class);
-        mViewModel.disability.observe(this, new Observer <Disability> () {
-            @Override
-            public void onChanged(@Nullable Disability disability) {
-                Log.e(TAG, "onChanged: "+disability.getName() );
-                shareText = disability == null ? "" :
-                        String.format(getString(R.string.share_text_disability), disability.getName());
-            }
-        });
-    }
-
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.menu_disability_detail, menu);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_share:
+                Intent shareIntent = ShareCompat.IntentBuilder.from(Preconditions.checkNotNull(getActivity()))
+                        .setText(this.shareText)
+                        .setType("text/plain")
+                        .createChooserIntent();
+                // https://android-developers.googleblog.com/2012/02/share-with-intents.html
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    // If we're on Lollipop, we can open the intent as a document
+                    shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                } else {
+                    // Else, we will use the old CLEAR_WHEN_TASK_RESET flag
+                    shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+                }
+                startActivity(shareIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
+

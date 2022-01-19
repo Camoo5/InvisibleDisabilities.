@@ -5,77 +5,65 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.DataBindingUtil;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.tenacity.invisibledisabilities.R;
 import com.tenacity.invisibledisabilities.data.Disability;
 import com.tenacity.invisibledisabilities.databinding.ListItemDisabilityBinding;
 import com.tenacity.invisibledisabilities.ui.gallery.DisabilityListFragmentDirections;
 
-import java.util.List;
+public class DisabilityAdapter extends ListAdapter<Disability, DisabilityAdapter.ViewHolder> {
 
-public class DisabilityAdapter extends RecyclerView.Adapter<DisabilityAdapter.ViewHolder>{
-    private final List<Disability> disabilityList;
-    private LayoutInflater layoutInflater;
-
-    public DisabilityAdapter(List<Disability> disabilities) {
-       disabilityList = disabilities;
+    public DisabilityAdapter() {
+        super(new DisabilityDiffCallback());
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        if (layoutInflater == null) {
-            layoutInflater = LayoutInflater.from(parent.getContext());
-        }
-        ListItemDisabilityBinding binding = DataBindingUtil.inflate(layoutInflater, R.layout.list_item_disability, parent, false);
-        return new ViewHolder ( binding );
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new ViewHolder(ListItemDisabilityBinding.inflate(
+                LayoutInflater.from(parent.getContext()), parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-       Disability disability = disabilityList.get(position);
-        holder.bind(disability, createClickListener(disability.getDisabilityId()));
+       Disability disability = getItem(position);
+        holder.bind(createOnClickListener(disability.getDisabilityId()), disability);
+        holder.itemView.setTag(disability);
     }
 
-    private View.OnClickListener createClickListener(String disabilityId) {
-        return view -> {
-            DisabilityListFragmentDirections.ActionDisabilityListFragmentToDisabilityDetailFragment direction =
-                    DisabilityListFragmentDirections.actionDisabilityListFragmentToDisabilityDetailFragment(disabilityId);
-            Navigation.findNavController(view).navigate(direction);
-
-        };
-    }
-
-    @Override
-    public int getItemCount() {
-        return disabilityList.size();
-    }
-
-    public void updateItems(List<Disability> disabilities) {
-        final DisabilityDiffCallback diffCallback = new DisabilityDiffCallback(this.disabilityList, disabilities);
-        final DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(diffCallback);
-
-        disabilityList.clear();
-        disabilityList.addAll(disabilities);
-        diffResult.dispatchUpdatesTo(this);
+    private View.OnClickListener createOnClickListener(String disabilityId) {
+        return v -> Navigation.findNavController(v).navigate(
+                DisabilityListFragmentDirections.actionDisabilityListFragmentToDisabilityDetailFragment(disabilityId));
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        ListItemDisabilityBinding binding;
+        private ListItemDisabilityBinding binding;
 
         ViewHolder(@NonNull ListItemDisabilityBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
 
-        void bind(Disability disability, View.OnClickListener clickListener) {
-            binding.setClickListener(clickListener);
-            binding.setDisability(disability);
+        void bind(View.OnClickListener listener, Disability item) {
+            binding.setClickListener(listener);
+            binding.setDisability(item);
             binding.executePendingBindings();
+        }
+    }
+
+    static class DisabilityDiffCallback extends DiffUtil.ItemCallback<Disability> {
+
+        @Override
+        public boolean areItemsTheSame(@NonNull Disability oldItem, @NonNull Disability newItem) {
+            return oldItem.getDisabilityId().equals(newItem.getDisabilityId());
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull Disability oldItem, @NonNull Disability newItem) {
+            return oldItem == newItem;
         }
     }
 }

@@ -8,17 +8,17 @@ import com.tenacity.invisibledisabilities.data.DisabilityRepository;
 
 
 public class DisabilityListViewModelFactory extends ViewModelProvider.NewInstanceFactory {
-    private final DisabilityRepository disabilityRepository;
+    private DisabilityRepository repository;
 
-    public DisabilityListViewModelFactory(DisabilityRepository disabilityrepository) {
-        this.disabilityRepository = disabilityrepository;
+    public DisabilityListViewModelFactory(@NonNull  DisabilityRepository repository) {
+        super();
+        this.repository = repository;
     }
 
     @NonNull
     @Override
-    @SuppressWarnings("unchecked")
+
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-      DisabilityListViewModel disabilityListViewModel = new DisabilityListViewModel ( disabilityRepository );
-        return (T) disabilityListViewModel;
+        return (T) new DisabilityListViewModel(repository);
     }
 }

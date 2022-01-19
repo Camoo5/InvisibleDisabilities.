@@ -13,7 +13,7 @@
         android:fullBackupOnly="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".HiddenDisabilityActivity"  android:exported="true"
+            android:name=".ui.gallery.HiddenDisabilityActivity"  android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
 
             <intent-filter>

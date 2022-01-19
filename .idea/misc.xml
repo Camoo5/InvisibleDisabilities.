@@ -4,25 +4,39 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/OluwoleOkanlawon/AndroidStudioProjects/BlueBadgeHiddenDisabilities/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.28489583333333335" />
-        <entry key="..\:/Users/OluwoleOkanlawon/AndroidStudioProjects/BlueBadgeHiddenDisabilities/app/src/main/res/layout/activity_hidden_disability.xml" value="0.24635416666666668" />
+        <entry key="..\:/Users/OluwoleOkanlawon/AndroidStudioProjects/BlueBadgeHiddenDisabilities/app/src/main/res/drawable/ic_filter_list_24dp.xml" value="0.32314814814814813" />
+        <entry key="..\:/Users/OluwoleOkanlawon/AndroidStudioProjects/BlueBadgeHiddenDisabilities/app/src/main/res/drawable/ic_launcher_background.xml" value="0.365625" />
+        <entry key="..\:/Users/OluwoleOkanlawon/AndroidStudioProjects/BlueBadgeHiddenDisabilities/app/src/main/res/drawable/ic_plus.xml" value="0.32314814814814813" />
+        <entry key="..\:/Users/OluwoleOkanlawon/AndroidStudioProjects/BlueBadgeHiddenDisabilities/app/src/main/res/drawable/ic_share.xml" value="0.32314814814814813" />
+        <entry key="..\:/Users/OluwoleOkanlawon/AndroidStudioProjects/BlueBadgeHiddenDisabilities/app/src/main/res/layout/activity_hidden_disability.xml" value="0.2863070539419087" />
         <entry key="..\:/Users/OluwoleOkanlawon/AndroidStudioProjects/BlueBadgeHiddenDisabilities/app/src/main/res/layout/fragment_disability_detail.xml" value="0.25" />
         <entry key="..\:/Users/OluwoleOkanlawon/AndroidStudioProjects/BlueBadgeHiddenDisabilities/app/src/main/res/layout/fragment_disability_detail.xml1.xsd" value="0.2980072463768116" />
         <entry key="..\:/Users/OluwoleOkanlawon/AndroidStudioProjects/BlueBadgeHiddenDisabilities/app/src/main/res/layout/fragment_disability_detail.xsd" value="0.2980072463768116" />
+        <entry key="..\:/Users/OluwoleOkanlawon/AndroidStudioProjects/BlueBadgeHiddenDisabilities/app/src/main/res/layout/fragment_disability_details.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/OluwoleOkanlawon/AndroidStudioProjects/BlueBadgeHiddenDisabilities/app/src/main/res/layout/fragment_disability_list.xml" value="0.1921875" />
         <entry key="..\:/Users/OluwoleOkanlawon/AndroidStudioProjects/BlueBadgeHiddenDisabilities/app/src/main/res/layout/fragment_hidden_disability.xml" value="0.24635416666666668" />
-        <entry key="..\:/Users/OluwoleOkanlawon/AndroidStudioProjects/BlueBadgeHiddenDisabilities/app/src/main/res/layout/list_item_disability.xml" value="0.1" />
+        <entry key="..\:/Users/OluwoleOkanlawon/AndroidStudioProjects/BlueBadgeHiddenDisabilities/app/src/main/res/layout/list_item_disability.xml" value="0.25" />
         <entry key="..\:/Users/OluwoleOkanlawon/AndroidStudioProjects/BlueBadgeHiddenDisabilities/app/src/main/res/layout/list_item_hidden_disability.xml" value="0.1921875" />
+        <entry key="..\:/Users/OluwoleOkanlawon/AndroidStudioProjects/BlueBadgeHiddenDisabilities/app/src/main/res/layout/nav_header.xml" value="0.2128623188405797" />
         <entry key="..\:/Users/OluwoleOkanlawon/AndroidStudioProjects/BlueBadgeHiddenDisabilities/app/src/main/res/menu/menu_disability_detail.xml" value="0.26875" />
+        <entry key="..\:/Users/OluwoleOkanlawon/AndroidStudioProjects/BlueBadgeHiddenDisabilities/app/src/main/res/menu/menu_disability_list.xml" value="0.1398148148148148" />
         <entry key="..\:/Users/OluwoleOkanlawon/AndroidStudioProjects/BlueBadgeHiddenDisabilities/app/src/main/res/menu/menu_navigation.xml" value="0.26875" />
       </map>
     </option>
   </component>
   <component name="EntryPointsManager">
-    <list size="3">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="androidx.databinding.BindingAdapter" />
-      <item index="1" class="java.lang.String" itemvalue="androidx.room.Query" />
-      <item index="2" class="java.lang.String" itemvalue="androidx.room.TypeConverter" />
+      <item index="1" class="java.lang.String" itemvalue="androidx.room.Insert" />
+      <item index="2" class="java.lang.String" itemvalue="androidx.room.Query" />
+      <item index="3" class="java.lang.String" itemvalue="androidx.room.TypeConverter" />
     </list>
+    <pattern value="com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityListViewModel" method="clearCriteriaType" />
+    <pattern value="com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityListViewModel" />
+    <pattern value="com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityListViewModel" method="DisabilityListViewModel" />
+    <pattern value="com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityListViewModel" method="getDisabilities" />
+    <pattern value="com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityListViewModel" method="isFiltered" />
+    <pattern value="com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityListViewModel" method="setCriteriaType" />
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
