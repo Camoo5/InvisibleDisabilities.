@@ -67,16 +67,18 @@ public final class HiddenDisability {
      */
     @Override
     public boolean equals(@Nullable Object obj) {
+        boolean result;
         if (this == obj) {
-            return true;
+            result = true;
+        } else if (this.getClass() != obj.getClass()) {
+            result = false;
+        } else {
+            HiddenDisability target = (HiddenDisability) obj;
+            result = this.disabilityId.equals(target.disabilityId)
+                    && Objects.equals(this.disabilityDate, this.disabilityDate);
         }
-        if (this.getClass() != obj.getClass()) {
-            return false;
-        }
-       HiddenDisability target = (HiddenDisability) obj;
 
-        return this.disabilityId.equals(target.disabilityId)
-                && this.disabilityDate.equals(this.disabilityDate);
+        return result;
     }
 
     /**
