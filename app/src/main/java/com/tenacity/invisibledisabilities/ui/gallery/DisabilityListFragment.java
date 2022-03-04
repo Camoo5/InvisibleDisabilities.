@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ListAdapter;
 
@@ -34,7 +35,7 @@ public class DisabilityListFragment extends Fragment {
        DisabilityListViewModelFactory factory = InjectorUtils.provideDisabilityListViewModelFactory(getContext());
         ListAdapter adapter = new DisabilityAdapter();
         binding.disabilityList.setAdapter(adapter);
-        this.viewModel = ViewModelProviders.of(this, factory).get(DisabilityListViewModel.class);
+        this.viewModel = ViewModelProviders.of(this, (ViewModelProvider.Factory) factory).get(DisabilityListViewModel.class);
         subscribeUi(adapter);
 
         setHasOptionsMenu(true);
