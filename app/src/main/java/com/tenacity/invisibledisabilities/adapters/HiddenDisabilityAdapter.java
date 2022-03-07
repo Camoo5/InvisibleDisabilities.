@@ -17,11 +17,12 @@ import com.tenacity.invisibledisabilities.databinding.ListItemHiddenDisabilityBi
 import com.tenacity.invisibledisabilities.ui.gallery.HiddenDisabilityFragmentDirections;
 import com.tenacity.invisibledisabilities.ui.viewmodels.DisabilityAndHiddenDisabilitiesViewModel;
 
+import java.util.List;
 import java.util.Objects;
 
 public class HiddenDisabilityAdapter extends ListAdapter<DisabilityAndHiddenDisabilities, HiddenDisabilityAdapter.ViewHolder> {
 
-    public HiddenDisabilityAdapter() {
+    public HiddenDisabilityAdapter(List<DisabilityAndHiddenDisabilities> disabilitiesList) {
         super(new HiddenDisabilityDiffCallback());
     }
 
@@ -43,6 +44,9 @@ public class HiddenDisabilityAdapter extends ListAdapter<DisabilityAndHiddenDisa
     private View.OnClickListener createOnClickListener(String disabilityId) {
         return v -> Navigation.findNavController(v).navigate(
                HiddenDisabilityFragmentDirections.actionHiddenDisabilityFragmentToDisabilityDetailFragment(disabilityId));
+    }
+
+    public void updateList(List<DisabilityAndHiddenDisabilities> hiddenDisabilitiesList) {
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

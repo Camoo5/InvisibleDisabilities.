@@ -9,31 +9,38 @@ import java.util.List;
  * Repository module for handling data operations.
  */
 public class DisabilityRepository {
-    private final DisabilityDao disabilityDao;
-    private static DisabilityRepository instance;
+    private static volatile DisabilityRepository instance;
+    private  DisabilityDao disabilityDao;
 
-   private DisabilityRepository(DisabilityDao hiddenDisabilityDao) {
-        this.disabilityDao = hiddenDisabilityDao;
+   DisabilityRepository(DisabilityDao disabilityDao) {
+        this.disabilityDao = disabilityDao;
     }
 
-    public static DisabilityRepository getInstance(DisabilityDao hiddenDisabilityDao) {
+    public static DisabilityRepository getInstance(DisabilityDao disabilityDao) {
         if (instance == null) {
             synchronized (DisabilityRepository.class) {
                 if (instance == null)
-                    instance = new DisabilityRepository(hiddenDisabilityDao);
+                    instance = new DisabilityRepository(disabilityDao);
             }
         }
         return instance;
 
     }
 
-    public LiveData<List<Disability>> getDisabilities(DisabilityRepository disabilityRepository) {
-        return this.disabilityDao.getDisabilities();
+    public LiveData<List<Disability>> getDisabilities() {
+        return disabilityDao.getDisabilities();
     }
 
-    public LiveData<Disability> getDisability(String disabilityid) {
-        return this.disabilityDao.getDisability(disabilityid);
+    public LiveData<Disability> getDisability(String id) {
+        return disabilityDao.getDisability(id);
     }
+
+    public LiveData<List<Disability>> getDisabilitiesByInvisibleConditionNumber(int invisibleConditionNo) {
+       return disabilityDao.getDisabilitiesByInvisibleConditionNumber(invisibleConditionNo);
+
+
+    }
+
 
 
 

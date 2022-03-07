@@ -37,7 +37,7 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/detail_image"
                     android:layout_width="match_parent"
-                    android:layout_height="166dp"
+                    android:layout_height="match_parent"
                     android:contentDescription="@string/disability_detail_image_content_description"
                     android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
@@ -52,8 +52,6 @@
             android:id="@+id/disability_detail_scrollview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:paddingBottom="@dimen/fab_bottom_padding"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
@@ -100,16 +98,15 @@
             style="@style/Widget.MaterialComponents.FloatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
+            android:layout_gravity="center_vertical|start"
             android:layout_margin="@dimen/fab_margin"
             android:contentDescription="@string/description_of_the_disability"
             android:tint="@android:color/white"
             app:isGone="@{safeUnbox(viewModel.isDisabled)}"
             app:layout_anchor="@id/disability_detail_scrollview"
-            app:layout_anchorGravity="bottom|end"
+            app:layout_anchorGravity="top|end"
             app:srcCompat="@drawable/ic_plus"
             tools:ignore="ImageContrastCheck" />
-
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

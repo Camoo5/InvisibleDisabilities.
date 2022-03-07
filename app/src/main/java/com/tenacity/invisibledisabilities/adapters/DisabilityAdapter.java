@@ -14,9 +14,11 @@ import com.tenacity.invisibledisabilities.data.Disability;
 import com.tenacity.invisibledisabilities.databinding.ListItemDisabilityBinding;
 import com.tenacity.invisibledisabilities.ui.gallery.DisabilityListFragmentDirections;
 
+import java.util.List;
+
 public class DisabilityAdapter extends ListAdapter<Disability, DisabilityAdapter.ViewHolder> {
 
-    public DisabilityAdapter() {
+    public DisabilityAdapter(List<Disability> disabilitiesList) {
         super(new DisabilityDiffCallback());
     }
 
@@ -37,6 +39,9 @@ public class DisabilityAdapter extends ListAdapter<Disability, DisabilityAdapter
     private View.OnClickListener createOnClickListener(String disabilityId) {
         return v -> Navigation.findNavController(v).navigate(
                 DisabilityListFragmentDirections.actionDisabilityListFragmentToDisabilityDetailFragment(disabilityId));
+    }
+
+    public void updateItems(List<Disability> disabilities) {
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
