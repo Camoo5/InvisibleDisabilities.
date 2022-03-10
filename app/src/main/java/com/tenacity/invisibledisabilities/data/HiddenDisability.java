@@ -17,7 +17,7 @@ import java.util.Objects;
         indices = {@Index("disability_id")}
 )
 
-public final class HiddenDisability {
+public  class HiddenDisability {
     @ColumnInfo(name = "disability_id") private final String disabilityId;
 
 
@@ -28,7 +28,7 @@ public final class HiddenDisability {
      */
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    private long hiddenDisabilityId = 0L;
+    private long hiddenDisabilityId = 0;
 
     public HiddenDisability(String disabilityId, Calendar disabilityDate) {
         this.disabilityId = disabilityId;
@@ -61,8 +61,8 @@ public final class HiddenDisability {
     }
 
     /**
-     * As [Plant.kt] is declared as [Data class], {@link Object#equals(Object)} implicit implemented.
-     * So we explicit implemented {@link Object#equals(Object)} in [Plant.java]
+     * As [Disability.kt] is declared as [Data class], {@link Object#equals(Object)} implicit implemented.
+     * So we explicit implemented {@link Object#equals(Object)} in [Disability.java]
      * see: https://kotlinlang.org/docs/reference/data-classes.html
      */
     @Override

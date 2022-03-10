@@ -27,7 +27,8 @@ public class InjectorUtils {
 
     public static DisabilityListViewModelFactory provideDisabilityListViewModelFactory(Context context) {
         DisabilityRepository repository = getDisabilityRepository ( context );
-        return new DisabilityListViewModelFactory ( repository );
+         DisabilityListViewModelFactory vmFactory = new DisabilityListViewModelFactory(repository);
+         return vmFactory;
     }
 
 

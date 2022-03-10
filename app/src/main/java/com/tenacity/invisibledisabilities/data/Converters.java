@@ -8,7 +8,6 @@ import java.util.Calendar;
  * Type converters to allow Room to reference complex data types.
  */
 public class Converters {
-
     @TypeConverter
     public long calendarToDatestamp(Calendar calendar) {
         return calendar.getTimeInMillis();

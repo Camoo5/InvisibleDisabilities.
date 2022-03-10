@@ -24,17 +24,14 @@ public final class Disability {
     private String criteria;
     private String practitioners;
     private String copingstrategy;
+    private int invisibleConditionNumber;
     private String imageUrl = "";
 
     public String getDisabilityId() {
         return disabilityId;
     }
 
-    @BindingAdapter("imageFromUrl")
-    public static void imageFromUrl(ImageView view, String imageUrl) {
-        if (imageUrl !=  null && !imageUrl.isEmpty())
-            Glide.with(view.getContext()).load(imageUrl).into(view);
-    }
+
 
 public void setDisabilityId(String disabilityId) {
         this.disabilityId = disabilityId;
@@ -55,6 +52,15 @@ public void setDisabilityId(String disabilityId) {
         this.description= description;
     }
 
+    @BindingAdapter("imageFromUrl")
+    public static void imageFromUrl(ImageView view, String imageUrl) {
+        if (imageUrl !=  null && !imageUrl.isEmpty())
+            Glide.with(view.getContext()).load(imageUrl).into(view);
+    }
+
+    public int GetInvisibleConditionNumber() {
+        return invisibleConditionNumber;
+    }
     public String getCriteria() {
         return criteria;
     }
@@ -75,17 +81,22 @@ public void setDisabilityId(String disabilityId) {
         return practitioners;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
+
 
     public void setPractitioners(String practitioners) {
         this.practitioners= practitioners;
+    }
+
+    public void setInvisibleConditionNumber(int invisibleConditionNumber) {
+        this.invisibleConditionNumber = invisibleConditionNumber;
     }
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
 
 }

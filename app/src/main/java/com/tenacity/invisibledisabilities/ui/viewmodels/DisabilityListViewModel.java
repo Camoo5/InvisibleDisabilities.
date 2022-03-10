@@ -39,7 +39,7 @@ public class DisabilityListViewModel extends ViewModel {
         return disabilityList;
     }
 
-    public void setGrowZoneNumber(int no) {
+    public void setInvisibleConditionNumber(int no) {
         invisibleConditionNumber.setValue(no);
     }
 

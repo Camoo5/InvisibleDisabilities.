@@ -16,6 +16,20 @@ public class DisabilityRepository {
         this.disabilityDao = disabilityDao;
     }
 
+    public LiveData<List<Disability>> getDisabilities() {
+        return disabilityDao.getDisabilities();
+    }
+
+    public LiveData<Disability> getDisability(String id) {
+        return disabilityDao.getDisability(id);
+    }
+
+    public LiveData<List<Disability>> getDisabilitiesByInvisibleConditionNumber(int invisibleConditionNo) {
+        return disabilityDao.getDisabilitiesByInvisibleConditionNumber(invisibleConditionNo);
+
+
+    }
+
     public static DisabilityRepository getInstance(DisabilityDao disabilityDao) {
         if (instance == null) {
             synchronized (DisabilityRepository.class) {
@@ -26,23 +40,4 @@ public class DisabilityRepository {
         return instance;
 
     }
-
-    public LiveData<List<Disability>> getDisabilities() {
-        return disabilityDao.getDisabilities();
-    }
-
-    public LiveData<Disability> getDisability(String id) {
-        return disabilityDao.getDisability(id);
-    }
-
-    public LiveData<List<Disability>> getDisabilitiesByInvisibleConditionNumber(int invisibleConditionNo) {
-       return disabilityDao.getDisabilitiesByInvisibleConditionNumber(invisibleConditionNo);
-
-
-    }
-
-
-
-
-
 }

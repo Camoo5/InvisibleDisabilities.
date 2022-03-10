@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/hidden_disability_fragment"
-        android:title="@string/disability_title"/>
+        android:title="@string/my_hidden_disability"/>
     <item
         android:id="@+id/disability_list_fragment"
         android:title="@string/disability_list_title" />

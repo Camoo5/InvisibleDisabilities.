@@ -20,6 +20,14 @@ import com.tenacity.invisibledisabilities.workers.ConditionDatabaseWorker;
 @Database(entities = {Disability.class, HiddenDisability.class}, version = 4, exportSchema = false)
 @TypeConverters(Converters.class)
 public abstract class AppDatabase extends RoomDatabase {
+    private static AppDatabase instance = null;
+
+    public static void destroyDatabase() {
+        instance = null;
+    }
+
+    public abstract DisabilityDao disabilityDao();
+
     public static AppDatabase getInstance(Context context) {
         if (instance == null) {
             synchronized (AppDatabase.class) {
@@ -49,11 +57,5 @@ public abstract class AppDatabase extends RoomDatabase {
 
     }
 
-    private static AppDatabase instance = null;
-
-    public abstract DisabilityDao disabilityDao();
-
     public abstract HiddenDisabilityDao hiddenDisabilityDao();
-
-
 }
