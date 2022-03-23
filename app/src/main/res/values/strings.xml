@@ -7,14 +7,15 @@
     <!-- Translatable resources -->
     <string name="menu_filter_by_criteria_type" translation_description="The label for the menu item to filter the displayed disabilities .">Filter by disabilities</string>
     <string name="disability_detail_scrollview" translation_description="Content description for the header / hero image that is show at the top of the disability detail screen.">Image of disability</string>
-    <string name="hidden_disability_title" translation_description="Title for the 'Hidden disability' screen where the user can see the list of disabilites that have been added to their hidden disabilities.">Hidden disabilities</string>
+    <string name="my_hidden_disability_title" translation_description="Title for the 'Hidden disability' screen where the user can see the list of disabilites that have been added to their hidden disabilities.">Hidden disabilities</string>
 
     <string name="disability_list_title" translation_description="Title for the disability list screen where the user can see a list of disabilities available to add to their hidden_disabilities.">Disability list</string>
     <string name="disability_details_title" translation_description="Title for the disability details screen where the user can see the details for a specific disability.">Disability details</string>
     <string name="navigation_drawer_header_content_description" translation_description="Content description for the image that is shown at the top of the navigation drawer.">Navigation drawer header logo</string>
     <string name="added_disability_to_hidden_disabilities" translation_description="Confirmation text that is shown when a user adds a disability to their hidden_disabilities.">Added disability to hidden_disabilities</string>
     <string name="empty_hidden_disability" translation_description="Text that is shown on the 'Hidden_Disability screen when no disability have been added to the user's hidden_disability">Your hidden_disability is empty</string>
-    <string name="disability_date" translation_description="Text with placeholders that indicates when the disability was added. Example: 'Invisible_disabilities added on 26 Dec, 2020'.">%1$s added on %2$s</string>
+    <string name="disabled_date" translation_description="Text with placeholders that indicates when the disability was added. Example: 'Invisible_disabilities added on 26 Dec, 2020'.">%1$s added on %2$s</string>
+
     <string name="menu_item_share_disability" translation_description="The label for the Share menu item">Share</string>
     <string name="share_text_disability" translation_description="The default messaged used when sharing a disability on SNS, etc.">Check out the %s disability in the Android Invisible_Disabilities app</string>
 

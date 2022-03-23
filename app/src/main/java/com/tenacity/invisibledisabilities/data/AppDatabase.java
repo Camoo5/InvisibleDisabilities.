@@ -17,7 +17,7 @@ import com.tenacity.invisibledisabilities.workers.ConditionDatabaseWorker;
 /**
  * The Room database for this app
  */
-@Database(entities = {Disability.class, HiddenDisability.class}, version = 4, exportSchema = false)
+@Database(entities = {Disability.class, HiddenDisability.class}, version = 5  , exportSchema = false)
 @TypeConverters(Converters.class)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase instance = null;

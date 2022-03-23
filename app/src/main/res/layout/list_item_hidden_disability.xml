@@ -12,8 +12,8 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="454dp"
+        android:layout_height="match_parent"
         android:onClick="@{clickListener}">
 
         <ImageView
@@ -29,7 +29,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"/>
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/disability_date"
@@ -39,7 +39,7 @@
             android:layout_marginTop="@dimen/margin_normal"
             android:layout_marginEnd="@dimen/margin_small"
             android:layout_marginBottom="548dp"
-            android:text="@{@string/disability_date(viewModel.disabilityName, viewModel.disabilityDateString)}"
+            android:text="@{viewModel.disabilityDate}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageView" />

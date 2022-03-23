@@ -24,7 +24,6 @@
             android:clipToPadding="false"
             android:paddingLeft="@dimen/margin_normal"
             android:paddingRight="@dimen/margin_normal"
-            app:isGone="@{!hasDisabilities}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
             tools:listitem="@layout/list_item_hidden_disability"/>
 

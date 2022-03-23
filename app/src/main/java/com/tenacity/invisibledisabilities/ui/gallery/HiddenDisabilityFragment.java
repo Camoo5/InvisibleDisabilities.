@@ -30,7 +30,7 @@ public class HiddenDisabilityFragment extends Fragment {
 
     List<DisabilityAndHiddenDisabilities> disabilitiesList = new ArrayList<>();
     RecyclerView mRecyclerView;
-    TextView mTextViewEmptyGarden;
+    TextView mTextViewEmptyHiddenDisability;
 
     public HiddenDisabilityFragment () {
         // Required empty public constructor
@@ -43,7 +43,7 @@ public class HiddenDisabilityFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_hidden_disability, container, false);
         HiddenDisabilityAdapter adapter = new HiddenDisabilityAdapter(disabilitiesList);
 
-        mTextViewEmptyGarden = view.findViewById(R.id.empty_hidden_disability);
+        mTextViewEmptyHiddenDisability = view.findViewById(R.id.empty_hidden_disability);
         mRecyclerView = view.findViewById(R.id.hidden_disability_list);
         mRecyclerView.setAdapter(adapter);
         subscribeUI(adapter);
@@ -56,10 +56,10 @@ public class HiddenDisabilityFragment extends Fragment {
         viewModel.hiddenDisabilities.observe(getViewLifecycleOwner(), hiddenDisabilities -> {
             if (hiddenDisabilities != null && !hiddenDisabilities.isEmpty()) {
                 mRecyclerView.setVisibility(View.VISIBLE);
-                mTextViewEmptyGarden.setVisibility(View.GONE);
+                mTextViewEmptyHiddenDisability.setVisibility(View.GONE);
             }else {
                 mRecyclerView.setVisibility(View.GONE);
-                mTextViewEmptyGarden.setVisibility(View.VISIBLE);
+                mTextViewEmptyHiddenDisability.setVisibility(View.VISIBLE);
             }
         });
 

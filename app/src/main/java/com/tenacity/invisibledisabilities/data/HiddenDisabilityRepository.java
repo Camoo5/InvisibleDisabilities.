@@ -1,16 +1,16 @@
 package com.tenacity.invisibledisabilities.data;
 
-import androidx.lifecycle.LiveData;
+import android.os.AsyncTask;
 
-import com.tenacity.invisibledisabilities.utilities.AppExecutors;
+import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
 
 public class HiddenDisabilityRepository {
 
-   private static HiddenDisabilityRepository instance;
- private final HiddenDisabilityDao hiddenDisabilityDao;
+   static HiddenDisabilityRepository instance;
+     HiddenDisabilityDao hiddenDisabilityDao;
 
 
    public HiddenDisabilityRepository(HiddenDisabilityDao hiddenDisabilityDao) {
@@ -19,7 +19,7 @@ public class HiddenDisabilityRepository {
 
     public static HiddenDisabilityRepository getInstance(HiddenDisabilityDao hiddenDisabilityDao) {
         if (instance == null) {
-            synchronized (HiddenDisabilityRepository.class) {
+            synchronized (HiddenDisability.class) {
                 if (instance == null) {
                     instance = new HiddenDisabilityRepository ( hiddenDisabilityDao );
                 }
@@ -29,10 +29,12 @@ public class HiddenDisabilityRepository {
     }
 
     public void createHiddenDisability(String disabilityId) {
-        AppExecutors.getInstance().diskIO().execute(() ->
-                hiddenDisabilityDao.insertHiddenDisability(new HiddenDisability(disabilityId, null)));
-    }
+        AsyncTask.execute(() -> {
+    HiddenDisability hiddenDisability = new HiddenDisability(disabilityId);
+    hiddenDisabilityDao.insertHiddenDisability(hiddenDisability);
+});
 
+    }
 
     public LiveData<HiddenDisability> getHiddenDisabilityForDisability(String disabilityId) {
         return hiddenDisabilityDao.getHiddenDisabilityForDisability(disabilityId);

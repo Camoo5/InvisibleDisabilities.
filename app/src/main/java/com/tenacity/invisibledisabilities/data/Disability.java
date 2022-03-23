@@ -32,10 +32,12 @@ public final class Disability {
     }
 
 
+    @BindingAdapter("imageFromUrl")
+    public static void imageFromUrl(ImageView view, String imageUrl) {
+        if (imageUrl != null && !imageUrl.isEmpty())
+            Glide.with(view.getContext()).load(imageUrl).into(view);
+    }
 
-public void setDisabilityId(String disabilityId) {
-        this.disabilityId = disabilityId;
-}
     public void setName(String name) {
         this.name = name;
     }
@@ -48,33 +50,37 @@ public void setDisabilityId(String disabilityId) {
         return description;
     }
 
+    public void setDisabilityId(String disabilityId) {
+        this.disabilityId = disabilityId;
+    }
+
     public void setDescription(String description) {
-        this.description= description;
+        this.description = description;
     }
 
-    @BindingAdapter("imageFromUrl")
-    public static void imageFromUrl(ImageView view, String imageUrl) {
-        if (imageUrl !=  null && !imageUrl.isEmpty())
-            Glide.with(view.getContext()).load(imageUrl).into(view);
-    }
-
-    public int GetInvisibleConditionNumber() {
+    public int getInvisibleConditionNumber() {
         return invisibleConditionNumber;
     }
-    public String getCriteria() {
-        return criteria;
+
+    public void setInvisibleConditionNumber(int invisibleConditionNumber) {
+        this.invisibleConditionNumber = invisibleConditionNumber;
     }
 
     public String getCopingstrategy() {
         return copingstrategy;
     }
 
+    public String getCriteria() {
+        return criteria;
+    }
+
     public void setCriteria(String criteria) {
         this.criteria = criteria;
     }
 
+
     public void setCopingstrategy(String copingstrategy) {
-        this.copingstrategy= copingstrategy;
+        this.copingstrategy = copingstrategy;
     }
 
     public String getPractitioners() {
@@ -82,14 +88,11 @@ public void setDisabilityId(String disabilityId) {
     }
 
 
-
     public void setPractitioners(String practitioners) {
-        this.practitioners= practitioners;
+        this.practitioners = practitioners;
     }
 
-    public void setInvisibleConditionNumber(int invisibleConditionNumber) {
-        this.invisibleConditionNumber = invisibleConditionNumber;
-    }
+
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
