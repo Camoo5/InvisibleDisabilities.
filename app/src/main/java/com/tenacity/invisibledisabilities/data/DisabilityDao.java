@@ -23,6 +23,6 @@ public interface DisabilityDao {
     @Query("SELECT * FROM disabilities WHERE id = :disabilityId")
     LiveData<Disability> getDisability(String disabilityId);
 
-@Query("SELECT * FROM disabilities WHERE invisibleConditionNumber = :invisibleConditionNumber ORDER BY name")
-    LiveData<List<Disability>> getDisabilitiesByInvisibleConditionNumber(int invisibleConditionNumber);
+@Query("SELECT * FROM disabilities WHERE criteriaTypeNumber = :criteriaTypeNumber ORDER BY name")
+    LiveData<List<Disability>> getDisabilitiesByCriteriaTypeNumber(int criteraTypeNumber);
 }

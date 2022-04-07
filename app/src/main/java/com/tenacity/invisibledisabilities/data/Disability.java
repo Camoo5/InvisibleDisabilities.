@@ -24,7 +24,6 @@ public final class Disability {
     private String criteria;
     private String practitioners;
     private String copingstrategy;
-    private int invisibleConditionNumber;
     private String imageUrl = "";
 
     public String getDisabilityId() {
@@ -58,13 +57,6 @@ public final class Disability {
         this.description = description;
     }
 
-    public int getInvisibleConditionNumber() {
-        return invisibleConditionNumber;
-    }
-
-    public void setInvisibleConditionNumber(int invisibleConditionNumber) {
-        this.invisibleConditionNumber = invisibleConditionNumber;
-    }
 
     public String getCopingstrategy() {
         return copingstrategy;

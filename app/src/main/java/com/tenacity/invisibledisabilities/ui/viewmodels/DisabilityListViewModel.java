@@ -15,19 +15,19 @@ import java.util.List;
 
 public class DisabilityListViewModel extends ViewModel {
     private DisabilityRepository disabilityRepository;
-    private int NO_INVISIBLE_CONDITION = -1;
-    private MutableLiveData<Integer> invisibleConditionNumber = new MutableLiveData<>();
+    private int NO_CRITERIA_TYPE = -1;
+    private MutableLiveData<Integer> criteriaTypeNumber = new MutableLiveData<>();
     private MediatorLiveData<List<Disability>> disabilityList = new MediatorLiveData<>();
 
     DisabilityListViewModel(DisabilityRepository disabilityRepository) {
         this.disabilityRepository = disabilityRepository;
-        invisibleConditionNumber.setValue(NO_INVISIBLE_CONDITION);
+        criteriaTypeNumber.setValue(NO_CRITERIA_TYPE);
 
-        LiveData<List<Disability>> liveDisabilityList = Transformations.switchMap(invisibleConditionNumber, (ic_no) -> {
-            if (ic_no == NO_INVISIBLE_CONDITION) {
+        LiveData<List<Disability>> liveDisabilityList = Transformations.switchMap(criteriaTypeNumber, (ct_no) -> {
+            if (ct_no == NO_CRITERIA_TYPE) {
                 return disabilityRepository.getDisabilities();
             } else {
-                return disabilityRepository.getDisabilitiesByInvisibleConditionNumber(ic_no);
+                return disabilityRepository.getDisabilitiesByCriteriaTypeNumber(ct_no);
             }
         });
 
@@ -39,15 +39,15 @@ public class DisabilityListViewModel extends ViewModel {
         return disabilityList;
     }
 
-    public void setInvisibleConditionNumber(int no) {
-        invisibleConditionNumber.setValue(no);
+    public void setCriteriaTypeNumber(int no) {
+        criteriaTypeNumber.setValue(no);
     }
 
-    public void clearInvisibleConditionNumber() {
-        invisibleConditionNumber.setValue(NO_INVISIBLE_CONDITION);
+    public void clearCriteriaTypeNumber() {
+        criteriaTypeNumber.setValue(NO_CRITERIA_TYPE);
     }
 
     public boolean isFiltered() {
-        return invisibleConditionNumber.getValue() != NO_INVISIBLE_CONDITION;
+        return criteriaTypeNumber.getValue() != NO_CRITERIA_TYPE;
     }
 }

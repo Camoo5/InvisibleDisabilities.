@@ -20,23 +20,8 @@ import com.tenacity.invisibledisabilities.workers.ConditionDatabaseWorker;
 @Database(entities = {Disability.class, HiddenDisability.class}, version = 5  , exportSchema = false)
 @TypeConverters(Converters.class)
 public abstract class AppDatabase extends RoomDatabase {
-    private static AppDatabase instance = null;
-
-    public static void destroyDatabase() {
-        instance = null;
-    }
-
     public abstract DisabilityDao disabilityDao();
-
-    public static AppDatabase getInstance(Context context) {
-        if (instance == null) {
-            synchronized (AppDatabase.class) {
-                if (instance == null)
-                    instance = buildDatabase(context);
-            }
-        }
-        return instance;
-    }
+    private static AppDatabase instance = null;
 
     // Create and pre-populate the database. See this article for more details:
     // https://medium.com/google-developers/7-pro-tips-for-room-fbadea4bfbd1#4785
@@ -53,9 +38,25 @@ public abstract class AppDatabase extends RoomDatabase {
                     }
 
                 }).build();
+    }
 
 
+    public static AppDatabase getInstance(Context context) {
+        if (instance == null) {
+            synchronized (AppDatabase.class) {
+                if (instance == null)
+                    instance = buildDatabase(context);
+            }
+        }
+        return instance;
+    }
+
+    public static void destroyDatabase() {
+
+        instance = null;
     }
 
     public abstract HiddenDisabilityDao hiddenDisabilityDao();
+
+
 }

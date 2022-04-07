@@ -24,8 +24,8 @@ public class DisabilityRepository {
         return disabilityDao.getDisability(id);
     }
 
-    public LiveData<List<Disability>> getDisabilitiesByInvisibleConditionNumber(int invisibleConditionNo) {
-        return disabilityDao.getDisabilitiesByInvisibleConditionNumber(invisibleConditionNo);
+    public LiveData<List<Disability>> getDisabilitiesByCriteriaTypeNumber(int criteriaTypeNo) {
+        return disabilityDao.getDisabilitiesByCriteriaTypeNumber(criteriaTypeNo);
 
 
     }

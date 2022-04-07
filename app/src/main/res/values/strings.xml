@@ -5,7 +5,7 @@
     <string name="navigation_drawer_header_title" translatable="false">InvisibleDisabilities</string>
 
     <!-- Translatable resources -->
-    <string name="menu_filter_by_criteria_type" translation_description="The label for the menu item to filter the displayed disabilities .">Filter by disabilities</string>
+    <string name="menu_filter_by_criteria_type" translation_description="The label for the menu item to filter the disabilities by criteria type .">Filter by criteria type</string>
     <string name="disability_detail_scrollview" translation_description="Content description for the header / hero image that is show at the top of the disability detail screen.">Image of disability</string>
     <string name="my_hidden_disability_title" translation_description="Title for the 'Hidden disability' screen where the user can see the list of disabilites that have been added to their hidden disabilities.">Hidden disabilities</string>
 
